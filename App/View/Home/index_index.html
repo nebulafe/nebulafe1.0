@@ -1,0 +1,44 @@
+<!Doctype html>
+<html>
+<head>
+  <%- include ../meta.html %>
+</head>
+<body>
+<%- include ../header.html %>
+  <div class="carousel slide">
+    <div class="carousel-inner">
+      <div class="item active masthead">
+        <div class="masthead-bg"></div>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>星云金融与经济在线</h1>
+            <h3 class="gray">专业的金融与经济在线学习平台</h3>
+            <p><a href="/course" class="btn btn-lg btn-primary btn-shadow bs3-link">开始学习</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container ad-courses">
+    <div class="row">
+      <%courses.forEach(function(val){%>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <a href="/course/view?id=<%= val.id%>" target="_blank">
+            <span class="course-img">
+              <img src="http://n-course.oss-cn-beijing.aliyuncs.com/pic/<%= val.img %>" alt="<%= val.name %>">
+            </span>
+            <em><%= val.name %></em>
+          </a>
+          <p><%= val.source %> • <%= val.time %></p>
+        </div>
+      </div>
+      <%})%>
+    </div>
+    <div class="row text-center see-all">
+      <a href="/course">查看所有课程&gt;&gt;</a>
+    </div>
+  </div>
+<%- include ../footer.html %>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!Doctype html>
+<html>
+<head>
+  <%- include ../meta.html %>
+</head>
+<body>
+<%- include ../header.html %>
+<% if (user) { %>
+  <h4>当前登录用户：<%= user.name %></h4>
+<% } %>
+
+<%- include ../footer.html %>
+</body>
+</html>

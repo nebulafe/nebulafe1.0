@@ -1,0 +1,66 @@
+<!Doctype html>
+<html>
+  <head>
+    <%- include ../meta.html %>
+  </head>
+  <body>
+    <%- include ../header.html %>
+    <div class="container">
+      <div class="col-md-12 serach-course">
+      <div class="col-md-6 col-xs-9">
+        <div class="form-group">
+          <input type="text" placeholder="搜索一门课程"  class="form-control" id="search_content">
+        </div>
+      </div>
+      <div class="col-md-3 col-xs-3 text-left">
+        <button type="button" class="btn btn-primary" id="search_btn">搜索</button>
+      </div>
+      </div>
+      <div class="container">
+        <div class="col-md-2">
+          <ul class="course-tags" id="course_tags">
+            <li data-value="" class="bt3-row">
+              <input id="categories_all" type="checkbox"  checked="checked" data_id="all">
+              <label for="categories_all" data-id="all">所有类别</label>
+            </li>
+            <li data-value="arts" class="bt3-row">
+              <input id="categories_arts" type="checkbox" data_id="arts">
+              <label for="categories_arts" data-id="arts">艺术</label>
+            </li>
+            <li data-value="english" class="bt3-row">
+              <input id="categories_english" type="checkbox" data_id="english">
+              <label for="categories_english" data-id="english">英语</label>
+            </li>
+            <li data-value="finance" class="bt3-row">
+              <input id="categories_finance" type="checkbox" data_id="finance">
+              <label for="categories_finance" data-id="finance">金融</label>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-10">
+          <h3>课程</h3>
+          <div class="courses" id="courses">
+            <%courses.forEach(function(val){%>
+            <div class="course-item">
+              <div class="col-md-2 col-xs-3">
+                <a href="/course/view?id=<%=val.id%>"><img src="http://n-course.oss-cn-beijing.aliyuncs.com/pic/<%=val.small_img%>" width="120" height="68"></a>
+              </div>
+              <div class="col-md-7 col-xs-6">
+                <div class="c-partner"><%= val.source%></div>
+                <div class="c-title"><a href="/course/view?id=<%=val.id%>"><%=val.name%></a></div>
+                <div class="c-teacher">授课教师 <%=val.teacher%></div>
+              </div>
+              <div class="col-xs-3 text-right">
+                <p>6月 1日, 2015<br>4 个星期</p>
+                <a class="btn btn-info" href="/course/view?id=<%=val.id%>">进入学习</a>
+              </div>
+            </div>
+            <%})%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include ../footer.html %>
+    <script>seajs.use('js/course/index');</script>
+  </body>
+</html>

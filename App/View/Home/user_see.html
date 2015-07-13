@@ -1,0 +1,58 @@
+<!Doctype html>
+<html>
+<head>
+  <%- include ../meta.html %>
+  <link rel="stylesheet" href="/resource/css/forget.css">
+</head>
+<body>
+  <%- include ../header.html %>
+  <div class="container">
+    <div class="my-wrap">
+      <div class="header">
+        <h1>查看用户</h1>
+      </div>
+      <div class="my-form">
+        <div id="js-forgot-form" autocomplete="off">
+          <div class="rlf-group">
+            <input type="text" name="email" data-validate="email" class="ipt ipt-email" disabled autocomplete="off" placeholder="请输入登录邮箱" value="<%=userInfo.username%>">
+            <p class="rlf-tip-wrap"></p>
+            <input style="display:none;">
+          </div>
+          <div class="rlf-group">
+            <input type="text" name="nick" data-validate="nick" class="ipt ipt-nick" placeholder="请输入用户昵称" value="<%=userInfo.nickname%>">
+            <p class="rlf-tip-wrap"></p>
+          </div>
+          <div class="rlf-group">
+            <input type="text" name="realname" data-validate="nick" class="ipt ipt-nick ipt-realname" placeholder="请输入您的真实姓名" value="<%=userInfo.realname%>">
+            <p class="rlf-tip-wrap"></p>
+          </div>
+          <div class="rlf-group">
+            <input type="text" name="mobile" data-validate="nick" class="ipt ipt-nick ipt-mobile" placeholder="请输入您的手机号" value="<%=userInfo.mobile%>">
+            <p class="rlf-tip-wrap"></p>
+          </div>
+          <div class="rlf-group">
+            <input type="text" name="idcard" data-validate="nick" class="ipt ipt-nick ipt-idcard" placeholder="请输入您的身份证号" value="<%=userInfo.idcard%>">
+            <p class="rlf-tip-wrap"></p>
+          </div>
+          <input type="hidden" value="<%=userInfo.id%>" name="id" class="ipt-id">
+          <div class=" form-control-verify">
+            <input type="text" name="verify" maxlength="4" class="ipt" placeholder="请输入验证码">
+            <img src="/user/getcode?1430661770679" alt="验证码" title="验证码">
+            <span class="js-change-verify-code">看不清<br>换一张</span>
+            <p class="tips"></p>
+          </div>
+          <div>
+            <p class="tips" id="js-g-forgot-error">&nbsp;</p>
+            <div>
+              <input type="submit" id="js-forgot-submit" class="btn btn-green link-btn btn-block" value="提交">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mmsg-box mmsg-box-info" style="margin-top: -23.5px; margin-left: -96.5px;"><div class="mmsg-content"><i class="mmsg-icon"></i><p>资料修改成功！</p></div><div class="mmsg-background"></div></div>
+  <%- include ../footer.html %>
+  <script>seajs.use('js/user/set');</script>
+</body>
+</html>
