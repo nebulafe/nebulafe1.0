@@ -1,0 +1,13 @@
+@import "../common";
+.course-index {
+  .course-nav-wrapper{
+    width: 100%;
+    @import "course/coure-nav-list";
+  }
+}
+
+#courses{
+  width: 100%;
+  border: none;
+  @import "course/course-item";
+}
