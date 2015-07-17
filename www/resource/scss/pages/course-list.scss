@@ -1,13 +1,16 @@
 @import "../common";
+body{
+  background-color: $body_bg_color;
+}
 .course-index {
   .course-nav-wrapper{
     width: 100%;
-    @import "course/coure-nav-list";
+    @import "course-list/coure-nav-list";
   }
 }
 
 #courses{
   width: 100%;
   border: none;
-  @import "course/course-item";
+  @import "course-list/course-item";
 }

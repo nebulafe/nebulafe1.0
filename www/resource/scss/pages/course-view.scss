@@ -1,0 +1,18 @@
+@import "../common";
+body{
+  background-color: $body_bg_color;
+}
+.course-view-page {
+  .c-course{
+    box-shadow: none;
+    background: transparent;
+    margin-top: 0;
+    width: 1200px;
+    padding: 0;
+    //.c-course-preview
+    @import "course-view/course-preview";
+    //.c-course-preview end
+  }
+
+
+}

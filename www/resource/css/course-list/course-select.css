@@ -1,24 +1,28 @@
 /*
-Error: Undefined variable: "$color_snow_drift_approx".
-        on line 11 of www/resource/scss/pages/course/course-item.scss
+Error: Undefined mixin 'transition'.
+        on line 17 of www/resource/scss/pages/course-list/course-select.scss, in `transition'
+        from line 17 of www/resource/scss/pages/course-list/course-select.scss
 
-6: .course-item {
-7:   display: inline-block;
-8:   vertical-align: top;
-9:   border: transparent;
-10:   background: #fff;
-11:   background: $color_snow_drift_approx;
-12:   border-bottom: 2px solid $color_snow_drift_approx;
-13:   margin: $course-item-margin;
-14:   height: nth($course-item-size,1);
-15:   width: nth($course-item-size,2);
-16:   padding: $course-item-padding;
+12:   padding: $course_nav_item_padding;
+13:   margin: $course_nav_item_margin;
+14:   cursor: pointer;
+15: 
+16: 
+17:   @include transition(all ease .2s);
+18: 
+19:   &:hover{
+20:     color: $white;
+21:     background-color: $color_oslo_gray_approx;
+22:   }
 
 Backtrace:
-www/resource/scss/pages/course/course-item.scss:11
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/script/tree/variable.rb:49:in `_perform'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/script/tree/node.rb:50:in `perform'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:394:in `visit_prop'
+www/resource/scss/pages/course-list/course-select.scss:17:in `transition'
+www/resource/scss/pages/course-list/course-select.scss:17
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:348:in `block in visit_mixin'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:98:in `block in with_mixin'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:98:in `with_mixin'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:346:in `visit_mixin'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
@@ -68,4 +72,4 @@ www/resource/scss/pages/course/course-item.scss:11
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$color_snow_drift_approx\".\A         on line 11 of www/resource/scss/pages/course/course-item.scss\A \A 6: .course-item {\A 7:   display: inline-block;\A 8:   vertical-align: top;\A 9:   border: transparent;\A 10:   background: #fff;\A 11:   background: $color_snow_drift_approx;\A 12:   border-bottom: 2px solid $color_snow_drift_approx;\A 13:   margin: $course-item-margin;\A 14:   height: nth($course-item-size,1);\A 15:   width: nth($course-item-size,2);\A 16:   padding: $course-item-padding;"; }
+  content: "Error: Undefined mixin 'transition'.\A         on line 17 of www/resource/scss/pages/course-list/course-select.scss, in `transition'\A         from line 17 of www/resource/scss/pages/course-list/course-select.scss\A \A 12:   padding: $course_nav_item_padding;\A 13:   margin: $course_nav_item_margin;\A 14:   cursor: pointer;\A 15: \A 16: \A 17:   @include transition(all ease .2s);\A 18: \A 19:   &:hover{\A 20:     color: $white;\A 21:     background-color: $color_oslo_gray_approx;\A 22:   }"; }

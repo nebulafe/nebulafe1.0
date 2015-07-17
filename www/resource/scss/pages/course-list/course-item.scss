@@ -8,7 +8,7 @@ $update-time-position: 20px 0 0 20px;
   vertical-align: top;
   border: transparent;
   background: #fff;
-  background: $color_snow_drift_approx;
+  //background: $color_snow_drift_approx;
   border-bottom: 2px solid $color_snow_drift_approx;
   margin: $course-item-margin;
   height: nth($course-item-size,1);
@@ -19,7 +19,7 @@ $update-time-position: 20px 0 0 20px;
   @include transition(all ease .3s);
 
   &:hover{
-    border-bottom: 2px solid $color_geyser_approx;
+    //border-bottom: 2px solid $color_geyser_approx;
     -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
@@ -59,8 +59,9 @@ $update-time-position: 20px 0 0 20px;
     display: block;
     position: absolute;
     width: auto;
-    height: 22px;
+    height: 45px;
     line-height: 22px;
+    text-align: right;
     padding: 0 8px;
     color: $white;
     top: nth($update-time-position,1);
