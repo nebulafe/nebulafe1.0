@@ -16,6 +16,7 @@
   },
   "readmeFilename": "README.md",
   "devDependencies": {
+    "captchapng": "0.0.1",
     "del": "^1.1.1",
     "dplus": "0.0.3",
     "gulp": "^3.8.11",
