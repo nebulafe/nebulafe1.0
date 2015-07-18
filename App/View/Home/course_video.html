@@ -4,15 +4,13 @@
   <%- include ../meta.html %>
   <link href="/resource/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css"/>
   <link rel="stylesheet" href="/resource/module/video-js/video-js.css"/>
-  <link rel="stylesheet" href=""/>
+  <link rel="stylesheet" href="/resource/css/course-video.css"/>
 </head>
 <body>
   <%- include ../header.html %>
   <% var course = course[0]%>
-  <div class="container">
-    <h1 id="course_name"><%=course.name%></h1>
-
-    <video id="really-cool-video" class="video-js vjs-default-skin" controls
+  <div class="container loading" id="c-video-view">
+    <video id="really-cool-video" class="video-js vjs-default-skin video-view" controls
            preload="auto" width="100%" height="600px" poster="<%-resources[0].poster%>"
            data-setup='{}'>
       <source src="<%-resources[0].webmv%>" type='video/webm'>
@@ -25,8 +23,22 @@
       </p>
     </video>
 
+    <!--播放列表-->
+    <div class="c-video-list-wrapper" tabindex="0">
+      <a class="c-recent-course-name"><%=course.name%></a>
+    </div>
+    <div class="c-video-play-list" id="c-video-play-list">
+      <%resources.forEach(function(val,idx){%>
+      <a class="c-video-play-list-item"  href="/course/video?id=id&index=<%=idx%>">
+          <span class="c-video-play-list-item-title"><%=val.title%></span>
+        <span class="c-video-play-list-item-teacher">授课人：<%=val.artist%></span>
+      </a>
+      <%})%>
+    </div>
 
 
+
+    <!--
     <div id="jp_container_1" class="jp-video jp-video-360p" role="application" aria-label="media player">
       <div class="jp-type-playlist">
         <div id="jquery_jplayer_1" class="jp-jplayer"></div>
@@ -69,7 +81,7 @@
         </div>
         <div class="jp-playlist">
           <ul>
-            <!-- The method Playlist.displayPlaylist() uses this unordered list -->
+            The method Playlist.displayPlaylist() uses this unordered list
             <li>&nbsp;</li>
           </ul>
         </div>
@@ -79,9 +91,12 @@
         </div>
       </div>
     </div>
+    -->
   </div>
+
   <%- include ../footer.html %>
-  <script>
+
+  <!--script>
   <% var r_len = resources.length%>
   var res = [
     <%resources.forEach(function(val,idx){%>
@@ -95,8 +110,26 @@
       }<%if(idx != r_len - 1){%> , <%}%>
     <%})%>
   ]
+
+  </script-->
+  <script>
+    (function(){
+      //设置全屏
+      var v = document.getElementById("really-cool-video");
+      var h = document.documentElement.clientHeight - 60;
+      v.setAttribute("height",h+"px");
+      //加载脚本
+      var s = document.createElement("script");
+      s.src = "/resource/module/video-js/video.js";
+      document.body.appendChild(s);
+      s.addEventListener("load",function(){
+        document.getElementById("c-video-view").classList.remove("loading");
+      });
+    })();
+
+
   </script>
-  <script src="/resource/module/video-js/video.js"></script>
   <script>seajs.use('js/course/video')</script>
+
 </body>
 </html>

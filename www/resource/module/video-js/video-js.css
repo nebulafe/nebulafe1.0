@@ -47,28 +47,37 @@ The control icons are from a custom font. Each icon corresponds to a character
 }
 .vjs-default-skin .vjs-slider-handle {
   position: absolute;
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 30px;
+  box-shadow: 0 0 0.5em 1px #ccc;
+  background-color: #ccc;
   /* Needed for IE6 */
   left: 0;
-  top: 0;
+  top: -2px;
 }
-.vjs-default-skin .vjs-slider-handle:before {
-  content: "\e009";
-  font-family: VideoJS;
-  font-size: 1em;
-  line-height: 1;
-  text-align: center;
-  text-shadow: 0em 0em 1em #fff;
-  position: absolute;
-  top: 0;
-  left: 0;
-  /* Rotate the square icon to make a diamond */
-  /* transform */
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+.vjs-default-skin .vjs-slider-handle:hover {
+  box-shadow: 0 0 2em 2px #fff;
+  background-color: #fff;
 }
+/*.vjs-default-skin .vjs-slider-handle:before {*/
+  /*content: "\e009";*/
+  /*font-family: VideoJS;*/
+  /*font-size: 1em;*/
+  /*line-height: 1;*/
+  /*text-align: center;*/
+  /*text-shadow: 0em 0em 1em #fff;*/
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*left: 0;*/
+  /*/!* Rotate the square icon to make a diamond *!/*/
+  /*/!* transform *!/*/
+  /*-webkit-transform: rotate(-45deg);*/
+  /*-moz-transform: rotate(-45deg);*/
+  /*-ms-transform: rotate(-45deg);*/
+  /*-o-transform: rotate(-45deg);*/
+  /*transform: rotate(-45deg);*/
+/*}*/
 /* Control Bar
 --------------------------------------------------------------------------------
 The default control bar that is a container for most of the controls.
@@ -153,7 +162,7 @@ fonts to show/hide properly.
 /* Font button icons */
 .vjs-default-skin .vjs-control:before {
   font-family: VideoJS;
-  font-size: 1.5em;
+  font-size: 2em;
   line-height: 2;
   position: absolute;
   top: 0;
@@ -195,9 +204,11 @@ fonts to show/hide properly.
 }
 .vjs-default-skin .vjs-play-control:before {
   content: "\e001";
+  color: #ffffff;
 }
 .vjs-default-skin.vjs-playing .vjs-play-control:before {
   content: "\e002";
+  color: #cc0000;
 }
 /* Playback toggle
 --------------------------------------------------------------------------------
@@ -261,13 +272,14 @@ fonts to show/hide properly.
   background: #a50912 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAP0lEQVQIHWWMAQoAIAgDR/QJ/Ub//04+w7ZICBwcOg5FZi5iBB82AGzixEglJrd4TVK5XUJpskSTEvpdFzX9AB2pGziSQcvAAAAAAElFTkSuQmCC) -50% 0 repeat;
 }
 .vjs-default-skin .vjs-volume-bar .vjs-volume-handle {
-  width: 0.5em;
-  height: 0.5em;
+  width: 12px !important;
+  height: 12px !important;
   /* Assumes volume starts at 1.0. If you change the size of the
      handle relative to the volume bar, you'll need to update this value
      too. */
 
   left: 4.5em;
+  top: -2px;
 }
 .vjs-default-skin .vjs-volume-handle:before {
   font-size: 0.9em;

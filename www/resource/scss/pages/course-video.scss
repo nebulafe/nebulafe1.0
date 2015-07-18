@@ -1,1 +1,16 @@
 @import "../common";
+
+.container{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  padding-top: 0!important;
+  &.loading{
+    background-color: #000;
+    .video-view{
+      display: none;
+    }
+  }
+
+  @import "course-video/course-video-play-list";
+}
