@@ -2,6 +2,9 @@
 body{
   background-color: $body_bg_color;
 }
+.container{
+  padding: 0;
+}
 .course-view-page {
   .c-course{
     box-shadow: none;
@@ -9,9 +12,12 @@ body{
     margin-top: 0;
     width: 1200px;
     padding: 0;
+    font-size: 0;
+    padding-bottom: 20px;
     //.c-course-preview
     @import "course-view/course-preview";
     //.c-course-preview end
+    @import "course-view/course-intro";
   }
 
 

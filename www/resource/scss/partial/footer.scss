@@ -1,9 +1,12 @@
+
 #footer {
   background: $black;
   border-top: 1px solid $color_mercury_approx;
   font-size: 12px;
   color: $color_rolling_stone_approx;
-  padding: 27px 0;
+  padding: 20px 0;
+  height: 100px;
+  box-sizing: border-box;
   min-width: 620px;
   .waper {
     width: auto;

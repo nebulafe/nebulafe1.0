@@ -266,3 +266,7 @@
 .pop-login-sns .pop-sns-weibo:hover i {
   color: #d52d2d;
 }
+button{
+  border: none;
+  outline: none;
+}

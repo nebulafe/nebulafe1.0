@@ -125,7 +125,9 @@ $color-course-like-bg: #4D5A61;
       }
     }
     .c-course-preview-learn-now{
+      display: block;
       width: inherit;
+      text-decoration: none;
       height:  nth($c-preview-course-manu-size, 2) - 140px;
       line-height: nth($c-preview-course-manu-size, 2) - 140px;
       margin: auto;

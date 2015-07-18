@@ -1,253 +1,77 @@
+$black : #000;
+@import "../sassCore/function";
 #header {
   background: $black;
-  .app-down-area a {
-    display: block;
-    padding: 0 8px;
-    height: 60px;
-    line-height: 60px;
-    color: $color_nevada_approx;
-    &:hover {
-      color: $white;
-      background-color: $color_tuna_approx;
-      i {
-        background-position: 0 -16px;
-      }
-    }
-  }
-}
-#nav {
-  width: auto;
-  padding-right: 20px;
+  margin: 0;
+  width: 100%;
   height: 60px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1000;
-}
-.logo {
-  float: left;
-  a {
-    @extend %extend_2;
-    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
-    transition: background-color 0.2s;
-    &:hover {
-      background-color: $color_tuna_approx;
-    }
-  }
-}
-#logo {
-  margin: 0 20px;
-  a {
-    @extend %extend_2;
-  }
-}
-.nav-item {
-  li {
-    float: left;
-    width: 80px;
-  }
-  a {
-    position: relative;
-    display: block;
-    color: $color_rolling_stone_approx;
-    text-align: center;
-    font-size: 14px;
-    height: 60px;
-    line-height: 60px;
-    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
-    transition: background-color 0.3s;
-    &:hover {
-      color: $white;
-      background-color: $color_tuna_approx;
-    }
-    &.active {
-      color: $white;
-      background-color: $color_tuna_approx;
-    }
-    .icn-new {
-      position: absolute;
-      display: inline-block;
-      *display: inline;
-      *zoom: 1;
-      top: 6px;
-      width: 16px;
-      height: 16px;
-      background: $url_1 no-repeat 0 0;
-    }
-  }
-  .active a {
-    color: $white;
-    background-color: $color_tuna_approx;
-  }
-}
-.header-app-icon {
-  display: inline-block;
-  width: 11px;
-  height: 16px;
-  background: $url_2 no-repeat 0 0;
-  vertical-align: -3px;
-  margin-right: 5px;
-  //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
-  transition: .3s;
-}
-.search-area {
-  float: right;
-  position: relative;
-  height: 30px;
-  width: 240px;
-  margin: 15px 0;
-  margin-right: 20px;
-  background: $color_tuna_approx;
-  .search-input {
-    padding: 5px 10px;
-    width: 190px;
-    height: 20px;
-    line-height: 20px;
-    font-size: 12px;
-    float: left;
-    border: 0;
-    background: $color_tuna_approx;
-    color: $color_vulcan_approx;
-    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
-    transition: background-color 0.3s;
-    &:-moz-placeholder {
-      color: $color_rolling_stone_approx;
-    }
-    &:-ms-input-placeholder {
-      color: $color_rolling_stone_approx;
-    }
-    &.placeholder {
-      color: $color_rolling_stone_approx;
-    }
-  }
-  .search-input::-moz-placeholder {
-    color: $color_rolling_stone_approx;
-    opacity: 1;
-  }
-  .search-input::-webkit-input-placeholder {
-    color: $color_rolling_stone_approx;
-  }
-  .btn_search {
-    float: right;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
-    transition: background-color 0.3s;
-    background: $url_3 no-repeat 0 0;
-  }
-  .course {
-    background: $url_3 no-repeat 0 0;
-    background-position: 10px -80px;
-  }
-  .wenda {
-    background: $url_3 no-repeat 0 0;
-    background-position: 10px -180px;
-  }
-  &.focus {
-    .search-input {
-      color: $color_tuna_approx;
-      background: $white;
-    }
-    .btn_search {
-      background-position: 0 -40px;
-      background-color: $white;
-    }
-  }
-  .search-area-result {
-    position: absolute;
-    left: 0;
-    top: 31px;
-    width: 258px;
-    margin-bottom: 20px;
-    border: 1px solid $color_quill_gray_approx;
-    border-top: none;
-    background-color: $white;
-    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-    box-shadow: 0 4px 8px $black_35;
-    font-size: 12px;
-    overflow: hidden;
-    display: none;
-    z-index: 1000;
-    dt {
-      height: 40px;
-      line-height: 40px;
-      padding: 0 10px;
-      color: $color_rolling_stone_approx;
-      display: block;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      span {
-        color: $color_vulcan_approx;
-      }
-    }
-    dd {
-      height: 40px;
-      line-height: 40px;
-      a {
-        padding: 0 10px 0 33px;
+  padding: 0;
+  @include user-select(none);
+  #navbar{
+    .container{
+      padding: 0;
+      margin: 0;
+
+      #navbar-header{
         display: block;
-        width: auto;
-        color: $color_rolling_stone_approx;
-        &:hover {
-          color: $color_vulcan_approx;
-          background-color: $color_athens_gray_approx;
+        float: left;
+        padding: 0;
+        margin-left:0;
+        margin-right: 0;
+        width: 60px;
+        height: 60px;
+      }
+      #navbar-collapse.collapse{
+        display: block;
+        position: absolute;
+        left:0;
+        top:0;
+        box-sizing: border-box;
+        width: 100%;
+        padding-left: 60px;
+        height: 60px;
+        ul{
+          display: inline-block;
+          li{
+            display: inline-block;
+            a{
+              display: inline-block;
+              color : #999;
+              height: 60px;
+              line-height: 60px;
+              padding: 0 20px;
+              font-weight: normal;
+              font-size: 14px;
+              @include transition(all ease .1s);
+              &:hover {
+                color: #fff;
+                background-color: rgba(255,255,255,.19);
+              }
+            }
+          }
         }
-      }
-      span {
-        display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-    }
-    .curr {
-      a {
-        color: $color_vulcan_approx;
-        background-color: $color_athens_gray_approx;
-      }
-      .course {
-        background-position: 10px -130px;
-      }
-      .wenda {
-        background-position: 10px -230px;
+        .navbar-right{
+          float: right;
+          margin: 0;
+        }
+
       }
     }
-  }
-}
-#login-area {
-  float: right;
-  position: relative;
-}
-.logined {
-  > li {
-    float: left;
-  }
-  li > a {
-    display: block;
-    height: 60px;
-    line-height: 60px;
-    width: 60px;
-    color: $color_rolling_stone_approx;
-    text-align: center;
-    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
-    transition: background-color 0.2s;
-    &:hover {
-      color: $white;
-      background-color: $color_tuna_approx;
+    #logo{
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      background-image: url('/resource/img/logo.png');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
     }
+
+    .navbar-toggle{
+      display: none;
+    }
+
   }
-}
-.msg_icon {
-  display: none;
-  position: absolute;
-  padding: 0 4px;
-  height: 16px;
-  left: 32px;
-  top: 10px;
-  line-height: 14px;
-  background: $color_brick_red_approx;
-  color: $white;
-  font-style: normal;
-  font-size: 10px;
+
+
 }

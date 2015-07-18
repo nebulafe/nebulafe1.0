@@ -2,13 +2,19 @@
 @import "common/urls";
 @import "common/sizes";
 @import "common/colors";
-
 @import "common/extends";
 @import "sassCore/function";
 @import "sassCore/base";
 @import "partial";
-
 @import "common/buttons";
+
+body{
+  overflow: auto;
+}
+body > .container {
+  padding-top: 20px;
+  min-height: calc(100vh - 100px - 60px);
+}
 
 .clearfix {
   *zoom: 1;
@@ -20,90 +26,109 @@
     visibility: hidden;
   }
 }
+
 .l {
   float: left;
 }
+
 .r {
   float: right;
 }
+
 .clear {
   height: 0;
   overflow: hidden;
   clear: both;
 }
+
 .hide {
   display: none;
 }
+
+.container {
+  box-sizing: border-box;
+}
+
 .img_border {
   border: 4px solid $white;
   //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
   border-radius: 1px;
 }
+
 .bb {
   border-bottom: 1px solid $color_quill_gray_approx;
 }
+
 .bt {
   border-top: 1px solid $color_quill_gray_approx;
 }
+
 .pt15 {
   padding-top: 15px;
 }
+
 .pb15 {
   padding-bottom: 15px;
 }
+
 .p15 {
   padding: 0 15px;
 }
+
 .color-gray {
   color: $color_french_gray_approx;
 }
+
 html {
   font: 14px/1.5 "Microsoft Yahei", "Hiragino Sans GB", Helvetica, "Helvetica Neue", "微软雅黑", Tahoma, Arial, sans-serif;
   color: $color_vulcan_approx;
 
-
 }
+
 .hide-text {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
 }
+
 .newcontainer {
   margin: 0 auto;
   width: 1200px;
 }
+
 .page-container {
   margin: 0 auto;
   width: 1200px;
 }
+
 .container {
   margin: 0 auto;
   width: 1200px;
-  color: $color_nevada_approx;
+  color: $color_font;
 }
+
 #main {
   min-height: 750px;
   padding: 20px 0;
   background: $white;
   padding-top: 0;
 }
+
 .waper {
   width: 1200px;
   margin: 0 auto;
 }
+
 .shadow {
   //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
   box-shadow: 0 2px 4px $black_10;
 }
+
 .text-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
-
-
-
 
 .my_mp {
   span {
@@ -119,6 +144,7 @@ html {
     color: $white;
   }
 }
+
 .set_btn {
   right: 0;
   img {
@@ -133,6 +159,7 @@ html {
     background-color: $color_tuna_approx;
   }
 }
+
 #nav_list {
   display: none;
   z-index: 999;
@@ -184,6 +211,7 @@ html {
     background-color: $color_abbey_approx;
   }
 }
+
 .myspace_remind {
   width: 10px;
   height: 10px;
@@ -217,6 +245,7 @@ html {
     background-position: 0 -363px;
   }
 }
+
 .flw-weixin-box {
   position: absolute;
   display: none;
@@ -226,6 +255,7 @@ html {
   bottom: 35px;
   background: $url_9 no-repeat 0 0;
 }
+
 .friend-links {
   line-height: 60px;
   a {
@@ -244,6 +274,7 @@ html {
     width: 160px;
   }
 }
+
 .footer_link {
   ul {
     overflow: hidden;
@@ -264,6 +295,7 @@ html {
     }
   }
 }
+
 .page {
   margin: 25px 0 auto;
   overflow: hidden;
@@ -300,27 +332,35 @@ html {
     margin-right: 0;
   }
 }
+
 .page-inner {
   padding: 0 20px;
 }
+
 .page-disabled {
   @extend %extend_4;
 }
+
 .page-first {
   width: 50px;
 }
+
 .page-last {
   width: 50px;
 }
+
 .page-prev {
   width: 70px;
 }
+
 .page-next {
   width: 70px;
 }
+
 .bordered {
   border-bottom: solid 1px $color_iron_approx;
 }
+
 .panel {
   //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
   box-shadow: 0 2px 4px $black_20;
@@ -329,14 +369,17 @@ html {
   background-color: $white;
   margin-bottom: 20px;
 }
+
 .panel-heading {
   border-bottom: solid 1px $color_iron_approx;
 }
+
 .panel-title {
   height: 50px;
   line-height: 50px;
   font-size: 16px;
 }
+
 progress {
   display: inline-block;
   background: $color_gallery_approx;
@@ -345,31 +388,38 @@ progress {
   color: $color_conifer_approx;
   width: 400px;
 }
+
 progress::-webkit-progress-bar {
   background: $color_gallery_approx;
 }
+
 progress::-moz-progress-bar {
   background: $color_conifer_approx;
 }
+
 progress::-webkit-progress-value {
   background: $color_conifer_approx;
 }
+
 .progress {
   background: $color_gallery_approx;
   height: 6px;
   width: 400px;
   display: inline-block;
 }
+
 .progressBar {
   background: $color_conifer_approx;
   height: 6px;
 }
+
 .teacher-icon {
   width: 7px;
   margin-left: 5px;
   position: relative;
   top: 1px;
 }
+
 .elevator {
   position: fixed;
   right: 15px;
@@ -469,17 +519,21 @@ progress::-webkit-progress-value {
     }
   }
 }
+
 button::-moz-focus-inner {
   border: 0;
 }
+
 input::-moz-focus-inner {
   border: 0;
 }
+
 .autowrap {
   word-wrap: break-word;
   //Instead of the line below you could use @include word-break($value)
   word-break: break-all;
 }
+
 .compatible-contianer {
   position: fixed;
   top: 0;
@@ -491,6 +545,7 @@ input::-moz-focus-inner {
   background: $url_13 repeat-x;
   z-index: 999999;
 }
+
 .cpt-ct {
   color: $color_tuatara_approx;
   font-size: 12px;
@@ -510,6 +565,7 @@ input::-moz-focus-inner {
     }
   }
 }
+
 .cpt-handle {
   position: absolute;
   right: 20px;
@@ -521,13 +577,14 @@ input::-moz-focus-inner {
     vertical-align: middle;
   }
   .cpt-agin {
-    color: $color_nevada_approx;
+    color: $color_font;
     margin-right: 5px;
     &:hover {
       color: $color_tuna_approx;
     }
   }
 }
+
 .cpt-close {
   width: 16px;
   height: 16px;
@@ -551,6 +608,7 @@ input::-moz-focus-inner {
     background: $url_14 no-repeat 0 -24px;
   }
 }
+
 .layer-usercard {
   position: absolute;
   z-index: 999;
@@ -568,6 +626,7 @@ input::-moz-focus-inner {
     background: $url_15;
   }
 }
+
 .layer-usercard-header {
   height: 110px;
   background: $color_baltic_sea_approx;
@@ -589,6 +648,7 @@ input::-moz-focus-inner {
     border: 3px solid $color_gray_approx;
   }
 }
+
 .layer-usercard-info {
   ul {
     overflow: hidden;
@@ -611,6 +671,7 @@ input::-moz-focus-inner {
     font-size: 12px;
   }
 }
+
 .ipt {
   color: $color_vulcan_approx;
   background-color: $white;
@@ -645,19 +706,24 @@ input::-moz-focus-inner {
     @extend %extend_6;
   }
 }
+
 .ipt::-moz-placeholder {
   color: $color_ghost_approx;
   opacity: 1;
 }
+
 .ipt::-webkit-input-placeholder {
   color: $color_ghost_approx;
 }
+
 .ipt[disabled] {
   @extend %extend_6;
 }
+
 .ipt[readonly] {
   @extend %extend_6;
 }
+
 .ipt-error {
   color: $color_guardsman_red_approx;
   border-color: $color_guardsman_red_approx;

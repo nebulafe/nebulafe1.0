@@ -7,3 +7,4 @@ sftp-config.json
 .sass-cache/
 **/*.map
 .idea/
+bower_components/
