@@ -16,11 +16,22 @@ module.exports = Controller("Home/BaseController", function(){
       this.display();
     },
 
-    errAction:function(){
+    errAction: function(){
       var self = this;
       this.assign({
         section : 'pay',
         title : "支付出错",
+        userInfo:self.userInfo,
+        navLinks : navLinks
+      })
+      this.display();
+    },
+
+    successAction : function(){
+      var self = this;
+      this.assign({
+        section : 'pay',
+        title : "支付成功",
         userInfo:self.userInfo,
         navLinks : navLinks
       })
