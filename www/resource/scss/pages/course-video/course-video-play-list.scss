@@ -2,7 +2,7 @@
 .c-video-list-wrapper {
   display: block;
   position: fixed;
-  top:0;
+  top: 0;
   left: 300px;
   width: auto;
   height: 60px;
@@ -10,16 +10,20 @@
   line-height: 60px;
   padding: 0 30px;
   color: #ccc;
-  &:focus{
+  &:focus {
     outline: none;
   }
-  &::before{
-    content: "正在播放：";
+  &::before {
+    display: inline-block;
+    content: $icon-liebiao;
+    @extend .iconfont;
+    color: #ccc;
+    @include translateY(-1px);
   }
   &:hover {
-    background-color: rgba(255,255,255,.2);
+    background-color: rgba(255, 255, 255, .2);
   }
-  .c-recent-course-name{
+  .c-recent-course-name {
     color: #ccc;
     font-size: 16px;
     cursor: pointer;
@@ -28,23 +32,24 @@
     }
   }
 }
-.c-video-play-list{
+
+.c-video-play-list {
   display: none;
   position: fixed;
   width: auto;
   left: 300px;
-  top:60px;
+  top: 60px;
   background-color: #222;
   color: #ccc;
   max-height: 400px;
-  overflow-y:auto;
+  overflow-y: auto;
   overflow-x: hidden;
   &:hover {
     display: block;
   }
-  .c-video-play-list-item{
+  .c-video-play-list-item {
     display: block;
-    padding: 0 20px 0 30px;
+    padding: 0 20px 0 35px;
     height: 40px;
     line-height: 40px;
     box-sizing: border-box;
@@ -52,20 +57,33 @@
     font-size: 14px;
 
 
+    color: #ccc;
+    &:hover {
+      color: #fff;
+    }
+    &.current-play{
+      margin-left: -20px;
+      background-color: rgba(255,255,255,.3);
+    }
+    &.current-play::before {
+      content: $icon-sanjiao3;
+      @extend .iconfont;
       color: #ccc;
-      &:hover {
-        color: #fff;
-      }
-
+      width: 20px;
+    }
+    &.current-play:hover{
+      text-decoration: none;
+    }
 
     &:hover {
-      background-color: rgba(255,255,255,.2);
+      background-color: rgba(255, 255, 255, .2);
       cursor: pointer;
     }
   }
 
 }
+
 .c-video-list-wrapper:hover + .c-video-play-list,
-.c-video-list-wrapper:focus + .c-video-play-list,{
+.c-video-list-wrapper:focus + .c-video-play-list, {
   display: block;
 }

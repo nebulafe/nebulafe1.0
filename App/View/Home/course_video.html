@@ -7,15 +7,16 @@
   <link rel="stylesheet" href="/resource/css/course-video.css"/>
 </head>
 <body>
+  <% var current_course = cur_resource[0]%>
   <%- include ../header.html %>
   <% var course = course[0]%>
   <div class="container loading" id="c-video-view">
     <video id="really-cool-video" class="video-js vjs-default-skin video-view" controls
-           preload="auto" width="100%" height="600px" poster="<%-resources[0].poster%>"
+           preload="auto" width="100%" height="600px" poster="<%-current_course.poster%>"
            data-setup='{}'>
-      <source src="<%-resources[0].webmv%>" type='video/webm'>
-      <source src="<%-resources[0].ogv%>" type='video/ogv'>
-      <source src="<%-resources[0].m4v%>" type='video/m4v'>
+      <source src="<%-current_course.webmv%>" type='video/webm'>
+      <source src="<%-current_course.ogv%>" type='video/ogv'>
+      <source src="<%-current_course.m4v%>" type='video/m4v'>
 
       <p class="vjs-no-js">
         To view this video please enable JavaScript, and consider upgrading to a web browser
@@ -25,12 +26,12 @@
 
     <!--播放列表-->
     <div class="c-video-list-wrapper" tabindex="0">
-      <a class="c-recent-course-name"><%=course.name%></a>
+      <a class="c-recent-course-name">当前播放列表：<%=course.name%></a>
     </div>
     <div class="c-video-play-list" id="c-video-play-list">
       <%resources.forEach(function(val,idx){%>
-      <a class="c-video-play-list-item"  href="/course/video?id=id&index=<%=idx%>">
-          <span class="c-video-play-list-item-title"><%=val.title%></span>
+      <a class="c-video-play-list-item <%if(val.id == current_course.id){%> current-play <%}%>"  href="/course/video?id=<%=course.id%>&v_id=<%=val.id%>">
+          <span class="c-video-play-list-item-title "><%=val.title%></span>
         <span class="c-video-play-list-item-teacher">授课人：<%=val.artist%></span>
       </a>
       <%})%>
@@ -127,7 +128,7 @@
       });
     })();
 
-
+    console.log(JSON.stringify('<%=current_course.id%>'));
   </script>
   <script>seajs.use('js/course/video')</script>
 

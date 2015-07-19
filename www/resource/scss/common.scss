@@ -1,4 +1,5 @@
 @import "common/fonts";
+@import "iconfont";
 @import "common/urls";
 @import "common/sizes";
 @import "common/colors";
@@ -14,6 +15,23 @@ body{
 body > .container {
   padding-top: 20px;
   min-height: calc(100vh - 100px - 60px);
+}
+
+body{
+  min-width: 1200px;
+}
+#header {
+  min-width: 1200px;
+}
+
+@include min-screen(425px){
+  body{
+    min-width: 1200px;
+  }
+  #header {
+    min-width: 1200px;
+
+  }
 }
 
 .clearfix {
