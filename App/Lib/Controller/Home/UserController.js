@@ -6,22 +6,7 @@ module.exports = Controller("Home/BaseController", function(){
   "use strict";
   var Service = require("../../Service/Service");
   var captchapng = require('captchapng');
-  var crypto = require('crypto');
-  var secret = "ahshsd123";
-  //加密
-  function encrypt(str) {
-      var cipher = crypto.createCipher('aes192', secret);
-      var enc = cipher.update(str, 'utf8', 'hex');
-      enc += cipher.final('hex');
-      return enc;
-  }
-  //解密
-  function decrypt(str) {
-      var decipher = crypto.createDecipher('aes192', secret);
-      var dec = decipher.update(str, 'hex', 'utf8');
-      dec += decipher.final('utf8');
-      return dec;
-  }
+
   return {
     updateAction: function(){
       var self = this;
@@ -56,6 +41,12 @@ module.exports = Controller("Home/BaseController", function(){
       var self = this;
       if(self.isGet()){
         self.session('userInfo', '');
+        self.cookie(AUTH_ID, '',  {
+            domain: "",
+            path: "/",
+            httponly: true,
+            timeout: 0
+        });
         self.redirect('/');
       }
     },
@@ -104,7 +95,15 @@ module.exports = Controller("Home/BaseController", function(){
             }else if(content == -2){
               throw new Error("用户名或者密码错误！")
             }else{
-              self.session('userInfo',extend({},data,{id:content}))
+              if(data.remember == 1){
+                self.cookie(AUTH_ID, encrypt(data.username + '\t' + content), {
+                    domain: "",
+                    path: "/",
+                    httponly: true,
+                    timeout: 60 * 60 * 24 * 30
+                })
+              }
+              //self.session('userInfo',extend({},data,{id:content}))
               return self.success();
             }
           }else{
@@ -162,27 +161,26 @@ module.exports = Controller("Home/BaseController", function(){
         if(!user_id){
           return self.redirect("/");
         }
-        return self.session('userInfo').then(function(value){
-          if (!isEmpty(value)) {
-            if(value.id == user_id){
-              return Service.getUserById({id:user_id}).then(function(content){
-                self.assign({
-                  title : "查看用户",
-                  section : 'user',
-                  userInfo : content[0]
-                })
-                return self.display()
-              }).catch(function(err){
-
+        var value = self.userInfo;
+        if (!isEmpty(value)) {
+          if(value.id == user_id){
+            return Service.getUserById({id:user_id}).then(function(content){
+              self.assign({
+                title : "查看用户",
+                section : 'user',
+                userInfo : content[0]
               })
-            }else{
-              self.session('userInfo', '');
-              self.redirect('/');
-            }
+              return self.display()
+            }).catch(function(err){
+
+            })
           }else{
+            self.session('userInfo', '');
             self.redirect('/');
           }
-        })
+        }else{
+          self.redirect('/');
+        }
       }
     },
 

@@ -12,19 +12,13 @@ module.exports = Controller("Home/BaseController", function(){
   return {
     indexAction: function(){
       var self = this;
-      var userInfo = null;
-      return self.session('userInfo').then(function(value){
-        if (!isEmpty(value)) {
-          userInfo = value;
-        }
-        var courses = Service.getCourseOrderByWeight({_limit:6,_page:1 });
-        self.assign(extend({
-          courses:courses,
-          title : "首页",
-          userInfo : userInfo
-        },c_data))
-        self.display();
-      })
+      var courses = Service.getCourseOrderByWeight({_limit:6,_page:1 });
+      self.assign(extend({
+        courses:courses,
+        title : "首页",
+        userInfo : self.userInfo
+      },c_data))
+      self.display();
     }
   };
 });

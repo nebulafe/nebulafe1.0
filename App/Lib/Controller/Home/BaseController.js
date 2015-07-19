@@ -13,7 +13,22 @@ module.exports = Controller(function(){
       self.super("init", http);
       if (self.http.action != "login") {
         return this.session("userInfo").then(function(value){
-          self.userInfo = value;
+          if(value){
+            self.userInfo = value;
+          }else{
+            var auth_info = self.cookie(AUTH_ID);
+            if(auth_info){
+              auth_info = decrypt(auth_info);
+              auth_info = auth_info.split('\t');
+              self.userInfo = {
+                username : auth_info[0],
+                id : auth_info[1]
+              }
+            }else{
+              self.userInfo = null;
+            }
+          }
+
           //self.assign('userInfo', value);
         })
       };

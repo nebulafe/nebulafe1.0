@@ -4,6 +4,7 @@
  * @param  {[type]} pattern [description]
  * @return {[type]}         [description]
  */
+var crypto = require('crypto');
 Date.format = function (date, pattern) {
   if (!date) {
     date = new Date;
@@ -82,6 +83,22 @@ global.toQueryString = function(obj) {
   return ret.join('&');
 }
 
+global.AUTH_ID = "NEBULAFEID";
+var secret = "ahshsd123";
+//加密
+global.encrypt = function(str) {
+  var cipher = crypto.createCipher('aes192', secret);
+  var enc = cipher.update(str, 'utf8', 'hex');
+  enc += cipher.final('hex');
+  return enc;
+}
+//解密
+global.decrypt = function(str) {
+  var decipher = crypto.createDecipher('aes192', secret);
+  var dec = decipher.update(str, 'hex', 'utf8');
+  dec += decipher.final('utf8');
+  return dec;
+}
 global.navLinks =  [
   { label: '首页',    key: 'home',    href: '/' },
   { label: '课程',    key: 'course',    href: '/course' },
