@@ -49,11 +49,10 @@
               <div class="course-item-intro-wrapper">
                 <div class="c-title"><a href="/course/view?id=<%=val.id%>"><%=val.name%></a></div>
                 <div class="c-partner"><%= val.source%></div>
-                <div class="c-teacher">授课教师 <%=val.teacher%></div>
+                <div class="c-update-status"><%=val.update_status%></div>
               </div>
-              <div class="updated-time">
-                <p>更新于：6月 1日, 2015<br>4 个星期</p>
-                <!--<a class="btn btn-info" href="/course/view?id=<%=val.id%>">进入学习</a>-->
+              <div class="last-time">
+                <p><%=val.time%></p>
               </div>
             </div>
             <%})%>

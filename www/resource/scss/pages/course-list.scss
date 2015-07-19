@@ -5,6 +5,7 @@ body{
 .course-index {
   .course-nav-wrapper{
     width: 100%;
+    padding: 20px;
     @import "course-list/coure-nav-list";
   }
 }

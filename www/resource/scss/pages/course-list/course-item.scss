@@ -53,16 +53,21 @@ $update-time-position: 20px 0 0 20px;
       color: $font_black;
     }
 
+    .c-update-status{
+      margin-top: 3px;
+      font-size: 13px;
+    }
+
   }
 
-  .updated-time{
+  .last-time{
     display: block;
     position: absolute;
     width: auto;
-    height: 45px;
-    line-height: 22px;
+    height: 25px;
+    line-height: 25px;
     text-align: right;
-    padding: 0 8px;
+    padding: 0 15px;
     color: $white;
     top: nth($update-time-position,1);
     right: nth($update-time-position,4);
@@ -73,7 +78,7 @@ $update-time-position: 20px 0 0 20px;
     @include transition(all ease .3s);
     @include translateX(5px);
   }
-  &:hover .updated-time{
+  &:hover .last-time{
     opacity: 1;
     @include translateX(0);
   }

@@ -35,7 +35,7 @@
                 <div class="c-course-info-item">
                     <div class="c-course-last-time">
                         <span class="c-course-info-label">课程时长</span>
-                        <span class="txt">53</span>
+                        <span class="txt"><%=course.total_time%></span>
                     </div>
                 </div>
                 <div class="c-course-info-item">
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="c-course-preview-manu">
-                <div class="c-course-preview-like-btn" data-focused="false" data-id="<%=course.id%>">
+                <div class="c-course-preview-like-btn" id="focus-btn" data-focused="false" data-id="<%=course.id%>">
                     <span class="txt">关注此课程</span>
                 </div>
                 <a class="c-course-preview-learn-now" data-href="/course/video?id=<%=course.id%>"

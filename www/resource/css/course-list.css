@@ -1637,7 +1637,8 @@ body {
   background-color: #EEEFF1; }
 
 .course-index .course-nav-wrapper {
-  width: 100%; }
+  width: 100%;
+  padding: 20px; }
   .course-index .course-nav-wrapper .bt3-row {
     display: inline-block;
     vertical-align: middle;
@@ -1708,14 +1709,17 @@ body {
         padding-top: 3px;
         font-size: 13px;
         color: #323b3d; }
-    #courses .course-item .updated-time {
+      #courses .course-item .course-item-intro-wrapper .c-update-status {
+        margin-top: 3px;
+        font-size: 13px; }
+    #courses .course-item .last-time {
       display: block;
       position: absolute;
       width: auto;
-      height: 45px;
-      line-height: 22px;
+      height: 25px;
+      line-height: 25px;
       text-align: right;
-      padding: 0 8px;
+      padding: 0 15px;
       color: #fff;
       top: 20px;
       right: 20px;
@@ -1726,7 +1730,7 @@ body {
       transition: all ease 0.3s;
       -webkit-transform: translateX(5px);
       transform: translateX(5px); }
-    #courses .course-item:hover .updated-time {
+    #courses .course-item:hover .last-time {
       opacity: 1;
       -webkit-transform: translateX(0);
       transform: translateX(0); }

@@ -1707,7 +1707,6 @@ body {
             color: #fff;
             font-size: 28px; }
             .course-view-page .c-course .c-course-preview .c-course-preview-info .c-course-info-item .c-course-last-time .txt::after {
-              content: '分';
               font-size: 16px;
               padding-left: 2px; }
         .course-view-page .c-course .c-course-preview .c-course-preview-info .c-course-info-item .c-course-tag-intro {

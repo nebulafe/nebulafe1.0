@@ -91,28 +91,21 @@ define(function(require, exports, moudle) {
             '</div><%})%>'].join("");
         var tpl = [
             '<%courses.forEach(function(val){%>',
-          '<div class="course-item" onclick="window.location.href=\'/course/view?id=<%=val.id%>\';">'+
-            '<div class="img-wrapper">' +
-              '<img src="http://n-course.oss-cn-beijing.aliyuncs.com/pic/<%=val.small_img%>" width="120" height="68"> ' +
+          '<div class=course-item onclick="window.location.href=\'/course/view?id=<%=val.id%>\';">' +
+            '<div class=img-wrapper>' +
+              '<img src="http://n-course.oss-cn-beijing.aliyuncs.com/pic/<%=val.small_img%>" width=120 height=68>' +
             '</div>' +
-            '<div class="course-item-intro-wrapper"> ' +
-              '<div class="c-title">' +
-                '<a href="/course/view?id=<%=val.id%>">' +
-                  '<%=val.name%>' +
-                '</a>' +
+            '<div class=course-item-intro-wrapper>' +
+              '<div class=c-title>' +
+                '<a href="/course/view?id=<%=val.id%>"><%=val.name%></a>' +
               '</div>' +
-            '<div class="c-partner">' +
-              '<%= val.source%>' +
+              '<div class=c-partner><%=val.source%></div>' +
+              '<div class=c-update-time><%=val.update_status%></div>' +
             '</div>' +
-            '<div class="c-teacher">' +
-              '授课教师 <%=val.teacher%>' +
+            '<div class=last-time>' +
+              '<p><%=val.time%></p>' +
             '</div>' +
-          '</div> ' +
-          '<div class="updated-time"> ' +
-          '<p>更新于：6月 1日, 2015<br>4 个星期</p> ' +
-          '<!--<a class="btn btn-info" href="/course/view?id=<%=val.id%>">进入学习</a>--> ' +
-          '</div> ' +
-         '</div>',
+          '</div>',
         '<%})%>'].join('');
         $('#courses').html( _.template(tpl ,data))
       }
