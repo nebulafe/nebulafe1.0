@@ -57,6 +57,10 @@ var Service = Class(function(){
       return getRequst('resource/retrieve' , extend({_returntype : "detail" ,_orderby : "weight", _ordertype:"int", _desc: false}, data));
     },
 
+    getResourceById : function(data){
+      return getRequst('resource/retrieve', extend({_returntype : "detail" }, data));
+    },
+
     /*Partner API*/
     getAllPartners : function(data){
       return getRequst('partner/retrieve', extend({_returntype:'detail'}, data));

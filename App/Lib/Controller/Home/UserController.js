@@ -103,7 +103,7 @@ module.exports = Controller("Home/BaseController", function(){
                     timeout: 60 * 60 * 24 * 30
                 })
               }
-              //self.session('userInfo',extend({},data,{id:content}))
+              self.session('userInfo',extend({},data,{id:content}))
               return self.success();
             }
           }else{

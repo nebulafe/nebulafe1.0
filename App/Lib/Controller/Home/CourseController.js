@@ -5,17 +5,7 @@
 module.exports = Controller("Home/BaseController", function(){
   "use strict";
   var Service = require("../../Service/Service");
-  function getResourceById(id, data){
-    if(data && data.length > 0){
-      for (var i = data.length - 1; i >= 0; i--) {
-        if(data[i]['id'] == id){
-          return data[i]
-        }
-      };
-    }else{
-      return null
-    }
-  }
+
   return {
     indexAction: function(){
       var self = this;
@@ -93,18 +83,18 @@ module.exports = Controller("Home/BaseController", function(){
           return self.redirect("/course");
         }
         var course = Service.getCourseById({id : course_id});
-        Service.getResourcesByCourseId({course : course_id}).then(function(resources){
-          self.assign({
-            title : "课程视频",
-            course : course,
-            navLinks : navLinks,
-            userInfo : self.userInfo,
-            resources : resources,
-            cur_resource : getResourceById(video_id, resources),
-            section : 'course'
-          })
-          self.display();
-        });
+        var c_course = Service.getResourceById({id : video_id});
+        var resources = Service.getResourcesByCourseId({course : course_id});
+        self.assign({
+          title : "课程视频",
+          course : course,
+          navLinks : navLinks,
+          userInfo : self.userInfo,
+          resources : resources,
+          cur_resource : c_course,
+          section : 'course'
+        })
+        self.display();
 
       }
     },
