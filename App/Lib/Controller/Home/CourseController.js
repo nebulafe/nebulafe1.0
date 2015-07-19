@@ -79,7 +79,7 @@ module.exports = Controller("Home/BaseController", function(){
     setfocusAction : function(){
       var self = this;
       if(!self.userInfo){
-
+        return self.redirect("/");
       }else{
         var data = self.post();
         var user_id = self.userInfo.id;
