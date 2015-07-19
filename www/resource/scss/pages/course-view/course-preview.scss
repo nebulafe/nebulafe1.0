@@ -110,12 +110,27 @@ $color-course-like-bg: #4D5A61;
     .c-course-preview-like-btn {
       width: inherit;
       height: 140px;
-      line-height: 140px;
+      line-height: 170px;
       margin: auto;
       text-align: center;
       background-color: $color-course-like-bg;
       color: $color_manatee_approx;
       cursor: pointer;
+      &::before{
+        display: block;
+        position: absolute;
+        width: inherit;
+        height: 40px;
+        text-align: center;
+        font-size: 35px;
+        @include translate(0, -30px);
+        @extend .iconfont;
+        content: $icon-zan;
+      }
+      &[data-focused="true"]::before{
+        content: $icon-zanxuanzhong;
+        color: $color_guardsman_red_approx;
+      }
       &:hover{
         color: #ddd;
       }
