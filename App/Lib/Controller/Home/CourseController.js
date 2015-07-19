@@ -76,26 +76,28 @@ module.exports = Controller("Home/BaseController", function(){
       if(self.isGet()){
         var course_id = self.get('id');
         var video_id = self.get('v_id') - 0;
-        if(!isNumber(video_id)){
-          video_id = 1;
-        }
+
         if(!course_id){
           return self.redirect("/course");
         }
         var course = Service.getCourseById({id : course_id});
-        var c_course = Service.getResourceById({id : video_id});
         var resources = Service.getResourcesByCourseId({course : course_id});
-        self.assign({
-          title : "课程视频",
-          course : course,
-          navLinks : navLinks,
-          userInfo : self.userInfo,
-          resources : resources,
-          cur_resource : c_course,
-          section : 'course'
+        Service.getResourcesByCourseId({course : course_id}).then(function(resources){
+          if(!isNumber(video_id)){
+            video_id = resources[0].id;
+          }
+          var c_course = Service.getResourceById({id : video_id});
+          self.assign({
+            title : "课程视频",
+            course : course,
+            navLinks : navLinks,
+            userInfo : self.userInfo,
+            resources : resources,
+            cur_resource : c_course,
+            section : 'course'
+          })
+          self.display();
         })
-        self.display();
-
       }
     },
 
