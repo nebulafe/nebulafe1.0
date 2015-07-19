@@ -83,7 +83,7 @@ module.exports = Controller("Home/BaseController", function(){
         var course = Service.getCourseById({id : course_id});
         var resources = Service.getResourcesByCourseId({course : course_id});
         Service.getResourcesByCourseId({course : course_id}).then(function(resources){
-          if(!isNumber(video_id) && video_id <= 0){
+          if(!isNumber(video_id) || video_id <= 0){
             video_id = resources[0].id;
           }
           var c_course = Service.getResourceById({id : video_id});
