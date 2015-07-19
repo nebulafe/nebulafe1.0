@@ -50,7 +50,7 @@ module.exports = Controller("Home/BaseController", function(){
         if(!course_id){
           return self.redirect("/course");
         }else{
-          Service.getCourseById({id : course_id , _user_id : user_id}).then(function(data){
+          Service.getCourseById({id : course_id }).then(function(data){
             var course = data[0];
             var partner_id = course.partner;
             var partner = Service.getPartnerById({id : partner_id});
