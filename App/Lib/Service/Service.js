@@ -51,6 +51,10 @@ var Service = Class(function(){
       return getRequst('course/search' , extend({_returntype : "detail"}, data));
     },
 
+    setCourseData : function(data){
+      return getRequst('course/update', data)
+    },
+
     /*Resource API*/
 
     getResourcesByCourseId : function(data){

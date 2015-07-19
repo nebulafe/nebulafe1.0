@@ -50,6 +50,10 @@ module.exports = Controller("Home/BaseController", function(){
         if(!course_id){
           return self.redirect("/course");
         }else{
+          // Service.setCourseData({
+          //   id : course_id,
+          //   total_time : course_id==13 ? "10小时" : "1小时"
+          // });
           Service.getCourseById({id : course_id }).then(function(data){
             var course = data[0];
             var partner_id = course.partner;
