@@ -231,6 +231,62 @@ module.exports = Controller("Home/BaseController", function(){
           'Content-Type': 'image/png'
       })
       self.end(imgbase64);
+    },
+
+    verifyAction : function(){
+      var self = this;
+      if(self.isGet()){
+        self.assign({
+          title : "验证邮箱",
+          section : 'user',
+          userInfo : self.userInfo
+        })
+        return self.display()
+      }else if(self.isPost()){
+        var data = self.post();
+        self.session('captchacode').then(function(res){
+          if(data.verifycode == res){
+            Service.sendEmail({
+              email: data.email,
+              subject : "验证邮箱",
+              message : "http://www.nebulafe.com/user/activate/?verify=" + encrypt(data.email)
+            })
+            return self.success();
+          }else{
+            self.error("验证码错误！");
+          }
+        })
+      }
+    },
+
+    activateAction : function(){
+      var self = this;
+      if(self.isGet()){
+        var id = self.get('verify');
+        if(!id){
+          self.redirect("/")
+        }else{
+          try{
+            var email = decrypt(id);
+            if(!isEmail(email)){
+              return self.redirect("/")
+            }
+            Service.getUserById({"username" : email}).then(function(content){
+              if(content && content[0]){
+                Service.setUserStatus({
+                  "id": content[0].id,
+                  "activate_email" : true
+                })
+                return self.redirect('/')
+              }
+            })
+          }catch(e){
+            return self.redirect("/")
+          }
+        }
+      }
     }
+
+
   };
 })

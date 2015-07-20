@@ -113,9 +113,17 @@ var Service = Class(function(){
       return getRequst('user/resetpassword' ,data)
     },
 
+    setUserStatus : function(data){
+      return getRequst('user/update', data);
+    },
+
     /* Focus API */
     setUserFocus : function(data){
       return getRequst('focus/set',data)
+    },
+
+    unSetUserFocus : function(data){
+      return getRequst('focus/unset',data)
     }
   }
 })

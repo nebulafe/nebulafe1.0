@@ -54,7 +54,7 @@ module.exports = Controller("Home/BaseController", function(){
           //   id : course_id,
           //   total_time : course_id==13 ? "10小时" : "1小时"
           // });
-          Service.getCourseById({id : course_id }).then(function(data){
+          Service.getCourseById({'id' : course_id , '_user_id' : user_id}).then(function(data){
             var course = data[0];
             var partner_id = course.partner;
             var partner = Service.getPartnerById({id : partner_id});
@@ -83,7 +83,8 @@ module.exports = Controller("Home/BaseController", function(){
       }else{
         var data = self.post();
         var user_id = self.userInfo.id;
-        Service.setUserFocus(extend({_user_id : user_id}, data)).then(function(data){
+        if(data.focus == true){}
+        (data.focus == true ? Service.setUserFocus : Service.unSetUserFocus)(extend({_user_id : user_id}, data)).then(function(data){
           return self.success();
         }).catch(function(err){
           return self.error(err.message || "系统异常，请稍后再试！");
