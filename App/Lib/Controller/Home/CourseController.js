@@ -134,7 +134,7 @@ module.exports = Controller("Home/BaseController", function(){
           var data = self.post();
           Service.setComment({
             userid : user_id,
-            courseid ； data.id,
+            courseid : data.id,
             comment : encodeURIComponent(data.comment)
           }).then(function(content){
             return self.success()
