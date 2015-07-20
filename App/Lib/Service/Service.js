@@ -124,6 +124,15 @@ var Service = Class(function(){
 
     unSetUserFocus : function(data){
       return getRequst('focus/unset',data)
+    },
+
+    /* Comment API */
+    setComment : function(data){
+      return getRequst('comment/set', data)
+    },
+
+    getComment : function(data){
+      return getRequst('comment/get' , data)
     }
   }
 })

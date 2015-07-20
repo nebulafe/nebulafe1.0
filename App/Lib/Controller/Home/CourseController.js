@@ -83,7 +83,6 @@ module.exports = Controller("Home/BaseController", function(){
       }else{
         var data = self.post();
         var user_id = self.userInfo.id;
-        if(data.focus == true){}
         (data.focus == true ? Service.setUserFocus : Service.unSetUserFocus)(extend({_user_id : user_id}, data)).then(function(data){
           return self.success();
         }).catch(function(err){
@@ -122,6 +121,27 @@ module.exports = Controller("Home/BaseController", function(){
           })
           self.display();
         })
+      }
+    },
+
+    commentAction : function(){
+      var self = this;
+      if(self.isPost()){
+        if(!self.userInfo){
+          return self.error(err.message || "请先登录后在评论！")
+        }else{
+          var user_id = self.userInfo.id;
+          var data = self.post();
+          Service.setComment({
+            userid : user_id,
+            courseid : data.id,
+            comment : encodeURIComponent(data.comment)
+          }).then(function(content){
+            return self.success()
+          }).catch(function(err){
+            return self.error(err.message || "系统异常，请稍后再试！");
+          })
+        }
       }
     },
 
