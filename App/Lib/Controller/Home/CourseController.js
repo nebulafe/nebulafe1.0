@@ -83,7 +83,7 @@ module.exports = Controller("Home/BaseController", function(){
       }else{
         var data = self.post();
         var user_id = self.userInfo.id;
-        (data.focus == 'true' ? Service.setUserFocus : Service.unSetUserFocus)({userid : user_id , courseid : data.id}).then(function(data){
+        (data.focus == 'true' ? Service.setUserFocus : Service.unSetUserFocus)({userid : user_id , courseid : data.id}).then(function(content){
           return self.success();
         }).catch(function(err){
           return self.error(err.message || "系统异常，请稍后再试！");
