@@ -5,7 +5,7 @@
   /* IE9*/
   src: url("/resource/font/iconfont.eot?#iefix") format("embedded-opentype"), url("/resource/font/iconfont.woff") format("woff"), url("/resource/font/iconfont.ttf") format("truetype"), url("/resource/font/iconfont.svg#iconfont") format("svg");
   /* iOS 4.1- */ }
-.iconfont, .container .right-container .my-wrap .my-form .input-row .ipt:before {
+.iconfont, .container .right-container .my-wrap .my-form .input-row .ipt + i::before {
   font-family: "iconfont" !important;
   font-size: 16px;
   font-style: normal;
@@ -1721,8 +1721,34 @@ body {
           -webkit-transition: all ease 0.2s;
           transition: all ease 0.2s;
           padding-left: 40px; }
-          .container .right-container .my-wrap .my-form .input-row .ipt:before {
-            width: 30px;
-            height: 30px; }
+        .container .right-container .my-wrap .my-form .input-row .ipt + i::before {
+          width: 30px;
+          height: 25px;
+          display: block;
+          position: absolute;
+          margin-top: -31px;
+          margin-left: 105px;
+          line-height: 23px;
+          text-align: center;
+          font-size: 22px;
+          border-right: 1px solid #ccc;
+          color: #999; }
+        .container .right-container .my-wrap .my-form .input-row .ipt-email + i::before {
+          content: ""; }
+        .container .right-container .my-wrap .my-form .input-row .ipt-nick + i::before {
+          content: ""; }
+        .container .right-container .my-wrap .my-form .input-row .ipt-realname + i::before {
+          content: ""; }
+        .container .right-container .my-wrap .my-form .input-row .ipt-mobile + i::before {
+          content: ""; }
+        .container .right-container .my-wrap .my-form .input-row .ipt-idcard + i::before {
+          content: ""; }
+      .container .right-container .my-wrap .my-form .tip-row {
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 120px;
+        padding-bottom: 15px; }
+      .container .right-container .my-wrap .my-form .tips {
+        color: #f00000; }
 
 /*# sourceMappingURL=user-setting.css.map */
