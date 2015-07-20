@@ -92,12 +92,47 @@ $label-color: #656e77;
         .ipt{
           @include transition(all ease .2s);
           padding-left: 40px;
-          &:before{
-            width: 30px;
-            height: 30px;
-            @extend .iconfont;
-          }
         }
+        .ipt + i::before{
+          @extend .iconfont;
+          width: 30px;
+          height: 25px;
+          display: block;
+          position: absolute;
+          margin-top: -31px;
+          margin-left: 105px;
+          line-height: 23px;
+          text-align: center;
+          font-size: 22px;
+          border-right: 1px solid #ccc;
+          color: #999;
+        }
+        .ipt-email + i::before{
+          content: $icon-xiaoxi;
+        }
+        .ipt-nick + i::before{
+          content: $icon-guanyuwo;
+        }
+        .ipt-realname + i::before{
+          content: $icon-wo;
+        }
+        .ipt-mobile + i::before{
+          content: $icon-shouye;
+        }
+        .ipt-idcard + i::before{
+          content: $icon-wo;
+        }
+
+      }
+      .tip-row{
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 120px;
+        padding-bottom: 15px;
+      }
+
+      .tips{
+        color: $color_red_approx;
       }
     }
   }
