@@ -23,7 +23,7 @@ define(function(require, exports, moudle) {
 
   var sendFocus = function(isFocus,id){
     var reverse_flag = isFocus == 'true' ? 'false' : 'true';
-    $.post('/course/focus/',{isFocus:isFocus,id:id},'json').done(function(res){
+    $.post('/course/setfocus/',{id:id},'json').done(function(res){
       if(res.status == true){
         focus_btn.attr("data-focus",reverse_flag);
       }

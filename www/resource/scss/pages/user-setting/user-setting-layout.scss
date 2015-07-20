@@ -1,0 +1,39 @@
+.left{
+  display: block;
+  position: relative;
+  float: left;
+  width: 265px;
+  height: auto;
+  background-color: #fff;
+  box-shadow: 0 0 3px #ccc ;
+  .left-item{
+    width: inherit;
+    height: 50px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+    .link{
+      display: block;
+      width: 100%;
+      height: inherit;
+      line-height: 55px;
+      font-size: 14px;
+      box-sizing: border-box;
+      padding-left: 50px;
+      color: $color_font;
+      @include transition(all ease-out .15s);
+      &:hover {
+        text-decoration: none;
+        color: $color_guardsman_red_approx;
+        box-shadow: 0 0 5px #aaa ;
+      }
+    }
+    &.active::before{
+      content: "";
+      display: block;
+      position: absolute;
+      margin: 0;
+      height: inherit;
+      border-left: 3px solid $color_guardsman_red_approx;
+    }
+  }
+}

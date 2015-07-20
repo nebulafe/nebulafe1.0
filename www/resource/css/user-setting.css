@@ -5,7 +5,7 @@
   /* IE9*/
   src: url("/resource/font/iconfont.eot?#iefix") format("embedded-opentype"), url("/resource/font/iconfont.woff") format("woff"), url("/resource/font/iconfont.ttf") format("truetype"), url("/resource/font/iconfont.svg#iconfont") format("svg");
   /* iOS 4.1- */ }
-.iconfont, .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn::before {
+.iconfont {
   font-family: "iconfont" !important;
   font-size: 16px;
   font-style: normal;
@@ -1634,259 +1634,48 @@ input::-moz-focus-inner {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(204, 0, 0, 0.4); }
 
 body {
-  background-color: #EEEFF1; }
+  min-width: 1200px;
+  background-color: #f5f5f5; }
+
+#header {
+  min-width: 1200px; }
 
 .container {
-  padding: 0; }
-
-.course-view-page .c-course {
-  box-shadow: none;
-  background: transparent;
-  margin-top: 0;
-  width: 1200px;
-  padding: 0;
-  font-size: 0;
-  padding-bottom: 20px; }
-  .course-view-page .c-course .c-course-preview {
-    width: 100%;
-    height: 340px;
-    font-size: 0; }
-    .course-view-page .c-course .c-course-preview .c-video-container {
-      display: inline-block;
-      vertical-align: top;
-      width: 600px;
-      height: inherit; }
-      .course-view-page .c-course .c-course-preview .c-video-container .c-video-preview {
-        display: block;
-        width: inherit;
-        height: inherit;
-        background-color: #4D5A61; }
-    .course-view-page .c-course .c-course-preview .c-course-preview-info {
-      display: inline-block;
-      vertical-align: top;
-      box-sizing: border-box;
-      padding: 0 30px;
-      width: 320px;
-      height: inherit;
-      background-color: #364247; }
-      .course-view-page .c-course .c-course-preview .c-course-preview-info .c-course-info-item {
-        display: block;
-        box-sizing: border-box;
-        border-bottom: 1px solid #4D5A61;
-        padding: 15px 0;
-        width: 100%;
-        height: 113.33333px; }
-        .course-view-page .c-course .c-course-preview .c-course-preview-info .c-course-info-item .c-partner-logo {
-          display: block;
-          box-sizing: border-box;
-          line-height: 78.33333px;
-          padding: 5px 10px;
-          width: 100%;
-          height: 100%;
-          text-align: center;
-          background-color: #fff; }
-          .course-view-page .c-course .c-course-preview .c-course-preview-info .c-course-info-item .c-partner-logo img {
-            max-width: 100%;
-            margin: auto;
-            max-height: 100%; }
-        .course-view-page .c-course .c-course-preview .c-course-preview-info .c-course-info-item .c-course-last-time {
-          display: block;
-          box-sizing: border-box;
-          line-height: 73.33333px;
-          padding: 5px 10px;
-          width: 100%;
-          height: 100%;
-          text-align: left; }
-          .course-view-page .c-course .c-course-preview .c-course-preview-info .c-course-info-item .c-course-last-time .c-course-info-label {
-            font-weight: lighter;
-            color: #8b929c;
-            font-size: 16px;
-            margin-left: -5px;
-            margin-right: 10px; }
-          .course-view-page .c-course .c-course-preview .c-course-preview-info .c-course-info-item .c-course-last-time .txt {
-            color: #fff;
-            font-size: 28px; }
-            .course-view-page .c-course .c-course-preview .c-course-preview-info .c-course-info-item .c-course-last-time .txt::after {
-              font-size: 16px;
-              padding-left: 2px; }
-        .course-view-page .c-course .c-course-preview .c-course-preview-info .c-course-info-item .c-course-tag-intro {
-          display: block;
-          box-sizing: border-box;
-          line-height: 73.33333px;
-          padding: 5px 10px;
-          width: 100%;
-          height: 100%;
-          text-align: left; }
-          .course-view-page .c-course .c-course-preview .c-course-preview-info .c-course-info-item .c-course-tag-intro .c-course-info-label {
-            font-weight: lighter;
-            color: #8b929c;
-            font-size: 16px;
-            margin-left: -5px;
-            margin-right: 10px; }
-          .course-view-page .c-course .c-course-preview .c-course-preview-info .c-course-info-item .c-course-tag-intro .txt {
-            color: #fff;
-            font-size: 24px; }
-    .course-view-page .c-course .c-course-preview .c-course-preview-manu {
-      box-sizing: border-box;
-      display: inline-block;
-      vertical-align: top;
-      width: 280px;
-      height: 340px; }
-      .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn {
-        width: inherit;
-        height: 140px;
-        line-height: 170px;
-        margin: auto;
-        text-align: center;
-        background-color: #4D5A61;
-        color: #8b929c;
-        cursor: pointer; }
-        .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn::before {
-          display: block;
-          position: absolute;
-          width: inherit;
-          height: 40px;
-          text-align: center;
-          font-size: 35px;
-          -webkit-transform: translate(0, -30px);
-          transform: translate(0, -30px);
-          content: ""; }
-        .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn[data-focused="true"]::before {
-          content: "";
-          color: #cc0000; }
-        .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn:hover {
-          color: #ddd; }
-        .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn .txt {
-          font-size: 16px;
-          color: inherit; }
-      .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-learn-now {
-        display: block;
-        width: inherit;
-        text-decoration: none;
-        height: 200px;
-        line-height: 200px;
-        margin: auto;
-        text-align: center;
-        background-color: #cc0000;
-        color: #fff;
-        cursor: pointer; }
-        .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-learn-now:hover {
-          background-color: #c9394a; }
-        .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-learn-now .txt {
-          font-size: 24px;
-          color: inherit;
-          text-indent: 3px;
-          letter-spacing: 3px; }
-  .course-view-page .c-course .c-course-left {
-    display: inline-block;
-    vertical-align: top;
-    box-sizing: border-box;
-    margin-top: 20px;
-    padding: 40px;
-    width: 920px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  width: 1200px; }
+  .container .left {
+    display: block;
+    position: relative;
+    float: left;
+    width: 265px;
+    height: auto;
     background-color: #fff;
-    font-size: 14px; }
-    .course-view-page .c-course .c-course-left .row p {
-      margin-left: 2em;
-      line-height: 1.8em; }
-    .course-view-page .c-course .c-course-left .row [data-user-generated="data-user-generated"] ~ div {
-      margin-left: 15px; }
-    .course-view-page .c-course .c-course-left .c-course-outline p {
+    box-shadow: 0 0 3px #ccc; }
+    .container .left .left-item {
+      width: inherit;
+      height: 50px;
       box-sizing: border-box;
-      padding-left: 50px;
-      cursor: pointer;
-      margin: 10px 0; }
-      .course-view-page .c-course .c-course-left .c-course-outline p:first-line {
-        color: #999;
-        color: #cc0000; }
-      .course-view-page .c-course .c-course-left .c-course-outline p::before {
+      border-bottom: 1px solid #ddd; }
+      .container .left .left-item .link {
+        display: block;
+        width: 100%;
+        height: inherit;
+        line-height: 55px;
+        font-size: 14px;
+        box-sizing: border-box;
+        padding-left: 50px;
+        color: #656e73;
+        -webkit-transition: all ease-out 0.15s;
+        transition: all ease-out 0.15s; }
+        .container .left .left-item .link:hover {
+          text-decoration: none;
+          color: #cc0000;
+          box-shadow: 0 0 5px #aaa; }
+      .container .left .left-item.active::before {
         content: "";
-        background-color: #999;
         display: block;
         position: absolute;
-        margin: 10px 5px 0 -30px;
-        width: 20px;
-        height: 20px;
-        border-radius: 20px; }
-      .course-view-page .c-course .c-course-left .c-course-outline p:hover::before {
-        background-color: #cc0000; }
-  .course-view-page .c-course .c-course-right {
-    display: inline-block;
-    vertical-align: top;
-    box-sizing: border-box;
-    width: 280px;
-    font-size: 14px; }
-    .course-view-page .c-course .c-course-right h2 {
-      font-size: 18px;
-      color: #000;
-      padding-bottom: 5px;
-      border-bottom: 1px solid #ccc; }
-    .course-view-page .c-course .c-course-right > .row {
-      margin: 0; }
-    .course-view-page .c-course .c-course-right .col-sm-12,
-    .course-view-page .c-course .c-course-right .col-md-12 {
-      padding: 0; }
-    .course-view-page .c-course .c-course-right .course-teacher {
-      margin: 20px 0 0 15px;
-      padding: 5px 20px 15px 20px;
-      box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-      background-color: #fff;
-      clear: both;
-      overflow: hidden; }
-      .course-view-page .c-course .c-course-right .course-teacher .c-course-teacher-intro {
-        padding-top: 15px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #ddd; }
-        .course-view-page .c-course .c-course-right .course-teacher .c-course-teacher-intro:last-child {
-          border: none;
-          padding-bottom: 5px; }
-      .course-view-page .c-course .c-course-right .course-teacher .teacher-pic {
-        display: inline-block;
-        vertical-align: top;
-        width: 80px;
-        height: 80px;
-        background-position: center;
-        background-size: cover;
-        border-radius: 100px;
-        overflow: hidden;
-        margin-bottom: 15px;
-        box-shadow: 0 0 1px #aaa; }
-      .course-view-page .c-course .c-course-right .course-teacher .c-teacher-name {
-        display: inline-block;
-        vertical-align: top;
-        box-sizing: border-box;
-        padding-left: 10px;
-        padding-top: 10px;
-        height: 80px;
-        width: 130px;
-        margin-bottom: 15px; }
-        .course-view-page .c-course .c-course-right .course-teacher .c-teacher-name a {
-          cursor: pointer; }
-        .course-view-page .c-course .c-course-right .course-teacher .c-teacher-name p {
-          font-size: 12px; }
-      .course-view-page .c-course .c-course-right .course-teacher .teacher-description {
-        font-size: 13px;
-        line-height: 1.7em;
-        color: #888; }
-        .course-view-page .c-course .c-course-right .course-teacher .teacher-description::before {
-          content: "简介：";
-          color: #cc0000; }
-    .course-view-page .c-course .c-course-right .reference,
-    .course-view-page .c-course .c-course-right .supports {
-      margin: 20px 0 0 15px;
-      padding: 5px 20px 15px 20px;
-      box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-      background-color: #fff; }
-      .course-view-page .c-course .c-course-right .reference p,
-      .course-view-page .c-course .c-course-right .supports p {
-        padding-top: 10px; }
-      .course-view-page .c-course .c-course-right .reference a,
-      .course-view-page .c-course .c-course-right .supports a {
-        color: #c9394a; }
-        .course-view-page .c-course .c-course-right .reference a:hover,
-        .course-view-page .c-course .c-course-right .supports a:hover {
-          color: #cc0000;
-          text-decoration: underline; }
+        margin: 0;
+        height: inherit;
+        border-left: 3px solid #cc0000; }
 
-/*# sourceMappingURL=course-view.css.map */
+/*# sourceMappingURL=user-setting.css.map */
