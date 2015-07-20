@@ -130,10 +130,19 @@ $color-course-like-bg: #4D5A61;
         content: $icon-zanxuanzhong;
         color: $color_guardsman_red_approx;
       }
+      .txt::before{
+        content:"关注此课程";
+      }
+      &[data-focused="true"] .txt{
+        content:"已关注";
+      }
+
       &:hover{
         color: #ddd;
       }
       .txt{
+        display: block;
+        margin: auto;
         font-size: 16px;
         color: inherit;
       }

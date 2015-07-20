@@ -1,17 +1,18 @@
-.left{
+$label-color: #656e77;
+.left {
   display: block;
   position: relative;
   float: left;
   width: 265px;
   height: auto;
   background-color: #fff;
-  box-shadow: 0 0 3px #ccc ;
-  .left-item{
+  box-shadow: 0 0 3px #ccc;
+  .left-item {
     width: inherit;
     height: 50px;
     box-sizing: border-box;
     border-bottom: 1px solid #ddd;
-    .link{
+    .link {
       display: block;
       width: 100%;
       height: inherit;
@@ -24,16 +25,78 @@
       &:hover {
         text-decoration: none;
         color: $color_guardsman_red_approx;
-        box-shadow: 0 0 5px #aaa ;
+        box-shadow: 0 0 5px #aaa;
       }
     }
-    &.active::before{
+    &.active::before {
       content: "";
       display: block;
       position: absolute;
       margin: 0;
       height: inherit;
       border-left: 3px solid $color_guardsman_red_approx;
+    }
+  }
+}
+
+.right-container {
+  display: block;
+  position: relative;
+  float: right;
+  padding: 30px 60px;
+  width: 880px;
+  box-sizing: border-box;
+  background-color: #fff;
+  box-shadow: 0 0 3px #ccc;
+
+  .my-wrap {
+    display: block;
+    box-sizing: border-box;
+    width: 720px;
+    padding: 50px 0 0 50px;
+    .my-form {
+      .input-row {
+        display: block;
+        width: 100%;
+        min-height: 70px;
+        padding-top: 5px;
+        clear: both;
+        overflow: hidden;
+        .label {
+          display: block;
+          float: left;
+          width: 100px;
+          text-align: right;
+          padding-right: 15px;
+          color: $label-color;
+          line-height: 35px;
+          font-size: 14px;
+        }
+        .ipt{
+          @include transition(all ease .2s);
+          padding-left: 40px;
+          &:before{
+            width: 30px;
+            height: 30px;
+          }
+        }
+        input[type="text"],
+        input[type="password"] {
+
+
+          &:focus{
+            border-color: $color_link_blue;
+            box-shadow: 0 0 6px 0 rgba(45,136,227,.5);
+          }
+        }
+        .ipt,
+        .btn-wrapper .btn{
+          display: inline-block;
+          width: 300px;
+          box-sizing: border-box;
+          border-radius: 1px;
+        }
+      }
     }
   }
 }

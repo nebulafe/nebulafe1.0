@@ -1677,5 +1677,52 @@ body {
         margin: 0;
         height: inherit;
         border-left: 3px solid #cc0000; }
+  .container .right-container {
+    display: block;
+    position: relative;
+    float: right;
+    padding: 30px 60px;
+    width: 880px;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0 0 3px #ccc; }
+    .container .right-container .my-wrap {
+      display: block;
+      box-sizing: border-box;
+      width: 720px;
+      padding: 50px 0 0 50px; }
+      .container .right-container .my-wrap .my-form .input-row {
+        display: block;
+        width: 100%;
+        min-height: 70px;
+        padding-top: 5px;
+        clear: both;
+        overflow: hidden; }
+        .container .right-container .my-wrap .my-form .input-row .label {
+          display: block;
+          float: left;
+          width: 100px;
+          text-align: right;
+          padding-right: 15px;
+          color: #656e77;
+          line-height: 35px;
+          font-size: 14px; }
+        .container .right-container .my-wrap .my-form .input-row .ipt {
+          -webkit-transition: all ease 0.2s;
+          transition: all ease 0.2s;
+          padding-left: 40px; }
+          .container .right-container .my-wrap .my-form .input-row .ipt:before {
+            width: 30px;
+            height: 30px; }
+        .container .right-container .my-wrap .my-form .input-row input[type="text"]:focus,
+        .container .right-container .my-wrap .my-form .input-row input[type="password"]:focus {
+          border-color: #2D88E3;
+          box-shadow: 0 0 6px 0 rgba(45, 136, 227, 0.5); }
+        .container .right-container .my-wrap .my-form .input-row .ipt,
+        .container .right-container .my-wrap .my-form .input-row .btn-wrapper .btn {
+          display: inline-block;
+          width: 300px;
+          box-sizing: border-box;
+          border-radius: 1px; }
 
 /*# sourceMappingURL=user-setting.css.map */

@@ -46,8 +46,8 @@
                 </div>
             </div>
             <div class="c-course-preview-manu">
-                <div class="c-course-preview-like-btn" id="focus-btn" data-focused="false" data-id="<%=course.id%>">
-                    <span class="txt">关注此课程</span>
+                <div class="c-course-preview-like-btn" id="focus-btn" data-focused="<%=course.focus%>" data-id="<%=course.id%>">
+                    <span class="txt"></span>
                 </div>
                 <a class="c-course-preview-learn-now" data-href="/course/video?id=<%=course.id%>"
                    id="start_learn">

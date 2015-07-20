@@ -1754,9 +1754,15 @@ body {
         .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn[data-focused="true"]::before {
           content: "";
           color: #cc0000; }
+        .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn .txt::before {
+          content: "关注此课程"; }
+        .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn[data-focused="true"] .txt {
+          content: "已关注"; }
         .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn:hover {
           color: #ddd; }
         .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn .txt {
+          display: block;
+          margin: auto;
           font-size: 16px;
           color: inherit; }
       .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-learn-now {

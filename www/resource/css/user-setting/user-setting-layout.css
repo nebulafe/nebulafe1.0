@@ -1,21 +1,21 @@
 /*
 Error: Undefined variable: "$color_font".
-        on line 22 of www/resource/scss/pages/user-setting/user-setting-layout.scss
+        on line 23 of www/resource/scss/pages/user-setting/user-setting-layout.scss
 
-17:       height: inherit;
-18:       line-height: 55px;
-19:       font-size: 14px;
-20:       box-sizing: border-box;
-21:       padding-left: 50px;
-22:       color: $color_font;
-23:       @include transition(all ease-out .15s);
-24:       &:hover {
-25:         text-decoration: none;
-26:         color: $color_guardsman_red_approx;
-27:         box-shadow: 0 0 5px #aaa ;
+18:       height: inherit;
+19:       line-height: 55px;
+20:       font-size: 14px;
+21:       box-sizing: border-box;
+22:       padding-left: 50px;
+23:       color: $color_font;
+24:       @include transition(all ease-out .15s);
+25:       &:hover {
+26:         text-decoration: none;
+27:         color: $color_guardsman_red_approx;
+28:         box-shadow: 0 0 5px #aaa;
 
 Backtrace:
-www/resource/scss/pages/user-setting/user-setting-layout.scss:22
+www/resource/scss/pages/user-setting/user-setting-layout.scss:23
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/script/tree/variable.rb:49:in `_perform'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/script/tree/node.rb:50:in `perform'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:394:in `visit_prop'
@@ -90,4 +90,4 @@ www/resource/scss/pages/user-setting/user-setting-layout.scss:22
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$color_font\".\A         on line 22 of www/resource/scss/pages/user-setting/user-setting-layout.scss\A \A 17:       height: inherit;\A 18:       line-height: 55px;\A 19:       font-size: 14px;\A 20:       box-sizing: border-box;\A 21:       padding-left: 50px;\A 22:       color: $color_font;\A 23:       @include transition(all ease-out .15s);\A 24:       &:hover {\A 25:         text-decoration: none;\A 26:         color: $color_guardsman_red_approx;\A 27:         box-shadow: 0 0 5px #aaa ;"; }
+  content: "Error: Undefined variable: \"$color_font\".\A         on line 23 of www/resource/scss/pages/user-setting/user-setting-layout.scss\A \A 18:       height: inherit;\A 19:       line-height: 55px;\A 20:       font-size: 14px;\A 21:       box-sizing: border-box;\A 22:       padding-left: 50px;\A 23:       color: $color_font;\A 24:       @include transition(all ease-out .15s);\A 25:       &:hover {\A 26:         text-decoration: none;\A 27:         color: $color_guardsman_red_approx;\A 28:         box-shadow: 0 0 5px #aaa;"; }
