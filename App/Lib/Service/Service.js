@@ -15,8 +15,13 @@ var Service = Class(function(){
       if(err){
         deferred.reject(err)
       }else if(response && (response.statusCode == 200 || response.statusCode == 201)){
+        var res = "";
         try{
-          deferred.resolve(JSON.parse(body));
+          try{
+            deferred.resolve(JSON.parse(body));
+          }catch(e){
+            deferred.resolve(body);
+          }
         }catch(e){
           deferred.reject(e)
         }
