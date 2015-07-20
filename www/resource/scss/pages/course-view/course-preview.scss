@@ -133,7 +133,7 @@ $color-course-like-bg: #4D5A61;
       .txt::before{
         content:"关注此课程";
       }
-      &[data-focused="true"] .txt{
+      &[data-focused="true"] .txt::before{
         content:"已关注";
       }
 

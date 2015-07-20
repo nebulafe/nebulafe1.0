@@ -5,7 +5,7 @@
   /* IE9*/
   src: url("/resource/font/iconfont.eot?#iefix") format("embedded-opentype"), url("/resource/font/iconfont.woff") format("woff"), url("/resource/font/iconfont.ttf") format("truetype"), url("/resource/font/iconfont.svg#iconfont") format("svg");
   /* iOS 4.1- */ }
-.iconfont {
+.iconfont, .container .right-container .my-wrap .my-form .input-row .ipt:before {
   font-family: "iconfont" !important;
   font-size: 16px;
   font-style: normal;
@@ -1690,7 +1690,7 @@ body {
       display: block;
       box-sizing: border-box;
       width: 720px;
-      padding: 50px 0 0 50px; }
+      padding: 20px 0 0 0 50px; }
       .container .right-container .my-wrap .my-form .input-row {
         display: block;
         width: 100%;
@@ -1707,13 +1707,6 @@ body {
           color: #656e77;
           line-height: 35px;
           font-size: 14px; }
-        .container .right-container .my-wrap .my-form .input-row .ipt {
-          -webkit-transition: all ease 0.2s;
-          transition: all ease 0.2s;
-          padding-left: 40px; }
-          .container .right-container .my-wrap .my-form .input-row .ipt:before {
-            width: 30px;
-            height: 30px; }
         .container .right-container .my-wrap .my-form .input-row input[type="text"]:focus,
         .container .right-container .my-wrap .my-form .input-row input[type="password"]:focus {
           border-color: #2D88E3;
@@ -1724,5 +1717,12 @@ body {
           width: 300px;
           box-sizing: border-box;
           border-radius: 1px; }
+        .container .right-container .my-wrap .my-form .input-row .ipt {
+          -webkit-transition: all ease 0.2s;
+          transition: all ease 0.2s;
+          padding-left: 40px; }
+          .container .right-container .my-wrap .my-form .input-row .ipt:before {
+            width: 30px;
+            height: 30px; }
 
 /*# sourceMappingURL=user-setting.css.map */

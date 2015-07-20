@@ -53,7 +53,7 @@ $label-color: #656e77;
     display: block;
     box-sizing: border-box;
     width: 720px;
-    padding: 50px 0 0 50px;
+    padding: 20px 0 0 0 50px;
     .my-form {
       .input-row {
         display: block;
@@ -72,14 +72,7 @@ $label-color: #656e77;
           line-height: 35px;
           font-size: 14px;
         }
-        .ipt{
-          @include transition(all ease .2s);
-          padding-left: 40px;
-          &:before{
-            width: 30px;
-            height: 30px;
-          }
-        }
+
         input[type="text"],
         input[type="password"] {
 
@@ -95,6 +88,15 @@ $label-color: #656e77;
           width: 300px;
           box-sizing: border-box;
           border-radius: 1px;
+        }
+        .ipt{
+          @include transition(all ease .2s);
+          padding-left: 40px;
+          &:before{
+            width: 30px;
+            height: 30px;
+            @extend .iconfont;
+          }
         }
       }
     }

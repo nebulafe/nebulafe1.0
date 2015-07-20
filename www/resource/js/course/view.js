@@ -22,9 +22,9 @@ define(function(require, exports, moudle) {
   });
 
   var sendFocus = function(isFocus,id){
-    var reverse_flag = isFocus == 'true' ? 'false' : 'true';
-    $.post('/course/setfocus/',{focus:isFocus,id:id},'json').done(function(res){
-      if(res.status == true){
+    var reverse_flag = isFocus == 'true' ? false : true;
+    $.post('/course/setfocus/',{focus:reverse_flag,id:id},'json').done(function(res){
+      if(res.status == 1){
         focus_btn.attr("data-focus",reverse_flag);
       }
     }).error(function(res){

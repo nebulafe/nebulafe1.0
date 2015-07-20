@@ -1756,7 +1756,7 @@ body {
           color: #cc0000; }
         .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn .txt::before {
           content: "关注此课程"; }
-        .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn[data-focused="true"] .txt {
+        .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn[data-focused="true"] .txt::before {
           content: "已关注"; }
         .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn:hover {
           color: #ddd; }
