@@ -34,7 +34,6 @@ $color-course-like-bg: #4D5A61;
       padding: 15px 0;
       width: 100%;
       height: nth($c-preview-video-size,2)/3;
-      //合作伙伴的logo
       .c-partner-logo {
         display: block;
         box-sizing: border-box;
@@ -135,6 +134,7 @@ $color-course-like-bg: #4D5A61;
       }
       &[data-focused="true"] .txt::before{
         content:"已关注";
+
       }
 
       &:hover{

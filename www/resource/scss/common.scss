@@ -1,3 +1,4 @@
+@charset "utf-8";
 @import "common/fonts";
 @import "iconfont";
 @import "common/urls";
@@ -11,6 +12,8 @@
 
 body{
   overflow: auto;
+  font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+
 }
 body > .container {
   padding-top: 20px;
@@ -33,7 +36,6 @@ body{
 
   }
 }
-
 .clearfix {
   *zoom: 1;
   &:after {
@@ -98,7 +100,7 @@ body{
 }
 
 html {
-  font: 14px/1.5 "Microsoft Yahei", "Hiragino Sans GB", Helvetica, "Helvetica Neue", "微软雅黑", Tahoma, Arial, sans-serif;
+  font: 14px/1.5 "Microsoft Yahei", "Hiragino Sans GB", Helvetica, "Helvetica Neue", Tahoma, Arial, sans-serif;
   color: $color_vulcan_approx;
 
 }

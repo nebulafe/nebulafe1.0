@@ -1,7 +1,7 @@
 define(function(require, exports, moudle) {
-  var email = $('#js-forgot-form .ipt-email').val();
-  var nickname = $('#js-forgot-form .ipt-nick').val();
-  var id = $('#js-forgot-form .ipt-id').val();
+  var email = $('#js-user-set-form .ipt-email').val();
+  var nickname = $('#js-user-set-form .ipt-nick').val();
+  var id = $('#js-user-set-form .ipt-id').val();
   function setupMsg(selector){
     $error=$(selector);
     return function(msg){
@@ -12,37 +12,45 @@ define(function(require, exports, moudle) {
   }
 
   var forgotMsg=setupMsg("#js-g-forgot-error");
-
+  $(".ipt").on("keyup",function(e){
+        if($.trim($(this).val())!=$(this).attr("data-value")){
+            $(this).attr("data-changed","true");
+        }
+  });
   $('#js-forgot-submit').on('click',function(e){
-    var new_nickname = $.trim($('#js-forgot-form .ipt-nick').val());
-    var realname =  $.trim($('#js-forgot-form .ipt-realname').val());
-    var idcard = $.trim($('#js-forgot-form .ipt-idcard').val());
-    var mobile = $.trim($('#js-forgot-form .ipt-mobile').val());
+    var new_nickname =  $.trim($('#js-user-set-form .ipt-nick').val());
+    var realname =  $.trim($('#js-user-set-form .ipt-realname').val());
+    var idcard = $.trim($('#js-user-set-form .ipt-idcard').val());
+    var mobile = $.trim($('#js-user-set-form .ipt-mobile').val());
+
+    var data = {};
+
+      ($('#js-user-set-form .ipt-nick').attr("data-changed")=="true") && (data.nickname = new_nickname);
+      ($('#js-user-set-form .ipt-realname').attr("data-changed")=="true") && (data.realname = realname);
+      ($('#js-user-set-form .ipt-idcard').attr("data-changed")=="true") && (data.nickname = idcard);
+      ($('#js-user-set-form .ipt-mobile').attr("data-changed")=="true") && (data.mobile = mobile);
+      data.id = id;
+      data.verifycode= $('.form-control-verify input').val();
     if(!new_nickname){
-      forgotMsg('请输入用户名！');
-      return;
-    }
-    if(nickname ==  new_nickname){
-      forgotMsg('请输入不同的用户名！');
-      return;
-    }
+          forgotMsg('请输入用户名！');
+          return;
+      }
+    //if(nickname ==  new_nickname){
+    //      forgotMsg('请输入不同的用户名！');
+    //      return;
+    //}
     $.ajax({
       url:"/user/update",
-      data:{
-          nickname : new_nickname,
-          realname : realname,
-          idcard : idcard,
-          mobile : mobile,
-          verifycode: $('.form-control-verify input').val(),
-          id : id
-      },
+      data:data,
       type:"post",
       dataType:"json",
       success:function(data){
           if(data.errno===0){
-            $('.mmsg-box').show();
+              forgotMsg("修改成功");
+            //$('.mmsg-box').show();
             setTimeout(function(){
-              $('.mmsg-box').animate({opacity:0}).hide().css({opacity:1})
+                forgotMsg("");
+              //$('.mmsg-box').animate({opacity:0}).hide().css({opacity:1})
             },2000)
           }else{
             forgotMsg(data.errmsg||"");
@@ -52,5 +60,7 @@ define(function(require, exports, moudle) {
           forgotMsg("服务错误，稍后重试");
       }
     });
-  })
-})
+  });
+
+
+});
