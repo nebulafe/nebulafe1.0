@@ -30,7 +30,7 @@
     </div>
     <div class="c-video-play-list" id="c-video-play-list">
       <%resources.forEach(function(val,idx){%>
-      <a class="c-video-play-list-item <%if(val.id == current_course.id){%> current-play <%}%>"  href="/course/video?id=<%=course.id%>&v_id=<%=val.id%>">
+      <a class="c-video-play-list-item <%if(val.id == current_course.id){%> current-play <%}%>"  href="/course/video/<%=course.id%>/<%=val.id%>">
           <span class="c-video-play-list-item-title "><%=val.title%></span>
         <span class="c-video-play-list-item-teacher">授课人：<%=val.artist%></span>
       </a>
