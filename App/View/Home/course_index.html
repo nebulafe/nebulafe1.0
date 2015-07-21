@@ -42,12 +42,12 @@
           <!--<h3>课程</h3>-->
           <div class="courses" id="courses">
             <%courses.forEach(function(val){%>
-            <div class="course-item" onclick="window.location.href='/course/view?id=<%=val.id%>';">
+            <div class="course-item" onclick="window.location.href='/course/view/<%=val.id%>';">
               <div class="img-wrapper">
                 <img src="http://n-course.oss-cn-beijing.aliyuncs.com/pic/<%=val.small_img%>" width="120" height="68">
               </div>
               <div class="course-item-intro-wrapper">
-                <div class="c-title"><a href="/course/view?id=<%=val.id%>"><%=val.name%></a></div>
+                <div class="c-title"><a href="/course/view/<%=val.id%>"><%=val.name%></a></div>
                 <div class="c-partner"><%= val.source%></div>
                 <div class="c-update-status"><%=val.update_status%></div>
               </div>

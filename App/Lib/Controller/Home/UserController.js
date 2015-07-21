@@ -161,25 +161,14 @@ module.exports = Controller("Home/BaseController", function(){
           return self.redirect("/");
         }
         var value = self.userInfo;
-        if (!isEmpty(value)) {
-          if(value.id == user_id){
-            return Service.getUserById({id:user_id}).then(function(content){
-              self.assign({
-                title : "查看用户",
-                section : 'user',
-                userInfo : content[0]
-              })
-              return self.display()
-            }).catch(function(err){
-
-            })
-          }else{
-            self.session('userInfo', '');
-            self.redirect('/');
-          }
-        }else{
-          self.redirect('/');
-        }
+        Service.getUserById({id:user_id}).then(function(content){
+          self.assign({
+            title : "查看用户",
+            section : 'user',
+            userInfo : content[0]
+          })
+          return self.display()
+        }).catch(function(err){})
       }
     },
 

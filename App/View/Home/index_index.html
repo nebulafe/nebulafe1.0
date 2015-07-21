@@ -26,7 +26,7 @@
       <%courses.forEach(function(val){%>
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <a href="/course/view?id=<%= val.id%>" target="_blank">
+          <a href="/course/view/<%= val.id%>" target="_blank">
             <span class="course-img">
               <img src="http://n-course.oss-cn-beijing.aliyuncs.com/pic/<%= val.img %>" alt="<%= val.name %>">
             </span>

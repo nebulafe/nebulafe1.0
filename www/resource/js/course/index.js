@@ -75,29 +75,15 @@ define(function(require, exports, moudle) {
 
     drawCourses : function(data){
       if(data){
-        var tpl = ['<%courses.forEach(function(val){%><div class="course-item">',
-              '<div class="col-md-2 col-xs-3">',
-                '<a href="/course/view?id=<%= val.id%>"><img src="http://n-course.oss-cn-beijing.aliyuncs.com/pic/<%=val.small_img%>" width="120" height="68"></a>',
-              '</div>',
-              '<div class="col-md-7 col-xs-6">',
-                '<div class="c-partner"><%= val.source%></div>',
-                '<div class="c-title"><a href="/course/view?id=<%= val.id%>"><%=val.name%></a></div>',
-                '<div class="c-teacher">授课教师 <% if(val.teacher){%><%=val.teacher%><%}%></div>',
-              '</div>',
-              '<div class="col-xs-3 text-right">',
-                '<p>6月 1日, 2015<br>4 个星期</p>',
-                '<a class="btn btn-info" href="/course/view?id=<%= val.id%>">进入学习</a>',
-              '</div>',
-            '</div><%})%>'].join("");
         var tpl = [
             '<%courses.forEach(function(val){%>',
-          '<div class=course-item onclick="window.location.href=\'/course/view?id=<%=val.id%>\';">' +
+          '<div class=course-item onclick="window.location.href=\'/course/view/<%=val.id%>\';">' +
             '<div class=img-wrapper>' +
               '<img src="http://n-course.oss-cn-beijing.aliyuncs.com/pic/<%=val.small_img%>" width=120 height=68>' +
             '</div>' +
             '<div class=course-item-intro-wrapper>' +
               '<div class=c-title>' +
-                '<a href="/course/view?id=<%=val.id%>"><%=val.name%></a>' +
+                '<a href="/course/view/<%=val.id%>"><%=val.name%></a>' +
               '</div>' +
               '<div class=c-partner><%=val.source%></div>' +
               '<div class=c-update-time><%=val.update_status%></div>' +
