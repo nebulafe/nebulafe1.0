@@ -14,26 +14,25 @@ module.exports = Controller("Home/BaseController", function(){
         return self.redirect("/");
       }else if(self.isPost()){
         var user_id = self.post('id');
-        return self.session('userInfo').then(function(value){
-          if (!isEmpty(value)) {
-            if(value.id == user_id){
-              return Service.updateUserById(self.post()).then(function(content){
-                if(content == 0){
-                  return self.success()
-                }else if(content == -1){
-                  throw new Error('没有找到该用户！')
-                }
-              }).catch(function(err){
-                return self.error(err.message || "系统异常，请稍后再试！")
-              })
-            }else{
-              self.session('userInfo', '');
-              self.redirect('/');
-            }
+        var _user_id = self.userInfo.id;
+        if (_user_id) {
+          if(_user_id == user_id){
+            return Service.updateUserById(self.post()).then(function(content){
+              if(content == 0){
+                return self.success()
+              }else if(content == -1){
+                throw new Error('没有找到该用户！')
+              }
+            }).catch(function(err){
+              return self.error(err.message || "系统异常，请稍后再试！")
+            })
           }else{
+            self.session('userInfo', '');
             self.redirect('/');
           }
-        })
+        }else{
+          self.redirect('/');
+        }
       }
     },
 
