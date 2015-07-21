@@ -172,6 +172,63 @@ module.exports = Controller("Home/BaseController", function(){
       }
     },
 
+    avatorAction : function(){
+      var self = this;
+      if(self.isGet()){
+        var user_id = self.get('id');
+        if(!user_id){
+          return self.redirect("/");
+        }
+        var value = self.userInfo;
+        Service.getUserById({id:user_id}).then(function(content){
+          self.assign({
+            title : "设置头像",
+            section : 'user',
+            userInfo : content[0]
+          })
+          return self.display()
+        }).catch(function(err){})
+      }
+    },
+
+    verifyemailAction : function(){
+      var self = this;
+      if(self.isGet()){
+        var user_id = self.get('id');
+        if(!user_id){
+          return self.redirect("/");
+        }
+        var value = self.userInfo;
+        Service.getUserById({id:user_id}).then(function(content){
+          self.assign({
+            title : "验证邮箱",
+            section : 'user',
+            userInfo : content[0]
+          })
+          return self.display()
+        }).catch(function(err){})
+      }
+    },
+
+    setpwdAction : function(){
+      var self = this;
+      if(self.isGet()){
+        var user_id = self.get('id');
+        if(!user_id){
+          return self.redirect("/");
+        }
+        var value = self.userInfo;
+        Service.getUserById({id:user_id}).then(function(content){
+          self.assign({
+            title : "修改密码",
+            section : 'user',
+            userInfo : content[0]
+          })
+          return self.display()
+        }).catch(function(err){})
+      }
+    },
+
     resetAction: function(){
       var self = this;
       if(self.isGet()){
