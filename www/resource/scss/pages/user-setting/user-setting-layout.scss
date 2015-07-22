@@ -53,7 +53,7 @@ $label-color: #656e77;
     display: block;
     box-sizing: border-box;
     width: 720px;
-    padding: 20px 0 0 0 50px;
+    padding: 20px 0  0 0;
     .my-form {
       .input-row {
         display: block;
@@ -69,13 +69,16 @@ $label-color: #656e77;
           text-align: right;
           padding-right: 15px;
           color: $label-color;
+          font-weight: normal;
           line-height: 35px;
           font-size: 14px;
+        }
+        a{
+          cursor: pointer;
         }
 
         input[type="text"],
         input[type="password"] {
-
 
           &:focus{
             border-color: $color_link_blue;
@@ -90,7 +93,7 @@ $label-color: #656e77;
           border-radius: 1px;
         }
         .ipt{
-          @include transition(all ease .2s);
+          @include transition(box-shadow ease .2s);
           padding-left: 40px;
         }
         .ipt + i::before{
@@ -133,7 +136,21 @@ $label-color: #656e77;
 
       .tips{
         color: $color_red_approx;
+        font-size: 13px;
+        padding-left: 100px;
+        padding-top: 5px;
+        margin-top: 5px;
+        line-height: 20px;
       }
+    }
+  }
+
+  .js-forgotpwd-form-wrap {
+    .js-forgot-form{
+      display: block;
+    }
+    .js-forgot-result{
+      display: none;
     }
   }
 }

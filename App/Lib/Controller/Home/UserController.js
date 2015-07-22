@@ -133,6 +133,7 @@ module.exports = Controller("Home/BaseController", function(){
         self.assign({
           title : "忘记密码",
           section : 'user',
+          link: 'forget',
           userInfo : self.userInfo
         })
         return self.display()
@@ -143,6 +144,7 @@ module.exports = Controller("Home/BaseController", function(){
             Service.sendEmail({
               email: data.email,
               subject : "找回密码",
+              link:'forget',
               message : "http://www.nebulafe.com/user/reset/?verify=" + encrypt(data.email)
             })
             return self.success();
@@ -165,6 +167,7 @@ module.exports = Controller("Home/BaseController", function(){
           self.assign({
             title : "查看用户",
             section : 'user',
+            link:'see',
             userInfo : content[0]
           })
           return self.display()
@@ -184,6 +187,7 @@ module.exports = Controller("Home/BaseController", function(){
           self.assign({
             title : "设置头像",
             section : 'user',
+            link:'avator',
             userInfo : content[0]
           })
           return self.display()
@@ -203,6 +207,7 @@ module.exports = Controller("Home/BaseController", function(){
           self.assign({
             title : "验证邮箱",
             section : 'user',
+            link:'verifyemail',
             userInfo : content[0]
           })
           return self.display()
@@ -234,8 +239,9 @@ module.exports = Controller("Home/BaseController", function(){
         var value = self.userInfo;
         Service.getUserById({id:user_id}).then(function(content){
           self.assign({
-            title : "修改密码",
+            title : "设置密码",
             section : 'user',
+            link:'setpwd',
             userInfo : content[0]
           })
           return self.display()
@@ -258,6 +264,7 @@ module.exports = Controller("Home/BaseController", function(){
             self.assign({
               title : "重置密码",
               section : 'user',
+              link:'reset',
               userInfo : self.userInfo,
               email: email
             });
