@@ -299,10 +299,6 @@ module.exports = Controller("Home/BaseController", function(){
       self.end(imgbase64);
     },
 
-    verifyAction : function(){
-
-    },
-
     activateAction : function(){
       var self = this;
       if(self.isGet()){

@@ -138,6 +138,11 @@ var Service = Class(function(){
 
     getComment : function(data){
       return getRequst('comment/get' , data)
+    },
+
+    /* Pay API*/
+    pay : function(data){
+      return getRequst('alipay/request' , data)
     }
   }
 })

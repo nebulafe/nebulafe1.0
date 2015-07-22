@@ -5,9 +5,30 @@
 </head>
 <body>
   <%- include ../header.html %>
-  <div class="container n-about">
-    <div class="col-md-3">购买商品</div>
+  <div class="container n-pay">
+    <div class="row">
+      <div class="col-md-3">星云账号</div>
+      <div class="col-md-9"><span><%=userInfo.username%></span><span>有效期至：<%=userInfo.viptime%></span></div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">开通方式</div>
+      <div class="col-md-9"><span>支付宝一键支付</span><span>网银/网上支付</span></div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">开通时长</div>
+      <div class="col-md-9"><span><b>年费 149 </b>（原价 190）</span><span><b>半年 80</b> （原价 1000）</span></div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">应付金额</div>
+      <div class="col-md-9"><span><b>149 元</b> （节省 41元）</span></div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <button class="btn-primary" id="pay_btn">支付</button>
+      </div>
+    </div>
   </div>
   <%- include ../footer.html %>
+  <script>seajs.use('js/pay/index')</script>
 </body>
 </html>
