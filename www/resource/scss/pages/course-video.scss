@@ -1,5 +1,7 @@
 @import "../common";
-
+body{
+  background-color: $body_bg_color;
+}
 .container{
   width: 100%;
   padding: 0;
@@ -13,4 +15,10 @@
   }
 
   @import "course-video/course-video-play-list";
+}
+.down-container{
+  width: 1200px;
+  padding: 0;
+  margin: 20px auto;
+  @import "course-video/course-down-part";
 }

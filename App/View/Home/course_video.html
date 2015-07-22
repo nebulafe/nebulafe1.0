@@ -9,6 +9,9 @@
 <body>
   <% var current_course = cur_resource[0]%>
   <%- include ../header.html %>
+
+
+
   <% var course = course[0]%>
   <div class="container loading" id="c-video-view">
     <video id="really-cool-video" class="video-js vjs-default-skin video-view" controls
@@ -23,7 +26,6 @@
         that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
       </p>
     </video>
-
     <!--播放列表-->
     <div class="c-video-list-wrapper" tabindex="0">
       <a class="c-recent-course-name">当前播放列表：<%=course.name%></a>
@@ -31,68 +33,39 @@
     <div class="c-video-play-list" id="c-video-play-list">
       <%resources.forEach(function(val,idx){%>
       <a class="c-video-play-list-item <%if(val.id == current_course.id){%> current-play <%}%>"  href="/course/video/<%=course.id%>/<%=val.id%>">
-          <span class="c-video-play-list-item-title "><%=val.title%></span>
+        <span class="c-video-play-list-item-title "><%=val.title%></span>
         <span class="c-video-play-list-item-teacher">授课人：<%=val.artist%></span>
       </a>
       <%})%>
     </div>
 
+  </div>
+  <div class="down-container">
+    <div class="c-course-left">
+      <div class="row">
+        <nav class="course-video-user-nav">
+          <a class="nav-item active" href="">评论</a>
+        </nav>
+      </div>
+      <div class="c-course-down-page-container">
+        <div class="c-tab-page comment-tab-page active" id="comment-tab-page">
+          <div class="comment-editor-wrapper">
+            <div class="row">
+              <textarea class="user-comment-editor" id="user-comment-editor" placeholder="写下你对这门课的看法吧~"></textarea>
+            </div>
+            <div class="row">
+              <a href="" class="btn btn-green comment-submit" id="comment-submit">发表评论</a>
+            </div>
 
+          </div>
 
-    <!--
-    <div id="jp_container_1" class="jp-video jp-video-360p" role="application" aria-label="media player">
-      <div class="jp-type-playlist">
-        <div id="jquery_jplayer_1" class="jp-jplayer"></div>
-        <div class="jp-gui">
-          <div class="jp-video-play">
-            <button class="jp-video-play-icon" role="button" tabindex="0">play</button>
-          </div>
-          <div class="jp-interface">
-            <div class="jp-progress">
-              <div class="jp-seek-bar">
-                <div class="jp-play-bar"></div>
-              </div>
-            </div>
-            <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
-            <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
-            <div class="jp-controls-holder">
-              <div class="jp-controls">
-                <button class="jp-previous" role="button" tabindex="0">previous</button>
-                <button class="jp-play" role="button" tabindex="0">play</button>
-                <button class="jp-next" role="button" tabindex="0">next</button>
-                <button class="jp-stop" role="button" tabindex="0">stop</button>
-              </div>
-              <div class="jp-volume-controls">
-                <button class="jp-mute" role="button" tabindex="0">mute</button>
-                <button class="jp-volume-max" role="button" tabindex="0">max volume</button>
-                <div class="jp-volume-bar">
-                  <div class="jp-volume-bar-value"></div>
-                </div>
-              </div>
-              <div class="jp-toggles">
-                <button class="jp-repeat" role="button" tabindex="0">repeat</button>
-                <button class="jp-shuffle" role="button" tabindex="0">shuffle</button>
-                <button class="jp-full-screen" role="button" tabindex="0">full screen</button>
-              </div>
-            </div>
-            <div class="jp-details">
-              <div class="jp-title" aria-label="title">&nbsp;</div>
-            </div>
-          </div>
-        </div>
-        <div class="jp-playlist">
-          <ul>
-            The method Playlist.displayPlaylist() uses this unordered list
-            <li>&nbsp;</li>
-          </ul>
-        </div>
-        <div class="jp-no-solution">
-          <span>Update Required</span>
-          To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
         </div>
       </div>
     </div>
-    -->
+
+    <div class="c-course-right">
+
+    </div>
   </div>
 
   <%- include ../footer.html %>
