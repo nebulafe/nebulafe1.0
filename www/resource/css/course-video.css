@@ -5,7 +5,7 @@
   /* IE9*/
   src: url("/resource/font/iconfont.eot?#iefix") format("embedded-opentype"), url("/resource/font/iconfont.woff") format("woff"), url("/resource/font/iconfont.ttf") format("truetype"), url("/resource/font/iconfont.svg#iconfont") format("svg");
   /* iOS 4.1- */ }
-.iconfont, .container .c-video-list-wrapper::before, .container .c-video-play-list .c-video-play-list-item.current-play::before {
+.iconfont, .c-video-list-wrapper::before, .c-video-play-list .c-video-play-list-item.current-play::before {
   font-family: "iconfont" !important;
   font-size: 16px;
   font-style: normal;
@@ -891,6 +891,63 @@ p.form-des {
     .g-page-way .g-page-way-node:last-child::after {
       content: normal; }
 
+.user-head-icon {
+  display: block;
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background-repeat: no-repeat;
+  background-size: 50px;
+  background-position: center;
+  background-color: #BADAE9;
+  border: 1px solid transparent;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+  cursor: pointer; }
+  .user-head-icon:hover {
+    border-color: #66afe9; }
+  .user-head-icon.user-head-0 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-0.png); }
+  .user-head-icon.user-head-1 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-1.png); }
+  .user-head-icon.user-head-2 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-2.png); }
+  .user-head-icon.user-head-3 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-3.png); }
+  .user-head-icon.user-head-4 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-4.png); }
+  .user-head-icon.user-head-5 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-5.png); }
+  .user-head-icon.user-head-6 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-6.png); }
+  .user-head-icon.user-head-7 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-7.png); }
+  .user-head-icon.user-head-8 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-8.png); }
+  .user-head-icon.user-head-9 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-9.png); }
+  .user-head-icon.user-head-10 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-10.png); }
+  .user-head-icon.user-head-11 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-11.png); }
+  .user-head-icon.user-head-12 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-12.png); }
+  .user-head-icon.user-head-13 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-13.png); }
+  .user-head-icon.user-head-14 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-14.png); }
+  .user-head-icon.user-head-15 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-15.png); }
+  .user-head-icon.user-head-16 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-16.png); }
+  .user-head-icon.user-head-17 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-17.png); }
+  .user-head-icon.user-head-18 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-18.png); }
+  .user-head-icon.user-head-19 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-19.png); }
+
 a {
   outline: none; }
   a:link {
@@ -1634,6 +1691,75 @@ input::-moz-focus-inner {
     outline: 0;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(204, 0, 0, 0.4); }
 
+.c-video-list-wrapper {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 300px;
+  width: auto;
+  height: 60px;
+  z-index: 1100;
+  line-height: 60px;
+  padding: 0 30px;
+  color: #ccc; }
+  .c-video-list-wrapper:focus {
+    outline: none; }
+  .c-video-list-wrapper::before {
+    display: inline-block;
+    content: "";
+    color: #ccc;
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px); }
+  .c-video-list-wrapper:hover {
+    background-color: rgba(255, 255, 255, 0.2); }
+  .c-video-list-wrapper .c-recent-course-name {
+    color: #ccc;
+    font-size: 16px;
+    cursor: pointer; }
+    .c-video-list-wrapper .c-recent-course-name:hover {
+      color: #fff; }
+
+.c-video-play-list {
+  display: none;
+  position: fixed;
+  width: auto;
+  left: 300px;
+  top: 60px;
+  background-color: #222;
+  color: #ccc;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden; }
+  .c-video-play-list:hover {
+    display: block; }
+  .c-video-play-list .c-video-play-list-item {
+    display: block;
+    padding: 0 20px 0 35px;
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    min-width: 200px;
+    font-size: 14px;
+    color: #ccc; }
+    .c-video-play-list .c-video-play-list-item:hover {
+      color: #fff; }
+    .c-video-play-list .c-video-play-list-item.current-play {
+      margin-left: -20px;
+      background-color: rgba(255, 255, 255, 0.3); }
+    .c-video-play-list .c-video-play-list-item.current-play::before {
+      content: "";
+      color: #ccc;
+      width: 20px; }
+    .c-video-play-list .c-video-play-list-item.current-play:hover {
+      text-decoration: none; }
+    .c-video-play-list .c-video-play-list-item:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      cursor: pointer; }
+
+.c-video-list-wrapper:hover + .c-video-play-list,
+.c-video-list-wrapper:focus + .c-video-play-list {
+  display: block; }
+
 body {
   background-color: #EEEFF1; }
 
@@ -1646,72 +1772,6 @@ body {
     background-color: #000; }
     .container.loading .video-view {
       display: none; }
-  .container .c-video-list-wrapper {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 300px;
-    width: auto;
-    height: 60px;
-    z-index: 1100;
-    line-height: 60px;
-    padding: 0 30px;
-    color: #ccc; }
-    .container .c-video-list-wrapper:focus {
-      outline: none; }
-    .container .c-video-list-wrapper::before {
-      display: inline-block;
-      content: "";
-      color: #ccc;
-      -webkit-transform: translateY(-1px);
-      transform: translateY(-1px); }
-    .container .c-video-list-wrapper:hover {
-      background-color: rgba(255, 255, 255, 0.2); }
-    .container .c-video-list-wrapper .c-recent-course-name {
-      color: #ccc;
-      font-size: 16px;
-      cursor: pointer; }
-      .container .c-video-list-wrapper .c-recent-course-name:hover {
-        color: #fff; }
-  .container .c-video-play-list {
-    display: none;
-    position: fixed;
-    width: auto;
-    left: 300px;
-    top: 60px;
-    background-color: #222;
-    color: #ccc;
-    max-height: 400px;
-    overflow-y: auto;
-    overflow-x: hidden; }
-    .container .c-video-play-list:hover {
-      display: block; }
-    .container .c-video-play-list .c-video-play-list-item {
-      display: block;
-      padding: 0 20px 0 35px;
-      height: 40px;
-      line-height: 40px;
-      box-sizing: border-box;
-      min-width: 200px;
-      font-size: 14px;
-      color: #ccc; }
-      .container .c-video-play-list .c-video-play-list-item:hover {
-        color: #fff; }
-      .container .c-video-play-list .c-video-play-list-item.current-play {
-        margin-left: -20px;
-        background-color: rgba(255, 255, 255, 0.3); }
-      .container .c-video-play-list .c-video-play-list-item.current-play::before {
-        content: "";
-        color: #ccc;
-        width: 20px; }
-      .container .c-video-play-list .c-video-play-list-item.current-play:hover {
-        text-decoration: none; }
-      .container .c-video-play-list .c-video-play-list-item:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-        cursor: pointer; }
-  .container .c-video-list-wrapper:hover + .c-video-play-list,
-  .container .c-video-list-wrapper:focus + .c-video-play-list {
-    display: block; }
 
 .down-container {
   width: 1200px;
@@ -1761,7 +1821,8 @@ body {
           height: 120px;
           box-sizing: border-box;
           padding: 10px;
-          resize: none; }
+          resize: none;
+          z-index: 20; }
           .down-container .c-course-left .c-course-down-page-container .c-tab-page .comment-editor-wrapper .user-comment-editor:focus {
             outline: none;
             border-color: #2D88E3;
@@ -1778,5 +1839,33 @@ body {
     box-sizing: border-box;
     width: 260px;
     font-size: 14px; }
+  .down-container .comment-list {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 0; }
+    .down-container .comment-list .comment {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 15px 0;
+      border-bottom: 1px solid #ccc; }
+      .down-container .comment-list .comment .left-content {
+        display: inline-block;
+        vertical-align: top;
+        width: 60px;
+        height: 60px; }
+      .down-container .comment-list .comment .right-content {
+        display: inline-block;
+        vertical-align: top;
+        width: 740px; }
+        .down-container .comment-list .comment .right-content .user-name {
+          font-size: 13px;
+          margin-bottom: 5px; }
+        .down-container .comment-list .comment .right-content .comment-content p {
+          line-height: 1.7;
+          padding-bottom: 5px; }
+        .down-container .comment-list .comment .right-content .comment-time {
+          color: #666;
+          font-size: 12px; }
 
 /*# sourceMappingURL=course-video.css.map */

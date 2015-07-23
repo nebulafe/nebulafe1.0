@@ -1,4 +1,4 @@
-$user-head-r : 40px;
+$user-head-r : 50px;
 $user-head-pic-border-width: 4px;
 @function leftPosition($i){
   @return 50*round($i/8)  + 2;
@@ -13,7 +13,8 @@ $user-head-pic-border-width: 4px;
   height: $user-head-r;
   border-radius: $user-head-r;
   background-repeat: no-repeat;
-  background-size: 360px auto;
+  background-size: $user-head-r  ;
+  background-position: center;
   //box-shadow: 0 0 3px #999;
   background-color: #BADAE9;
   //background-position: center;
@@ -27,7 +28,7 @@ $user-head-pic-border-width: 4px;
   }
   @for $i from 0 to 20 {
     &.user-head-#{$i} {
-      background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-#{i}.png);
+      background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-#{$i}.png);
     }
   }
 }

@@ -891,6 +891,63 @@ p.form-des {
     .g-page-way .g-page-way-node:last-child::after {
       content: normal; }
 
+.user-head-icon {
+  display: block;
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background-repeat: no-repeat;
+  background-size: 50px;
+  background-position: center;
+  background-color: #BADAE9;
+  border: 1px solid transparent;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+  cursor: pointer; }
+  .user-head-icon:hover {
+    border-color: #66afe9; }
+  .user-head-icon.user-head-0 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-0.png); }
+  .user-head-icon.user-head-1 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-1.png); }
+  .user-head-icon.user-head-2 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-2.png); }
+  .user-head-icon.user-head-3 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-3.png); }
+  .user-head-icon.user-head-4 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-4.png); }
+  .user-head-icon.user-head-5 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-5.png); }
+  .user-head-icon.user-head-6 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-6.png); }
+  .user-head-icon.user-head-7 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-7.png); }
+  .user-head-icon.user-head-8 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-8.png); }
+  .user-head-icon.user-head-9 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-9.png); }
+  .user-head-icon.user-head-10 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-10.png); }
+  .user-head-icon.user-head-11 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-11.png); }
+  .user-head-icon.user-head-12 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-12.png); }
+  .user-head-icon.user-head-13 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-13.png); }
+  .user-head-icon.user-head-14 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-14.png); }
+  .user-head-icon.user-head-15 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-15.png); }
+  .user-head-icon.user-head-16 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-16.png); }
+  .user-head-icon.user-head-17 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-17.png); }
+  .user-head-icon.user-head-18 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-18.png); }
+  .user-head-icon.user-head-19 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-19.png); }
+
 a {
   outline: none; }
   a:link {

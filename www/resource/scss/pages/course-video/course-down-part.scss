@@ -58,6 +58,7 @@
           box-sizing: border-box;
           padding: 10px;
           resize: none;
+          z-index: 20;
           &:focus{
             outline: none;
             border-color: $color_link_blue;
