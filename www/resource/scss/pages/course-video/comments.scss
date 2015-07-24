@@ -6,11 +6,15 @@
         display: block;
         box-sizing: border-box;
         width: 100%;
-        padding:15px 0;
+        padding:15px 0 5px 0;
         border-bottom: 1px solid #ccc;
+        &:last-child{
+            border: none;
+        }
         .left-content{
             display: inline-block;
             vertical-align: top;
+            margin-top: 5px;
             width: $user-head-r + 10;
             height: $user-head-r + 10;
         }

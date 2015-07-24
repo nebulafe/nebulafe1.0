@@ -1847,11 +1847,14 @@ body {
       display: block;
       box-sizing: border-box;
       width: 100%;
-      padding: 15px 0;
+      padding: 15px 0 5px 0;
       border-bottom: 1px solid #ccc; }
+      .down-container .comment-list .comment:last-child {
+        border: none; }
       .down-container .comment-list .comment .left-content {
         display: inline-block;
         vertical-align: top;
+        margin-top: 5px;
         width: 60px;
         height: 60px; }
       .down-container .comment-list .comment .right-content {

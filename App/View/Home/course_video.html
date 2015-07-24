@@ -43,12 +43,12 @@
               <textarea class="user-comment-editor" id="user-comment-editor" placeholder="写下你对这门课的看法吧~"></textarea>
             </div>
             <div class="row">
-              <a href="" class="btn btn-green comment-submit" id="comment-submit">发表评论</a>
+              <span class="btn btn-green comment-submit" id="comment-submit" data-id="<%=userInfo.id%>" data-nickname="<%=userInfo.username%>" >发表评论</span>
             </div>
 
           </div>
           <div class="comment-list">
-            <%comment.forEach(function(val){%>
+            <%comments.forEach(function(val){%>
             <article class="comment">
               <div class="left-content">
                 <div class="user-head-icon user-head-<%=(val.userid%20)%>"></div>
@@ -57,7 +57,8 @@
               <div class="right-content">
                 <a href="" class="link user-name"><%=val.nickname%></a>
                 <section class="comment-content"><p><%=val.comment%></p></section>
-                <time class="comment-time"><%=(new Date(val.updatetime).toLocaleDateString())%></time>
+                <% var d = new Date(val.updatetime).toLocaleDateString();%>
+                <time class="comment-time"><%=d%></time>
               </div>
             </article>
             <%})%>
