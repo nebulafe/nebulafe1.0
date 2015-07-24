@@ -48,17 +48,19 @@
 
           </div>
           <div class="comment-list">
+            <%comment.forEach(function(val){%>
             <article class="comment">
               <div class="left-content">
-                <div class="user-head-icon user-head-1"></div>
+                <div class="user-head-icon user-head-<%=(val.userid%20)%>"></div>
               </div>
 
               <div class="right-content">
-                <a href="" class="link user-name">用户名</a>
-                <section class="comment-content"><p>跪了 讲的好详细 思想才是最重要的  66666666666666666666</p></section>
-                <time class="comment-time">评论时间: 2015 年7月 15日 22:30</time>
+                <a href="" class="link user-name"><%=val.nickname%></a>
+                <section class="comment-content"><p><%=val.comment%></p></section>
+                <time class="comment-time"><%=(new Date(val.updatetime).toLocaleDateString())%></time>
               </div>
             </article>
+            <%})%>
           </div>
 
         </div>
