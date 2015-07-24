@@ -105,6 +105,7 @@ module.exports = Controller("Home/BaseController", function(){
         }
         var course = Service.getCourseById({id : course_id});
         var resources = Service.getResourcesByCourseId({course : course_id});
+        var comments = Service.getComment({courseid : course_id});
         Service.getResourcesByCourseId({course : course_id}).then(function(resources){
           if(!isNumber(video_id) || video_id <= 0){
             video_id = resources[0].id;
@@ -117,6 +118,7 @@ module.exports = Controller("Home/BaseController", function(){
             userInfo : self.userInfo,
             resources : resources,
             cur_resource : c_course,
+            comments : comments,
             section : 'course'
           })
           self.display();
