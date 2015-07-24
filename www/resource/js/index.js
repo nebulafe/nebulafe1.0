@@ -167,7 +167,7 @@ define(function(require, exports, moudle) {
                       return ;
                     }
                     // $("#signin-globle-error").addClass("rlf-tip-error").html(data.msg);
-                    window.location.reload();
+                    // window.location.reload();
                   },
                   error:function(){
                     $("#signin-globle-error").addClass("rlf-tip-error").html("服务错误，稍后重试");
