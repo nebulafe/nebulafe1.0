@@ -184,6 +184,7 @@ module.exports = Controller("Home/BaseController", function(){
         }
         var value = self.userInfo;
         Service.getUserById({id:user_id}).then(function(content){
+          console.log(content[0]);
           self.assign({
             title : "设置头像",
             section : 'user',
