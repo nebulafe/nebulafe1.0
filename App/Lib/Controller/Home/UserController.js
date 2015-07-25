@@ -278,6 +278,31 @@ module.exports = Controller("Home/BaseController", function(){
           })
           return self.display()
         }).catch(function(err){})
+      }else if(self.isPost()){
+        var value = self.userInfo;
+        var data = self.post();
+        if(data.id != value.id){
+          self.session();
+          return self.error("你无权修改其他用户的密码！")
+        }else{
+          Service.getUserById({id : data.id}).then(function(content){
+            if(content.pwd != data.opwd){
+              throw new Error("原始密码不匹配，请重新输入！")
+            }else{
+              if(data.npwd == content.pwd){
+                throw new Error("新密码与原始密码重复，请重新输入！")
+              }else{
+                Service.updateUserById({
+                  id : data.id,
+                  pwd : data.npwd
+                });
+                return self.success();
+              }
+            }
+          }).catch(function(err){
+            return self.error(err.message || "系统异常，请稍后再试！");
+          })
+        }
       }
     },
 
