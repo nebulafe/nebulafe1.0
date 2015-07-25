@@ -24,7 +24,7 @@
                         <label class="label">可选头像</label>
                         <div class="heads-pool" id="heads-pool">
                             <% for(var i = 1; i<= 19; i++){ %>
-                                <div class="heads user-head-icon user-head-<%=i%> <% if(userInfo.avator == i){%> slected <%}%><% if(userInfo.avator == undefined && i==1){%> selected <%}%>" data-avator="<%=i%>"
+                                <div class="heads user-head-icon user-head-<%=i%> <% if(userInfo.avator == i){%> selected <%}%><% if(userInfo.avator == undefined && i==1){%> selected <%}%>" data-avator="<%=i%>"
 
                                         ></div>
                             <% }%>
@@ -51,12 +51,12 @@
     </div>
 
 </div>
-<div class="mmsg-box mmsg-box-info" style="margin-top: -23.5px; margin-left: -96.5px;">
-    <div class="mmsg-content"><i class="mmsg-icon"></i>
+<!--<div class="mmsg-box mmsg-box-info" style="margin-top: -23.5px; margin-left: -96.5px;">-->
+    <!--<div class="mmsg-content"><i class="mmsg-icon"></i>-->
 
-        <p>资料修改成功！</p></div>
-    <div class="mmsg-background"></div>
-</div>
+        <!--<p>资料修改成功！</p></div>-->
+    <!--<div class="mmsg-background"></div>-->
+<!--</div>-->
 <%- include ../footer.html %>
 <script id="userInfo" data-id="<%=userInfo.id%>" data-avator="<%userInfo.avator%>"></script>
 <script>seajs.use('js/user/avator');</script>

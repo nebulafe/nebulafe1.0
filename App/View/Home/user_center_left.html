@@ -2,22 +2,16 @@
     <li class="left-item <% if (link == 'see') {%> active <%}%>">
         <a class="link" href="/user/see/<%=userInfo.id%>">个人资料</a>
     </li>
-    <li class="left-item  <% if (link == 'forget') {%> active <%}%>">
-        <a class="link" href="/user/forget/<%=userInfo.id%>">忘记密码</a>
-    </li>
     <li class="left-item <% if (link == 'avator') {%> active <%}%>">
         <a class="link" href="/user/avator/<%=userInfo.id%>">头像设置</a>
     </li>
     <li class="left-item <% if (link == 'verifyemail') {%> active <%}%>">
         <a class="link" href="/user/verifyemail/<%=userInfo.id%>">邮箱验证</a>
     </li>
-    <li class="left-item <% if (link == 'setpwd') {%> active <%}%>">
-        <a class="link" href="/user/setpwd/<%=userInfo.id%>">设置密码</a>
+    <li class="left-item <% if (link == 'my-class') {%> active <%}%>">
+        <a class="link" href="/user/user_courses/<%=userInfo.id%>">我的课程</a>
     </li>
     <li class="left-item <% if (link == 'reset') {%> active <%}%>">
         <a class="link" href="/user/reset/<%=userInfo.id%>">重置密码</a>
-    </li>
-    <li class="left-item <% if (link == 'bind') {%> active <%}%>">
-        <a class="link" href="">绑定账号</a>
     </li>
 </ul>
