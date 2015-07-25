@@ -93,8 +93,12 @@ define(function(require, exports, moudle) {
             '</div>' +
           '</div>',
         '<%})%>'].join('');
-        $('#courses').html( _.template(tpl ,data))
+        $('#courses').html( _.template(tpl ,data));
+        if(data.courses.length == 0){
+          $('#courses').addClass('empty');
+        }
       }
+
     },
 
     bind : function(){
