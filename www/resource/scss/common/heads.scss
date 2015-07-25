@@ -28,7 +28,7 @@ $user-head-pic-border-width: 4px;
   }
   @for $i from 0 to 20 {
     &.user-head-#{$i} {
-      background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-#{$i}.png);
+      background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/small/Fruit-#{$i}.png);
     }
   }
 }

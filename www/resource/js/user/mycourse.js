@@ -40,7 +40,7 @@ define(function (require, exports, module) {
     var drawLearntPage = function () {
         loaded = true;
 
-        $.get('/user/studycourse/', {id: id}, function (res) {
+        $.get('/user/studycourse', {id: id},'json').done( function (res) {
             var str = '';
             for (var c in res.courses) {
 
