@@ -24,7 +24,7 @@
 
                 </div>
                 <div class="c-tab-page" id="focus-course-page">
-                    <div class="courses-wrapper" style="border:none;margin-left: 10px">
+                    <div class="courses-wrapper <%  if(f_courses.length == 0){%> empty <%}%>" style="border:none;margin-left: 10px">
                         <% f_courses.forEach(function(c){%>
 
                         <div class="course-item"

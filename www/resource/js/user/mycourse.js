@@ -25,7 +25,7 @@ define(function (require, exports, module) {
             '</div>',
             '</div>'
         ].join("");
-
+        return str;
     };
 
     function drawCourses(courses, c) {
@@ -41,20 +41,29 @@ define(function (require, exports, module) {
         loaded = true;
 
         $.get('/user/studycourse', {id: id},'json').done( function (res) {
-            var str = '';
-            for (var c in res.courses) {
+            if(res.errno==0){
+                var str = '';
+                for (var c in res.data) {
 
-                str += [
-                    '<div class="courses-wrapper">',
-                    '<div class="opt-time">',
-                    '<div class="txt">', c.split("-")[0], '</div>',
-                    '<div class="txt">', c.split("-")[1], '/', c.split("-")[2], '</div>',
-                    '</div>',
-                    drawCourses(res.courses, c),
-                    '</div>'
-                ].join('');
+                    str += [
+                        '<div class="courses-wrapper">',
+                        '<div class="opt-time">',
+                        '<div class="txt">', c.split("-")[0], '</div>',
+                        '<div class="txt">', c.split("-")[1], '/', c.split("-")[2], '</div>',
+                        '</div>',
+                        drawCourses(res.data, c),
+                        '</div>'
+                    ].join('');
+                }
+                page2.html(str);
+                if($("#learnt-course-page .courses-wrapper").length ==0){
+                    page2.addClass("empty");
+                }
+            }else{
+                loaded = false;
+                ALERT('服务异常','无法加载数据，请稍后再试');
             }
-            page2.html(str);
+
 
         });
     };
