@@ -1,0 +1,64 @@
+<!Doctype html>
+<html>
+<head>
+    <%- include ../meta.html %>
+
+    <!--<link rel="stylesheet" href="/resource/css/forget.css">-->
+    <link rel="stylesheet" href="/resource/css/user-setting.css"/>
+</head>
+<body>
+<%- include ../header.html %>
+<div class="container">
+    <%- include user_center_left.html %>
+    <div class="right-container">
+        <div class="my-wrap">
+            <div class="my-form">
+                <div class="js-forgotpwd-form-wrap">
+                    <div class="input-row">
+                        <div class="label"><h1>忘记密码</h1>(通过注册邮箱链接重设密码)</div>
+                    </div>
+                    <form id="js-forgot-form" autocomplete="off">
+                        <div class="input-row">
+                            <span class="label">注册邮箱</span>
+                            <input type="text" name="email" data-validate="email" class="ipt ipt-email" placeholder="请输入登录邮箱">
+                            <p class="tips"></p>
+                        </div>
+                        <div class="input-row form-control-verify">
+                            <span class="label">验证码</span>
+                            <input type="text" name="verify" maxlength="4" class="ipt" placeholder="请输入验证码">
+                            <img src="/user/getcode?1430661770679" alt="验证码" title="验证码">
+                            <a class="js-change-verify-code">看不清,换一张</a>
+                            <p class="tips"></p>
+                        </div>
+                        <div class="input-row">
+                            <p class="tips" id="js-g-forgot-error">&nbsp;</p>
+                            <div class="label"></div>
+                            <div class="btn-wrapper">
+                                <input type="button" id="js-forgot-submit" class="btn btn-green btn-block" value="提交">
+                            </div>
+                        </div>
+                    </form>
+                    <div class=" js-forgot-result forgot-send-result">
+                        <div class="input-row">
+                            <i></i>
+                            <p>
+                                密码重设连接邮件已发送到您的邮箱<em></em><br>
+                                请注意查收并重新设置密码
+                            </p>
+                            <div class="btn-wrapper">
+                                <a href="/" class="btn btn-green link-btn btn-block">返回登录</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ../footer.html %>
+<script>seajs.use('js/user/forget');</script>
+</body>
+</html>
