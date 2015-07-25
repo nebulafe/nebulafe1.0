@@ -1939,6 +1939,8 @@ body {
       .container .right-container .my-wrap #courses .c-tab-page {
         display: block;
         padding-top: 20px; }
+        .container .right-container .my-wrap #courses .c-tab-page.hide {
+          display: none; }
         .container .right-container .my-wrap #courses .c-tab-page.empty {
           text-align: center;
           height: 100px;
@@ -1962,11 +1964,11 @@ body {
             .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper .opt-time::before {
               display: block;
               position: absolute;
-              width: 10px;
-              height: 10px;
+              width: 8px;
+              height: 8px;
               border-radius: 10px;
               background-color: #999;
-              right: -5px;
+              right: -4px;
               content: ""; }
             .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper .opt-time .txt {
               font-size: 13px;

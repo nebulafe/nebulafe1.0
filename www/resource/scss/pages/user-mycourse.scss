@@ -34,6 +34,9 @@
         .c-tab-page{
           display: block;
           padding-top: 20px;
+          &.hide{
+            display: none;
+          }
           &.empty{
             text-align: center;
             height: 100px;
@@ -60,11 +63,11 @@
               &::before{
                 display: block;
                 position: absolute;
-                width: 10px;
-                height: 10px;
+                width: 8px;
+                height: 8px;
                 border-radius: 10px;
                 background-color: #999;
-                right: -5px;
+                right: -4px;
                 content: "";
               }
               .txt{

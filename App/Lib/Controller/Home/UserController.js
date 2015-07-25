@@ -413,6 +413,7 @@ module.exports = Controller("Home/BaseController", function(){
           return self.redirect("/");
         }
         var value = self.userInfo;
+
         Service.getUserFocus({userid : user_id}).then(function(content){
           self.assign({
             title : "我的课程",

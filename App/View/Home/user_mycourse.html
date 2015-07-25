@@ -13,49 +13,48 @@
     <div class="right-container">
         <div class="my-wrap">
             <div class="title-row">
-                <h3>他的课程</h3>
+                <h3>我的课程</h3>
             </div>
             <div class="nav-row">
-
-                <div class="item active" id="learnt-course">他学习的</div>
-                <div class="item" id="focus-course">他关注的</div>
+                <div class="item active" id="focus-course" data-id="<%userInfo.id%>">我的关注</div>
+                <div class="item" id="learnt-course" data-id="<%userInfo.id%>">我的课程</div>
             </div>
             <div class="courses" id="courses">
                 <div>
 
                 </div>
-                <div class="c-tab-page">
-                    <% for(var c in courses){%>
-                    <div class="courses-wrapper">
-                        <div class="opt-time">
-                           <div class="txt"><%=c.split("-")[0]%></div>
-                            <div class="txt"><%=c.split("-")[1]%> / <%=c.split("-")[2]%></div>
+                <div class="c-tab-page" id="focus-course-page">
+                    <div class="courses-wrapper" style="border:none;margin-left: 10px">
+                        <% f_courses.forEach(function(c){%>
 
-                        </div>
-                        <% courses[c].forEach(function(val){%>
-                        <div class="course-item" onclick="window.location.href='/course/view/<%=val.id%>/<%=val.resourceid%>';">
+                        <div class="course-item"
+                             onclick="window.location.href='/course/view/<%=c.id%>/<%=c.resourceid%>';">
                             <div class="img-wrapper">
-                                <img src="http://n-course.oss-cn-beijing.aliyuncs.com/pic/<%=val.small_img%>" width="120"
+                                <img src="http://n-course.oss-cn-beijing.aliyuncs.com/pic/<%=c.small_img%>"
+                                     width="120"
                                      height="68">
                             </div>
                             <div class="course-item-intro-wrapper">
-                                <div class="c-title"><a href="/course/view/<%=val.id%>"><%=val.name%></a></div>
-                                <div class="c-partner"><%= val.source%></div>
-                                <div class="c-update-status"><%=val.update_status%></div>
+                                <div class="c-title"><a href="/course/view/<%=c.id%>"><%=c.name%></a></div>
+                                <div class="c-partner"><%= c.source%></div>
+                                <div class="c-update-status"><%=c.update_status%></div>
                             </div>
                             <div class="last-time">
-                                <p><%=val.time%></p>
+                                <p><%=c.time%></p>
                             </div>
                         </div>
                         <%})%>
                     </div>
-                    <%}%>
+
+                </div>
+                <div class="c-tab-page hide" id="learnt-course-page">
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 <%- include ../footer.html %>
-<script>seajs.use('js/user/setpwd');</script>
+<script>seajs.use('js/user/mycourse');</script>
 </body>
 </html>
