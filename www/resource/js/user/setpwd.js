@@ -43,7 +43,7 @@ define(function (require, exports, moudle) {
         $.post("/user/setpwd", data, 'json')
             .done(function (res) {
                 if (res.errno == 0) {
-                    alert('修改成功!');
+                    ALERT('修改成功!');
                 }
             })
     };

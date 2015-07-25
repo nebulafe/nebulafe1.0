@@ -5,7 +5,7 @@
   /* IE9*/
   src: url("/resource/font/iconfont.eot?#iefix") format("embedded-opentype"), url("/resource/font/iconfont.woff") format("woff"), url("/resource/font/iconfont.ttf") format("truetype"), url("/resource/font/iconfont.svg#iconfont") format("svg");
   /* iOS 4.1- */ }
-.iconfont, .g-alert::before, .container .right-container .my-wrap .my-form .input-row .ipt + i::before {
+.iconfont, .g-alert::before, .my-wrap .input-group .ipt + i::before {
   font-family: "iconfont" !important;
   font-size: 16px;
   font-style: normal;
@@ -1778,134 +1778,62 @@ input::-moz-focus-inner {
     outline: 0;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(204, 0, 0, 0.4); }
 
-body {
-  min-width: 1200px;
-  background-color: #f5f5f5; }
-
-#header {
-  min-width: 1200px; }
-
-.container {
-  width: 1200px; }
-  .container .left {
+.my-wrap {
+  padding-top: 20px; }
+  .my-wrap .input-group {
     display: block;
-    position: relative;
-    float: left;
-    width: 265px;
-    height: auto;
-    background-color: #fff;
-    box-shadow: 0 0 3px #ccc; }
-    .container .left .left-item {
-      width: inherit;
-      height: 50px;
-      box-sizing: border-box;
-      border-bottom: 1px solid #ddd; }
-      .container .left .left-item .link {
-        display: block;
-        width: 100%;
-        height: inherit;
-        line-height: 55px;
-        font-size: 14px;
-        box-sizing: border-box;
-        padding-left: 50px;
-        color: #656e73;
-        -webkit-transition: all ease-out 0.15s;
-        transition: all ease-out 0.15s; }
-        .container .left .left-item .link:hover {
-          text-decoration: none;
-          color: #cc0000;
-          box-shadow: 0 0 5px #aaa; }
-      .container .left .left-item.active::before {
-        content: "";
-        display: block;
-        position: absolute;
-        margin: 0;
-        height: inherit;
-        border-left: 3px solid #cc0000; }
-  .container .right-container {
-    display: block;
-    position: relative;
-    float: right;
-    padding: 30px 60px;
-    width: 880px;
-    box-sizing: border-box;
-    background-color: #fff;
-    box-shadow: 0 0 3px #ccc; }
-    .container .right-container .my-wrap {
+    width: 100%;
+    min-height: 70px;
+    padding-top: 5px;
+    clear: both;
+    overflow: hidden; }
+    .my-wrap .input-group .label {
       display: block;
+      float: left;
+      width: 100px;
+      text-align: right;
+      padding-right: 15px;
+      color: #656e77;
+      font-weight: normal;
+      line-height: 35px;
+      font-size: 14px; }
+    .my-wrap .input-group a {
+      cursor: pointer; }
+    .my-wrap .input-group input[type="text"]:focus,
+    .my-wrap .input-group input[type="password"]:focus {
+      border-color: #2D88E3;
+      box-shadow: 0 0 6px 0 rgba(45, 136, 227, 0.5); }
+    .my-wrap .input-group .ipt,
+    .my-wrap .input-group .btn-wrapper .btn {
+      display: inline-block;
+      width: 300px;
       box-sizing: border-box;
-      width: 720px;
-      padding: 20px 0  0 0; }
-      .container .right-container .my-wrap .my-form .input-row {
-        display: block;
-        width: 100%;
-        min-height: 70px;
-        padding-top: 5px;
-        clear: both;
-        overflow: hidden; }
-        .container .right-container .my-wrap .my-form .input-row .label {
-          display: block;
-          float: left;
-          width: 100px;
-          text-align: right;
-          padding-right: 15px;
-          color: #656e77;
-          font-weight: normal;
-          line-height: 35px;
-          font-size: 14px; }
-        .container .right-container .my-wrap .my-form .input-row a {
-          cursor: pointer; }
-        .container .right-container .my-wrap .my-form .input-row input[type="text"]:focus,
-        .container .right-container .my-wrap .my-form .input-row input[type="password"]:focus {
-          border-color: #2D88E3;
-          box-shadow: 0 0 6px 0 rgba(45, 136, 227, 0.5); }
-        .container .right-container .my-wrap .my-form .input-row .ipt,
-        .container .right-container .my-wrap .my-form .input-row .btn-wrapper .btn {
-          display: inline-block;
-          width: 300px;
-          box-sizing: border-box;
-          border-radius: 1px; }
-        .container .right-container .my-wrap .my-form .input-row .ipt {
-          -webkit-transition: box-shadow ease 0.2s;
-          transition: box-shadow ease 0.2s;
-          padding-left: 40px; }
-        .container .right-container .my-wrap .my-form .input-row .ipt + i::before {
-          width: 30px;
-          height: 25px;
-          display: block;
-          position: absolute;
-          margin-top: -31px;
-          margin-left: 105px;
-          line-height: 23px;
-          text-align: center;
-          font-size: 22px;
-          border-right: 1px solid #ccc;
-          color: #999; }
-        .container .right-container .my-wrap .my-form .input-row .ipt-email + i::before {
-          content: ""; }
-        .container .right-container .my-wrap .my-form .input-row .ipt-nick + i::before {
-          content: ""; }
-        .container .right-container .my-wrap .my-form .input-row .ipt-realname + i::before {
-          content: ""; }
-        .container .right-container .my-wrap .my-form .input-row .ipt-mobile + i::before {
-          content: ""; }
-        .container .right-container .my-wrap .my-form .input-row .ipt-idcard + i::before {
-          content: ""; }
-      .container .right-container .my-wrap .my-form .tip-row {
-        width: 100%;
-        box-sizing: border-box;
-        padding-left: 120px;
-        padding-bottom: 15px; }
-      .container .right-container .my-wrap .my-form .tips {
-        color: #f00000;
-        font-size: 13px;
-        padding-left: 100px;
-        padding-top: 5px;
-        margin-top: 5px;
-        line-height: 20px; }
-    .container .right-container .js-forgotpwd-form-wrap .js-forgot-form {
-      display: block; }
-    .container .right-container .js-forgotpwd-form-wrap .js-forgot-result {
-      display: none; }
+      border-radius: 1px; }
+    .my-wrap .input-group .ipt {
+      -webkit-transition: box-shadow ease 0.2s;
+      transition: box-shadow ease 0.2s;
+      padding-left: 40px; }
+    .my-wrap .input-group .ipt + i::before {
+      width: 30px;
+      height: 25px;
+      display: block;
+      position: absolute;
+      margin-top: -31px;
+      margin-left: 105px;
+      line-height: 23px;
+      text-align: center;
+      font-size: 22px;
+      border-right: 1px solid #ccc;
+      color: #999; }
+    .my-wrap .input-group .ipt-email + i::before {
+      content: ""; }
+    .my-wrap .input-group .ipt-nick + i::before {
+      content: ""; }
+    .my-wrap .input-group .ipt-realname + i::before {
+      content: ""; }
+    .my-wrap .input-group .ipt-mobile + i::before {
+      content: ""; }
+    .my-wrap .input-group .ipt-idcard + i::before {
+      content: ""; }
 
-/*# sourceMappingURL=user-setpwd.css.map */
+/*# sourceMappingURL=user-reset.css.map */

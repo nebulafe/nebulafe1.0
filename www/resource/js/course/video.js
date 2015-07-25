@@ -52,6 +52,7 @@ define(function (require, exports, moudle) {
                     '</div>',
                     '</article>'
                 ].join('');
+                ALERT('提示','评论成功！');
                 $(tmp).insertBefore('.comment-list .comment:first-child');
                 commentArea.val('');
             }

@@ -1,10 +1,7 @@
 @import "../common";
 $label-color: #656e77;
 .my-wrap{
-  min-height: calc(100vh - 160px);
-  .my-form{
-    margin-top: 50px;
-  }
+  padding-top: 20px;
   .input-group {
     display: block;
     width: 100%;
