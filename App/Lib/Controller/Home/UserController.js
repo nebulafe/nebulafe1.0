@@ -413,11 +413,14 @@ module.exports = Controller("Home/BaseController", function(){
           return self.redirect("/");
         }
         var value = self.userInfo;
+        Service.getStudyProgress({userid : user_id}).then(function(content){
+
+        })
         Service.getUserById({id:user_id}).then(function(content){
           self.assign({
             title : "我的课程",
             section : 'user',
-            link:'setpwd',
+            link:'mycourse',
             userInfo : content[0]
           })
           return self.display()

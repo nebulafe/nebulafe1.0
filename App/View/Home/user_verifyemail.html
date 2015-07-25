@@ -1,0 +1,36 @@
+<!Doctype html>
+<html>
+<head>
+    <%- include ../meta.html %>
+    <!--<link rel="stylesheet" href="/resource/css/forget.css">-->
+    <link rel="stylesheet" href="/resource/css/user-verifyemail.css"/>
+
+</head>
+<body>
+<%- include ../header.html %>
+
+<div class="container">
+    <%- include user_center_left.html %>
+    <div class="right-container">
+        <div class="my-wrap">
+            <div class="head">
+                <h1>当前邮箱</h1>
+                <h1><%=userInfo.username%></h1>
+            </div>
+            <div class="status">
+            <%if(userInfo.activate_email == true){%>
+            <p class="bg-text bg-success">邮箱验证通过</p>
+            <% } else { %>
+            <p class="bg-text bg-danger">邮箱验证未通过</p>
+            <button type="button" class="btn btn-primary" id="verify_email">发送邮件验证</button>
+            <% } %>
+            </div>
+        </div>
+    </div>
+
+</div>
+<%- include ../footer.html %>
+<script id="userInfo" data-id="<%=userInfo.id%>" data-avator="<%userInfo.avator%>"></script>
+<script>seajs.use('js/user/verifyemail');</script>
+</body>
+</html>

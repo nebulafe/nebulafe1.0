@@ -1,0 +1,31 @@
+@import "user-setting";
+.right-container {
+  .my-wrap {
+    min-height: calc(100vh - 140px);
+    .head{
+      width: 400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .bg-text{
+      font-size: 12px;
+      width: 180px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 5px 10px;
+    }
+    .bg-success{
+      background-color: #dff0d8;
+    }
+    .bg-danger{
+      background-color: #f2dede;;
+    }
+    .status{
+      text-align: center;
+      button{
+        margin:18px 0;
+      }
+    }
+
+  }
+}
