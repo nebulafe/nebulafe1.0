@@ -20,6 +20,8 @@
 .icon-liebiao1:before { content: "\e602"; }
 .icon-gouwucheman:before { content: "\e603"; }
 .icon-weiguanzhu:before { content: "\e604"; }
+.icon-unie615:before { content: "\e633"; }
+.icon-nicheng:before { content: "\e634"; }
 .icon-diyu:before { content: "\e605"; }
 .icon-gaoyu:before { content: "\e606"; }
 .icon-wodehuiyuanqia:before { content: "\e607"; }
@@ -56,7 +58,14 @@
 .icon-anzhuoxiala:before { content: "\e626"; }
 .icon-guanyuwo:before { content: "\e627"; }
 .icon-zanxuanzhong:before { content: "\e628"; }
+.icon-my:before { content: "\e630"; }
+.icon-yanzhengma:before { content: "\e631"; }
 .icon-zuji:before { content: "\e629"; }
+.icon-dianhua:before { content: "\e62d"; }
+.icon-yonghu:before { content: "\e62e"; }
+.icon-xinfeng:before { content: "\e62f"; }
+.icon-shenfenzheng:before { content: "\e635"; }
+.icon-yanzhengma1:before { content: "\e632"; }
 .icon-31shuaxin:before { content: "\e62a"; }
 .icon-31sousuo:before { content: "\e62b"; }
 .icon-31huidaodingbu:before { content: "\e62c"; }

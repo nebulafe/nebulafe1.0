@@ -127,6 +127,12 @@ $label-color: #656e77;
         .ipt-idcard + i::before{
           content: $icon-wo;
         }
+        input[type="password"] + i::before{
+          content: $icon-yanzhengma1;
+        }
+        input[name="verify"] + i::before{
+          content: $icon-yanzhengma;
+        }
 
       }
       .tip-row{

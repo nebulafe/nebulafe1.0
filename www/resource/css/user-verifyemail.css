@@ -1893,6 +1893,10 @@ body {
           content: ""; }
         .container .right-container .my-wrap .my-form .input-row .ipt-idcard + i::before {
           content: ""; }
+        .container .right-container .my-wrap .my-form .input-row input[type="password"] + i::before {
+          content: ""; }
+        .container .right-container .my-wrap .my-form .input-row input[name="verify"] + i::before {
+          content: ""; }
       .container .right-container .my-wrap .my-form .tip-row {
         width: 100%;
         box-sizing: border-box;
