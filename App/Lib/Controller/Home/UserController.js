@@ -17,8 +17,27 @@ module.exports = Controller("Home/BaseController", function(){
         var _user_id = self.userInfo.id;
         if (_user_id) {
           if(_user_id == user_id){
-            return Service.updateUserById(self.post()).then(function(content){
+            var data = self.post();
+            return Service.updateUserById(data).then(function(content){
               if(content == 0){
+                if((data.avator - 0) > 0){
+                  self.session('userInfo').then(function(value){
+                    if(value){
+                      self.session('userInfo',extend(value,data))
+                    }else{
+                      var c_value = self.cookie(AUTH_ID)
+                      c_value = decrypt(c_value);
+                      c_value = c_value.split('\t');
+                      c_value[2] = data.avator;
+                      self.cookie(AUTH_ID, encrypt(c_value.join("\t")), {
+                          domain: "",
+                          path: "/",
+                          httponly: true,
+                          timeout: 60 * 60 * 24 * 30
+                      })
+                    }
+                  })
+                }
                 return self.success()
               }else if(content == -1){
                 throw new Error('没有找到该用户！')
