@@ -432,8 +432,8 @@ module.exports = Controller("Home/BaseController", function(){
         return self.redirect("/")
       }
       if(value && value.id > 0){
-        self.getStudyProgress({userid : user_id}).then(function(content){
-          self.success(content) ;
+        Service.getStudyProgress({userid : user_id}).then(function(content){
+          return self.success(content) ;
         }).catch(function(err){
           self.error("系统异常，请稍后再试！");
         })
