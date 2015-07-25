@@ -29,17 +29,21 @@ define(function (require, exports, moudle) {
 
     commentBtn.unbind("click").on("click", function (e) {
         var data = {};
+        var userId = commentBtn.attr("data-user-id");
         data.comment = commentArea.val();
-        data.id = commentBtn.attr("data-id");
+        data.id = commentBtn.attr("data-course-id");
         var nickname = commentBtn.attr("data-nickname");
+        if(data.comment.trim()==''){
 
+            return false;
+        }
 
         $.post('/course/comment', data, 'json').done(function (res) {
             if (res.errno == 0) {
                 var tmp = [
                     '<article class="comment">',
                     '<div class="left-content">',
-                    '<div class="user-head-icon user-head-', data.id % 20, '"></div>',
+                    '<div class="user-head-icon user-head-', userId % 20, '"></div>',
                     '</div>',
                     '<div class="right-content">',
                     '<a href="" class="link user-name">', nickname, '</a>',

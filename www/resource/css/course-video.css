@@ -1729,7 +1729,8 @@ input::-moz-focus-inner {
   color: #ccc;
   max-height: 400px;
   overflow-y: auto;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  z-index: 1100; }
   .c-video-play-list:hover {
     display: block; }
   .c-video-play-list .c-video-play-list-item {
