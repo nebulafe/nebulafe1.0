@@ -1381,7 +1381,7 @@ html {
     height: 39px;
     line-height: 39px;
     font-size: 14px;
-    background-image: url(/resource/img/menu_icon.png?t=10);
+    background-image: url(/resource/img/menu_icon.png);
     background-repeat: no-repeat;
     display: block;
     color: #fff;
@@ -1426,7 +1426,7 @@ html {
   height: 220px;
   left: -69px;
   bottom: 35px;
-  background: url(/resource/img/common/footer-sprite.png?1) no-repeat 0 0; }
+  background: url(/resource/img/common/footer-sprite.png) no-repeat 0 0; }
 
 .friend-links {
   line-height: 60px; }

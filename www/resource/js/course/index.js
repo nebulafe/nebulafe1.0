@@ -41,6 +41,7 @@ define(function(require, exports, moudle) {
           dataType:"json",
           success:function(data){
             if(data.errno===0){
+              $('#courses').removeClass('empty');
               me.drawCourses({courses : data.data});
             }
           }
@@ -66,6 +67,7 @@ define(function(require, exports, moudle) {
           dataType : 'json',
           success : function(data){
             if(data.errno === 0){
+              $('#courses').removeClass('empty');
               me.drawCourses({courses : data.data})
             }
           }
