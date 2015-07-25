@@ -96,14 +96,14 @@ module.exports = Controller("Home/BaseController", function(){
             }else{
               Service.getUserById({id : content}).then(function(u_content){
                 if(data.remember == 1){
-                  self.cookie(AUTH_ID, encrypt(data.username + '\t' + content + u_content[0].avator), {
+                  self.cookie(AUTH_ID, encrypt(data.username + '\t' + content  + '\t' + u_content[0].avator), {
                       domain: "",
                       path: "/",
                       httponly: true,
                       timeout: 60 * 60 * 24 * 30
                   })
                 }
-                self.session('userInfo',extend({},data,{id:content,avator : u_content[0].avator}))
+                self.session('userInfo',{id:content,avator : u_content[0].avator,username:u_content[0].username})
                 return self.success();
               })
 
