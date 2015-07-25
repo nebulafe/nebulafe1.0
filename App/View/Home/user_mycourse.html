@@ -16,8 +16,38 @@
                 <h3>他的课程</h3>
             </div>
             <div class="nav-row">
-                <div class="item">他关注的</div>
-                <div class="item">他学习的</div>
+
+                <div class="item active" id="learnt-course">他学习的</div>
+                <div class="item" id="focus-course">他关注的</div>
+            </div>
+            <div class="courses" id="courses">
+                <div>
+
+                </div>
+                <div class="c-tab-page">
+                    <% for(var c in courses){%>
+                    <div class="courses-wrapper">
+                        <div class="time">c</div>
+                        <% courses[c].forEach(function(val){%>
+                        <div class="course-item" onclick="window.location.href='/course/view/<%=val.id%>/<%=val.resourceid%>';">
+                            <div class="img-wrapper">
+                                <img src="http://n-course.oss-cn-beijing.aliyuncs.com/pic/<%=val.small_img%>" width="120"
+                                     height="68">
+                            </div>
+                            <div class="course-item-intro-wrapper">
+                                <div class="c-title"><a href="/course/view/<%=val.id%>"><%=val.name%></a></div>
+                                <div class="c-partner"><%= val.source%></div>
+                                <div class="c-update-status"><%=val.update_status%></div>
+                            </div>
+                            <div class="last-time">
+                                <p><%=val.time%></p>
+                            </div>
+                        </div>
+                        <%})%>
+                    </div>
+                    <%}%>
+
+                </div>
             </div>
         </div>
     </div>

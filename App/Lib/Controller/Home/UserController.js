@@ -421,7 +421,7 @@ module.exports = Controller("Home/BaseController", function(){
             title : "我的课程",
             section : 'user',
             link:'mycourse',
-            userInfo : content[0]
+            userInfo : content[0],
           })
           return self.display()
         }).catch(function(err){})
