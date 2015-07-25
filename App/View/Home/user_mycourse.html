@@ -1,10 +1,28 @@
-<!DOCTYPE html>
+<!Doctype html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+<head>
+    <%- include ../meta.html %>
+
+    <!--<link rel="stylesheet" href="/resource/css/forget.css">-->
+    <link rel="stylesheet" href="/resource/css/user-mycourse.css"/>
 </head>
 <body>
-
+<%- include ../header.html %>
+<div class="container">
+    <%- include user_center_left.html %>
+    <div class="right-container">
+        <div class="my-wrap">
+            <div class="title-row">
+                <h3>他的课程</h3>
+            </div>
+            <div class="nav-row">
+                <div class="item">他关注的</div>
+                <div class="item">他学习的</div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ../footer.html %>
+<script>seajs.use('js/user/setpwd');</script>
 </body>
 </html>

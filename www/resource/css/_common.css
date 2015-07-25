@@ -1226,7 +1226,8 @@ body {
 
 body > .container {
   padding-top: 20px;
-  min-height: calc(100vh - 100px - 60px); }
+  min-height: calc(100vh - 100px - 60px);
+  margin-bottom: 20px; }
 
 body {
   min-width: 1200px; }

@@ -45,6 +45,7 @@ $label-color: #656e77;
   float: right;
   padding: 30px 60px;
   width: 880px;
+
   box-sizing: border-box;
   background-color: #fff;
   box-shadow: 0 0 3px #ccc;
@@ -54,6 +55,7 @@ $label-color: #656e77;
     box-sizing: border-box;
     width: 720px;
     padding: 20px 0  0 0;
+    min-height: calc(100vh - 260px);
     .my-form {
       .input-row {
         display: block;

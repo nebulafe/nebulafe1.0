@@ -1226,7 +1226,8 @@ body {
 
 body > .container {
   padding-top: 20px;
-  min-height: calc(100vh - 100px - 60px); }
+  min-height: calc(100vh - 100px - 60px);
+  margin-bottom: 20px; }
 
 body {
   min-width: 1200px; }
@@ -1835,7 +1836,8 @@ body {
       display: block;
       box-sizing: border-box;
       width: 720px;
-      padding: 20px 0  0 0; }
+      padding: 20px 0  0 0;
+      min-height: calc(100vh - 260px); }
       .container .right-container .my-wrap .my-form .input-row {
         display: block;
         width: 100%;
