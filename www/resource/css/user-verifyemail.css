@@ -1929,6 +1929,39 @@ body {
   .right-container .my-wrap .status {
     text-align: center; }
     .right-container .my-wrap .status button {
-      margin: 18px 0; }
+      margin: 0 10px; }
+    .right-container .my-wrap .status .send-verify {
+      margin: 25px 0; }
+      .right-container .my-wrap .status .send-verify input {
+        background: #fff;
+        padding: 7px;
+        width: 120px;
+        vertical-align: top; }
+      .right-container .my-wrap .status .send-verify img {
+        vertical-align: top;
+        margin: 0 5px; }
+      .right-container .my-wrap .status .send-verify .change-code {
+        display: inline-block;
+        cursor: pointer;
+        line-height: 1.2;
+        vertical-align: middle;
+        font-size: 12px; }
+.right-container .forgot-send-result {
+  text-align: center;
+  display: none; }
+.right-container .forgot-send-result i {
+  display: inline-block;
+  margin: 10px 0 0 -40px;
+  width: 104px;
+  height: 48px;
+  background: url(/static/images/rl-sprite.png) no-repeat 0 -260px; }
+.right-container .forgot-send-result p {
+  color: #666;
+  padding: 24px 0 55px; }
+.right-container .forgot-send-result p a {
+  color: #3c3 !important;
+  text-decoration: underline; }
+.right-container .forgot-send-result em {
+  font-weight: italic; }
 
 /*# sourceMappingURL=user-verifyemail.css.map */
