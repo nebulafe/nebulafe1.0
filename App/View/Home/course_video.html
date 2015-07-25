@@ -1,71 +1,72 @@
 <!Doctype html>
 <html>
 <head>
-  <%- include ../meta.html %>
-  <link href="/resource/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css"/>
-  <link rel="stylesheet" href="/resource/module/video-js/video-js.css"/>
-  <link rel="stylesheet" href="/resource/css/course-video.css"/>
+    <%- include ../meta.html %>
+    <link href="/resource/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="/resource/module/video-js/video-js.css"/>
+    <link rel="stylesheet" href="/resource/css/course-video.css"/>
 </head>
 <body>
-  <% var current_course = cur_resource[0]%>
-  <%- include ../header.html %>
+<% var current_course = cur_resource[0]%>
+<%- include ../header.html %>
 
 
-
-  <% var course = course[0]%>
-  <div class="container loading" id="c-video-view">
+<% var course = course[0]%>
+<div class="container loading" id="c-video-view">
     <video id="really-cool-video" class="video-js vjs-default-skin video-view" controls
            preload="auto" width="100%" height="600px" poster="<%-current_course.poster%>"
            data-setup='{}'>
-      <source src="<%-current_course.webmv%>" type='video/webm'>
-      <source src="<%-current_course.ogv%>" type='video/ogv'>
-      <source src="<%-current_course.m4v%>" type='video/m4v'>
+        <source src="<%-current_course.webmv%>" type='video/webm'>
+        <source src="<%-current_course.ogv%>" type='video/ogv'>
+        <source src="<%-current_course.m4v%>" type='video/m4v'>
 
-      <p class="vjs-no-js">
-        To view this video please enable JavaScript, and consider upgrading to a web browser
-        that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-      </p>
+        <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a web browser
+            that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
     </video>
 
 
-  </div>
-  <div class="down-container">
+</div>
+<div class="down-container">
     <div class="c-course-left">
-      <div class="row">
-        <nav class="course-video-user-nav">
-          <a class="nav-item active" href="">评论</a>
-        </nav>
-      </div>
-      <div class="c-course-down-page-container">
-        <div class="c-tab-page comment-tab-page active" id="comment-tab-page">
-          <div class="comment-editor-wrapper">
-            <div class="row">
-              <textarea class="user-comment-editor" id="user-comment-editor" placeholder="写下你对这门课的看法吧~"></textarea>
-            </div>
-            <div class="row">
-              <span class="btn btn-green comment-submit" id="comment-submit" data-course-id="<%=course.id%>" data-user-id="<%=userInfo.id%>" data-nickname="<%=userInfo.nickname%>" >发表评论</span>
-            </div>
-
-          </div>
-          <div class="comment-list">
-            <%comments.forEach(function(val){%>
-            <article class="comment">
-              <div class="left-content">
-                <div class="user-head-icon user-head-<%=val.avator||1%>"></div>
-              </div>
-
-              <div class="right-content">
-                <a href="" class="link user-name"><%=val.nickname%></a>
-                <section class="comment-content"><p><%=val.comment%></p></section>
-                <% var d = new Date(val.updatetime).toLocaleDateString();%>
-                <time class="comment-time"><%=d%></time>
-              </div>
-            </article>
-            <%})%>
-          </div>
-
+        <div class="row">
+            <nav class="course-video-user-nav">
+                <a class="nav-item active" href="">评论</a>
+            </nav>
         </div>
-      </div>
+        <div class="c-course-down-page-container">
+            <div class="c-tab-page comment-tab-page active" id="comment-tab-page">
+                <div class="comment-editor-wrapper">
+                    <div class="row">
+                        <textarea class="user-comment-editor" id="user-comment-editor"
+                                  placeholder="写下你对这门课的看法吧~"></textarea>
+                    </div>
+                    <div class="row">
+                        <span class="btn btn-green comment-submit" id="comment-submit" data-course-id="<%=course.id%>"
+                              data-user-id="<%=userInfo.id%>" data-nickname="<%=userInfo.nickname%>">发表评论</span>
+                    </div>
+
+                </div>
+                <div class="comment-list">
+                    <%comments.forEach(function(val){%>
+                    <article class="comment">
+                        <div class="left-content">
+                            <div class="user-head-icon user-head-<%=val.avator||1%>"></div>
+                        </div>
+
+                        <div class="right-content">
+                            <a href="" class="link user-name"><%=val.nickname%></a>
+                            <section class="comment-content"><p><%=val.comment%></p></section>
+                            <% var d = new Date(val.updatetime).toLocaleDateString();%>
+                            <time class="comment-time"><%=d%></time>
+                        </div>
+                    </article>
+                    <%})%>
+                </div>
+
+            </div>
+        </div>
     </div>
 
     <div class="c-course-right">
@@ -74,52 +75,47 @@
 
     <!--播放列表-->
     <div class="c-video-list-wrapper" tabindex="0">
-      <a class="c-recent-course-name">当前播放列表：<%=course.name%></a>
+        <a class="c-recent-course-name">当前播放列表：<%=course.name%></a>
     </div>
     <div class="c-video-play-list" id="c-video-play-list">
-      <%resources.forEach(function(val,idx){%>
-      <a class="c-video-play-list-item <%if(val.id == current_course.id){%> current-play <%}%>"  href="/course/video/<%=course.id%>/<%=val.id%>">
-        <span class="c-video-play-list-item-title "><%=val.title%></span>
-        <span class="c-video-play-list-item-teacher">授课人：<%=val.artist%></span>
-      </a>
-      <%})%>
+        <%resources.forEach(function(val,idx){%>
+        <a class="c-video-play-list-item <%if(val.id == current_course.id){%> current-play <%}%>"
+           href="/course/video/<%=course.id%>/<%=val.id%>">
+            <span class="c-video-play-list-item-title "><%=val.title%></span>
+            <span class="c-video-play-list-item-teacher">授课人：<%=val.artist%></span>
+        </a>
+        <%})%>
     </div>
-  </div>
+</div>
 
-  <%- include ../footer.html %>
+<%- include ../footer.html %>
 
-  <!--script>
-  <% var r_len = resources.length%>
-  var res = [
-    <%resources.forEach(function(val,idx){%>
-      {
-        title:"<%=val.title%>",
-        artist:"<%=val.artist%>",
-        ogv: "<%-val.ogv%>",
-        webmv: "<%-val.webmv%>",
-        m4v : "<%-val.m4v%>",
-        poster : "<%-val.poster%>"
-      }<%if(idx != r_len - 1){%> , <%}%>
-    <%})%>
-  ]
+<script>
+    (function () {
+        //设置全屏
+        var v = document.getElementById("really-cool-video");
 
-  </script-->
-  <script>
-    (function(){
-      //设置全屏
-      var v = document.getElementById("really-cool-video");
-      var h = document.documentElement.clientHeight - 60;
-      v.setAttribute("height",h+"px");
-      //加载脚本
-      var s = document.createElement("script");
-      s.src = "/resource/module/video-js/video.js";
-      document.body.appendChild(s);
-      s.addEventListener("load",function(){
-        document.getElementById("c-video-view").classList.remove("loading");
-      });
+        var h = document.documentElement.clientHeight - 60;
+        v.setAttribute("height", h + "px");
+        //加载脚本
+        var s = document.createElement("script");
+        s.src = "/resource/module/video-js/video.js";
+        document.body.appendChild(s);
+        s.addEventListener("load", function () {
+            document.getElementById("c-video-view").classList.remove("loading");
+        });
+        function v(e) {
+            e.preventDefault();
+            alert("!");
+            return false;
+        }
+
+        document.body.addEventListener("contextmenu",function(e){
+           return v(e);
+        });
     })();
-  </script>
-  <script>seajs.use('js/course/video')</script>
+</script>
+<script>seajs.use('js/course/video')</script>
 
 </body>
 </html>
