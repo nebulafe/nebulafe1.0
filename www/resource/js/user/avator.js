@@ -8,7 +8,7 @@ define(function (require, exports, moudle) {
     };
 
     var setAvator = function (avator) {
-        $.post("/user/update", {"avator": avator}, 'json')
+        $.post("/user/update", {"avator": avator,"id":userInfo.id}, 'json')
             .done(function (res) {
                 if(res.errno == 0){
                     $("#heads-pool .selected").removeClass("selected");
