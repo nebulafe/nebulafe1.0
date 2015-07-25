@@ -50,10 +50,6 @@ module.exports = Controller("Home/BaseController", function(){
         if(!course_id){
           return self.redirect("/course");
         }else{
-          // Service.setCourseData({
-          //   id : course_id,
-          //   total_time : course_id==13 ? "10小时" : "1小时"
-          // });
           Service.getCourseById({'id' : course_id , '_user_id' : user_id}).then(function(data){
             var course = data[0];
             var partner_id = course.partner;
@@ -93,7 +89,8 @@ module.exports = Controller("Home/BaseController", function(){
 
     videoAction : function(){
       var self = this;
-      if(!self.userInfo){
+      var user_info = self.userInfo;
+      if(!user_info){
         return self.redirect("/");
       }
       if(self.isGet()){
@@ -120,9 +117,13 @@ module.exports = Controller("Home/BaseController", function(){
             cur_resource : c_course,
             section : 'course',
             comments : comments
-
           })
           self.display();
+          Service.setStudyProgress({
+            userid : user_info.id,
+            courseid : course_id,
+            resourceid : video_id
+          });
         })
       }
     },

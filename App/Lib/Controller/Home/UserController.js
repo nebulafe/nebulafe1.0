@@ -164,6 +164,9 @@ module.exports = Controller("Home/BaseController", function(){
           return self.redirect("/");
         }
         var value = self.userInfo;
+        Service.getStudyProgress({userid : user_id}).then(function(content){
+          console.log(content);
+        })
         Service.getUserById({id:user_id}).then(function(content){
           self.assign({
             title : "查看用户",
@@ -210,7 +213,6 @@ module.exports = Controller("Home/BaseController", function(){
         }
         var value = self.userInfo;
         Service.getUserById({id:user_id}).then(function(content){
-          console.log(content[0]);
           self.assign({
             title : "设置头像",
             section : 'user',
@@ -266,7 +268,7 @@ module.exports = Controller("Home/BaseController", function(){
         var value = self.userInfo;
         Service.getUserById({id:user_id}).then(function(content){
           self.assign({
-            title : "设置密码",
+            title : "修改密码",
             section : 'user',
             link:'setpwd',
             userInfo : content[0]
@@ -351,6 +353,26 @@ module.exports = Controller("Home/BaseController", function(){
             return self.redirect("/")
           }
         }
+      }
+    },
+
+    mycourseAction : function(){
+      var self = this;
+      if(self.isGet()){
+        var user_id = self.get('id');
+        if(!user_id){
+          return self.redirect("/");
+        }
+        var value = self.userInfo;
+        Service.getUserById({id:user_id}).then(function(content){
+          self.assign({
+            title : "我的课程",
+            section : 'user',
+            link:'setpwd',
+            userInfo : content[0]
+          })
+          return self.display()
+        }).catch(function(err){})
       }
     }
 

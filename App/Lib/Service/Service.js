@@ -140,6 +140,16 @@ var Service = Class(function(){
       return getRequst('comment/get' , data)
     },
 
+    /* User Course Resource progress*/
+
+    setStudyProgress : function(data){
+      return getRequst('user_course_resource/set' , data);
+    },
+
+    getStudyProgress : function(data){
+      return getRequst('user_course_resource/get' , data);
+    },
+
     /* Pay API*/
     pay : function(data){
       return getRequst('alipay/request' , data)
