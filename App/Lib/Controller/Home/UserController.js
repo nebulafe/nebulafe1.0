@@ -167,9 +167,6 @@ module.exports = Controller("Home/BaseController", function(){
           return self.redirect("/");
         }
         var value = self.userInfo;
-        Service.getStudyProgress({userid : user_id}).then(function(content){
-          console.log(content);
-        })
         Service.getUserById({id:user_id}).then(function(content){
           self.assign({
             title : "查看用户",
