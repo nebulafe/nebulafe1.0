@@ -38,13 +38,13 @@
   vertical-align: top;
 }
 .ipt-email {
-  background-position: 0 0;
+  background-position: -62px 9px;
 }
 .ipt-pwd {
-  background-position: 0 -48px;
+  background-position: -62px -39px;
 }
 .ipt-nick {
-  background-position: 0 -96px;
+  background-position: -62px -86px;
 }
 .tips {
   font-size: 12px;
