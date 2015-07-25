@@ -22,7 +22,8 @@ module.exports = Controller(function(){
               auth_info = auth_info.split('\t');
               self.userInfo = {
                 username : auth_info[0],
-                id : auth_info[1] - 0
+                id : auth_info[1] - 0,
+                avator : auth_info[2] -1
               }
             }else{
               self.userInfo = null;

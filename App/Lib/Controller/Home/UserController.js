@@ -94,16 +94,19 @@ module.exports = Controller("Home/BaseController", function(){
             }else if(content == -2){
               throw new Error("用户名或者密码错误！")
             }else{
-              if(data.remember == 1){
-                self.cookie(AUTH_ID, encrypt(data.username + '\t' + content), {
-                    domain: "",
-                    path: "/",
-                    httponly: true,
-                    timeout: 60 * 60 * 24 * 30
-                })
-              }
-              self.session('userInfo',extend({},data,{id:content}))
-              return self.success();
+              Service.getUserById({id : content}).then(function(u_content){
+                if(data.remember == 1){
+                  self.cookie(AUTH_ID, encrypt(data.username + '\t' + content + u_content[0].avator), {
+                      domain: "",
+                      path: "/",
+                      httponly: true,
+                      timeout: 60 * 60 * 24 * 30
+                  })
+                }
+                self.session('userInfo',extend({},data,{id:content,avator : u_content[0].avator}))
+                return self.success();
+              })
+
             }
           }else{
             throw new Error("系统异常，请稍后再试！")
