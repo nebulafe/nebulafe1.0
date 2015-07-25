@@ -1,7 +1,7 @@
 module.exports = {
   //配置项: 配置值
   api_host : '127.0.0.1', //java 服务地址
-  port: 8361, //监听的端口
+  port: 8360, //监听的端口
   db_type: 'mysql', // 数据库类型
   db_host: '127.0.0.1', // 服务器地址
   db_port: '', // 端口
