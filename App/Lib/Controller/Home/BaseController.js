@@ -23,7 +23,7 @@ module.exports = Controller(function(){
               self.userInfo = {
                 username : auth_info[0],
                 id : auth_info[1] - 0,
-                avator : auth_info[2] -1
+                avator : auth_info[2] - 0
               }
             }else{
               self.userInfo = null;
