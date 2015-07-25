@@ -871,6 +871,89 @@ p.form-des {
   #header #navbar .navbar-toggle {
     display: none; }
 
+.header {
+  background: #222;
+  margin: 0;
+  width: 100%;
+  min-width: 1200px;
+  height: 60px;
+  padding: 0;
+  -webkit-user-select: none;
+  user-select: none; }
+  .header .logo {
+    display: inline-block;
+    vertical-align: top;
+    width: 60px;
+    height: inherit;
+    background-image: url("/resource/img/logo.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat; }
+  .header .header-nav {
+    display: inline-block;
+    vertical-align: top;
+    background: #222;
+    margin: 0;
+    width: auto;
+    height: inherit;
+    padding: 0;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 0; }
+    .header .header-nav .nav-item {
+      display: inline-block; }
+      .header .header-nav .nav-item a {
+        display: inline-block;
+        color: #999;
+        height: 60px;
+        line-height: 60px;
+        padding: 0 20px;
+        font-weight: normal;
+        font-size: 14px;
+        -webkit-transition: all ease 0.1s;
+        transition: all ease 0.1s;
+        border-left: 1px solid #222;
+        border-right: 1px solid #222; }
+        .header .header-nav .nav-item a:hover {
+          color: #fff;
+          background-color: rgba(255, 255, 255, 0.19); }
+      .header .header-nav .nav-item.active a {
+        color: #fff;
+        background-color: #000; }
+  .header .user-right {
+    display: inline-block;
+    height: inherit;
+    width: auto;
+    float: right;
+    right: 0;
+    top: 0;
+    font-size: 0; }
+    .header .user-right .link-item {
+      display: inline-block;
+      vertical-align: top;
+      width: auto;
+      height: inherit;
+      font-size: 14px; }
+      .header .user-right .link-item .user-head-icon {
+        width: 40px;
+        height: 40px;
+        margin-top: 10px; }
+      .header .user-right .link-item a {
+        display: inline-block;
+        vertical-align: top;
+        padding: 0 10px;
+        width: auto;
+        height: inherit;
+        color: #999;
+        line-height: 60px;
+        box-sizing: border-box;
+        min-width: 60px;
+        text-align: center;
+        cursor: pointer; }
+        .header .user-right .link-item a:hover {
+          color: #fff;
+          background-color: rgba(255, 255, 255, 0.19); }
+
 .g-page-way {
   height: 60px;
   line-height: 60px;
@@ -892,7 +975,7 @@ p.form-des {
       content: normal; }
 
 .user-head-icon {
-  display: block;
+  display: inline-block;
   box-sizing: border-box;
   width: 50px;
   height: 50px;

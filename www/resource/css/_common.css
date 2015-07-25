@@ -1,4 +1,17 @@
-@charset "UTF-8";
+@font-face {
+  font-family: "iconfont";
+  src: url("/resource/font/iconfont.eot");
+  /* IE9*/
+  src: url("/resource/font/iconfont.eot?#iefix") format("embedded-opentype"), url("/resource/font/iconfont.woff") format("woff"), url("/resource/font/iconfont.ttf") format("truetype"), url("/resource/font/iconfont.svg#iconfont") format("svg");
+  /* iOS 4.1- */ }
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale; }
+
 .page span, .page-disabled {
   display: inline-block;
   padding: 0 5px;
@@ -780,7 +793,7 @@ p.form-des {
 .footer_logo {
   display: none;
   float: left;
-  background: url(/resource/img/common/footer-sprite.png) 0 -230px no-repeat;
+  background: url(/resource/img/footer-sprite.png) 0 -230px no-repeat;
   height: 40px;
   width: 120px;
   margin: 0 20px; }
@@ -857,6 +870,89 @@ p.form-des {
   #header #navbar .navbar-toggle {
     display: none; }
 
+.header {
+  background: #222;
+  margin: 0;
+  width: 100%;
+  min-width: 1200px;
+  height: 60px;
+  padding: 0;
+  -webkit-user-select: none;
+  user-select: none; }
+  .header .logo {
+    display: inline-block;
+    vertical-align: top;
+    width: 60px;
+    height: inherit;
+    background-image: url("/resource/img/logo.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat; }
+  .header .header-nav {
+    display: inline-block;
+    vertical-align: top;
+    background: #222;
+    margin: 0;
+    width: auto;
+    height: inherit;
+    padding: 0;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 0; }
+    .header .header-nav .nav-item {
+      display: inline-block; }
+      .header .header-nav .nav-item a {
+        display: inline-block;
+        color: #999;
+        height: 60px;
+        line-height: 60px;
+        padding: 0 20px;
+        font-weight: normal;
+        font-size: 14px;
+        -webkit-transition: all ease 0.1s;
+        transition: all ease 0.1s;
+        border-left: 1px solid #222;
+        border-right: 1px solid #222; }
+        .header .header-nav .nav-item a:hover {
+          color: #fff;
+          background-color: rgba(255, 255, 255, 0.19); }
+      .header .header-nav .nav-item.active a {
+        color: #fff;
+        background-color: #000; }
+  .header .user-right {
+    display: inline-block;
+    height: inherit;
+    width: auto;
+    float: right;
+    right: 0;
+    top: 0;
+    font-size: 0; }
+    .header .user-right .link-item {
+      display: inline-block;
+      vertical-align: top;
+      width: auto;
+      height: inherit;
+      font-size: 14px; }
+      .header .user-right .link-item .user-head-icon {
+        width: 40px;
+        height: 40px;
+        margin-top: 10px; }
+      .header .user-right .link-item a {
+        display: inline-block;
+        vertical-align: top;
+        padding: 0 10px;
+        width: auto;
+        height: inherit;
+        color: #999;
+        line-height: 60px;
+        box-sizing: border-box;
+        min-width: 60px;
+        text-align: center;
+        cursor: pointer; }
+        .header .user-right .link-item a:hover {
+          color: #fff;
+          background-color: rgba(255, 255, 255, 0.19); }
+
 .g-page-way {
   height: 60px;
   line-height: 60px;
@@ -876,6 +972,63 @@ p.form-des {
       color: #555; }
     .g-page-way .g-page-way-node:last-child::after {
       content: normal; }
+
+.user-head-icon {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background-repeat: no-repeat;
+  background-size: 50px;
+  background-position: center;
+  background-color: #BADAE9;
+  border: 1px solid transparent;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+  cursor: pointer; }
+  .user-head-icon:hover {
+    border-color: #66afe9; }
+  .user-head-icon.user-head-0 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-0.png); }
+  .user-head-icon.user-head-1 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-1.png); }
+  .user-head-icon.user-head-2 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-2.png); }
+  .user-head-icon.user-head-3 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-3.png); }
+  .user-head-icon.user-head-4 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-4.png); }
+  .user-head-icon.user-head-5 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-5.png); }
+  .user-head-icon.user-head-6 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-6.png); }
+  .user-head-icon.user-head-7 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-7.png); }
+  .user-head-icon.user-head-8 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-8.png); }
+  .user-head-icon.user-head-9 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-9.png); }
+  .user-head-icon.user-head-10 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-10.png); }
+  .user-head-icon.user-head-11 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-11.png); }
+  .user-head-icon.user-head-12 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-12.png); }
+  .user-head-icon.user-head-13 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-13.png); }
+  .user-head-icon.user-head-14 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-14.png); }
+  .user-head-icon.user-head-15 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-15.png); }
+  .user-head-icon.user-head-16 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-16.png); }
+  .user-head-icon.user-head-17 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-17.png); }
+  .user-head-icon.user-head-18 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-18.png); }
+  .user-head-icon.user-head-19 {
+    background-image: url(http://n-user.oss-cn-beijing.aliyuncs.com/Fruit-19.png); }
 
 a {
   outline: none; }
@@ -1063,12 +1216,25 @@ a {
   font-size: 12px; }
 
 body {
-  overflow: auto; }
+  overflow: auto;
+  font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif; }
 
 body > .container {
   padding-top: 20px;
   min-height: calc(100vh - 100px - 60px); }
 
+body {
+  min-width: 1200px; }
+
+#header {
+  min-width: 1200px; }
+
+@media screen and (min-width: 425px) {
+  body {
+    min-width: 1200px; }
+
+  #header {
+    min-width: 1200px; } }
 .clearfix {
   *zoom: 1; }
   .clearfix:after {
@@ -1118,7 +1284,7 @@ body > .container {
   color: #b7bcc0; }
 
 html {
-  font: 14px/1.5 "Microsoft Yahei", "Hiragino Sans GB", Helvetica, "Helvetica Neue", "微软雅黑", Tahoma, Arial, sans-serif;
+  font: 14px/1.5 "Microsoft Yahei", "Hiragino Sans GB", Helvetica, "Helvetica Neue", Tahoma, Arial, sans-serif;
   color: #14191e; }
 
 .hide-text {
@@ -1234,7 +1400,7 @@ html {
   position: relative;
   width: 32px;
   height: 32px;
-  background-image: url(/resource/img/common/footer-sprite.png);
+  background-image: url(/resource/img/footer-sprite.png);
   background-repeat: no-repeat;
   margin: 3px 6px 0;
   opacity: 0.5;

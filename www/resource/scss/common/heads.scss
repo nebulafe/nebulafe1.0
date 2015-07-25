@@ -7,7 +7,7 @@ $user-head-pic-border-width: 4px;
   @return 50*($i%7) + 5 ;
 }
 .user-head-icon {
-  display: block;
+  display: inline-block;
   box-sizing: border-box;
   width: $user-head-r;
   height: $user-head-r;

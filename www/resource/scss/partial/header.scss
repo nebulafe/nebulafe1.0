@@ -1,4 +1,4 @@
-$black : #000;
+$black: #000;
 @import "../sassCore/function";
 #header {
   background: $black;
@@ -7,36 +7,36 @@ $black : #000;
   height: 60px;
   padding: 0;
   @include user-select(none);
-  #navbar{
-    .container{
+  #navbar {
+    .container {
       padding: 0;
       margin: 0;
 
-      #navbar-header{
+      #navbar-header {
         display: block;
         float: left;
         padding: 0;
-        margin-left:0;
+        margin-left: 0;
         margin-right: 0;
         width: 60px;
         height: 60px;
       }
-      #navbar-collapse.collapse{
+      #navbar-collapse.collapse {
         display: block;
         position: absolute;
-        left:0;
-        top:0;
+        left: 0;
+        top: 0;
         box-sizing: border-box;
         width: 100%;
         padding-left: 60px;
         height: 60px;
-        ul{
+        ul {
           display: inline-block;
-          li{
+          li {
             display: inline-block;
-            a{
+            a {
               display: inline-block;
-              color : #999;
+              color: #999;
               height: 60px;
               line-height: 60px;
               padding: 0 20px;
@@ -45,19 +45,19 @@ $black : #000;
               @include transition(all ease .1s);
               &:hover {
                 color: #fff;
-                background-color: rgba(255,255,255,.19);
+                background-color: rgba(255, 255, 255, .19);
               }
             }
           }
         }
-        .navbar-right{
+        .navbar-right {
           float: right;
           margin: 0;
         }
 
       }
     }
-    #logo{
+    #logo {
       display: inline-block;
       width: 60px;
       height: 60px;
@@ -67,11 +67,107 @@ $black : #000;
       background-repeat: no-repeat;
     }
 
-    .navbar-toggle{
+    .navbar-toggle {
       display: none;
     }
 
   }
 
+}
 
+.header {
+  background: #222;
+  margin: 0;
+  width: 100%;
+  min-width: 1200px;
+  height: 60px;
+  padding: 0;
+  @include user-select(none);
+  .logo {
+    display: inline-block;
+    vertical-align: top;
+    width: 60px;
+    height: inherit;
+    background-image: url('/resource/img/logo.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .header-nav {
+    display: inline-block;
+    vertical-align: top;
+    background: #222;
+    margin: 0;
+    width: auto;
+    height: inherit;
+    padding: 0;
+    @include user-select(none);
+    font-size: 0;
+    .nav-item {
+      display: inline-block;
+      a {
+        display: inline-block;
+        color: #999;
+        height: 60px;
+        line-height: 60px;
+        padding: 0 20px;
+        font-weight: normal;
+        font-size: 14px;
+        @include transition(all ease .1s);
+        border-left: 1px solid #222;
+        border-right: 1px solid #222;
+        &:hover {
+          color: #fff;
+          background-color: rgba(255, 255, 255, .19);
+        }
+      }
+      &.active{
+        a{
+          color: #fff;
+          background-color: #000;
+        }
+      }
+    }
+
+  }
+  .user-right{
+    display: inline-block;
+    height: inherit;
+    width: auto;
+    float: right;
+    right: 0;
+    top:0;
+    font-size: 0;
+    .link-item{
+      display: inline-block;
+      vertical-align: top;
+      width: auto;
+      height: inherit;
+
+      font-size: 14px;
+      .user-head-icon{
+        width: 40px;
+        height: 40px;
+        margin-top: 10px;
+      }
+
+      a{
+        display: inline-block;
+        vertical-align: top;
+        padding: 0 10px;
+        width: auto;
+        height: inherit;
+        color: #999;
+        line-height: 60px;
+        box-sizing: border-box;
+        min-width: 60px;
+        text-align: center;
+        cursor: pointer;
+        &:hover {
+          color: #fff;
+          background-color: rgba(255, 255, 255, .19);
+        }
+      }
+    }
+  }
 }
