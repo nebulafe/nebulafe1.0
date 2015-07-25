@@ -185,15 +185,18 @@ module.exports = Controller("Home/BaseController", function(){
           return self.redirect("/")
         }
         var value = self.userInfo;
-        if(value && value.id = user_id){
+        if(value && value.id == user_id){
           return self.redirect("/user/see/" + user_id)
         }
         Service.getUserById({id : user_id}).then(function(content){
-          title : "查看用户",
-          section : "user",
-          link : 'see',
-          avator : content[0].avator,
-          nickname : content[0].nickname
+          self.assign({
+            title : "查看用户",
+            section : 'user',
+            link : 'see',
+            avator : content[0].avator,
+            nickname : content[0].nickname
+          })
+          return self.display()
         })
       }
     },
