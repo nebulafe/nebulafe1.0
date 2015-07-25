@@ -111,17 +111,6 @@ module.exports = Controller("Home/BaseController", function(){
             video_id = resources[0].id;
           }
           var c_course = Service.getResourceById({id : video_id});
-
-          var comment = [{
-            comment: "hi朋友们！",
-            courseid: 13,
-            id: 1,
-            nickname: "喵帕斯酱",
-            updatetime: "Jul 24, 2015 9:22:29 PM",
-            userid: 41,
-            username: "tjuwpf@163.com"
-
-          }];
           self.assign({
             title : "课程视频",
             course : course,
@@ -129,9 +118,7 @@ module.exports = Controller("Home/BaseController", function(){
             userInfo : self.userInfo,
             resources : resources,
             cur_resource : c_course,
-
             section : 'course',
-
             comments : comments
 
           })
@@ -151,7 +138,7 @@ module.exports = Controller("Home/BaseController", function(){
           Service.setComment({
             userid : user_id,
             courseid : data.id,
-            comment : encodeURIComponent(data.comment)
+            comment : data.comment
           }).then(function(content){
             return self.success()
           }).catch(function(err){
