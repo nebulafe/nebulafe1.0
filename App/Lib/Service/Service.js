@@ -137,7 +137,11 @@ var Service = Class(function(){
     },
 
     getComment : function(data){
-      return getRequst('comment/get' , data)
+      return getRequst('comment/get' , extend({
+        _returnType : 'detail',
+        _page : 1,
+        _limit : 10,
+      },data))
     },
 
     /* User Course Resource progress*/
