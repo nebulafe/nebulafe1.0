@@ -413,16 +413,31 @@ module.exports = Controller("Home/BaseController", function(){
           return self.redirect("/");
         }
         var value = self.userInfo;
-        Service.getStudyProgress({userid : user_id}).then(function(content){
+        Service.getUserFocus({userid : user_id}).then(function(content){
           self.assign({
             title : "我的课程",
             section : 'user',
             link:'mycourse',
             userInfo : value,
-            courses : content
-
+            f_courses :content
           })
           return self.display()
+        })
+      }
+    },
+
+    studycourseAction : function(){
+      var self = this;
+      var value = self.userInfo;
+      var user_id = self.get('id');
+      if(!user_id){
+        return self.redirect("/")
+      }
+      if(value && value.id > 0){
+        self.getStudyProgress({userid : user_id}).then(function(content){
+          self.success(content) ;
+        }).catch(function(err){
+          self.error("系统异常，请稍后再试！");
         })
       }
     }
