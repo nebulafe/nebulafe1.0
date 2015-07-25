@@ -1835,7 +1835,7 @@ body {
     .container .right-container .my-wrap {
       display: block;
       box-sizing: border-box;
-      width: 720px;
+      width: 820px;
       padding: 20px 0  0 0;
       min-height: calc(100vh - 260px); }
       .container .right-container .my-wrap .my-form .input-row {
@@ -1936,71 +1936,104 @@ body {
     .container .right-container .my-wrap #courses {
       width: 100%;
       border: none; }
-      .container .right-container .my-wrap #courses .c-tab-page.empty {
-        text-align: center;
-        height: 100px;
-        line-height: 100px; }
-        .container .right-container .my-wrap #courses .c-tab-page.empty::before {
-          content: "空空如也~"; }
-      .container .right-container .my-wrap #courses .c-tab-page .course-item {
-        display: inline-block;
-        vertical-align: top;
-        border: transparent;
-        background: #fff;
-        border-bottom: 2px solid #f7faf9;
-        margin: 8px 40px 0 0;
-        height: 250px;
-        width: 240px;
-        padding: 20px 20px 0;
-        cursor: pointer;
-        position: relative;
-        -webkit-transition: all ease 0.3s;
-        transition: all ease 0.3s; }
-        .container .right-container .my-wrap #courses .c-tab-page .course-item:hover {
-          -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
-        .container .right-container .my-wrap #courses .c-tab-page .course-item .img-wrapper, .container .right-container .my-wrap #courses .c-tab-page .course-item .img-wrapper img {
-          width: 100%;
-          height: 135px; }
-        .container .right-container .my-wrap #courses .c-tab-page .course-item .course-item-intro-wrapper {
-          width: 100%;
-          height: 105px;
-          padding-top: 10px; }
-          .container .right-container .my-wrap #courses .c-tab-page .course-item .course-item-intro-wrapper .c-title {
-            font-size: 17px;
-            color: #323b3d; }
-          .container .right-container .my-wrap #courses .c-tab-page .course-item .course-item-intro-wrapper .c-partner {
-            padding-top: 3px;
-            font-size: 13px;
-            color: #838f93; }
-          .container .right-container .my-wrap #courses .c-tab-page .course-item .course-item-intro-wrapper .c-teacher {
-            padding-top: 3px;
-            font-size: 13px;
-            color: #323b3d; }
-          .container .right-container .my-wrap #courses .c-tab-page .course-item .course-item-intro-wrapper .c-update-status {
-            margin-top: 3px;
-            font-size: 13px; }
-        .container .right-container .my-wrap #courses .c-tab-page .course-item .last-time {
-          display: block;
-          position: absolute;
-          width: auto;
-          height: 25px;
-          line-height: 25px;
-          text-align: right;
-          padding: 0 15px;
-          color: #fff;
-          top: 20px;
-          right: 20px;
-          background-color: rgba(0, 0, 0, 0.5);
-          font-size: 13px;
-          opacity: 0;
-          -webkit-transition: all ease 0.3s;
-          transition: all ease 0.3s;
-          -webkit-transform: translateX(5px);
-          transform: translateX(5px); }
-        .container .right-container .my-wrap #courses .c-tab-page .course-item:hover .last-time {
-          opacity: 1;
-          -webkit-transform: translateX(0);
-          transform: translateX(0); }
+      .container .right-container .my-wrap #courses .c-tab-page {
+        display: block;
+        padding-top: 20px; }
+        .container .right-container .my-wrap #courses .c-tab-page.empty {
+          text-align: center;
+          height: 100px;
+          line-height: 100px; }
+          .container .right-container .my-wrap #courses .c-tab-page.empty::before {
+            content: "空空如也~"; }
+        .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper {
+          border-left: 1px solid #ccc;
+          box-sizing: border-box;
+          margin-left: 60px;
+          padding: 10px 20px; }
+          .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper .opt-time {
+            display: block;
+            position: absolute;
+            margin-left: -80px;
+            margin-top: -15px;
+            text-align: right;
+            width: 60px;
+            box-sizing: border-box;
+            padding-right: 10px; }
+            .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper .opt-time::before {
+              display: block;
+              position: absolute;
+              width: 10px;
+              height: 10px;
+              border-radius: 10px;
+              background-color: #999;
+              right: -5px;
+              content: ""; }
+            .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper .opt-time .txt {
+              font-size: 13px;
+              color: #999; }
+              .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper .opt-time .txt:first-child {
+                color: #666;
+                font-size: 20px;
+                margin-bottom: -5px; }
+          .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper .course-item {
+            display: inline-block;
+            vertical-align: top;
+            border: transparent;
+            background: #fff;
+            border-bottom: 2px solid #f7faf9;
+            margin: 8px 40px 0 0;
+            height: 250px;
+            width: 240px;
+            padding: 20px 20px 0;
+            cursor: pointer;
+            position: relative;
+            -webkit-transition: all ease 0.3s;
+            transition: all ease 0.3s; }
+            .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper .course-item:hover {
+              -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
+            .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper .course-item .img-wrapper, .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper .course-item .img-wrapper img {
+              width: 100%;
+              height: 135px; }
+            .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper .course-item .course-item-intro-wrapper {
+              width: 100%;
+              height: 105px;
+              padding-top: 10px; }
+              .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper .course-item .course-item-intro-wrapper .c-title {
+                font-size: 17px;
+                color: #323b3d; }
+              .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper .course-item .course-item-intro-wrapper .c-partner {
+                padding-top: 3px;
+                font-size: 13px;
+                color: #838f93; }
+              .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper .course-item .course-item-intro-wrapper .c-teacher {
+                padding-top: 3px;
+                font-size: 13px;
+                color: #323b3d; }
+              .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper .course-item .course-item-intro-wrapper .c-update-status {
+                margin-top: 3px;
+                font-size: 13px; }
+            .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper .course-item .last-time {
+              display: block;
+              position: absolute;
+              width: auto;
+              height: 25px;
+              line-height: 25px;
+              text-align: right;
+              padding: 0 15px;
+              color: #fff;
+              top: 20px;
+              right: 20px;
+              background-color: rgba(0, 0, 0, 0.5);
+              font-size: 13px;
+              opacity: 0;
+              -webkit-transition: all ease 0.3s;
+              transition: all ease 0.3s;
+              -webkit-transform: translateX(5px);
+              transform: translateX(5px); }
+            .container .right-container .my-wrap #courses .c-tab-page .courses-wrapper .course-item:hover .last-time {
+              opacity: 1;
+              -webkit-transform: translateX(0);
+              transform: translateX(0); }
 
 /*# sourceMappingURL=user-mycourse.css.map */

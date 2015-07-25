@@ -32,6 +32,8 @@
         width: 100%;
         border: none;
         .c-tab-page{
+          display: block;
+          padding-top: 20px;
           &.empty{
             text-align: center;
             height: 100px;
@@ -39,9 +41,45 @@
             &::before{
               content: "空空如也~";
             }
-
           }
-          @import "course-list/course-item";
+          .courses-wrapper{
+            border-left: 1px solid #ccc;
+            box-sizing: border-box;
+            margin-left: 60px;
+            padding: 10px 20px;
+            .opt-time{
+              display: block;
+              position: absolute;
+              margin-left: -80px;
+              margin-top: -15px;
+              text-align: right;
+              //box-shadow: 0 0 3px #ccc;
+              width: 60px;
+              box-sizing: border-box;
+              padding-right: 10px;
+              &::before{
+                display: block;
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                border-radius: 10px;
+                background-color: #999;
+                right: -5px;
+                content: "";
+              }
+              .txt{
+                font-size: 13px;
+                color: #999;
+                &:first-child{
+                  color: #666;
+                  font-size: 20px;
+                  margin-bottom: -5px;
+                }
+              }
+
+            }
+            @import "course-list/course-item";
+          }
         }
       }
     }
