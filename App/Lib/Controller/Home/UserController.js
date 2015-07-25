@@ -286,18 +286,39 @@ module.exports = Controller("Home/BaseController", function(){
           return self.error("你无权修改其他用户的密码！")
         }else{
           Service.getUserById({id : data.id}).then(function(content){
-            if(content.pwd != data.opwd){
-              throw new Error("原始密码不匹配，请重新输入！")
+            if(content[0].username){
+              Service.loginUser({
+                username : content[0].username,
+                password : data.opwd
+              }).then(function(u_content){
+                if(u_content > 0){
+                  Service.resetPwd({
+                    username : content[0].username,
+                    password : data.npwd
+                  }).then(function(r_content){
+                    if(content == -1){
+                      throw new Error("不存在此用户！")
+                    }else if(content == -2){
+                      throw new Error("重置失败！")
+                    }else{
+                      return self.success()
+                    }
+                  })
+                }else{
+                  throw new Error("原密码错误，请重新输入！")
+                }
+              }).catch(function(err){
+                return self.error(err.message || "系统异常，请稍后再试！");
+              })
             }else{
-              if(data.npwd == content.pwd){
-                throw new Error("新密码与原始密码重复，请重新输入！")
-              }else{
-                Service.updateUserById({
-                  id : data.id,
-                  pwd : data.npwd
-                });
-                return self.success();
-              }
+              self.session();
+              self.cookie(AUTH_ID, '',  {
+                  domain: "",
+                  path: "/",
+                  httponly: true,
+                  timeout: 0
+              });
+              throw new Error("不存在此用户")
             }
           }).catch(function(err){
             return self.error(err.message || "系统异常，请稍后再试！");
