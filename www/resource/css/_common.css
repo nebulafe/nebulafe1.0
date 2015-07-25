@@ -825,6 +825,8 @@ p.form-des {
   z-index: 100;
   -webkit-user-select: none;
   user-select: none; }
+  #header + .container {
+    margin-top: 60px; }
   #header .logo {
     display: inline-block;
     vertical-align: top;
