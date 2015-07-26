@@ -145,7 +145,12 @@ var Service = Class(function(){
         _returnType : 'detail',
         _page : 1,
         _limit : 10,
+        _desc : true
       },data))
+    },
+
+    delComment : function(data){
+      return getRequst('comment/unset' ,data)
     },
 
     /* User Course Resource progress*/

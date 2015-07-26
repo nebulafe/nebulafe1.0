@@ -2,7 +2,6 @@
 <html>
 <head>
     <%- include ../meta.html %>
-    <link href="/resource/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="/resource/module/video-js/video-js.css"/>
     <link rel="stylesheet" href="/resource/css/course-video.css"/>
 </head>
@@ -48,7 +47,7 @@
                     </div>
 
                 </div>
-                <div class="comment-list">
+                <div class="comment-list" id="comment_list">
                     <% comments.forEach(function(val){%>
                     <article class="comment">
                         <div class="left-content">
@@ -104,14 +103,13 @@
         s.addEventListener("load", function () {
             document.getElementById("c-video-view").classList.remove("loading");
         });
-        function v(e) {
+        function cv(e) {
             e.preventDefault();
-            alert("!");
             return false;
         }
 
         document.body.addEventListener("contextmenu",function(e){
-           return v(e);
+           return cv(e);
         });
     })();
 </script>

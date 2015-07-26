@@ -100,6 +100,10 @@ module.exports = Controller("Home/BaseController", function(){
         if(!course_id){
           return self.redirect("/course");
         }
+        // // Service.delComment({
+        //   userid : user_info.id,
+        //   courseid : course_id
+        // })
         var course = Service.getCourseById({id : course_id});
         var resources = Service.getResourcesByCourseId({course : course_id});
         var comments = Service.getComment({courseid : course_id});

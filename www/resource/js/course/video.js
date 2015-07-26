@@ -5,13 +5,15 @@ define(function (require, exports, moudle) {
 
     var commentBtn = $("#comment-submit");
     var commentArea = $("#user-comment-editor");
+    var user_avator = ($('#ne_user_avator').val() - 0) || 1;
+    var nickname = $('#ne_user_nickname').val() || $('#ne_user_name').val();
+    var userId = $('#ne_user_id').val() ;
 
     commentBtn.unbind("click").on("click", function (e) {
         var data = {};
-        var userId = commentBtn.attr("data-user-id");
+
         data.comment = commentArea.val();
         data.id = commentBtn.attr("data-course-id");
-        var nickname = commentBtn.attr("data-nickname");
         if(data.comment.trim()==''){
 
             return false;
@@ -22,7 +24,7 @@ define(function (require, exports, moudle) {
                 var tmp = [
                     '<article class="comment">',
                     '<div class="left-content">',
-                    '<div class="user-head-icon user-head-', userId % 20, '"></div>',
+                    '<div class="user-head-icon user-head-', user_avator , '"></div>',
                     '</div>',
                     '<div class="right-content">',
                     '<a href="" class="link user-name">', nickname, '</a>',
@@ -32,7 +34,7 @@ define(function (require, exports, moudle) {
                     '</article>'
                 ].join('');
                 ALERT('提示','评论成功！');
-                $(tmp).insertBefore('.comment-list .comment:first-child');
+                $(tmp).prependTo('#comment_list');
                 commentArea.val('');
             }
         });

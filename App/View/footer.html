@@ -47,6 +47,10 @@
     position_fixed(document.getElementById("ie6-warning"), 0, 0);
 </script>
 <![endif]-->
+<input type="hidden" value="<%=userInfo.username%>" id="ne_user_name">
+<input type="hidden" value="<%=userInfo.id%>" id="ne_user_id">
+<input type="hidden" value="<%=userInfo.nickname%>" id="ne_user_nickname">
+<input type="hidden" value="<%=userInfo.avator%>" id="ne_user_avator">
 <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="http://libs.baidu.com/underscore/1.3.3/underscore-min.js"></script>
 <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
@@ -62,7 +66,7 @@
             'swf': root + 'swf'
         },
         map: [
-            [/^(.*\/.*\/.*\.(?:css|js))(?:.*)$/i, '$1?20150526']
+            [/^(.*\/.*\/.*\.(?:css|js))(?:.*)$/i, '$1?20150726']
         ]
     });
     seajs.use('js/index');
