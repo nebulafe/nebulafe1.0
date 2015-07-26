@@ -100,7 +100,7 @@ module.exports = Controller("Home/BaseController", function(){
         if(!course_id){
           return self.redirect("/course");
         }
-        // // Service.delComment({
+        // Service.delComment({
         //   userid : user_info.id,
         //   courseid : course_id
         // })

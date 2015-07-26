@@ -6,16 +6,15 @@ define(function (require, exports, moudle) {
     var commentBtn = $("#comment-submit");
     var commentArea = $("#user-comment-editor");
     var user_avator = ($('#ne_user_avator').val() - 0) || 1;
-    var nickname = $('#ne_user_nickname').val() || $('#ne_user_name').val();
+    var nickname = commentBtn.attr("data-nickname") || $('#ne_user_name').val();
     var userId = $('#ne_user_id').val() ;
 
     commentBtn.unbind("click").on("click", function (e) {
         var data = {};
-
+        var userId = commentBtn.attr("data-user-id");
         data.comment = commentArea.val();
         data.id = commentBtn.attr("data-course-id");
         if(data.comment.trim()==''){
-
             return false;
         }
 
