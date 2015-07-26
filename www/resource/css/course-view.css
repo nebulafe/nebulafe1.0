@@ -1901,9 +1901,9 @@ body {
           content: "";
           color: #cc0000; }
         .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn .txt::before {
-          content: "关注此课程"; }
+          content: "σà│µ│¿µ¡ñΦ»╛τ¿ï"; }
         .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn[data-focused="true"] .txt::before {
-          content: "已关注"; }
+          content: "σ╖▓σà│µ│¿"; }
         .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn:hover {
           color: #ddd; }
         .course-view-page .c-course .c-course-preview .c-course-preview-manu .c-course-preview-like-btn .txt {
@@ -2022,7 +2022,7 @@ body {
         line-height: 1.7em;
         color: #888; }
         .course-view-page .c-course .c-course-right .course-teacher .teacher-description::before {
-          content: "简介：";
+          content: "τ«ÇΣ╗ï∩╝Ü";
           color: #cc0000; }
     .course-view-page .c-course .c-course-right .reference,
     .course-view-page .c-course .c-course-right .supports {

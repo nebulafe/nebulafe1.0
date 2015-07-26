@@ -1811,9 +1811,9 @@ body {
         color: #fff;
         background-color: #f00000; }
         .course-index .course-nav-wrapper .bt3-row input[type='checkbox']:checked + label:hover, .course-index .course-nav-wrapper .bt3-row input[type='checkbox'][checked='checked'] + label:hover {
-          background-color: #d60000; }
+          background-color: #d70000; }
     .course-index .course-nav-wrapper .bt3-row:first-child::before {
-      content: '选择课程类别：';
+      content: 'ΘÇëµï⌐Φ»╛τ¿ïτ▒╗σê½∩╝Ü';
       color: #838f93;
       margin-right: 10px; }
 
@@ -1840,7 +1840,7 @@ body {
     height: 100px;
     line-height: 100px; }
     #courses.empty::before {
-      content: "暂时没有符合条件的课程"; }
+      content: "µÜéµù╢µ▓íµ£ëτ¼ªσÉêµ¥íΣ╗╢τÜäΦ»╛τ¿ï"; }
   #courses .course-item {
     display: inline-block;
     vertical-align: top;
