@@ -25,6 +25,7 @@
     "gulp-notify": "^2.2.0",
     "gulp-ruby-sass": "^1.0.5",
     "gulp-sass": "^2.0.4",
+    "imagemin-pngquant": "^4.1.2",
     "request": "^2.55.0"
   }
 }
