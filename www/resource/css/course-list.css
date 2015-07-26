@@ -1813,7 +1813,7 @@ body {
         .course-index .course-nav-wrapper .bt3-row input[type='checkbox']:checked + label:hover, .course-index .course-nav-wrapper .bt3-row input[type='checkbox'][checked='checked'] + label:hover {
           background-color: #d70000; }
     .course-index .course-nav-wrapper .bt3-row:first-child::before {
-      content: 'ΘÇëµï⌐Φ»╛τ¿ïτ▒╗σê½∩╝Ü';
+      content: '选择课程类别：';
       color: #838f93;
       margin-right: 10px; }
 
