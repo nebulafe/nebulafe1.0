@@ -3,6 +3,7 @@ var gulp = require('gulp'),
 	pngquant = require('imagemin-pngquant'),
 	sass = require('gulp-sass'),
 	livereload = require('gulp-livereload'),
+  del = require('del'),
 	notify = require('gulp-notify');
 
 gulp.task('img',function() {
@@ -11,21 +12,26 @@ gulp.task('img',function() {
 	return gulp.src(img_src)
 		.pipe(imagemin({
       progressive: true,
-      svgoPlugins: [{removeViewBox: false}],
-      use: [pngquant()]
+      svgoPlugins: [{removeViewBox: false}]
     }))
     .pipe(gulp.dest(img_des));
 });
-gulp.task('styles', function() {
+gulp.task('css', function() {
 	return gulp.src('./www/resource/scss/pages/**/*.scss')
 		.pipe(sass({outputStyle: 'compressed'}))
 		.pipe(gulp.dest('./www/resource/css'))
 		.pipe(notify({ message: 'SCSS编译完成' }));
 });
-gulp.task('default', function() {
-  return gulp.start('styles' , 'img')
+
+gulp.task('clean', function(cb) {
+    del(['./www/resource/img/*'], cb)
 });
+
 gulp.task('watch', function() {
 	livereload.listen();
-	gulp.watch('./www/resource/scss/pages/**/*.scss', ['styles']);
+	gulp.watch('./www/resource/scss/pages/**/*.scss', ['css']);
+});
+
+gulp.task('default',['clean'], function() {
+  return gulp.start('img','css')
 });

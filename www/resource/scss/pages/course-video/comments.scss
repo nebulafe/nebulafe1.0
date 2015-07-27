@@ -1,3 +1,4 @@
+$user-head-r : 40px;
 .comment-list{
     width: 100%;
     box-sizing: border-box;
@@ -15,8 +16,8 @@
             display: inline-block;
             vertical-align: top;
             margin-top: 5px;
-            width: $user-head-r + 10;
-            height: $user-head-r + 10;
+            width: $user-head-r + 10px;
+            height: $user-head-r + 10px;
         }
         .right-content{
             display: inline-block;
