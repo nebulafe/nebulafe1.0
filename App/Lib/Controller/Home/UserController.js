@@ -36,9 +36,10 @@ module.exports = Controller("Home/BaseController", function(){
                           timeout: 60 * 60 * 24 * 30
                       })
                     }
+                  }).then(function(){
+                    return self.success()
                   })
                 }
-                return self.success()
               }else if(content == -1){
                 throw new Error('没有找到该用户！')
               }
@@ -429,6 +430,9 @@ module.exports = Controller("Home/BaseController", function(){
           return self.redirect("/");
         }
         var value = self.userInfo;
+        if(!value){
+          return self.redirect("/");
+        }
 
         Service.getUserFocus({userid : user_id}).then(function(content){
           self.assign({
