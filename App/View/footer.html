@@ -23,29 +23,12 @@
         </div>
     </div>
 </div>
-<!--[if lte IE 8]>
-<div id="ie6-warning">
-    您正在使用 Internet Explorer 低版本的IE浏览器。为更好的浏览本页，建议您将浏览器升级到
-    <a href="http://www.microsoft.com/china/windows/internet-explorer/ie8howto.aspx" target="_blank">IE9</a>
-    或以下浏览器：<a href="http://www.firefox.com.cn/download/">Firefox</a>
-    / <a href="http://www.google.cn/chrome"> Chrome</a>
-    / <a href="http://chrome.360.cn/">360极速浏览器</a>
-    / <a href="http://www.apple.com.cn/safari/">Safari</a> / <a href="http://www.Opera.com/">Opera</a></div>
-<script type="text/javascript">
-    togo = 0;
-    function position_fixed(el, eltop, elleft) {
-        // check if this is IE6
-        if (!window.XMLHttpRequest)
-            window.onscroll = function () {
-                el.style.top = (document.documentElement.scrollTop + eltop) + "px";
-                el.style.left = (document.documentElement.scrollLeft + elleft) + "px";
-            }
-        else
-            el.style.position = "fixed";
-    }
-    ;
-    position_fixed(document.getElementById("ie6-warning"), 0, 0);
+<!--[if lt IE 9]>
+<script> // 如果推荐语使用默认值，可以删除此 script 标签
+// IEDIE_HINT = '<p>自定义的提示语</p>';
+// 改为推荐 IE11，在 XP 系统下提示操作系统过时
 </script>
+<script src="/resource/js/widget/ie.min.js"></script>
 <![endif]-->
 <%if(userInfo){%>
 <input type="hidden" value="<%=userInfo.username%>" id="ne_user_name">
