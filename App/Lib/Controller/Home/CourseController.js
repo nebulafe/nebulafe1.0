@@ -101,7 +101,7 @@ module.exports = Controller("Home/BaseController", function(){
           return self.redirect("/course");
         }
         // Service.delComment({
-        //   userid : user_info.id,
+        //   userid : 42,
         //   courseid : course_id
         // })
         var course = Service.getCourseById({id : course_id});
@@ -147,6 +147,28 @@ module.exports = Controller("Home/BaseController", function(){
           }).then(function(content){
             return self.success()
           }).catch(function(err){
+            return self.error(err.message || "系统异常，请稍后再试！");
+          })
+        }
+      }
+    },
+
+    getcommentAction : function(){
+      var self = this;
+      var value = self.userInfo;
+      if(!value){
+        return self.redirect("/")
+      }else{
+        var data = self.get();
+        if(!data.id){
+          return self.success();
+        }else{
+          Service.getComment({
+            courseid : data.id,
+            _page : data.page
+          }).then(function(content){
+            return self.success(content)
+          }).catch(function(e){
             return self.error(err.message || "系统异常，请稍后再试！");
           })
         }
