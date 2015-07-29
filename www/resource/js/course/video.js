@@ -10,19 +10,16 @@ define(function (require, exports, moudle) {
     var userId = $('#ne_user_id').val() ;
     var courseid =  commentBtn.attr("data-course-id");
 
-    function addPage(data){
-        var data = {
-            num : 100
-        }
+    function addPage(){
         var page = new Pager({
           container : $('#video_pager'),
-          sum : data.num - 0,
+          sum : $('#comment_list').attr('data-num') - 0,
           count : 10,
           step : 10,
           showCount : false,
           start :0,
           onChange : function(num, count){
-            drawComment(num + 1)
+            drawComment(num + 1 ,count)
           }
         });
       page.init();
@@ -30,7 +27,7 @@ define(function (require, exports, moudle) {
 
     addPage();
 
-    function drawComment(num){
+    function drawComment(num,count){
         var tpl =
             ['<% comments.forEach(function(val){%>',
                 '<article class="comment">',
@@ -45,7 +42,7 @@ define(function (require, exports, moudle) {
                     '</div>',
                 '</article>',
             '<%})%>'].join("");
-        $.get('/course/getcomment',{id: courseid},function(result){
+        $.get('/course/getcomment',{id: courseid ,page:num ,limit:count},function(result){
             if(result.errno == 0){
                 $('#comment_list').html(_.template(tpl ,{comments : result.data}))
             }

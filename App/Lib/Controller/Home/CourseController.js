@@ -100,13 +100,9 @@ module.exports = Controller("Home/BaseController", function(){
         if(!course_id){
           return self.redirect("/course");
         }
-        // Service.delComment({
-        //   userid : 42,
-        //   courseid : course_id
-        // })
         var course = Service.getCourseById({id : course_id});
         var resources = Service.getResourcesByCourseId({course : course_id});
-        var comments = Service.getComment({courseid : course_id});
+        var comments = Service.getComment({courseid : course_id ,_returnType : 'all'});
         Service.getResourcesByCourseId({course : course_id}).then(function(resources){
           if(!isNumber(video_id) || video_id <= 0){
             video_id = resources[0].id;
@@ -165,7 +161,8 @@ module.exports = Controller("Home/BaseController", function(){
         }else{
           Service.getComment({
             courseid : data.id,
-            _page : data.page
+            _page : data.page,
+            _limit : data.limit || 10
           }).then(function(content){
             return self.success(content)
           }).catch(function(e){
