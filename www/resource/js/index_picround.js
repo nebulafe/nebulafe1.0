@@ -247,14 +247,17 @@ define(function (require, exports, moudle) {
         setActive: function (before, after, index) {
             var me = this;
             before && before.call(me);
-            $(".pic-round .nav .item").attr("class", "item");
-            var _index = index || me.currentPage + 1;
-            me.bgs.get(_index).classList.add("scaleUp");
-            //console.log(me.bgs.get(_index));
-            $(".pic-round .nav .item").get(me.currentPage).classList.add("active");
-            $(".pic-round .title .title-img").removeClass("active");
-            $(".pic-round .title .title-img").get(me.currentPage).classList.add("active");
-            after && after.call(me);
+            try{
+                $(".pic-round .nav .item").attr("class", "item");
+                var _index = index || me.currentPage + 1;
+                me.bgs.get(_index).classList.add("scaleUp");
+                //console.log(me.bgs.get(_index));
+                $(".pic-round .nav .item").get(me.currentPage).classList.add("active");
+                $(".pic-round .title .title-img").removeClass("active");
+                $(".pic-round .title .title-img").get(me.currentPage).classList.add("active");
+                after && after.call(me);
+            }catch(e){
+            }
         },
 
         showPage: function () {
