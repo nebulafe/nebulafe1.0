@@ -141,8 +141,11 @@ define(function (require, exports, moudle) {
             }
 
             setTimeout(function () {
-                me.setActive(f, null);
-                me.bgs[ t ].classList.remove("scaleUp");
+                try{
+                    me.setActive(f, null);
+                    me.bgs[ t ].classList.remove("scaleUp");
+                }catch(e){
+                }
             }, 500);
 
         },
