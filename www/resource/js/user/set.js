@@ -12,7 +12,7 @@ define(function(require, exports, moudle) {
   }
 
   var forgotMsg=setupMsg("#js-g-forgot-error");
-  $(".ipt").on("keyup",function(e){
+  $(".g-ipt").on("keyup",function(e){
         if($.trim($(this).val())!=$(this).attr("data-value")){
             $(this).attr("data-changed","true");
         }

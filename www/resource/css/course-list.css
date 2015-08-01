@@ -29,7 +29,7 @@
   padding-right: 20px;
   color: #fff; }
 
-.ipt.disabled, .ipt[disabled], .ipt[readonly] {
+.g-ipt.disabled, .g-ipt[disabled], .g-ipt[readonly] {
   cursor: default;
   background-color: #edf0f2;
   opacity: 1; }
@@ -1740,34 +1740,34 @@ input::-moz-focus-inner {
   color: #969b9e;
   font-size: 12px; }
 
-.ipt {
+.g-ipt {
   color: #14191e;
   background-color: #fff;
   border: 1px solid #98a1a6;
-  height: 20px;
-  padding: 9px;
+  height: 40px;
+  padding: 0 9px;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 40px;
   border-radius: 0;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   border-color: #98a1a6;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }
-  .ipt:-moz-placeholder {
+  .g-ipt:-moz-placeholder {
     color: #c8cdd2; }
-  .ipt:-ms-input-placeholder {
+  .g-ipt:-ms-input-placeholder {
     color: #c8cdd2; }
-  .ipt.placeholder {
+  .g-ipt.placeholder {
     color: #c8cdd2; }
-  .ipt:focus {
+  .g-ipt:focus {
     border-color: #000;
     outline: 0;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.4); }
 
-.ipt::-moz-placeholder {
+.g-ipt::-moz-placeholder {
   color: #c8cdd2;
   opacity: 1; }
 
-.ipt::-webkit-input-placeholder {
+.g-ipt::-webkit-input-placeholder {
   color: #c8cdd2; }
 
 .ipt-error {
@@ -1811,7 +1811,7 @@ body {
         color: #fff;
         background-color: #f00000; }
         .course-index .course-nav-wrapper .bt3-row input[type='checkbox']:checked + label:hover, .course-index .course-nav-wrapper .bt3-row input[type='checkbox'][checked='checked'] + label:hover {
-          background-color: #d70000; }
+          background-color: #d60000; }
     .course-index .course-nav-wrapper .bt3-row:first-child::before {
       content: '选择课程类别：';
       color: #838f93;

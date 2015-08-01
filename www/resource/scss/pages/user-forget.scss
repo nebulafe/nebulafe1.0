@@ -35,18 +35,18 @@ $label-color: #656e77;
         box-shadow: 0 0 6px 0 rgba(45,136,227,.5);
       }
     }
-    .ipt,
+    .g-ipt,
     .btn-wrapper .btn{
       display: inline-block;
       width: 300px;
       box-sizing: border-box;
       border-radius: 1px;
     }
-    .ipt{
+    .g-ipt{
       @include transition(box-shadow ease .2s);
       padding-left: 40px;
     }
-    .ipt + i::before{
+    .g-ipt + i::before{
       @extend .iconfont;
       width: 30px;
       height: 25px;
