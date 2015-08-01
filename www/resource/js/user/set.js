@@ -27,7 +27,7 @@ define(function(require, exports, moudle) {
 
       ($('#js-user-set-form .ipt-nick').attr("data-changed")=="true") && (data.nickname = new_nickname);
       ($('#js-user-set-form .ipt-realname').attr("data-changed")=="true") && (data.realname = realname);
-      ($('#js-user-set-form .ipt-idcard').attr("data-changed")=="true") && (data.nickname = idcard);
+      ($('#js-user-set-form .ipt-idcard').attr("data-changed")=="true") && (data.idcard = idcard);
       ($('#js-user-set-form .ipt-mobile').attr("data-changed")=="true") && (data.mobile = mobile);
       data.id = id;
       data.verifycode= $('.form-control-verify input').val();

@@ -18,7 +18,7 @@ module.exports = Controller("Home/BaseController", function(){
         if (_user_id) {
           if(_user_id == user_id){
             var data = self.post();
-            return Service.updateUserById(data).then(function(content){
+            Service.updateUserById(data).then(function(content){
               if(content == 0){
                 if((data.avator - 0) > 0){
                   self.session('userInfo').then(function(value){
@@ -39,6 +39,8 @@ module.exports = Controller("Home/BaseController", function(){
                   }).then(function(){
                     return self.success()
                   })
+                }else{
+                  return self.success()
                 }
               }else if(content == -1){
                 throw new Error('没有找到该用户！')
