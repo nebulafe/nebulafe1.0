@@ -7,46 +7,46 @@ define(function (require, exports, moudle) {
     var commentArea = $("#user-comment-editor");
     var user_avator = ($('#ne_user_avator').val() - 0) || 1;
     var nickname = commentBtn.attr("data-nickname") || $('#ne_user_name').val();
-    var userId = $('#ne_user_id').val() ;
-    var courseid =  commentBtn.attr("data-course-id");
+    var userId = $('#ne_user_id').val();
+    var courseid = commentBtn.attr("data-course-id");
 
-    function addPage(){
+    function addPage() {
         var page = new Pager({
-          container : $('#video_pager'),
-          sum : $('#comment_list').attr('data-num') - 0,
-          count : 10,
-          step : 10,
-          showCount : false,
-          start :0,
-          onChange : function(num, count){
-            drawComment(num + 1 ,count)
-          }
+            container: $('#video_pager'),
+            sum: $('#comment_list').attr('data-num') - 0,
+            count: 10,
+            step: 10,
+            showCount: false,
+            start: 0,
+            onChange: function (num, count) {
+                drawComment(num + 1, count)
+            }
         });
-      page.init();
+        page.init();
     };
 
     addPage();
 
-    function drawComment(num,count){
+    function drawComment(num, count) {
         var tpl =
             ['<% comments.forEach(function(val){%>',
                 '<article class="comment">',
-                    '<div class="left-content">',
-                        '<div class="user-head-icon user-head-<%=val.avator||1%>"></div>',
-                    '</div>',
-                    '<div class="right-content">',
-                        '<a href="" class="link user-name"><%=val.nickname%></a>',
-                        '<section class="comment-content"><p><%=val.comment%></p></section>',
-                        '<% var d = new Date(val.updatetime).toLocaleDateString();%>',
-                        '<time class="comment-time"><%=val.updatetime%></time>',
-                    '</div>',
+                '<div class="left-content">',
+                '<div class="user-head-icon user-head-<%=val.avator||1%>"></div>',
+                '</div>',
+                '<div class="right-content">',
+                '<a href="" class="link user-name"><%=val.nickname%></a>',
+                '<section class="comment-content"><p><%=val.comment%></p></section>',
+                '<% var d = new Date(val.updatetime).toLocaleDateString();%>',
+                '<time class="comment-time"><%=val.updatetime%></time>',
+                '</div>',
                 '</article>',
-            '<%})%>'].join("");
-        $.get('/course/getcomment',{id: courseid ,page:num ,limit:count},function(result){
-            if(result.errno == 0){
-                $('#comment_list').html(_.template(tpl ,{comments : result.data}))
+                '<%})%>'].join("");
+        $.get('/course/getcomment', {id: courseid, page: num, limit: count}, function (result) {
+            if (result.errno == 0) {
+                $('#comment_list').html(_.template(tpl, {comments: result.data}))
             }
-        },'json')
+        }, 'json')
     };
 
     commentBtn.unbind("click").on("click", function (e) {
@@ -54,7 +54,7 @@ define(function (require, exports, moudle) {
         var userId = commentBtn.attr("data-user-id");
         data.comment = commentArea.val();
         data.id = courseid;
-        if(data.comment.trim()==''){
+        if (data.comment.trim() == '') {
             return false;
         }
 
@@ -63,7 +63,7 @@ define(function (require, exports, moudle) {
                 var tmp = [
                     '<article class="comment">',
                     '<div class="left-content">',
-                    '<div class="user-head-icon user-head-', user_avator , '"></div>',
+                    '<div class="user-head-icon user-head-', user_avator, '"></div>',
                     '</div>',
                     '<div class="right-content">',
                     '<a href="" class="link user-name">', nickname, '</a>',
@@ -72,13 +72,16 @@ define(function (require, exports, moudle) {
                     '</div>',
                     '</article>'
                 ].join('');
-                ALERT('提示','评论成功！');
+                ALERT('提示', '评论成功！');
                 $(tmp).prependTo('#comment_list');
                 commentArea.val('');
             }
         });
 
 
+        document.oncontextmenu = function () {
+            return false;
+        }
     });
 
 
