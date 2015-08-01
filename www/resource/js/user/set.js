@@ -32,13 +32,9 @@ define(function(require, exports, moudle) {
       data.id = id;
       data.verifycode= $('.form-control-verify input').val();
     if(!new_nickname){
-          forgotMsg('请输入用户名！');
-          return;
-      }
-    //if(nickname ==  new_nickname){
-    //      forgotMsg('请输入不同的用户名！');
-    //      return;
-    //}
+      ALERT('提示','请输入用户名！');
+      return;
+    }
     $.ajax({
       url:"/user/update",
       data:data,
@@ -46,18 +42,13 @@ define(function(require, exports, moudle) {
       dataType:"json",
       success:function(data){
           if(data.errno===0){
-              forgotMsg("修改成功");
-            //$('.mmsg-box').show();
-            setTimeout(function(){
-                forgotMsg("");
-              //$('.mmsg-box').animate({opacity:0}).hide().css({opacity:1})
-            },2000)
+            ALERT('提示','修改成功！');
           }else{
-            forgotMsg(data.errmsg||"");
+            ALERT('错误',data.errmsg);
           }
       },
       error:function(){
-          forgotMsg("服务错误，稍后重试");
+        ALERT('错误',"服务错误，稍后重试！");
       }
     });
   });
