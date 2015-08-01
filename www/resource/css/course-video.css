@@ -5,7 +5,7 @@
   /* IE9*/
   src: url("/resource/font/iconfont.eot?#iefix") format("embedded-opentype"), url("/resource/font/iconfont.woff") format("woff"), url("/resource/font/iconfont.ttf") format("truetype"), url("/resource/font/iconfont.svg#iconfont") format("svg");
   /* iOS 4.1- */ }
-.iconfont, .g-alert::before, .c-video-list-wrapper::before, .c-video-play-list .c-video-play-list-item.current-play::before {
+.iconfont, .g-alert::before, .c-video-list-wrapper::before, .c-video-play-list .c-video-play-list-item.current-play::before, .vjs-control-bar .vjs-course-previous::after, .vjs-control-bar .vjs-course-next::before {
   font-family: "iconfont" !important;
   font-size: 16px;
   font-style: normal;
@@ -1960,5 +1960,125 @@ body {
         .down-container .comment-list .comment .right-content .comment-time {
           color: #666;
           font-size: 12px; }
+
+.vjs-control-bar .vjs-course-previous,
+.vjs-control-bar .vjs-course-next {
+  display: block;
+  float: left;
+  line-height: 3em;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 1em;
+  width: 4em;
+  text-align: center;
+  padding-left: 1em; }
+  .vjs-control-bar .vjs-course-previous:hover,
+  .vjs-control-bar .vjs-course-next:hover {
+    color: #fff;
+    text-shadow: 0 0 30px #fff;
+    background-color: rgba(0, 0, 0, 0.2); }
+    .vjs-control-bar .vjs-course-previous:hover.none,
+    .vjs-control-bar .vjs-course-next:hover.none {
+      color: #666; }
+  .vjs-control-bar .vjs-course-previous.none,
+  .vjs-control-bar .vjs-course-next.none {
+    color: #666;
+    cursor: not-allowed; }
+.vjs-control-bar .vjs-course-previous {
+  padding-left: 1.3em; }
+  .vjs-control-bar .vjs-course-previous::after {
+    display: block;
+    float: left;
+    content: "";
+    color: inherit;
+    margin-left: -4px;
+    font-size: 20px; }
+  .vjs-control-bar .vjs-course-previous::before {
+    display: block;
+    float: left;
+    content: "|";
+    color: inherit;
+    font-size: 12px; }
+.vjs-control-bar .vjs-course-next::before {
+  display: block;
+  float: left;
+  content: "";
+  color: inherit;
+  margin-right: -3px;
+  font-size: 20px; }
+.vjs-control-bar .vjs-course-next::after {
+  content: "|";
+  color: inherit;
+  display: block;
+  float: left; }
+
+.c-course-video-end-list {
+  display: none;
+  position: absolute;
+  width: 900px;
+  height: 300px;
+  margin-top: calc(50vh - 200px);
+  margin-left: calc(50% - 450px);
+  text-align: center; }
+  .c-course-video-end-list.active {
+    display: block; }
+  .c-course-video-end-list .item {
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none; }
+    .c-course-video-end-list .item:hover span {
+      text-decoration: underline;
+      text-underline-color: #fff; }
+  .c-course-video-end-list .img {
+    display: block;
+    width: 200px;
+    height: 140px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; }
+  .c-course-video-end-list span {
+    color: #fff; }
+  .c-course-video-end-list .nav {
+    text-align: center; }
+    .c-course-video-end-list .nav .previous, .c-course-video-end-list .nav .next {
+      display: inline-block;
+      vertical-align: top;
+      color: #fff;
+      background-color: #cc0000;
+      width: 150px;
+      height: 45px;
+      font-size: 16px;
+      line-height: 45px;
+      margin: 10px; }
+
+.c-course-video-aqwerdf {
+  display: none;
+  position: absolute;
+  width: 640px;
+  height: 400px;
+  background-color: #fff;
+  margin-top: calc(50vh - 200px);
+  margin-left: calc(50% - 320px); }
+  .c-course-video-aqwerdf.active {
+    display: block; }
+  .c-course-video-aqwerdf .a-close {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.4); }
+    .c-course-video-aqwerdf .a-close:hover {
+      background-color: rgba(0, 0, 0, 0.6); }
 
 /*# sourceMappingURL=course-video.css.map */

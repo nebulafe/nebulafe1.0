@@ -2,6 +2,8 @@ define(function (require, exports, moudle) {
     alifenxi.track("course_video_view", {
         "course_name": $('#course_name').html()
     });
+
+    //分页
     var Pager = require('js/widget/pager');
     var commentBtn = $("#comment-submit");
     var commentArea = $("#user-comment-editor");
@@ -27,6 +29,7 @@ define(function (require, exports, moudle) {
 
     addPage();
 
+    //加载评论
     function drawComment(num, count) {
         var tpl =
             ['<% comments.forEach(function(val){%>',
@@ -48,7 +51,7 @@ define(function (require, exports, moudle) {
             }
         }, 'json')
     };
-
+    //留下评论
     commentBtn.unbind("click").on("click", function (e) {
         var data = {};
         var userId = commentBtn.attr("data-user-id");
@@ -79,10 +82,96 @@ define(function (require, exports, moudle) {
         });
 
 
-        document.oncontextmenu = function () {
-            return false;
-        }
     });
 
+    //guanggao
+    function showAQWERDF() {
+        var entity = $("#c-video-view >.video-js .c-course-video-aqwerdf");
 
-})
+        if (entity.length == 0) {
+            var html = $("#AQWERDF").html();
+            $("#c-video-view >.video-js").append(html);
+            var entity = $("#c-video-view >.video-js .c-course-video-aqwerdf");
+        }
+        if (entity.attr("data-ban") == "1") {
+            //是否被ban
+            return false;
+        } else {
+            entity.addClass("active");
+        }
+
+    }
+
+    //
+    function hideAQWERDF() {
+        $("#c-video-view >.video-js .c-course-video-aqwerdf").removeClass("active");
+    }
+
+    var endList = (function () {
+        var endList = $("#tmp-c-course-video-end-list").html();
+        return {
+            showEndList: function () {
+                if ($("#c-video-view >.video-js .c-course-video-end-list").length > 0) {
+                    $("#c-video-view >.video-js .c-course-video-end-list").addClass("active");
+                } else {
+                    $("#c-video-view >.video-js").append(endList);
+                }
+            },
+            hideEndList: function () {
+                $("#c-video-view >.video-js .c-course-video-end-list").removeClass("active");
+            }
+        }
+    })();
+
+
+    function addPreviousAndNext2ToolBar() {
+        var html = $("#tool-bar-previous-next").html();
+        $(html).insertAfter(".vjs-control-bar .vjs-remaining-time");
+    }
+
+    (function initPlayer() {
+        //设置全屏
+        var v = document.getElementById("really-cool-video");
+
+        var h = document.documentElement.clientHeight - 60;
+        v.setAttribute("height", h + "px");
+
+        var player = videojs('really-cool-video', {/* Options */}, function () {
+
+            $(".container").removeClass("loading");
+            addPreviousAndNext2ToolBar();
+            //
+            //bind
+
+            bindVideoEvents();
+        });
+
+    })();
+
+
+    function bindVideoEvents() {
+
+
+        var video = $("video").eq(0);
+
+        //事件
+        video.on("ended", function (e) {
+            endList.showEndList();
+
+        }).on("play", function (e) {
+            //hideAQWERDF();
+            endList.hideEndList();
+
+        }).on("pause", function (e) {
+            //showAQWERDF();
+        });
+
+        //videojs API绑定
+
+
+    }
+
+    bindVideoEvents();
+
+
+});
