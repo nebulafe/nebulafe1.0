@@ -136,7 +136,7 @@ define(function (require, exports, moudle) {
         var h = document.documentElement.clientHeight - 60;
         v.setAttribute("height", h + "px");
 
-        var player = videojs('really-cool-video', {/* Options */}, function () {
+        var player = videojs('really-cool-video', {}, function () {
 
             $(".container").removeClass("loading");
             addPreviousAndNext2ToolBar();
