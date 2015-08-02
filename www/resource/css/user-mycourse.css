@@ -794,7 +794,7 @@ p.form-des {
 .footer_logo {
   display: none;
   float: left;
-  background: url(/resource/img/footer-sprite.png) 0 -230px no-repeat;
+  background: url(/resource/img/idx-btm.png) 0 -230px no-repeat;
   height: 40px;
   width: 120px;
   margin: 0 20px; }
@@ -1406,16 +1406,16 @@ html {
   position: relative;
   width: 32px;
   height: 32px;
-  background-image: url(/resource/img/footer-sprite.png);
+  background-image: url(/resource/img/idx-btm.png);
   background-repeat: no-repeat;
   margin: 3px 6px 0;
   opacity: 0.5;
   filter: alpha(opacity=50);
   transition: opacity 0.2s; }
 .followus .followus-weixin {
-  background-position: 0 -279px; }
+  background-position: -52px -262px; }
 .followus .followus-weibo {
-  background-position: 0 -321px; }
+  background-position: 0 -262px; }
 .followus .followus-qzone {
   background-position: 0 -363px; }
 
@@ -1426,7 +1426,7 @@ html {
   height: 220px;
   left: -69px;
   bottom: 35px;
-  background: url(/resource/img/footer-sprite.png) no-repeat 0 0; }
+  background: url(/resource/img/idx-btm.png) no-repeat 0 0; }
 
 .friend-links {
   line-height: 60px; }
