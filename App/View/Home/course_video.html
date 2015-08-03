@@ -78,7 +78,7 @@
 
     <!--播放列表-->
     <div class="c-video-list-wrapper" tabindex="0">
-        <a class="c-recent-course-name">当前播放列表：<%=course.name%></a>
+        <a class="c-recent-course-name">当前播放列表：<b id="c_course_name"> <%=course.name%></b></a>
     </div>
     <div class="c-video-play-list" id="c-video-play-list">
         <%resources.forEach(function(val,idx){%>
@@ -101,7 +101,7 @@
     }
 
     document.body.addEventListener("contextmenu",function(e){
-//        return cv(e);
+        return cv(e);
     });
 </script>
 

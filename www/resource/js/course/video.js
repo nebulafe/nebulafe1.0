@@ -1,6 +1,7 @@
 define(function (require, exports, moudle) {
     alifenxi.track("course_video_view", {
-        "course_name": $('#course_name').html()
+        "course_name": $('#c_course_name').html(),
+        "resource_name" : $("#c-video-play-list .current-play .c-video-play-list-item-title ").html()
     });
 
     //分页
