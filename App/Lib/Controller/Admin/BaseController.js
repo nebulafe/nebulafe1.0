@@ -9,35 +9,24 @@ module.exports = Controller(function() {
 
   return {
     init: function(http) {
-      this.super("init", http);
+      var self = this;
 
-      if (this.navType) {
-        this.assign("navType", this.navType);
-      };
+      self.super("init", http);
 
-      if (this.http.action != "login") {
-        return this.checkLogin();
-      };
-
-      /**
-       * 检测是否登录
-       * @return {[type]} [description]
-       */
-      checkLogin: function(){
-        var self = this;
-        return this.session("userinfo").then(function(value){
-          if (isEmpty(value)) {
-            if (self.isAjax()) {
-              return self.error(403);
+      if (self.http.action != "login") {
+        return self.session("userInfo").then(function(value){
+          if(isEmpty(value)){
+            if(self.isAjax()){
+              return self.error(403)
             }else{
-              return self.redirect("/login");
+              return self.redirect('/login');
             }
           }else{
-            self.userinfo = value;
-            self.assign('userinfo', value)
+            self.userInfo = value;
+            self.assign('userInfo',value)
           }
         })
-      }
+      };
     }
   }
 });

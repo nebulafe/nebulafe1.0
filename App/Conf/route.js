@@ -5,6 +5,7 @@
 module.exports = [
   [/^login\/?$/, "admin/index/login"],
   [/^logout\/?$/, "admin/index/logout"],
+  [/^manage\/?$/, "admin/index/manage"],
   ["user/see/:id", "user/see"],
   ["user/avator/:id", "user/avator"],
   ["user/verifyemail/:id", "user/verifyemail"],
