@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="right-content">
-                            <a href="" class="link user-name"><%=val.nickname%></a>
+                            <a href="" class="link user-name" data-id="<%=val.username%>"><%=val.nickname%></a>
                             <section class="comment-content"><p><%=val.comment%></p></section>
                             <% var d = new Date(val.updatetime).toLocaleDateString();%>
                             <time class="comment-time"><%=val.updatetime%></time>
@@ -75,7 +75,7 @@
 
     <!--播放列表-->
     <div class="c-video-list-wrapper" tabindex="0">
-        <a class="c-recent-course-name">当前播放列表：<%=course.name%></a>
+        <a class="c-recent-course-name">当前播放列表：<b id="c_course_name"> <%=course.name%></b></a>
     </div>
     <div class="c-video-play-list" id="c-video-play-list">
         <%resources.forEach(function(val,idx){%>
