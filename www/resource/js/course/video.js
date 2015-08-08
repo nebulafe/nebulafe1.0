@@ -167,6 +167,16 @@ define(function (require, exports, moudle) {
             //showAQWERDF();
         });
 
+        $("video source").each(function(index,elem){
+            $(this).on('error',function(e){
+                console.error($(e.target).attr("src"));
+                alifenxi.track("course_load_error", {
+                    "course_name": $('#c_course_name').html(),
+                    "resource_name" : $(e.target).attr("src")
+                });
+            })
+        });
+
         //videojs API绑定
 
 
