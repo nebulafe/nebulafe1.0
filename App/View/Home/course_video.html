@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="right-content">
-                            <a href="" class="link user-name"><%=val.nickname%></a>
+                            <a href="<% if(userInfo.id == 41){%>mailto:<%= val.username%> <%}%>" class="link user-name"><%=val.nickname%></a>
                             <section class="comment-content"><p><%=val.comment%></p></section>
                             <% var d = new Date(val.updatetime).toLocaleDateString();%>
                             <time class="comment-time"><%=val.updatetime%></time>

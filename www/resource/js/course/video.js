@@ -169,7 +169,7 @@ define(function (require, exports, moudle) {
 
         $("video source").each(function(index,elem){
             $(this).on('error',function(e){
-                console.error($(e.target).attr("src"));
+                //console.error($(e.target).attr("src"));
                 alifenxi.track("course_load_error", {
                     "course_name": $('#c_course_name').html(),
                     "resource_name" : $(e.target).attr("src")
