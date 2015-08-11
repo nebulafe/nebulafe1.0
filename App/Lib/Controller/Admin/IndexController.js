@@ -47,7 +47,7 @@ module.exports = Controller("Admin/BaseController", function() {
     },
     logoutAction: function(){
       var self = this;
-      self.session("userinfo","");
+      self.session("userInfo","");
       self.redirect("/login");
     },
 
@@ -58,20 +58,22 @@ module.exports = Controller("Admin/BaseController", function() {
 
     manageAction : function(){
       var self = this;
-      self.session('userInfo').then(function(content){
-        if(content && content.isAdmin == 1){
-          self.assign({
-            title : "管理后台-课程管理"
-          })
-          return self.display()
-        }else{
-          return self.redirect('/login');
-        }
-      }).catch(function(err){
-        if(err){
-          return self.redirect('/login')
-        }
-      })
+      if(self.isGet()){
+        self.session('userInfo').then(function(content){
+          if(content && content.isAdmin == 1){
+            self.assign({
+              title : "管理后台-课程管理"
+            })
+            return self.display()
+          }else{
+            return self.redirect('/login');
+          }
+        }).catch(function(err){
+          if(err){
+            return self.redirect('/login')
+          }
+        })
+      }
     }
   };
 });
