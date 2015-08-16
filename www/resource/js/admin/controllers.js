@@ -552,6 +552,8 @@ app.directive('partnerEdit', function factory() {
                 res.append('introduction', $scope.introduction);
                 res.append('img', $scope.$root.files.img[0]);
                 res.append('banner', $scope.$root.files.banner[0]);
+                res.append('long_img', $scope.$root.files.long_img[0]);
+
                 $.ajax({
                     url: '/manage/partner',
                     type: "POST",
