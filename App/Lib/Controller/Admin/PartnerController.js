@@ -28,7 +28,7 @@ module.exports = Controller("Admin/BaseController", function() {
             Service.addPartner({
               'banner' : banner.originalFilename,
               'logo' : logo.originalFilename,
-              'name ' : data.name,
+              'name' : data.name,
               'introduction' : data.introduction
             }).then(function(content){
               self.success(content)
