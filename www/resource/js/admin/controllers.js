@@ -350,10 +350,9 @@ app.directive('teacherInfo', function factory() {
         restrict: 'AE',
         transclude: true,
         templateUrl: 'templates/admin/teacher/info.html',
-        //scope:{
-        //    teachers:[],
-        //    editTeachers:[]
-        //},
+        scope:{
+            course_id:"@course_id"
+        },
 
         compile: function compile(tElement, tAttrs, transclude) {
 
@@ -495,7 +494,7 @@ app.directive('partnerEdit', function factory() {
                 } else {
                     $scope.name = '';
                     $scope.banner = null;
-                    $scope.logo = null;
+                    $scope.img = null;
                     $scope.introduction = '这个机构还没有简介';
                 }
                 console.log($scope);
@@ -505,7 +504,7 @@ app.directive('partnerEdit', function factory() {
                 var res = new FormData();
                 res.append('name', $scope.name);
                 res.append('introduction', $scope.introduction);
-                res.append('logo', $scope.$root.files.logo[0]);
+                res.append('img', $scope.$root.files.img[0]);
                 res.append('banner', $scope.$root.files.banner[0]);
                 $.ajax({
                     url: '/manage/partner',

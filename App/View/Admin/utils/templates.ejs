@@ -105,14 +105,14 @@
         <div class="row form-group">
             <label class="col-sm-5 col-sm-offset-2" for="">上传logo</label>
             <div class="col-sm-23">
-                <uploader url="/manage/partner" multi="" name="logo"></uploader>
+                <uploader url="/manage/partner" multi="" name="img"></uploader>
             </div>
         </div>
         <div class="row form-group">
             <label class="col-sm-5 col-sm-offset-2" for="">机构简介</label>
 
             <div class="col-sm-20">
-                <textarea type="text" class="form-control" name="introduction" ng-model="introduction" >
+                <textarea type="text" class="form-control" name="introduction" ng-model="introduction" placeholder="填写机构简介">
                 </textarea>
             </div>
         </div>
@@ -150,7 +150,7 @@
                 <label class="col-sm-5 col-sm-offset-1" for="">课程简介</label>
 
                 <div class="col-sm-24">
-                    <textarea class="form-control" name="intro" ng-model="course.intro"></textarea>
+                    <textarea class="form-control" name="intro" ng-model="course.intro" placeholder="课程简介"></textarea>
                 </div>
             </div>
             <div class="row form-group">
@@ -170,7 +170,8 @@
                 <label class="col-sm-5 col-sm-offset-1" for="">课程教师</label>
 
                 <div class=" col-sm-24">
-                    <teacher-info></teacher-info>
+
+                    <teacher-info course_id="{{course.id}}"></teacher-info>
                 </div>
             </div>
             <div class="row center-block">
