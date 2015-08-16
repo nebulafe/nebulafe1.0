@@ -87,6 +87,10 @@ var Service = Class(function(){
       return getRequst('partner/retrieve', extend({_returntype:'detail'}, data));
     },
 
+    addPartner : function(data){
+      return getRequst('partner/create' , data);
+    },
+
     /*Teaacher API*/
 
     getALlTeachers : function(data){
