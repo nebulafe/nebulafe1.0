@@ -191,7 +191,7 @@ app.directive('courseEdit', function () {
             //    $(this).select2();
             //});
         },
-        controller: function ($scope, $http, $location) {
+        controller: function ($scope, $http, $location,$element) {
 
             if (window.location.pathname == '/course/add') {
                 $scope.course = {
@@ -208,7 +208,8 @@ app.directive('courseEdit', function () {
                     material: null,
                     url: null,
                     update_status: null,
-                    time: null
+                    time: null,
+                    source:null,
                 }
 
             }
@@ -221,6 +222,11 @@ app.directive('courseEdit', function () {
                         f.append(i,$scope.course[i]);
                     }
                 }
+                f.append('source',(function(){
+                    //console.log($element.find("select[name='partner']>option:selected").html());
+                   return $element.find("select[name='partner']>option:selected").html();
+
+                })());
                 f.append('img',$scope.$root.files.img[0]);
                 f.append('material',$scope.$root.files.material[0]);
                 return f;
