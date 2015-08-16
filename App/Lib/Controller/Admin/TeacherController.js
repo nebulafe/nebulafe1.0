@@ -14,10 +14,25 @@ module.exports = Controller("Admin/BaseController", function() {
     indexAction: function(){
       var self = this;
       if(self.userInfo && self.userInfo.isAdmin == 1){
-        self.assign({
-          title : "管理后台-教师管理"
-        })
-        self.display()
+        if(self.isGet()){
+          var courses = Service.getAllCourses();
+          self.assign({
+            title : "管理后台-教师管理",
+            courses : courses
+          })
+          self.display()
+        }else if(self.isPost()){
+          var img = self.file('img');
+          oss.put(img , {bucket:'n-teacher', key : 'cft/'}).then(function(res){
+            if(res){
+              Service.addTeacher(extend(data,{img : img.originalFilename })).then(function(content){
+                self.success(content)
+              })
+            }
+          }).catch(function(err){
+            self.error(err)
+          })
+        }
       }
     }
   };
