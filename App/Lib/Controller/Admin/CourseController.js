@@ -24,15 +24,26 @@ module.exports = Controller("Admin/BaseController", function() {
         }else if(self.isPost()){
           var data = self.post();
           var img = self.file('img');
-          oss.put(img , {bucket:'n-course', key : 'pic/'}).then(function(res){
-            if(res){
-              Service.addCourse(extend(data,{img : img.originalFilename})).then(function(content){
-                Service.success(content)
+          var material = self.file('material');
+          if(material && material.originalFilename){
+            Promise.all([oss.put(material ,{bucket:'finance-english', key : ''), oss.put(img , {bucket:'n-course', key : 'pic/'})]).then(function(datas){
+              Service.addCourse(extend(data,{img : img.originalFilename,material : 1 , url : datas[0].url})).then(function(content){
+                self.success(content)
               })
-            }
-          }).catch(function(err){
-            self.error(err)
-          })
+            }).catch(function(err){
+              self.error(err);
+            })
+          }else{
+            oss.put(img , {bucket:'n-course', key : 'pic/'}).then(function(res){
+              if(res){
+                Service.addCourse(extend(data,{img : img.originalFilename,material:false })).then(function(content){
+                  self.success(content)
+                })
+              }
+            }).catch(function(err){
+              self.error(err)
+            })
+          }
         }
       }
     }
