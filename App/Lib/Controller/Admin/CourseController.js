@@ -14,6 +14,9 @@ module.exports = Controller("Admin/BaseController", function() {
     indexAction: function(){
       var self = this;
       if(self.userInfo && self.userInfo.isAdmin == 1){
+        self.assign({
+          title : "管理后台-课程管理"
+        })
         self.display()
       }
     }
