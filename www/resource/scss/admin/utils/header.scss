@@ -1,0 +1,44 @@
+@import "../sassCore/function";
+@import "../bootswatch/variables";
+
+$header_height: px(50) px(40);
+$nav_item_width: px(100) px(100);
+.nebulafe-header {
+  width: 100%;
+  height: nth($header_height, 1);
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $gray-light;
+  z-index: 300;
+  .nav {
+    display: block;
+    float: left;
+    height: inherit;
+    overflow: hidden;
+    .item {
+      display: block;
+      float: left;
+      height: inherit;
+      line-height: nth($header_height, 1);
+      width: nth($nav_item_width,1);
+
+      text-align: center;
+      a{
+        display: block;
+        width: inherit;
+        height: inherit;
+        color: $white;
+        text-decoration: none;
+        @include  transition();
+        &:hover{
+           background-color: rgba(0,0,0,.1);
+         }
+      }
+      &.active{
+        background-color: rgba(0,0,0,.15);
+      }
+    }
+  }
+}
