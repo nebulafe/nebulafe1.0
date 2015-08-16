@@ -89,15 +89,65 @@ module.exports = Controller("Admin/BaseController", function() {
     },
 
     addcourseAction : function(){
-
+      var self = this;
+      if(self.userInfo && self.userInfo.isAdmin == 1){
+        if(self.isPost()){
+          var data = self.post();
+          if(!data.partner){
+            return self.error("请选择合适的合作方！")
+          }
+          Service.addCourse(data).then(function(content){
+            self.success(content);
+          }).catch(function(err){
+            self.error(err);
+          })
+        }
+      }
     },
 
     addteacherAction : function(){
-
+      var self = this;
+      if(self.userInfo && self.userInfo.isAdmin == 1){
+        if(self.isPost()){
+          var data = self.post();
+          if(!data.course){
+            return self.error("请选择合适的课程！")
+          }
+          Service.addTeacher(data).then(function(content){
+            self.success(content);
+          }).catch(function(err){
+            self.error(err);
+          })
+        }
+      }
     },
 
     addpartnerAction : function(){
+      var self = this;
+      if(self.userInfo && self.userInfo.isAdmin == 1){
+        if(self.isPost()){
+          var data = self.post();
+          Service.addPatner(data).then(function(content){
+            self.success(content)
+          }).catch(function(err){
+            self.error(err);
+          })
+        }
+      }
+    },
 
+    addresourceAction : function(){
+      var self = this;
+      if(self.userInfo && self.userInfo.isAdmin == 1){
+        if(self.isPost()){
+          var data = self.post();
+          Service.addResource(data).then(function(content){
+            self.success(content)
+          }).catch(function(err){
+            self.error(err)
+          })
+        }
+      }
     }
   };
 });

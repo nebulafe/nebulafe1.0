@@ -57,7 +57,11 @@ var Service = Class(function(){
     },
 
     setCourseData : function(data){
-      return getRequst('course/update', data)
+      return getRequst('course/update', data);
+    },
+
+    addCourse : function(data){
+      return getRequst('course/create', data);
     },
 
     /*Resource API*/
@@ -68,6 +72,10 @@ var Service = Class(function(){
 
     getResourceById : function(data){
       return getRequst('resource/retrieve', extend({_returntype : "detail" }, data));
+    },
+
+    addResource : function(data){
+      return getRequest('resource/create' , data);
     },
 
     /*Partner API*/
@@ -87,6 +95,10 @@ var Service = Class(function(){
 
     getTeachersByCourseId : function(data){
       return getRequst('teacher/retrieve', extend({_returntype:'detail'}, data));
+    },
+
+    addTeacher : function(data){
+      return getRequst('teacher/create' , data);
     },
 
     /*User API*/
