@@ -185,29 +185,60 @@ app.directive('courseEdit', function () {
         transclude: true,
         scope: {},
         templateUrl: 'templates/admin/course/edit.html',
-        link: function ($scope) {
+        link: function ($scope, $element) {
             $scope.toUpload = [];
+            //$element.find("select").each(function(){
+            //    $(this).select2();
+            //});
         },
         controller: function ($scope, $http, $location) {
 
             if (window.location.pathname == '/course/add') {
                 $scope.course = {
-                    name: '',
-                    intro: '这个课程暂时还没有介绍',
-                    poster: null
+                    tag: null,
+                    name: null,
+                    img: null,
+                    total_time: null,
+                    description: null,
+                    introduction: null,
+                    outline: null,
+                    prelearn: null,
+                    faq: null,
+                    reference: null,
+                    material: null,
+                    url: null,
+                    update_status: null,
+                    time: null
                 }
 
             }
+            function getFormData() {
+                var f = new FormData();
+                var filter_arr = ['img', 'material'];
+                for (var i in $scope.course) {
+                    if(filter_arr.indexOf(i) == -1)
+                    {
+                        f.append(i,$scope.course[i]);
+                    }
+                }
+                f.append('img',$scope.$root.files.img[0]);
+                f.append('material',$scope.$root.files.material[0]);
+                return f;
+            }
+
             $scope.showScope = function () {
                 console.log($scope);
             };
             $scope.submit = function () {
-                var req = $http({
-                    method: 'POST',
-                    url: '/course/new',
-                    data: $scope.course
-
-                })
+                $.ajax({
+                    url: '/manage/course',
+                    type: "POST",
+                    data: getFormData(),
+                    processData: false,  // 告诉jQuery不要去处理发送的数据
+                    contentType: false   // 告诉jQuery不要去设置Content-Type请求头
+                }).success(function () {
+                    alert("上传成功");
+                });
             };
             //$scope.
         }
@@ -273,10 +304,6 @@ app.directive('uploader', function () {
                     contentType: false   // 告诉jQuery不要去设置Content-Type请求头
                 }).success(function () {
                     alert("!");
-                    //if (res.url) {
-                    //    $scope.url = res.url;
-                    //}
-                    //$scope.$parent.toUpload.push("http://abc.xyz");
                     $scope.sendToParentScope();
                 });
             };
@@ -350,8 +377,8 @@ app.directive('teacherInfo', function factory() {
         restrict: 'AE',
         transclude: true,
         templateUrl: 'templates/admin/teacher/info.html',
-        scope:{
-            course_id:"@course_id"
+        scope: {
+            course_id: "@course_id"
         },
 
         compile: function compile(tElement, tAttrs, transclude) {
@@ -382,7 +409,14 @@ app.directive('teacherInfo', function factory() {
 
 
             $scope.editTeacher = function (_index, mode) {
-                if ($scope.toEditTeachersIndexArray.indexOf(_index) == -1) {
+                if (mode == 'new') {
+                    var teacher = {};
+                    teacher.mode = mode || 'new';
+                    $scope.toEditTeachersIndexArray.push(0);
+                    $scope.toEditTeachers = [teacher];
+                    console.log($scope.toEditTeachers);
+                }
+                else if ($scope.toEditTeachersIndexArray.indexOf(_index) == -1) {
                     var teacher = $scope.teachers[_index];
                     teacher.mode = mode || 'new';
                     $scope.toEditTeachersIndexArray.push(_index);
@@ -408,7 +442,8 @@ app.directive('teacherEdit', function () {
         scope: {
             mode: "@mode",
             id: "@_id",
-            index: "@index"
+            index: "@index",
+            course: "@course_id"
         },
         templateUrl: 'templates/admin/teacher/edit.html',
         link: function ($scope) {
@@ -418,16 +453,20 @@ app.directive('teacherEdit', function () {
                     $scope.$parent
                     && $scope.$parent.toEditTeachers[$scope.index]
                     || {
-                        name: '',
-                        avator: '',
-                        intro: '暂无介绍'
+                        name: null,
+                        img: null,
+                        career: null,
+                        description: null,
+                        course: $scope.course
                     };
 
             } else {
                 $scope.teacher = {
-                    name: '',
-                    avator: '',
-                    intro: '暂无介绍'
+                    name: null,
+                    img: null,
+                    career: null,
+                    description: null,
+                    course: $scope.course
                 };
             }
         },
@@ -452,13 +491,13 @@ app.directive('teacherEdit', function () {
                 $scope.$parent.toEditTeachersIndexArray.splice(parseInt($scope.index), 1);
             };
 
-            function getFormData(){
+            function getFormData() {
 
                 var res = new FormData();
-                for(var i in $scope.teacher){
-                    res.append(i,$scope.teacher[i]);
+                for (var i in $scope.teacher) {
+                    res.append(i, $scope.teacher[i]);
                 }
-                res.append('img',$scope.$root.files.img);
+                res.append('img', $scope.$root.files.img);
                 return res;
             }
 
