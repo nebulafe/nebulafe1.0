@@ -30,15 +30,15 @@ function put (file , cfg) {
   var bucket = cfg.bucket || 'n-teacher';
   var filename = file.originalFilename;
 
-  fs.readFile(file.path , function (err, data) {
-    if (err) {
-      deferred.reject(err)
+  fs.readFile(file.path , function (ferr, fdata) {
+    if (ferr) {
+      deferred.reject(ferr)
     }
 
-    oss.putObject(extend({
+    oss.putObject({
         Bucket: bucket,
         Key: key + filename,
-        Body: data,
+        Body: fdata,
         AccessControlAllowOrigin: '',
         ContentType: file.headers['content-type'],
         CacheControl: 'max-age=15552000',
@@ -46,7 +46,7 @@ function put (file , cfg) {
         ContentEncoding: 'utf-8',
         ServerSideEncryption: 'AES256',
         Expires: new Date('2016-12-31')
-      },cfg || {}),
+      }),
       function (err, data) {
         if (err) {
           deferred.reject(err)
