@@ -191,7 +191,7 @@ app.directive('courseEdit', function () {
             //    $(this).select2();
             //});
         },
-        controller: function ($scope, $http, $location,$element) {
+        controller: function ($scope, $http, $location, $element) {
 
             if (window.location.pathname == '/course/add') {
                 $scope.course = {
@@ -209,7 +209,7 @@ app.directive('courseEdit', function () {
                     url: null,
                     update_status: null,
                     time: null,
-                    source:null,
+                    source: null,
                 }
 
             }
@@ -217,18 +217,17 @@ app.directive('courseEdit', function () {
                 var f = new FormData();
                 var filter_arr = ['img', 'material'];
                 for (var i in $scope.course) {
-                    if(filter_arr.indexOf(i) == -1)
-                    {
-                        f.append(i,$scope.course[i]);
+                    if (filter_arr.indexOf(i) == -1) {
+                        f.append(i, $scope.course[i]);
                     }
                 }
-                f.append('source',(function(){
+                f.append('source', (function () {
                     //console.log($element.find("select[name='partner']>option:selected").html());
-                   return $element.find("select[name='partner']>option:selected").html();
+                    return $element.find("select[name='partner']>option:selected").html();
 
                 })());
-                f.append('img',$scope.$root.files.img[0]);
-                f.append('material',$scope.$root.files.material[0]);
+                f.append('img', $scope.$root.files.img[0]);
+                f.append('material', $scope.$root.files.material[0]);
                 return f;
             }
 
@@ -501,7 +500,7 @@ app.directive('teacherEdit', function () {
 
                 var res = new FormData();
                 for (var i in $scope.teacher) {
-                    if(i!='img'){
+                    if (i != 'img') {
                         res.append(i, $scope.teacher[i]);
                     }
                 }
@@ -589,6 +588,51 @@ app.controller('add_teacher',
             $scope.toEditTeachersIndexArray = [0];
         };
         init();
+
+    }]
+);
+app.controller('add_resource',
+    ['$scope', '$http', function ($scope, $http) {
+        var getFormData = function () {
+            var f = new FormData();
+            f.append('title', $scope.title);
+            f.append('artist', $scope.artist);
+            f.append('webmv', $scope.$root.files.webmv[0]);
+            f.append('ogv', $scope.$root.files.ogv[0]);
+            f.append('m4v', $scope.$root.files.m4v[0]);
+            f.append('poster', $scope.$root.files.poster[0]);
+            f.append('course', $scope.course);
+            return f;
+
+        };
+        var init = function () {
+            $scope.toEditTeachers = [
+                {
+                    title: null,
+                    artist: null,
+                    webmv: null,
+                    ogv: null,
+                    m4v: null,
+                    poster: null,
+                    course: null
+                }
+            ];
+            $scope.toEditTeachersIndexArray = [0];
+        };
+        init();
+        $scope.submit = function () {
+            $.ajax({
+                url: '/manage/resource',
+                type: "POST",
+                data: getFormData(),
+                processData: false,  // 告诉jQuery不要去处理发送的数据
+                contentType: false   // 告诉jQuery不要去设置Content-Type请求头
+            }).success(function (response) {
+                alert('success');
+                console.log(response);
+            });
+        };
+
 
     }]
 );

@@ -1,1 +1,96 @@
-<div>resource</div>
+<html ng-app="nebulafeAdmin">
+<%- include ./utils/common_head.ejs %>
+<body>
+<%- include ./utils/header.ejs %>
+<div class="container">
+    <div class="row">
+        <div class="center-block col-sm-20" ng-controller="add_resource">
+
+            <form class="form-horizontal col-sm-30">
+                <div class="row form-group">
+                    <label class="col-sm-5 col-sm-offset-2" for="">所属课程</label>
+
+                    <div class="col-sm-20">
+                        <select name="course" id="" ng-model="course" class="form-control">
+                            <%courses.forEach(function(val){%>
+                            <option value="<%-val.id%>"><%-val.name%></option>
+                            <%})%>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row form-group">
+                    <label class="col-sm-5 col-sm-offset-2" for="">教师姓名</label>
+
+                    <div class="col-sm-20">
+                        <input type="text" class="form-control" name="artist" ng-model="artist" placeholder="教师姓名"/>
+                    </div>
+
+                </div>
+                <div class="row form-group">
+                    <label class="col-sm-5 col-sm-offset-2" for="">资源名称</label>
+
+                    <div class="col-sm-20">
+                        <input type="text" class="form-control" name="title" ng-model="title" placeholder="教师姓名"/>
+                    </div>
+
+                </div>
+                <div class="row form-group">
+                    <label class="col-sm-5 col-sm-offset-2" for="">预览图</label>
+
+                    <div class="col-sm-10">
+                        <img ng-src="{{teacher.img}}" alt="暂时没有预览图"/>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-30">
+                        <uploader name="poster"></uploader>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-sm-5 col-sm-offset-2" for="">webmv格式资源</label>
+                    <div class="col-sm-23">
+                        <uploader name="webmv"></uploader>
+                    </div>
+
+                </div>
+                <div class="row form-group">
+                    <label class="col-sm-5 col-sm-offset-2" for="">ogv格式资源</label>
+                    <div class="col-sm-23">
+                        <uploader name="ogv"></uploader>
+                    </div>
+
+                </div>
+                <div class="row form-group">
+                    <label class="col-sm-5 col-sm-offset-2" for="">m4v格式资源</label>
+                    <div class="col-sm-23">
+                        <uploader name="m4v"></uploader>
+                    </div>
+
+                </div>
+
+                <div class="row form-group">
+                    <label class="col-sm-5 col-sm-offset-2" for="">介绍</label>
+
+                    <div class="col-sm-20">
+                        <textarea class="form-control" name="intro" ng-model="teacher.description"
+                                  placeholder="输入教师的介绍"></textarea>
+                    </div>
+                </div>
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}
+                </alert>
+                <div class="form-group">
+                    <button type="button" class="btn btn-info" ng-click="submit()"></button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+<%-include ./utils/templates.ejs%>
+
+</html>
+
