@@ -22,6 +22,7 @@ module.exports = Controller("Admin/BaseController", function() {
           })
           self.display()
         }else if(self.isPost()){
+          var data = self.post();
           var img = self.file('img');
           oss.put(img , {bucket:'n-teacher', key : 'cft/'}).then(function(res){
             if(res){

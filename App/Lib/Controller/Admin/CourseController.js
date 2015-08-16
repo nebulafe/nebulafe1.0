@@ -26,7 +26,7 @@ module.exports = Controller("Admin/BaseController", function() {
           var img = self.file('img');
           var material = self.file('material');
           if(material && material.originalFilename){
-            Promise.all([oss.put(material ,{bucket:'finance-english', key : ''}), oss.put(img , {bucket:'n-course', key : 'pic/'})]).then(function(datas){
+            Promise.all([oss.put(material ,{bucket:'finace-english', key : ''}), oss.put(img , {bucket:'n-course', key : 'pic/'})]).then(function(datas){
               Service.addCourse(extend(data,{img : img.originalFilename,material : 1 , url : datas[0].url})).then(function(content){
                 self.success(content)
               })

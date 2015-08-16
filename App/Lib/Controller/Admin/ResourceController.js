@@ -27,7 +27,7 @@ module.exports = Controller("Admin/BaseController", function() {
           var webmv = self.file('webmv');
           var m4v = self.file('m4v');
           var poster = self.file('poster');
-          Promise.all([oss.put(ogv , {bucket:'finance-english', key : ''}), oss.put(webmv , {bucket:'finance-english', key : ''}), oss.put(m4v ,{bucket:'finance-english', key : ''}),oss.put(poster, {bucket:'finance-english', key : 'poster/'})]).then(function(o_data, w_data, m_data ,p_data){
+          Promise.all([oss.put(ogv , {bucket:'finace-english', key : ''}), oss.put(webmv , {bucket:'finace-english', key : ''}), oss.put(m4v ,{bucket:'finace-english', key : ''}),oss.put(poster, {bucket:'finace-english', key : 'poster/'})]).then(function(o_data, w_data, m_data ,p_data){
             Service.addResource({
               title : data.title,
               artist : data.artist,
