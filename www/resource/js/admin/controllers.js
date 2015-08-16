@@ -8,15 +8,15 @@ angular.module('Manage', [])
             email: "",
             pwd: ""
         };
-        var checkForm = function(){
-            if($scope.userInfo.email.length<4 || $scope.userInfo.pwd.length < 4){
+        var checkForm = function () {
+            if ($scope.userInfo.email.length < 4 || $scope.userInfo.pwd.length < 4) {
                 return false;
             }
             return true;
         };
 
         $scope.login = function () {
-            if(checkForm()){
+            if (checkForm()) {
                 var req = $http({
                     method: 'POST',
                     url: '/login',
@@ -24,7 +24,7 @@ angular.module('Manage', [])
 
                 });
                 req.success(function () {
-                    setTimeout(function(){
+                    setTimeout(function () {
                         location.href = "/manage";
                     }, 500)
                 });
@@ -222,7 +222,9 @@ app.directive('uploader', function () {
         scope: {
             uploadURL: "@url",
             ismultiple: "@multi",
-            toUpload: '=toUpload'
+            toUpload: '=toUpload',
+            isSync: "@isSync",
+            formName: "@name"
         },
         templateUrl: 'templates/admin/uploader.html',
         link: function ($scope, $element) {
@@ -233,14 +235,27 @@ app.directive('uploader', function () {
 
         },
         controller: function ($scope, $element, $http, $location) {
-            $scope.info = "尚未上传文件";
-            $scope.uploadFile = null;
-            $scope.filesInfo = [];
+            function init() {
+                $scope.info = "尚未上传文件";
+                $scope.uploadFile = null;
+                $scope.filesInfo = [];
 
 
-            if ($scope.ismultiple != "") {
-                $element.find("input[type='file']").eq(0).attr("multiple", "");
+                if ($scope.ismultiple != "") {
+                    $element.find("input[type='file']").eq(0).attr("multiple", "");
+                }
+                if ($scope.isSync == 'true') {
+                    $scope.isSync = true;
+                } else {
+                    $scope.isSync = false;
+                }
+                if ($scope.formName == null || $scope.formName.trim() == '') {
+                    $scope.formName = 'files';
+                }
             }
+
+            init();
+
 
             var sendData = function () {
                 var files = new FormData();
@@ -261,9 +276,33 @@ app.directive('uploader', function () {
                     //if (res.url) {
                     //    $scope.url = res.url;
                     //}
-                    $scope.$parent.toUpload.push("http://abc.xyz");
+                    //$scope.$parent.toUpload.push("http://abc.xyz");
+                    $scope.sendToParentScope();
                 });
             };
+
+            $scope.sendToParentScope = function () {
+                if($scope.$parent.filesInfo){
+
+                }else{
+                    $scope.$parent.filesInfo = {};
+                }
+                $scope.$parent.filesInfo[$scope.formName]= $scope.filesInfo;
+
+
+                $scope.$parent.files = {};
+
+                for (var i in $scope.$parent.filesInfo) {
+                    $scope.$parent.files[i] =  [];
+                    for (var j in $scope.$parent.filesInfo[i]){
+                        $scope.$parent.files[i].push($scope.$parent.filesInfo[i][j].obj);
+                    }
+                }
+
+
+                console.log($scope.$parent);
+            };
+
             $scope.getFileInfo = function () {
                 function loadUpdatedFile(index) {
                     var reader = new FileReader();
@@ -285,7 +324,7 @@ app.directive('uploader', function () {
                         "name": f_obj.name,
                         "size": f_obj.size / 1000 + 'Kb',
                         "type": f_obj.type,
-                        "formData_name": 'file_' + i,
+                        "formData_name": 'file_' + new Date().getTime(),
                         obj: f_obj
                     };
 
@@ -294,13 +333,18 @@ app.directive('uploader', function () {
 
                 }
 
-                console.log($scope.filesInfo);
-                sendData();
+                if ($scope.isSync) {
+                    sendData();
+                } else {
+                    $scope.sendToParentScope();
+                }
+
             };
 
         }
     }
-});
+})
+;
 
 app.directive('teacherInfo', function factory() {
     var directiveDefinitionObject = {
@@ -409,4 +453,64 @@ app.directive('teacherEdit', function () {
 
         }
     }
+});
+
+app.directive('partnerEdit', function factory() {
+    var directiveDefinitionObject = {
+        restrict: 'AE',
+        transclude: true,
+        templateUrl: 'templates/admin/partner/edit.html',
+        scope: {
+            mode: "@mode",
+            partner_id: "@_id"
+        },
+
+        compile: function compile(tElement, tAttrs, transclude) {
+
+            return function (scope, element, attrs) {
+            }
+        }
+
+        ,
+        link: function ($scope, $http, $element) {
+
+        }
+        ,
+        controller: function ($scope, $http, $element) {
+            function init() {
+                if ($scope.mode == 'edit') {
+
+                } else {
+                    $scope.name = '';
+                    $scope.banner = null;
+                    $scope.logo = null;
+                    $scope.introduction = '这个机构还没有简介';
+                }
+                console.log($scope);
+            }
+
+            $scope.submit = function () {
+                var res = new FormData();
+                res.append('name', $scope.name);
+                res.append('name', $scope.introduction);
+                res.append('logo', $scope.files.logo[0]);
+                res.append('banner', $scope.files.banner[0]);
+                $.ajax({
+                    url: '/manage/partner',
+                    type: "POST",
+                    data: res,
+                    processData: false,  // 告诉jQuery不要去处理发送的数据
+                    contentType: false   // 告诉jQuery不要去设置Content-Type请求头
+                }).success(function (response) {
+                    alert('!');
+                    console.log(response);
+                });
+            };
+
+            init();
+
+
+        }
+    };
+    return directiveDefinitionObject;
 });

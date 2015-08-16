@@ -62,11 +62,60 @@
         <a class="item" href="/manage/course/">
             <span>课程发布</span>
         </a>
+        <a class="item" href="/manage/partner/">
+            <span>添加机构</span>
+        </a>
     </nav>
 </script>
 
-<script type="text/ng-template" id="templates/admin/course/">
+<!--编辑机构-->
+<script type="text/ng-template" id="templates/admin/partner/edit.html">
+    <form class="form-horizontal col-sm-30">
+        <div class="row form-group">
+            <label class="col-sm-5 col-sm-offset-2" for="">机构名称</label>
+            <div class="col-sm-20">
+                <input type="text" class="form-control" name="name" ng-model="name" placeholder="机构名"/>
+            </div>
+        </div>
+        <div class="row form-group" ng-if="mode!='new'">
+            <label class="col-sm-5 col-sm-offset-2" for="">机构banner图片</label>
 
+            <div class="col-sm-20">
+                <img ng-src="{{logo}}" alt=""/>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-5 col-sm-offset-2" for="">上传banner图片</label>
+            <div class="col-sm-23">
+                <uploader url="/manage/partner" multi="" name="banner"></uploader>
+            </div>
+        </div>
+
+        <div class="row form-group" ng-if="mode!='new'">
+            <label class="col-sm-5 col-sm-offset-2" for="">机构logo</label>
+
+            <div class="col-sm-20">
+                <img ng-src="{{logo}}" alt=""/>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-5 col-sm-offset-2" for="">上传logo</label>
+            <div class="col-sm-23">
+                <uploader url="/manage/partner" multi="" name="logo"></uploader>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-5 col-sm-offset-2" for="">机构简介</label>
+
+            <div class="col-sm-20">
+                <textarea type="text" class="form-control" name="introduction" ng-model="introduction" >
+                </textarea>
+            </div>
+        </div>
+        <div class="row center-block">
+            <button type="button" class="btn btn-info" ng-click="submit()">提交</button>
+        </div>
+    </form>
 </script>
 
 
@@ -80,8 +129,9 @@
 
             <div class="row form-group">
                 <label class="col-sm-5 col-sm-offset-1" for="">所属机构</label>
+
                 <div class="col-sm-24">
-                    <select name="partner" id="select" ></select>
+                    <select name="partner" id="select"></select>
                 </div>
             </div>
             <div class="row form-group">
@@ -144,7 +194,8 @@
         </div>
     </div>
     <div>
-        <teacher-edit  ng-repeat="toEdit in toEditTeachers" mode="{{toEdit.mode}}" _id="{{toEdit._id}}" index="{{$index}}"></teacher-edit>
+        <teacher-edit ng-repeat="toEdit in toEditTeachers" mode="{{toEdit.mode}}" _id="{{toEdit._id}}"
+                      index="{{$index}}"></teacher-edit>
     </div>
 </script>
 
@@ -162,13 +213,14 @@
             </div>
             <div class="row form-group">
                 <label class="col-sm-5 col-sm-offset-2" for="">头像</label>
+
                 <div class="col-sm-10">
                     <img ng-src="{{teacher.avator}}" alt="暂时没有头像"/>
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col-sm-30">
-                    <uploader ng-if="course.poster == null" url="/teacher/pics/" ></uploader>
+                    <uploader ng-if="course.poster == null" url="/teacher/pics/"></uploader>
                 </div>
             </div>
             <div class="row form-group">
@@ -187,11 +239,12 @@
     </div>
 </script>
 
-<script type="text/ng-template" id="templates/admin/partner/edit.html">
+<script type="text/ng-template" id="templates/admin/teacher/edit.html">
     <div class="teacher-edit">
         <form class="form-horizontal col-sm-30">
             <div class="row form-group">
                 <label class="col-sm-5 col-sm-offset-2" for="">教师姓名</label>
+
                 <div class="col-sm-20">
                     <input type="text" class="form-control" name="name" ng-model="teacher.name" placeholder="教师姓名"/>
                 </div>
@@ -199,13 +252,14 @@
             </div>
             <div class="row form-group">
                 <label class="col-sm-5 col-sm-offset-2" for="">头像</label>
+
                 <div class="col-sm-10">
                     <img ng-src="{{teacher.avator}}" alt="暂时没有头像"/>
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col-sm-30">
-                    <uploader ng-if="course.poster == null" url="/teacher/pics/" ></uploader>
+                    <uploader ng-if="course.poster == null" url="/teacher/pics/" name="poster"></uploader>
                 </div>
             </div>
             <div class="row form-group">
