@@ -282,25 +282,24 @@ app.directive('uploader', function () {
             };
 
             $scope.sendToParentScope = function () {
-                if($scope.$parent.filesInfo){
+                if ($scope.$root.filesInfo) {
 
-                }else{
-                    $scope.$parent.filesInfo = {};
+                } else {
+                    $scope.$root.filesInfo = {};
                 }
-                $scope.$parent.filesInfo[$scope.formName]= $scope.filesInfo;
+                $scope.$root.filesInfo[$scope.formName] = $scope.filesInfo;
 
 
-                $scope.$parent.files = {};
+                $scope.$root.files = {};
 
-                for (var i in $scope.$parent.filesInfo) {
-                    $scope.$parent.files[i] =  [];
-                    for (var j in $scope.$parent.filesInfo[i]){
-                        $scope.$parent.files[i].push($scope.$parent.filesInfo[i][j].obj);
+                for (var i in $scope.$root.filesInfo) {
+                    $scope.$root.files[i] = [];
+                    for (var j in $scope.$root.filesInfo[i]) {
+                        $scope.$root.files[i].push($scope.$root.filesInfo[i][j].obj);
                     }
                 }
 
-
-                console.log($scope.$parent);
+                console.log($scope.$root);
             };
 
             $scope.getFileInfo = function () {
@@ -436,12 +435,17 @@ app.directive('teacherEdit', function () {
         controller: function ($scope, $http, $location) {
 
             $scope.save = function () {
-                var req = $http({
-                    method: 'POST',
-                    url: '/teachers/edit',
-                    data: $scope.teacherInfo
+                console.log($scope);
+                $.ajax({
+                    url: '/manage/teacher',
+                    type: "POST",
+                    data: getFormData(),
+                    processData: false,  // 告诉jQuery不要去处理发送的数据
+                    contentType: false   // 告诉jQuery不要去设置Content-Type请求头
+                }).success(function (response) {
+                    alert('!');
+                    console.log(response);
                 });
-                $scope.$parent.teachers.push($scope.teacherInfo);
 
             };
             $scope.exit = function () {
@@ -449,7 +453,15 @@ app.directive('teacherEdit', function () {
                 $scope.$parent.toEditTeachersIndexArray.splice(parseInt($scope.index), 1);
             };
 
-            console.log($scope);
+            function getFormData(){
+
+                var res = new FormData();
+                for(var i in $scope.teacher){
+                    res.append(i,$scope.teacher[i]);
+                }
+                res.append('img',$scope.$root.files.img);
+                return res;
+            }
 
         }
     }
@@ -492,9 +504,9 @@ app.directive('partnerEdit', function factory() {
             $scope.submit = function () {
                 var res = new FormData();
                 res.append('name', $scope.name);
-                res.append('name', $scope.introduction);
-                res.append('logo', $scope.files.logo[0]);
-                res.append('banner', $scope.files.banner[0]);
+                res.append('introduction', $scope.introduction);
+                res.append('logo', $scope.$root.files.logo[0]);
+                res.append('banner', $scope.$root.files.banner[0]);
                 $.ajax({
                     url: '/manage/partner',
                     type: "POST",
@@ -514,3 +526,23 @@ app.directive('partnerEdit', function factory() {
     };
     return directiveDefinitionObject;
 });
+
+app.controller('add_teacher',
+    ['$scope', function ($scope) {
+
+        var init = function () {
+            $scope.toEditTeachers = [
+                {
+                    img: null,
+                    name: '',
+                    career: '',
+                    description: '',
+                    course: null
+                }
+            ];
+            $scope.toEditTeachersIndexArray = [0];
+        };
+        init();
+
+    }]
+);

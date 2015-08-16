@@ -1,1 +1,18 @@
-<div>teacher</div>
+<html ng-app="nebulafeAdmin">
+<%- include ./utils/common_head.ejs %>
+<body>
+<%- include ./utils/header.ejs %>
+<div class="container">
+    <div class="row">
+        <div class="center-block col-sm-20" ng-controller="add_teacher">
+            <teacher-edit ng-repeat="toEdit in toEditTeachers" mode="new"
+                          index="{{$index}}"></teacher-edit>
+        </div>
+
+    </div>
+
+</div>
+</body>
+<%-include ./utils/templates.ejs%>
+</html>
+
