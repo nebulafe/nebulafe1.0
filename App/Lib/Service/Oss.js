@@ -26,7 +26,7 @@ var oss = new ALY.OSS({
 function put (file , cfg) {
   var deferred = getDefer();
   var cfg = cfg || {};
-  var key = cfg.prefix || 'cft/';
+  var key = cfg.key || '';
   var bucket = cfg.bucket || 'n-teacher';
   var filename = file.originalFilename;
 
