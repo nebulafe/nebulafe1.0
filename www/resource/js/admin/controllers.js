@@ -472,7 +472,7 @@ app.directive('teacherEdit', function () {
                     img: null,
                     career: null,
                     description: null,
-                    course: $scope.course
+                    course: null,
                 };
             }
         },
@@ -501,9 +501,11 @@ app.directive('teacherEdit', function () {
 
                 var res = new FormData();
                 for (var i in $scope.teacher) {
-                    res.append(i, $scope.teacher[i]);
+                    if(i!='img'){
+                        res.append(i, $scope.teacher[i]);
+                    }
                 }
-                res.append('img', $scope.$root.files.img);
+                res.append('img', $scope.$root.files.img[0]);
                 return res;
             }
 

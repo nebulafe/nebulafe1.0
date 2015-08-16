@@ -14,5 +14,62 @@
 </div>
 </body>
 <%-include ./utils/templates.ejs%>
+<script type="text/ng-template" id="templates/admin/teacher/edit.html">
+    <div class="teacher-edit">
+        <form class="form-horizontal col-sm-30">
+            <div class="row form-group">
+                <label class="col-sm-5 col-sm-offset-2" for="">相关课程</label>
+
+                <div class="col-sm-20">
+                    <select name="course_id" id="" ng-model="teacher.course" class="form-control">
+                        <%courses.forEach(function(val){%>
+                            <option value="<%-val.id%>"><%-val.name%></option>
+                        <%})%>
+                    </select>
+                </div>
+
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-5 col-sm-offset-2" for="">教师姓名</label>
+
+                <div class="col-sm-20">
+                    <input type="text" class="form-control" name="name" ng-model="teacher.name" placeholder="教师姓名"/>
+                </div>
+
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-5 col-sm-offset-2" for="">头像</label>
+
+                <div class="col-sm-10">
+                    <img ng-src="{{teacher.img}}" alt="暂时没有头像"/>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-30">
+                    <uploader ng-if="course.poster == null" url="/manage/teacher" name="img"></uploader>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-5 col-sm-offset-2" for="">教师职称</label>
+
+                <div class="col-sm-20">
+                    <input type="text" class="form-control" name="name" ng-model="teacher.career" placeholder="教师职称"/>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-5 col-sm-offset-2" for="">介绍</label>
+
+                <div class="col-sm-20">
+                    <textarea class="form-control" name="intro" ng-model="teacher.description" placeholder="输入教师的介绍"></textarea>
+                </div>
+            </div>
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+            <div class="form-group">
+                <button type="button" class="btn btn-info" ng-click="save()">保存</button>
+                <button type="button" class="btn btn-info" ng-click="exit()">放弃编辑</button>
+            </div>
+        </form>
+    </div>
+</script>
 </html>
 
