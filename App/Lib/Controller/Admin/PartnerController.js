@@ -15,6 +15,10 @@ module.exports = Controller("Admin/BaseController", function() {
       var self = this;
       if(self.userInfo && self.userInfo.isAdmin == 1){
         if(self.isGet()){
+          // for(var i =2 ; i <=7; i++){
+          //   Service.deletePartnerById({id : i});
+          // }
+
           self.assign({
             title : "管理后台-机构管理"
           })

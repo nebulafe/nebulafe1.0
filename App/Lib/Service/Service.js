@@ -92,7 +92,7 @@ var Service = Class(function(){
     },
 
     deletePartnerById : function(data){
-      return getRequst('partner/delete', data);
+      return getRequst('partner/__testdelete', data);
     },
 
     /*Teaacher API*/
