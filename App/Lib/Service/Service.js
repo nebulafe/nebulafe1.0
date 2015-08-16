@@ -91,9 +91,9 @@ var Service = Class(function(){
       return getRequst('partner/create' , data);
     },
 
-    // deletePartners : function(){
-    //   return
-    // }
+    deletePartnerById : function(data){
+      return getRequst('partner/delete', data);
+    },
 
     /*Teaacher API*/
 
