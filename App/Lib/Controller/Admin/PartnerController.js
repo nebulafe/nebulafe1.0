@@ -24,7 +24,7 @@ module.exports = Controller("Admin/BaseController", function() {
           var banner = self.file('banner');
           var logo = self.file('logo');
 
-          Promise.all([oss.put(banner ,{bucket:'n-partner', key : 'banner/'}),oss.put(logo , {bucket:'n-partner', key : 'logo/'})]).then(function(datas){
+          Promise.all([oss.put(banner ,{bucket:'n-partner', key : 'banner/'}),oss.put(logo , {bucket:'n-partner', key : 'logo_120/'})]).then(function(datas){
             Service.addPartner({
               'banner' : banner.originalFilename,
               'logo' : logo.originalFilename,
