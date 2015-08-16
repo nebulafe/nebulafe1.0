@@ -91,6 +91,10 @@ var Service = Class(function(){
       return getRequst('partner/create' , data);
     },
 
+    // deletePartners : function(){
+    //   return
+    // }
+
     /*Teaacher API*/
 
     getALlTeachers : function(data){

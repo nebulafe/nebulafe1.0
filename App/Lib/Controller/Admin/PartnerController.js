@@ -22,12 +22,12 @@ module.exports = Controller("Admin/BaseController", function() {
         }else if(self.isPost()){
           var data = self.post();
           var banner = self.file('banner');
-          var logo = self.file('logo');
+          var logo = self.file('img');
 
           Promise.all([oss.put(banner ,{bucket:'n-partner', key : 'banner/'}),oss.put(logo , {bucket:'n-partner', key : 'logo_120/'})]).then(function(datas){
             Service.addPartner({
               'banner' : banner.originalFilename,
-              'logo' : logo.originalFilename,
+              'img' : logo.originalFilename,
               'name' : data.name,
               'introduction' : data.introduction
             }).then(function(content){
