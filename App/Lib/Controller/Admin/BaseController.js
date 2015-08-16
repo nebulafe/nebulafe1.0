@@ -15,8 +15,14 @@ module.exports = Controller(function() {
 
       if (self.http.action != "login") {
         return self.session("userInfo").then(function(value){
+
+          if (isEmpty(value)) {
+            if (self.isAjax()) {
+              return self.error(403);
+            }
+          }
           self.userInfo = value;
-          self.assign('userInfo',value)
+          self.assign('userInfo',value);
         })
       };
     }

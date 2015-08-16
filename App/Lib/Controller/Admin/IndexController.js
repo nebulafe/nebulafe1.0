@@ -4,7 +4,12 @@
  */
 module.exports = Controller("Admin/BaseController", function() {
   "use strict";
+
+
   var Service = require("../../Service/Service");
+  var oss = require("../../Service/Oss");
+
+
   return {
     loginAction: function() {
       var self = this;
@@ -58,22 +63,41 @@ module.exports = Controller("Admin/BaseController", function() {
 
     manageAction : function(){
       var self = this;
-      if(self.isGet()){
-        self.session('userInfo').then(function(content){
-          if(content && content.isAdmin == 1){
-            self.assign({
-              title : "管理后台-课程管理"
-            })
-            return self.display()
-          }else{
-            return self.redirect('/login');
-          }
-        }).catch(function(err){
-          if(err){
-            return self.redirect('/login')
-          }
-        })
+      if(self.userInfo && self.userInfo.isAdmin == 1){
+        if(self.isGet()){
+          self.assign({
+            title : "管理后台-课程管理"
+          })
+          return self.display()
+        }else if(self.isPost()){
+          var file = self.file('file');
+          var img = self.file('img');
+          getPromise([oss.put(file),oss.put(img)]).then(function(data){
+            self.success(data)
+          }).catch(function(err){
+            self.error(err)
+          })
+          // oss.put(file).then(function(data){
+          //   self.success(data)
+          // }).catch(function(err){
+          //   self.error(err)
+          // })
+        }
+      }else{
+        self.redirect("/")
       }
+    },
+
+    addcourseAction : function(){
+
+    },
+
+    addteacherAction : function(){
+
+    },
+
+    addpartnerAction : function(){
+
     }
   };
 });
