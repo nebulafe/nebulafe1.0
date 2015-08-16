@@ -46,7 +46,7 @@ function put (file , cfg) {
         ContentEncoding: 'utf-8',
         ServerSideEncryption: 'AES256',
         Expires: new Date('2016-12-31')
-      }),
+      },
       function (err, data) {
         if (err) {
           deferred.reject(err)
