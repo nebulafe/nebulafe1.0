@@ -23,7 +23,7 @@ module.exports = Controller("Admin/BaseController", function() {
           var data = self.post();
           var banner = self.file('banner');
           var logo = self.file('logo');
-          getPromise([oss.put(banner ,{bucket:'n-partner', key : 'banner/'}),oss.put(logo , {bucket:'n-partner', key : 'logo/'})]).then(function(b_data,l_data){
+          Promise.all([oss.put(banner ,{bucket:'n-partner', key : 'banner/'}),oss.put(logo , {bucket:'n-partner', key : 'logo/'})]).then(function(b_data,l_data){
             Service.addPatner({
               'banner' : banner.originalFilename,
               'logo' : logo.originalFilename,
