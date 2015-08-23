@@ -17,5 +17,6 @@ module.exports = [
   ["user/mycourse/:id", "user/mycourse"],
   ["course/view/:id", "course/view"],
   ["course/video/:id/:v_id", "course/video"],
-  ["partner/view/:id", "partner/view"]
+  ["partner/view/:id", "partner/view"],
+  ["user/message/:id", "user/message"]
 ]

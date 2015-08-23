@@ -1,0 +1,161 @@
+@import "../common";
+.message-container{
+  width: 100%;
+  height: 550px;
+  background-image: url(/resource/img/bgcollection02.jpg);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+
+  $message-page-parts-widths: 80px 300px (1170px - 380px);
+  %extend_message_float{
+    display: block;
+    float: left;
+    height: inherit;
+    box-sizing: border-box;
+  }
+  .left-part{
+    @extend %extend_message_float;
+    background-color: #333;
+    width: nth($message-page-parts-widths,1);
+    .menu-item{
+      width: inherit;
+      height: 70px;
+      line-height: 70px;
+      text-align: center;
+      .iconfont{
+        display: block;
+        height: 100%;
+        width: 100%;
+        color: #909a9c;
+        font-size: 24px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      &.active,
+      &:hover{
+        background-color: #555;
+      }
+    }
+  }
+  .middle-users {
+    @extend %extend_message_float;
+    background-color: rgba(255,255,255,.6);
+    width: nth($message-page-parts-widths,2);
+    overflow: auto;
+    @include user-select(none);
+    .user-abs{
+      width: 100%;
+      height: 70px;
+      background-color: rgba(255,255,255,.3);
+      .left-content{
+        float: left;
+        position: relative;
+        height: inherit;
+        line-height: inherit;
+        padding: 10px;
+        box-sizing: border-box;
+        width: 70px;
+      }
+      .right-content{
+        float: left;
+        position: relative;
+        height: inherit;
+        width:  nth($message-page-parts-widths,2) - 70px;
+
+        .txt{
+          display: block;
+          position: relative;
+          width: 100%;
+          height: 70px * 0.5;
+          &.user-name {
+            height: 30px;
+            line-height: 50px;
+            font-size: 13px;
+            cursor: pointer;
+          }
+          &.latest-message-abs {
+            width: inherit;
+            height: 30px;
+            line-height: 30px;
+            font-size: 13px;
+            color: #555;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+  .right-detail{
+    @extend %extend_message_float;
+    background-color: rgba(255,255,255,.55);
+    width: nth($message-page-parts-widths,3);
+    overflow: auto;
+
+
+    .message{
+      position: relative;
+      overflow: hidden;
+      padding: 20px;
+
+      .time{
+        display: block;
+        position: relative;
+        font-size: 13px;
+
+        word-spacing: 1em;
+        width: 100%;
+        text-align: center;
+        color: #333;
+        margin-bottom: 10px;
+        &::before{
+          font-family: consolas;
+          content: "———————————————— ";
+          color: #666;
+        }
+        &::after{
+          font-family: consolas;
+        content: " ————————————————";
+          color: #666;
+        }
+      }
+      .left-content{
+        float: left;
+        width: 70px;
+      }
+      .right-content{
+        float: left;
+        margin-left: 10px;
+        margin-top: 5px;
+        position: relative;
+        width: 450px;
+        color: $font-color;
+        box-sizing: border-box;
+        padding: 10px 15px;
+        font-size: 13px;
+        line-height: 1.7;
+        //background-color: rgba(255,255,255,.4);
+        background-color: #FEFFFF;
+        text-align: justify;
+        box-shadow: 3px 2px 7px rgba(0,0,0,.2);
+        .link{
+          color: $linkColor;
+        }
+        &::before{
+          content: "";
+          display: block;
+          position: absolute;
+          left: -10px;
+          top:15px;
+          border-bottom: 8px solid transparent;
+          border-top: 8px solid transparent;
+          border-right: 10px solid #FEFFFF;
+
+          //opacity: 0.4;
+        }
+      }
+    }
+  }
+}

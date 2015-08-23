@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include ../meta.html %>
+    <link rel="stylesheet" href="/resource/css/user-message.css"/>
+
+</head>
+<body>
+<%- include ../header.html %>
+<div class="container">
+    <div class="message-container">
+        <div class="left-part">
+            <div class="menu-item active">
+                <a class="iconfont">&#xe60a;</a>
+            </div>
+            <div class="menu-item">
+                <a class="iconfont">&#xe60d;</a>
+            </div>
+        </div>
+        <div class="middle-users">
+            <section class="user-abs">
+                <div class="left-content">
+                    <div class="user-head-icon user-head-<%=userInfo.avator||1%>"></div>
+                </div>
+
+                <div class="right-content">
+                    <a class="txt user-name"><%=userInfo.nickname%></a>
+                    <div class="txt latest-message-abs">这是这个账号给你发送的最后一条消息</div>
+
+                </div>
+            </section>
+        </div>
+        <div class="right-detail">
+            <section class="message">
+                <time class="time">2015年6月28日 13:00</time>
+                <div class="left-content">
+                    <div class="user-head-icon user-head-<%=userInfo.avator||1%>"></div>
+                </div>
+
+                <div class="right-content">
+                    <div class="txt latest-message-abs">这是这个账号给
+                        你发送的最后一条消息这是这个账号给你发送的最后一条消
+                        息这是这个账号给你发送的最后一条消息
+                        <a class="link" href="">猛戳链接查看相关内容</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<%- include ../footer.html %>
+<script>seajs.use('js/user/set');</script>
+</body>
+</html>

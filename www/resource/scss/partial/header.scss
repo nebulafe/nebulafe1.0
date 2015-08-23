@@ -87,6 +87,7 @@ $black: #000;
 
       a{
         display: inline-block;
+        position: relative;
         vertical-align: top;
         padding: 0 10px;
         width: auto;
@@ -101,7 +102,32 @@ $black: #000;
           color: #fff;
           background-color: rgba(255, 255, 255, .19);
         }
+        &.message{
+          font-size: 30px;
+          &:hover{
+            text-decoration: none;
+          }
+          &::after{
+            content: attr(data-msg);
+            display: block;
+            position: absolute;
+            top: 10px;
+            right: 5px;
+            width: 24px;
+            height: 24px;
+            box-sizing: border-box;
+            padding: 0 3px;
+            line-height: 24px;
+            border-radius: 13px;
+            font-size: 12px;
+            overflow: hidden;
+            text-align: center;
+            background-color: $color_guardsman_red_approx;
+            color: #fff;
+          }
+        }
       }
+
     }
   }
 }

@@ -463,6 +463,26 @@ module.exports = Controller("Home/BaseController", function(){
           self.error("系统异常，请稍后再试！");
         })
       }
+    },
+
+    messageAction : function(){
+      var self = this;
+      if(self.isGet()){
+        var user_id = self.get('id');
+        if(!user_id){
+          return self.redirect("/");
+        }
+        var value = self.userInfo;
+        Service.getUserById({id:user_id}).then(function(content){
+          self.assign({
+            title : "查看用户",
+            section : 'user',
+            link:'see',
+            userInfo : content[0]
+          })
+          return self.display()
+        }).catch(function(err){})
+      }
     }
 
 
