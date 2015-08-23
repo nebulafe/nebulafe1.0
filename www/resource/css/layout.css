@@ -320,6 +320,7 @@ img.a-logo{
 }
 .p-preview .p-logo, .p-preview .p-summary{
   display: inline-block;
+  vertical-align: top;
 }
 .p-preview .p-logo{
   position: relative;
@@ -328,6 +329,7 @@ img.a-logo{
 .p-preview .p-summary{
   margin-left: 200px;
   padding-top: 33px;
+  min-height: 155px;
 }
 .p-preview .p-logo img{
   position: absolute;

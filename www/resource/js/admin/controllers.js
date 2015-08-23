@@ -70,7 +70,7 @@ app.controller('UserRegisterCtrl',
 
             });
             req.success(function () {
-                alert("!");
+                ALERT('提交成功');
             });
         }
 
@@ -102,7 +102,7 @@ app.directive('login', function () {
                 email: "123",
                 pwd: ""
             };
-            $scope.alerts = [];
+            $scope.ALERTs = [];
             $scope.submitLogin = function () {
                 var req = $http({
                     method: 'POST',
@@ -112,20 +112,20 @@ app.directive('login', function () {
                 });
                 req.success(function (res) {
                     if (res.code == 1) {
-                        $scope.addAlert('success', '登录成功');
+                        $scope.addALERT('success', '登录成功');
                     } else {
-                        $scope.addAlert('warning', res.msg);
+                        $scope.addALERT('warning', res.msg);
                     }
                 });
             };
-            $scope.addAlert = function (type, msg) {
-                $scope.alerts.push({type: type, msg: msg});
+            $scope.addALERT = function (type, msg) {
+                $scope.ALERTs.push({type: type, msg: msg});
                 setTimeout(function () {
-                    $scope.closeAlert(0);
+                    $scope.closeALERT(0);
                 }, 3000);
             };
-            $scope.closeAlert = function (index) {
-                $scope.alerts.splice(index, 1);
+            $scope.closeALERT = function (index) {
+                $scope.ALERTs.splice(index, 1);
             }
         }
     }
@@ -144,7 +144,7 @@ app.directive('register', function () {
                 username: "",
                 pwd: ""
             };
-            $scope.alerts = [];
+            $scope.ALERTs = [];
             $scope.submitRegister = function () {
                 var req = $http({
                     method: 'POST',
@@ -154,9 +154,9 @@ app.directive('register', function () {
                 });
                 req.success(function (res) {
                     if (res.code == 1) {
-                        $scope.addAlert('success', '登录成功');
+                        $scope.addALERT('success', '登录成功');
                     } else {
-                        $scope.addAlert('warning', res.msg);
+                        $scope.addALERT('warning', res.msg);
                     }
                 });
             };
@@ -165,14 +165,14 @@ app.directive('register', function () {
                 var $html = $compile(login)($scope);
                 $('register').append($html);
             };
-            $scope.addAlert = function (type, msg) {
-                $scope.alerts.push({type: type, msg: msg});
+            $scope.addALERT = function (type, msg) {
+                $scope.ALERTs.push({type: type, msg: msg});
                 setTimeout(function () {
-                    $scope.closeAlert(0);
+                    $scope.closeALERT(0);
                 }, 3000);
             };
-            $scope.closeAlert = function (index) {
-                $scope.alerts.splice(index, 1);
+            $scope.closeALERT = function (index) {
+                $scope.ALERTs.splice(index, 1);
             }
         }
     }
@@ -242,7 +242,7 @@ app.directive('courseEdit', function () {
                     processData: false,  // 告诉jQuery不要去处理发送的数据
                     contentType: false   // 告诉jQuery不要去设置Content-Type请求头
                 }).success(function () {
-                    alert("上传成功");
+                    ALERT('提交成功');
                 });
             };
             //$scope.
@@ -308,7 +308,7 @@ app.directive('uploader', function () {
                     processData: false,  // 告诉jQuery不要去处理发送的数据
                     contentType: false   // 告诉jQuery不要去设置Content-Type请求头
                 }).success(function () {
-                    alert("!");
+                    ALERT('提交成功');
                     $scope.sendToParentScope();
                 });
             };
@@ -486,7 +486,7 @@ app.directive('teacherEdit', function () {
                     processData: false,  // 告诉jQuery不要去处理发送的数据
                     contentType: false   // 告诉jQuery不要去设置Content-Type请求头
                 }).success(function (response) {
-                    alert('!');
+                    ALERT('提交成功');
                     console.log(response);
                 });
 
@@ -561,7 +561,7 @@ app.directive('partnerEdit', function factory() {
                     processData: false,  // 告诉jQuery不要去处理发送的数据
                     contentType: false   // 告诉jQuery不要去设置Content-Type请求头
                 }).success(function (response) {
-                    alert('!');
+                    ALERT('提交成功');
                     console.log(response);
                 });
             };
@@ -630,11 +630,10 @@ app.controller('add_resource',
                 processData: false,  // 告诉jQuery不要去处理发送的数据
                 contentType: false   // 告诉jQuery不要去设置Content-Type请求头
             }).success(function (response) {
-                alert('success');
+                ALERT('提交成功');
                 console.log(response);
             });
         };
-
 
     }]
 );
