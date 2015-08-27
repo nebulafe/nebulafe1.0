@@ -38,14 +38,15 @@ module.exports = Controller("Admin/BaseController", function() {
             p_arr.push(oss.put(m4v ,{bucket:'finace-english', key : ''}))
           }
           p_arr.push(oss.put(poster, {bucket:'finace-english', key : 'poster/'}));
-          Promise.all(p_arr).then(function(o_data, w_data, m_data ,p_data){
+          Promise.all(p_arr).then(function(datas){
             Service.addResource({
               title : data.title,
               artist : data.artist,
-              m4v : m_data.url,
-              ogv : o_data.url,
-              webmv : w_data.url,
-              poster : p_data.url
+              m4v : datas[2].url,
+              ogv : datas[0].url,
+              webmv : datas[1].url,
+              poster : datas[3].url,
+              course : data.course - 0
             }).then(function(content){
               self.success(content)
             })

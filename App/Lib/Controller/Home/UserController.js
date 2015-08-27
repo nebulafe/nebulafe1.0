@@ -475,7 +475,7 @@ module.exports = Controller("Home/BaseController", function(){
         var value = self.userInfo;
         Service.getUserById({id:user_id}).then(function(content){
           self.assign({
-            title : "查看用户",
+            title : "查看消息",
             section : 'user',
             link:'see',
             userInfo : content[0]

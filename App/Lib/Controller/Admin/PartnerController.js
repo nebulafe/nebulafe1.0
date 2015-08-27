@@ -27,11 +27,13 @@ module.exports = Controller("Admin/BaseController", function() {
           var data = self.post();
           var banner = self.file('banner');
           var logo = self.file('img');
+          var long_logo = self.file('long_img');
 
-          Promise.all([oss.put(banner ,{bucket:'n-partner', key : 'banner/'}),oss.put(logo , {bucket:'n-partner', key : 'logo_120/'})]).then(function(datas){
+          Promise.all([oss.put(banner ,{bucket:'n-partner', key : 'banner/'}),oss.put(logo , {bucket:'n-partner', key : 'logo_120/'}), oss.put(long_logo , {bucket:'n-partner', key : 'logo_long/'})]).then(function(datas){
             Service.addPartner({
               'banner' : banner.originalFilename,
               'img' : logo.originalFilename,
+              'long_img' : long_logo.originalFilename,
               'name' : data.name,
               'introduction' : data.introduction
             }).then(function(content){

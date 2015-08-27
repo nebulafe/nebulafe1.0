@@ -75,7 +75,7 @@ var Service = Class(function(){
     },
 
     addResource : function(data){
-      return getRequest('resource/create' , data);
+      return getRequst('resource/create' , data);
     },
 
     /*Partner API*/
