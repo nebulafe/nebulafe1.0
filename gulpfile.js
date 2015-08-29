@@ -3,7 +3,8 @@ var gulp = require('gulp'),
 	pngquant = require('imagemin-pngquant'),
 	sass = require('gulp-sass'),
 	livereload = require('gulp-livereload'),
-  del = require('del'),
+    del = require('del'),
+    rename = require("gulp-rename-plus"),
 	notify = require('gulp-notify');
 
 gulp.task('img',function() {
@@ -32,6 +33,11 @@ gulp.task('watch', function() {
 	gulp.watch('./www/resource/scss/pages/**/*.scss', ['css']);
 });
 
+gulp.task('change_file_name',function(){
+    return gulp.src('./App/View/**/*.html')
+        .pipe(rename({suffix : 'ejs'}))
+        .pipe(gulp.dest("./output"));
+})
 gulp.task('default',['clean'], function() {
   return gulp.start('img','css')
 });

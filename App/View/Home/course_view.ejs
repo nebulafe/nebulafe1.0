@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%- include ../meta.html %>
+    <%- include ../meta.ejs %>
     <link href="/resource/css/video.css" rel="stylesheet">
     <link rel="stylesheet" href="/resource/css/course-view.css"/>
     <link rel="stylesheet" href="/resource/module/video-js/video-js.css"/>
 </head>
 <body>
-<%- include ../header.html %>
+<%- include ../header.ejs %>
 <% var partner = partner[0];var resource = resource[0]%>
 <div class="container course-view-page">
     <div class="g-page-way">
@@ -172,7 +172,7 @@
     </div>
     <div id="video_container"></div>
 </div>
-<%- include ../footer.html %>
+<%- include ../footer.ejs %>
 <script>seajs.use('js/course/view.js')</script>
 <script src="/resource/module/video-js/video.js"></script>
 </body>

@@ -1,14 +1,14 @@
 <!Doctype html>
 <html>
 <head>
-    <%- include ../meta.html %>
+    <%- include ../meta.ejs %>
     <link rel="stylesheet" href="/resource/module/video-js/video-js.css"/>
     <link rel="stylesheet" href="/resource/css/course-video.css"/>
 
 </head>
 <body>
 <% var current_course = cur_resource[0]%>
-<%- include ../header.html %>
+<%- include ../header.ejs %>
 
 
 <% var course = course[0]%>
@@ -93,7 +93,7 @@
 
 </div>
 
-<%- include ../footer.html %>
+<%- include ../footer.ejs %>
 <script>
     function cv(e) {
         e.preventDefault();

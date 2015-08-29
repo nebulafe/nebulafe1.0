@@ -1,4 +1,4 @@
-<script type="text/ng-template" id="templates/admin/user/login.html">
+<script type="text/ng-template" id="templates/admin/user/login.ejs">
     <form class="form-horizontal col-sm-30">
         <div class="row form-group">
             <label class="col-sm-5 col-sm-offset-2" for="">注册邮箱</label>
@@ -22,7 +22,7 @@
     </form>
 </script>
 
-<script type="text/ng-template" id="templates/admin/user/register.html">
+<script type="text/ng-template" id="templates/admin/user/register.ejs">
     <form class="form-horizontal col-sm-30">
         <div class="row form-group">
             <label class="col-sm-5 col-sm-offset-2" for="">注册邮箱</label>
@@ -54,7 +54,7 @@
     </form>
 </script>
 
-<script type="text/ng-template" id="templates/admin/left.html">
+<script type="text/ng-template" id="templates/admin/left.ejs">
     <nav class="left-nav" id="left_nav" ng-controller="courseController">
         <a class="item" href="/manage/course/">
             <span>课程管理</span>
@@ -75,7 +75,7 @@
 </script>
 
 <!--编辑机构-->
-<script type="text/ng-template" id="templates/admin/partner/edit.html">
+<script type="text/ng-template" id="templates/admin/partner/edit.ejs">
     <form class="form-horizontal col-sm-30">
         <div class="row form-group">
             <label class="col-sm-5 col-sm-offset-2" for="">机构名称</label>
@@ -136,7 +136,7 @@
 
 
 <!--教师信息-->
-<script type="text/ng-template" id="templates/admin/teacher/info.html">
+<script type="text/ng-template" id="templates/admin/teacher/info.ejs">
     <div class="row teacher-info" ng-repeat="teacher in teachers">
         <div class="col-sm-6">
             <img ng-src="{{teacher.avator}}" alt="暂无照片"/>
@@ -164,7 +164,7 @@
 
 
 
-<script type="text/ng-template" id="templates/admin/uploader.html">
+<script type="text/ng-template" id="templates/admin/uploader.ejs">
     <div class="my-uploader">
         <div class="upload-wrapper">
             <input type="file" id="poster" ng-model="uploadFile"/>

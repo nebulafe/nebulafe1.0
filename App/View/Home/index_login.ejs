@@ -1,10 +1,10 @@
 <!Doctype html>
 <html>
 <head>
-  <%- include ../meta.html %>
+  <%- include ../meta.ejs %>
 </head>
 <body>
-<%- include ../header.html %>
+<%- include ../header.ejs %>
 <div class="container">
   <form action="/index/login" method="post">
     <label for="">用户名<input type="text" name="username"></label>
@@ -13,6 +13,6 @@
   </form>
 </div>
 
-<%- include ../footer.html %>
+<%- include ../footer.ejs %>
 </body>
 </html>

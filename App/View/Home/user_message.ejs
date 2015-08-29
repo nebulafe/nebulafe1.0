@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%- include ../meta.html %>
+    <%- include ../meta.ejs %>
     <link rel="stylesheet" href="/resource/css/user-message.css"/>
 
 </head>
 <body>
-<%- include ../header.html %>
+<%- include ../header.ejs %>
 <div class="container">
     <div class="message-container">
         <div class="left-part">
@@ -65,7 +65,7 @@
         </div>
     </div>
 </div>
-<%- include ../footer.html %>
+<%- include ../footer.ejs %>
 <script>seajs.use('js/user/set');</script>
 <script type="text/html">
     {msgs:[
