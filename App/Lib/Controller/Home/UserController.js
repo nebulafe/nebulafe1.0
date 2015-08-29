@@ -468,20 +468,122 @@ module.exports = Controller("Home/BaseController", function(){
     messageAction : function(){
       var self = this;
       if(self.isGet()){
-        var user_id = self.get('id');
-        if(!user_id){
+        var value = self.userInfo;
+        if(!value || !value.id){
           return self.redirect("/");
         }
-        var value = self.userInfo;
-        Service.getUserById({id:user_id}).then(function(content){
+        Service.getUserById({id:value.id}).then(function(content){
+          var msgs = Service.getUserListsById({userid : value.id});
           self.assign({
             title : "查看消息",
             section : 'user',
             link:'see',
+            msgs : msgs,
             userInfo : content[0]
           })
           return self.display()
         }).catch(function(err){})
+      }
+    },
+
+    getMsgWihtIdAction : function(){
+      var self = this;
+      if(self.isPost()){
+        var value = self.userInfo;
+        if(!value || !value.id){
+          return self.redirect("/");
+        }
+        var data = self.post();
+        if(!data || !data.otherid){
+          return self.error("请选择正确的会话对象！")
+        }
+        Service.getUserSessionsById({
+          userid : value.id,
+          otherid : data.otherid
+        }).then(function(content){
+          return self.success(content);
+        })
+      }
+    },
+
+    sendMsgAction : function(){
+      var self = this;
+      if(self.isPost()){
+        var value = self.userInfo;
+        if(!value || !value.id){
+          return self.redirect("/");
+        }
+        var data = self.post();
+        if(!data || !data.toid){
+          return self.error("请选择正确的会话对象！")
+        }
+        Service.sendMsg({
+          fromid : value.id,
+          toud : data.toid,
+          title : data.title,
+          content : data.content
+        }).then(function(content){
+          if(content){
+            if(content > 0){
+              return self.success(content);
+            }else{
+              return self.error("请稍后再试，服务异常！")
+            }
+          }else{
+            return self.error("请稍后再试，服务异常！")
+          }
+        })
+      }
+    },
+
+    readMsgAction : function(){
+      var self = this;
+      if(self.isPost()){
+        var value = self.userInfo;
+        if(!value || !value.id){
+          return self.redirect("/");
+        }
+        var data = self.post();
+        if(!data || !data.messageid){
+          return self.error("请选择正确的会话对象！")
+        }
+        Service.readMsg({
+          messageid : data.messageid
+        }).then(function(content){
+          if(content){
+            if(content > 0){
+              return self.success(content);
+            }else{
+              return self.error("请稍后再试，服务异常！")
+            }
+          }else{
+            return self.error("请稍后再试，服务异常！")
+          }
+        })
+      }
+    },
+
+    getNewAction : function(){
+      var self = this;
+      if(self.isPost()){
+        var value = self.userInfo;
+        if(!value || !value.id){
+          return self.redirect("/");
+        }
+        var data = self.post();
+        if(!data || !data.toid){
+          return self.error("请选择正确的会话对象！")
+        }
+        Service.getNewById({
+          userid : value.id,
+          time : data.lasttime
+        }).then(function(content){
+          if(content){
+            return self.success(content);
+          }else{
+            return self.error("请稍后再试，服务异常！")
+          }
+        })
       }
     }
 

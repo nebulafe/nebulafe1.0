@@ -11,7 +11,7 @@
       <div id="user_head_icon" class="user-head-icon user-head-<%=userInfo.avator||11%>"></div>
       <a id="signin_user" href="/user/see/<%= userInfo.id %>"><%= userInfo.username %></a>
     </div>
-    <div class="link-item" title="消息"><a class="iconfont message" href="/user/message/<%= userInfo.id %>" data-msg="2">&#xe608;</a></div>
+    <div class="link-item" title="消息"><a class="iconfont message" href="/user/message" data-msg="2">&#xe608;</a></div>
     <div class="link-item"><a id="logout_btn" href="/user/logout">退出</a></div>
     <% } else { %>
     <div class="link-item"><a id="signin_btn">登录</a></div>

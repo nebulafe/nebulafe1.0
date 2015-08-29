@@ -186,7 +186,49 @@ var Service = Class(function(){
     /* Pay API*/
     pay : function(data){
       return getRequst('alipay/request' , data)
+    },
+
+    /* Msg API*/
+    getMsgsById : function(data){
+      return getRequst('message/get' , extend({
+        _returnType : 'detail',
+        _page : 1,
+        _limit : 10,
+        _desc : true
+      },data))
+    },
+
+    getUserListsById : function(data){
+      return getRequst('message/getuserlist' , extend({
+        _returnType : 'detail',
+        _page : 1,
+        _limit : 10,
+        _desc : true
+      }, data))
+    },
+
+    getUserSessionsById : function(data){
+      return getRequst('message/getusersession' ,extend({
+        _returnType : 'detail',
+        _page : 1,
+        _limit : 10,
+        _desc : true
+      }, data))
+    },
+
+    sendMsg : function(data){
+      return getRequst('message/send' , data);
+    },
+
+    readMsg : function(data){
+      return getRequst('message/setread' ,data);
+    },
+
+    getNewById : function(data){
+      return getRequst('message/getnew' , data);
     }
+
+
   }
 })
 
