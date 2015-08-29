@@ -472,6 +472,13 @@ module.exports = Controller("Home/BaseController", function(){
         if(!value || !value.id){
           return self.redirect("/");
         }
+        var date = new Date();
+        Service.getNewById({
+          userid : 1,
+          timestamp : Math.floor(date.getTime()/1000)  - 180*60
+        }).then(function(content){
+          console.log(content)
+        })
         Service.getUserById({id:value.id}).then(function(content){
           var msgs = Service.getUserListsById({userid : value.id});
           self.assign({
@@ -519,7 +526,7 @@ module.exports = Controller("Home/BaseController", function(){
         }
         Service.sendMsg({
           fromid : value.id,
-          toud : data.toid,
+          toid : data.toid,
           title : data.title,
           content : data.content
         }).then(function(content){
@@ -574,7 +581,7 @@ module.exports = Controller("Home/BaseController", function(){
         if(!data || !data.toid){
           return self.error("请选择正确的会话对象！")
         }
-        Service.getNewById({
+        Service.getNewCountById({
           userid : value.id,
           time : data.lasttime
         }).then(function(content){
