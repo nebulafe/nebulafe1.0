@@ -1876,55 +1876,84 @@ input::-moz-focus-inner {
   .message-container .right-detail {
     background-color: rgba(255, 255, 255, 0.55);
     width: 790px;
-    overflow: auto; }
-    .message-container .right-detail .message {
-      position: relative;
-      overflow: hidden;
-      padding: 20px; }
-      .message-container .right-detail .message .time {
-        display: block;
+    position: relative;
+    overflow: hidden; }
+    .message-container .right-detail .scroll-view {
+      height: 480px;
+      overflow: auto; }
+      .message-container .right-detail .scroll-view .message {
         position: relative;
-        font-size: 13px;
-        word-spacing: 1em;
-        width: 100%;
-        text-align: center;
-        color: #333;
-        margin-bottom: 10px; }
-        .message-container .right-detail .message .time::before {
-          font-family: consolas;
-          content: "———————————————— ";
-          color: #666; }
-        .message-container .right-detail .message .time::after {
-          font-family: consolas;
-          content: " ————————————————";
-          color: #666; }
-      .message-container .right-detail .message .left-content {
-        float: left;
-        width: 70px; }
-      .message-container .right-detail .message .right-content {
-        float: left;
-        margin-left: 10px;
-        margin-top: 5px;
-        position: relative;
-        width: 450px;
-        color: #323b3d;
-        box-sizing: border-box;
-        padding: 10px 15px;
-        font-size: 13px;
-        line-height: 1.7;
-        background-color: #FEFFFF;
-        text-align: justify;
-        box-shadow: 3px 2px 7px rgba(0, 0, 0, 0.2); }
-        .message-container .right-detail .message .right-content .link {
-          color: #08c; }
-        .message-container .right-detail .message .right-content::before {
-          content: "";
+        overflow: hidden;
+        padding: 20px; }
+        .message-container .right-detail .scroll-view .message .time {
           display: block;
-          position: absolute;
-          left: -10px;
-          top: 15px;
-          border-bottom: 8px solid transparent;
-          border-top: 8px solid transparent;
-          border-right: 10px solid #FEFFFF; }
+          position: relative;
+          font-size: 13px;
+          word-spacing: 1em;
+          width: 100%;
+          text-align: center;
+          color: #333;
+          margin-bottom: 10px; }
+          .message-container .right-detail .scroll-view .message .time::before {
+            font-family: consolas;
+            content: "———————————————— ";
+            color: #666; }
+          .message-container .right-detail .scroll-view .message .time::after {
+            font-family: consolas;
+            content: " ————————————————";
+            color: #666; }
+        .message-container .right-detail .scroll-view .message .left-content {
+          float: left;
+          width: 70px; }
+        .message-container .right-detail .scroll-view .message .right-content {
+          float: left;
+          margin-left: 10px;
+          margin-top: 5px;
+          position: relative;
+          width: 450px;
+          color: #323b3d;
+          box-sizing: border-box;
+          padding: 10px 15px;
+          font-size: 13px;
+          line-height: 1.7;
+          background-color: #FEFFFF;
+          text-align: justify;
+          box-shadow: 3px 2px 7px rgba(0, 0, 0, 0.2); }
+          .message-container .right-detail .scroll-view .message .right-content .link {
+            color: #08c; }
+          .message-container .right-detail .scroll-view .message .right-content::before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: -10px;
+            top: 15px;
+            border-bottom: 8px solid transparent;
+            border-top: 8px solid transparent;
+            border-right: 10px solid #FEFFFF; }
+    .message-container .right-detail .m-editor {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background-color: transparent;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      height: 70px; }
+      .message-container .right-detail .m-editor .text-area {
+        display: inline-block;
+        vertical-align: top;
+        margin: 10px 20px;
+        position: relative;
+        font-size: 14px;
+        line-height: 1.7;
+        width: 640px;
+        height: 50px;
+        box-sizing: border-box;
+        padding: 10px;
+        resize: none;
+        z-index: 20; }
+        .message-container .right-detail .m-editor .text-area:focus {
+          outline: none;
+          border-color: #2D88E3;
+          box-shadow: 0 0 6px #2D88E3; }
 
 /*# sourceMappingURL=user-message.css.map */

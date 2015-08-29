@@ -92,68 +92,100 @@
     @extend %extend_message_float;
     background-color: rgba(255,255,255,.55);
     width: nth($message-page-parts-widths,3);
-    overflow: auto;
+    position: relative;
+    overflow: hidden;
 
-
-    .message{
-      position: relative;
-      overflow: hidden;
-      padding: 20px;
-
-      .time{
-        display: block;
+    .scroll-view{
+      height: 480px;
+      overflow: auto;
+      .message{
         position: relative;
-        font-size: 13px;
+        overflow: hidden;
+        padding: 20px;
 
-        word-spacing: 1em;
-        width: 100%;
-        text-align: center;
-        color: #333;
-        margin-bottom: 10px;
-        &::before{
-          font-family: consolas;
-          content: "———————————————— ";
-          color: #666;
-        }
-        &::after{
-          font-family: consolas;
-        content: " ————————————————";
-          color: #666;
-        }
-      }
-      .left-content{
-        float: left;
-        width: 70px;
-      }
-      .right-content{
-        float: left;
-        margin-left: 10px;
-        margin-top: 5px;
-        position: relative;
-        width: 450px;
-        color: $font-color;
-        box-sizing: border-box;
-        padding: 10px 15px;
-        font-size: 13px;
-        line-height: 1.7;
-        //background-color: rgba(255,255,255,.4);
-        background-color: #FEFFFF;
-        text-align: justify;
-        box-shadow: 3px 2px 7px rgba(0,0,0,.2);
-        .link{
-          color: $linkColor;
-        }
-        &::before{
-          content: "";
+        .time{
           display: block;
-          position: absolute;
-          left: -10px;
-          top:15px;
-          border-bottom: 8px solid transparent;
-          border-top: 8px solid transparent;
-          border-right: 10px solid #FEFFFF;
+          position: relative;
+          font-size: 13px;
 
-          //opacity: 0.4;
+          word-spacing: 1em;
+          width: 100%;
+          text-align: center;
+          color: #333;
+          margin-bottom: 10px;
+          &::before{
+            font-family: consolas;
+            content: "———————————————— ";
+            color: #666;
+          }
+          &::after{
+            font-family: consolas;
+            content: " ————————————————";
+            color: #666;
+          }
+        }
+        .left-content{
+          float: left;
+          width: 70px;
+        }
+        .right-content{
+          float: left;
+          margin-left: 10px;
+          margin-top: 5px;
+          position: relative;
+          width: 450px;
+          color: $font-color;
+          box-sizing: border-box;
+          padding: 10px 15px;
+          font-size: 13px;
+          line-height: 1.7;
+          //background-color: rgba(255,255,255,.4);
+          background-color: #FEFFFF;
+          text-align: justify;
+          box-shadow: 3px 2px 7px rgba(0,0,0,.2);
+          .link{
+            color: $linkColor;
+          }
+          &::before{
+            content: "";
+            display: block;
+            position: absolute;
+            left: -10px;
+            top:15px;
+            border-bottom: 8px solid transparent;
+            border-top: 8px solid transparent;
+            border-right: 10px solid #FEFFFF;
+            //opacity: 0.4;
+          }
+        }
+      }
+    }
+    $message-editor-height: 70px;
+    .m-editor{
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background-color: transparent;
+      border-top: 1px solid rgba(0,0,0,.1);
+      height: $message-editor-height;
+      .text-area{
+        display: inline-block;
+        vertical-align: top;
+        margin: 10px 20px;
+        position: relative;
+        font-size: 14px;
+        line-height: 1.7;
+        width: nth($message-page-parts-widths,3) - 150px;
+        height: $message-editor-height - 20px;
+        box-sizing: border-box;
+        padding: 10px;
+        resize: none;
+        z-index: 20;
+        &:focus{
+          outline: none;
+          border-color: $color_link_blue;
+          box-shadow: 0 0 6px $color_link_blue;
         }
       }
     }
