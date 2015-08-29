@@ -1840,6 +1840,7 @@ input::-moz-focus-inner {
     .message-container .middle-users .user-abs {
       width: 100%;
       height: 70px;
+      margin-bottom: 1px;
       background-color: rgba(255, 255, 255, 0.3); }
       .message-container .middle-users .user-abs .left-content {
         float: left;
@@ -1873,6 +1874,18 @@ input::-moz-focus-inner {
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden; }
+      .message-container .middle-users .user-abs.read-0 .user-name::after {
+        display: inline-block;
+        vertical-align: top;
+        content: "有未读消息";
+        background-color: rgba(0, 0, 0, 0.2);
+        color: rgba(255, 255, 255, 0.8);
+        padding: 0 8px;
+        height: 20px;
+        font-size: 12px;
+        margin: 14px 0 0 10px;
+        line-height: 20px;
+        border-radius: 20px; }
   .message-container .right-detail {
     background-color: rgba(255, 255, 255, 0.55);
     width: 790px;
@@ -1941,19 +1954,27 @@ input::-moz-focus-inner {
       .message-container .right-detail .m-editor .text-area {
         display: inline-block;
         vertical-align: top;
-        margin: 10px 20px;
+        margin: 10px;
         position: relative;
         font-size: 14px;
         line-height: 1.7;
         width: 640px;
         height: 50px;
         box-sizing: border-box;
-        padding: 10px;
+        padding: 5px 10px;
         resize: none;
         z-index: 20; }
         .message-container .right-detail .m-editor .text-area:focus {
           outline: none;
           border-color: #2D88E3;
           box-shadow: 0 0 6px #2D88E3; }
+      .message-container .right-detail .m-editor .msg-submit {
+        display: inline-block;
+        vertical-align: top;
+        margin: 15px auto 0 auto;
+        box-sizing: border-box;
+        padding: 0 20px;
+        width: 110px;
+        border-radius: 0; }
 
 /*# sourceMappingURL=user-message.css.map */
