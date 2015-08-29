@@ -474,9 +474,7 @@ module.exports = Controller("Home/BaseController", function(){
         }
         var date = new Date();
         Service.getUserById({id:value.id}).then(function(content){
-          var msgs = Service.getUserListsById({userid : value.id}).then(function(content){
-            console.log(content)
-          });
+          var msgs = Service.getUserListsById({userid : value.id});
           self.assign({
             title : "查看消息",
             section : 'user',
