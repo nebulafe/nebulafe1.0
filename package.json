@@ -4,6 +4,8 @@
   "version": "0.1.0",
   "author": {},
   "dependencies": {
+    "gulp-rename": "^1.2.2",
+    "gulp-rename-plus": "0.0.2",
     "thinkjs": "*"
   },
   "keywords": [],

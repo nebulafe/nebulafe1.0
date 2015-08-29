@@ -1,13 +1,13 @@
 <!Doctype html>
 <html>
 <head>
-    <%- include ../meta.html %>
+    <%- include ../meta.ejs %>
     <link rel="stylesheet" href="/resource/css/layout.css"/>
     <link rel="stylesheet" href="/resource/css/_common.css"/>
     <link rel="stylesheet" href="/resource/css/index.css"/>
 </head>
 <body>
-<%- include ../header.html %>
+<%- include ../header.ejs %>
 <div class="pic-round">
     <div class="bg">
         <div class="center-block">
@@ -87,7 +87,7 @@
         <a href="/course">查看所有课程&gt;&gt;</a>
     </div>
 </div>
-<%- include ../footer.html %>
+<%- include ../footer.ejs %>
 <script>
     seajs.use('js/index_picround.js');
 </script>

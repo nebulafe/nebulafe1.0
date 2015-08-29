@@ -12,6 +12,7 @@ module.exports = {
   db_prefix: 'think_', // 数据库表前缀
   app_group_list: ['Home', 'Admin'], //分组列表
   show_exec_time: true,
+  tpl_file_suffix: ".ejs",
   url_resource_reg: /^(upload\/|resource\/|static\/|favicon\.ico|robot\.txt)/ ,//判断是否是静态资源的正则
   post_max_file_size: 1024 * 1024 * 1024, //上传文件大小限制，默认1G
   post_max_fields: 100, //最大表单数，默认为100

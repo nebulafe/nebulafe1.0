@@ -1,15 +1,15 @@
 <!Doctype html>
 <html>
 <head>
-    <%- include ../meta.html %>
+    <%- include ../meta.ejs %>
 
     <!--<link rel="stylesheet" href="/resource/css/forget.css">-->
     <link rel="stylesheet" href="/resource/css/user-mycourse.css"/>
 </head>
 <body>
-<%- include ../header.html %>
+<%- include ../header.ejs %>
 <div class="container">
-    <%- include user_center_left.html %>
+    <%- include user_center_left.ejs %>
     <div class="right-container">
         <div class="my-wrap">
             <div class="title-row">
@@ -54,7 +54,7 @@
         </div>
     </div>
 </div>
-<%- include ../footer.html %>
+<%- include ../footer.ejs %>
 <script>seajs.use('js/user/mycourse');</script>
 </body>
 </html>

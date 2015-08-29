@@ -1,16 +1,16 @@
 <!Doctype html>
 <html>
 <head>
-    <%- include ../meta.html %>
+    <%- include ../meta.ejs %>
     <!--<link rel="stylesheet" href="/resource/css/forget.css">-->
     <link rel="stylesheet" href="/resource/css/user-avator.css"/>
 
 </head>
 <body>
-<%- include ../header.html %>
+<%- include ../header.ejs %>
 
 <div class="container">
-    <%- include user_center_left.html %>
+    <%- include user_center_left.ejs %>
     <div class="right-container">
         <div class="my-wrap">
             <div class="my-form">
@@ -57,7 +57,7 @@
         <!--<p>资料修改成功！</p></div>-->
     <!--<div class="mmsg-background"></div>-->
 <!--</div>-->
-<%- include ../footer.html %>
+<%- include ../footer.ejs %>
 <script id="userInfo" data-id="<%=userInfo.id%>" data-avator="<%userInfo.avator%>"></script>
 <script>seajs.use('js/user/avator');</script>
 </body>
