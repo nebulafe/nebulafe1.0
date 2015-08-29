@@ -473,14 +473,10 @@ module.exports = Controller("Home/BaseController", function(){
           return self.redirect("/");
         }
         var date = new Date();
-        Service.getNewCountById({
-          userid : 1,
-          timestamp : Math.floor(date.getTime()/1000)  - 180*60
-        }).then(function(content){
-          console.log(content)
-        })
         Service.getUserById({id:value.id}).then(function(content){
-          var msgs = Service.getUserListsById({userid : value.id});
+          var msgs = Service.getUserListsById({userid : value.id}).then(function(content){
+            console.log(content)
+          });
           self.assign({
             title : "查看消息",
             section : 'user',
