@@ -225,7 +225,7 @@ var Service = Class(function(){
     },
 
     getNewCountById : function(data){
-      return getRequst('message/getUserNewMessageCount' , data);
+      return getRequst('message/getusernewmessagecount' , data);
     }
 
   }

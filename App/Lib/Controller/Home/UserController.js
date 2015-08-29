@@ -473,7 +473,7 @@ module.exports = Controller("Home/BaseController", function(){
           return self.redirect("/");
         }
         var date = new Date();
-        Service.getNewById({
+        Service.getNewCountById({
           userid : 1,
           timestamp : Math.floor(date.getTime()/1000)  - 180*60
         }).then(function(content){
