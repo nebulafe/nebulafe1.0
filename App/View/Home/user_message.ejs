@@ -36,26 +36,13 @@
         </div>
         <div class="right-detail">
             <div class="scroll-view" id="msg_detail_view">
-                <section class="message">
-                    <time class="time">2015年6月28日 13:00</time>
-                    <div class="user-content">
-                        <div class="user-head-icon user-head-<%= userInfo.avator||1 %>"></div>
-                    </div>
-
-                    <div class="msg-content">
-                        <div class="txt latest-message-abs">这是这个账号给
-                            你发送的最后一条消息这是这个账号给你发送的最后一条消
-                            息这是这个账号给你发送的最后一条消息
-                            <a class="link" href="">猛戳链接查看相关内容</a>
-                        </div>
-                    </div>
-                </section>
+                
             </div>
 
             <section class="m-editor">
                 <textarea class="text-area" name="" id="msg_editor" placeholder="在这里输入你要发送的内容"></textarea>
-                <span class="btn btn-green msg-submit" id="msg_submit" data-course-id="2" data-user-id="1"
-                      data-nickname="">发送</span>
+                <span class="btn btn-green msg-submit" id="msg_submit" data-avator="<%-userInfo.avator|| 1%>" data-user-id="<%-userInfo.id%>"
+                      data-nickname="<%-userInfo.nickname%>">发送</span>
             </section>
         </div>
     </div>
@@ -74,7 +61,7 @@
 <script type="text/html" id="template_left" >
 
     <`% _.each(msgs,function(m){ %`>
-        <section class="user-abs read-<`%= m.isread %`>" data-from-id="<`%- m.fromid %`>">
+    <section class="user-abs read-<`%= m.isread %`>" data-from-id="<`%- m.fromid %`>">
         <div class="left-content">
             <div class="user-head-icon user-head-<`%= m.fromavator %`>"></div>
             </div>
@@ -90,7 +77,7 @@
 </script>
 <script type="text/html" id="template_right">
     <`%_.each(data,function(msg){%`>
-    <section class="message msg-<`%-msg.action%`>  isread-<`%-msg.isread%`>">
+    <section class="message msg-<`%-msg.action%`>  isread-<`%-msg.isread%`>" data-msg-id="<`%-msg.messageid%`>">
 
         <time class="time"><`%-new Date(msg.update_time).toLocaleDateString()%`>
           <`%-new Date(msg.update_time).toLocaleTimeString()%`></time>

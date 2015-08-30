@@ -1902,9 +1902,14 @@ input::-moz-focus-inner {
           display: block;
           position: absolute;
           word-break: keep-all;
-          top: 30px;
-          background-color: rgba(255, 0, 0, 0.5);
+          top: 55px;
+          padding: 5px 10px;
+          background-color: rgba(255, 0, 0, 0.3);
           color: #FEFFFF; }
+        .message-container .right-detail .scroll-view .message.msg-receive.isread-0::after {
+          content: '！未读';
+          font-size: 12px;
+          right: 160px; }
         .message-container .right-detail .scroll-view .message:last-child {
           margin-bottom: 20px; }
         .message-container .right-detail .scroll-view .message .time {

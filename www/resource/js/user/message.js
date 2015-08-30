@@ -3,7 +3,7 @@
  */
 define(function (require, exports, moudle) {
   var helper = {};
-  helper.getTemplate = function(Selecotr){
+  helper.getTemplate = function (Selecotr) {
     return $(Selecotr).html().replace(/<`%/g, '<%').replace(/%`>/g, '%>')
   }
 
@@ -39,9 +39,9 @@ define(function (require, exports, moudle) {
     getElements: function () {
       var me = this;
       me.sendBtn = $('#msg_submit');
-      me.textArea = $('#msg_editor');
       me.dialogLeft = $('#middle_users_view');
       me.dialogView = $('#msg_detail_view');
+      me.msgEditor = $('#msg_editor');
       return me;
     },
     getHashParam: function () {
@@ -71,8 +71,9 @@ define(function (require, exports, moudle) {
       var dialogUserId = me.get('recentViewDialog');
       me.getDialogMessages()(function (res) {
         console.log(res);
-        if(res.errno == 0){
+        if (res.errno == 0) {
           me.renderRightMessage(res);
+          me.bindCheckReadMessage();
         }
       })
       //dialogUserId
@@ -85,7 +86,7 @@ define(function (require, exports, moudle) {
       me.dialogLeft.on('click', function (e) {
         var target = $(e.target);
         if (target.hasClass('user-abs')) {
-          if(me.get('recentViewDialog') != target.attr('data-from-id')){
+          if (me.get('recentViewDialog') != target.attr('data-from-id')) {
             me.set('recentViewDialog', target.attr('data-from-id'));
             me.openDialog();
           }
@@ -95,16 +96,88 @@ define(function (require, exports, moudle) {
           target.parent().parent().trigger('click');
         }
       });
+
+      me.sendBtn.click(function(){
+        me.sendMessage();
+      });
       return me;
     },
-    renderRightMessage: function(data){
+    renderRightMessage: function (data) {
       var me = this;
-      me.get('rightTemplate') || me.set('rightTemplate',helper.getTemplate('#template_right'));
-      var rightRender = me.get('rightRender') || me.set('rightRender',_.template(me.get('rightTemplate')));
+      me.get('rightTemplate') || me.set('rightTemplate', helper.getTemplate('#template_right'));
+      var rightRender = me.get('rightRender') || me.set('rightRender', _.template(me.get('rightTemplate')));
       var html = rightRender(data);
       me.dialogView.html(html);
       return me;
-    }
+    },
+    sendMessage: function () {
+      var me = this;
+      var content = me.msgEditor.val();
+      var user_id = me.sendBtn.attr('data-user-id');
+      var avator = me.sendBtn.attr('data-avator');
+      var nickname = me.sendBtn.attr('data-nickname');
+      var update_time = new Date();
+
+      var renderData = {
+        data: [
+          {
+            'content' : content,
+            'fromavator' : avator,
+            'fromnickname': nickname,
+            'update_time': update_time,
+            'action' : 'send',
+            'title' : '发送消息',
+            'isread' : true
+          }
+        ]
+      };
+
+      $.ajax({
+        url: 'user/sendMsg',
+        type: 'POST',
+        data: {
+          toid : me.get('recentViewDialog'),
+          title: '',
+          content: content
+        },
+        dataType: 'json'
+      }).done(function(res){
+        if(res.errno == 0){
+          me.renderRightMessage(renderData);
+        }else{
+          ALERT('发送失败',res.msg);
+        }
+
+      });
+
+    },
+    bindCheckReadMessage: function () {
+      var me = this;
+      var scrollHeight = me.dialogView.height();
+      console.log(scrollHeight);
+      me.dialogView.on('scroll', function (e) {
+        var top = me.dialogView.scrollTop();
+        me.checkUnread(top, scrollHeight);
+      });
+    },
+    checkUnread: function(top, scrollHeight) {
+      var me = this;
+      $('.message.msg-receive.isread-0', me.dialogView).each(function () {
+        if ((top < this.offsetTop) && (this.offsetTop < top + scrollHeight - 200)) {
+          me.setMsgRead(this);
+        }
+      });
+
+    },
+    setMsgRead: function (elem) {
+      console.log(elem.scrollTop);
+      var data = {messageid: elem.getAttribute('data-msg-id')};
+      $(elem).removeClass('isread-0');
+      $.post('/user/readMsg',data,'json').done(function(){
+        console.log('已经将内容为' + elem +'的消息置为已读');
+      });
+    },
+
 
 
   };
