@@ -17,39 +17,32 @@
                 <a class="iconfont">&#xe60d;</a>
             </div>
         </div>
-        <div class="middle-users">
-            <section class="user-abs">
+        <div class="middle-users" id="middle_users_view">
+
+            <% msgs.forEach(function(m){ %>
+            <%console.log(msgs)%>
+            <section class="user-abs read-<%= m.isread %>" data-from-id="<%- m.otherid %>">
                 <div class="left-content">
-                    <div class="user-head-icon user-head-<%=userInfo.avator||1%>"></div>
+                    <div class="user-head-icon user-head-<%=m.otheravator || 1 %>"></div>
                 </div>
 
                 <div class="right-content">
-                    <a class="txt user-name"><%=userInfo.nickname%></a>
-                    <div class="txt latest-message-abs">这是这个账号给你发送的最后一条消息</div>
-                </div>
-            </section>
-            <%msgs.forEach(function(m){%>
-            <section class="user-abs read-<%=m.isread%>" data-msg-id="<%-m.messageid%>">
-                <div class="left-content">
-                    <div class="user-head-icon user-head-<%=1%>"></div>
-                </div>
+                    <a class="txt user-name"><%= m.othernickname %></a>
 
-                <div class="right-content">
-                    <a class="txt user-name"><%= m.othernickname%></a>
-                    <div class="txt latest-message-abs"><%= m.title%></div>
+                    <div class="txt latest-message-abs"><%= m.title %></div>
                 </div>
             </section>
-            <%})%>
+            <% }) %>
         </div>
         <div class="right-detail">
-            <div class="scroll-view">
+            <div class="scroll-view" id="msg_detail_view">
                 <section class="message">
                     <time class="time">2015年6月28日 13:00</time>
-                    <div class="left-content">
-                        <div class="user-head-icon user-head-<%=userInfo.avator||1%>"></div>
+                    <div class="user-content">
+                        <div class="user-head-icon user-head-<%= userInfo.avator||1 %>"></div>
                     </div>
 
-                    <div class="right-content">
+                    <div class="msg-content">
                         <div class="txt latest-message-abs">这是这个账号给
                             你发送的最后一条消息这是这个账号给你发送的最后一条消
                             息这是这个账号给你发送的最后一条消息
@@ -60,14 +53,15 @@
             </div>
 
             <section class="m-editor">
-                <textarea class="text-area" name="" id=""></textarea>
-                <span class="btn btn-green msg-submit" id="msg_submit" data-course-id="2" data-user-id="1" data-nickname="">发送</span>
+                <textarea class="text-area" name="" id="msg_editor" placeholder="在这里输入你要发送的内容"></textarea>
+                <span class="btn btn-green msg-submit" id="msg_submit" data-course-id="2" data-user-id="1"
+                      data-nickname="">发送</span>
             </section>
         </div>
     </div>
 </div>
 <%- include ../footer.ejs %>
-<script>seajs.use('js/user/set');</script>
+<script>seajs.use('js/user/message');</script>
 <script type="text/html">
     {msgs:[
     "messageid": 2,
@@ -76,6 +70,45 @@
     "title": "我是标题2",
     "isread" : false,
     "updatetime": "Aug 27, 2015 7:34:34 PM"]}
+</script>
+<script type="text/html" id="template_left" >
+
+    <`% _.each(msgs,function(m){ %`>
+        <section class="user-abs read-<`%= m.isread %`>" data-from-id="<`%- m.fromid %`>">
+        <div class="left-content">
+            <div class="user-head-icon user-head-<`%= m.fromavator %`>"></div>
+            </div>
+
+            <div class="right-content">
+            <a class="txt user-name"><`%= m.fromnickname %`></a>
+            <div class="txt latest-message-abs"><`%= m.title %`></div>
+         </div>
+    </section>
+
+    <`% }); %`>
+
+</script>
+<script type="text/html" id="template_right">
+    <`%_.each(data,function(msg){%`>
+    <section class="message msg-<`%-msg.action%`>  isread-<`%-msg.isread%`>">
+
+        <time class="time"><`%-new Date(msg.update_time).toLocaleDateString()%`>
+          <`%-new Date(msg.update_time).toLocaleTimeString()%`></time>
+        <div class="user-content" data-nickname="<`%- msg.fromnickname %`>">
+            <div class="user-head-icon
+            user-head-<`%- msg.fromavator %`>"></div>
+        </div>
+
+        <div class="msg-content">
+            <div class="txt latest-message-abs">
+                <`%='<h4>'+msg.title+'</h4>'%`>
+                <article>
+                  <`%-msg.content %`>
+                </article>
+            </div>
+        </div>
+    </section>
+    <`%})%`>
 </script>
 </body>
 </html>
