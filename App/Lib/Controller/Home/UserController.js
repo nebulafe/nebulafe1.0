@@ -527,7 +527,7 @@ module.exports = Controller("Home/BaseController", function(){
           title : data.title,
           content : data.content
         }).then(function(content){
-          if(content){
+          if(content != undefined){
             if(content == 0){
               return self.success(content);
             }else{
@@ -555,7 +555,7 @@ module.exports = Controller("Home/BaseController", function(){
           userid : value.id,
           messageid : data.messageid
         }).then(function(content){
-          if(content){
+          if(content != undefined){
             if(content == 0){
               return self.success(content);
             }else{

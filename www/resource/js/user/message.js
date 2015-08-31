@@ -3,9 +3,41 @@
  */
 define(function (require, exports, moudle) {
   var helper = {};
-  helper.getTemplate = function (Selecotr) {
-    return $(Selecotr).html().replace(/<`%/g, '<%').replace(/%`>/g, '%>')
-  }
+  var template_right =
+      '<%_.each(data,function(msg){%>'+
+'<section class="message msg-<%-msg.action%> isread-<%-msg.isread%>" data-msg-id="<%-msg.messageid%>">'+
+
+'<time class="time"><%-new Date(msg.update_time).toLocaleDateString()%>'+
+'<%-new Date(msg.update_time).toLocaleTimeString()%></time>'+
+'<div class="user-content" data-nickname="<%- msg.fromnickname %>">'+
+'<div class="user-head-icon'+
+' user-head-<%- msg.fromavator %>"></div>'+
+'</div>'+
+
+'<div class="msg-content">'+
+'<div class="txt latest-message-abs">'+
+'<%="<h4>"+msg.title+"</h4>"%>'+
+'<article>'+
+'<%-msg.content %>'+
+'</article>'+
+'</div>'+
+'</div>'+
+'</section> ' + '<%})%>';
+
+  var template_left = '<% _.each(msgs,function(m){ %>'+
+    '<section class="user-abs read-<%= m.isread %>" data-from-id="<%- m.fromid %>">'+
+'<div class="left-content">'+
+'<div class="user-head-icon user-head-<%= m.fromavator %>"></div>'+
+'</div>'+
+
+'<div class="right-content">'+
+'<a class="txt user-name"><%= m.fromnickname %></a>'+
+'<div class="txt latest-message-abs"><%= m.title %></div>'+
+'</div>'+
+'</section>'+
+
+'<% }); %>';
+
 
   var messagePage = function () {
     var me = this;
@@ -69,13 +101,16 @@ define(function (require, exports, moudle) {
     openDialog: function () {
       var me = this;
       var dialogUserId = me.get('recentViewDialog');
-      me.getDialogMessages()(function (res) {
-        console.log(res);
-        if (res.errno == 0) {
-          me.renderRightMessage(res);
-          me.bindCheckReadMessage();
-        }
-      })
+      if(dialogUserId){
+        me.getDialogMessages()(function (res) {
+          if (res.errno == 0) {
+            res.data = res.data.reverse();
+            me.renderRightMessage(res);
+            me.bindCheckReadMessage();
+          }
+        })
+      }
+
       //dialogUserId
     },
     fillDialog: function () {
@@ -104,7 +139,7 @@ define(function (require, exports, moudle) {
     },
     renderRightMessage: function (data) {
       var me = this;
-      me.get('rightTemplate') || me.set('rightTemplate', helper.getTemplate('#template_right'));
+      me.get('rightTemplate') || me.set('rightTemplate', template_right);
       var rightRender = me.get('rightRender') || me.set('rightRender', _.template(me.get('rightTemplate')));
       var html = rightRender(data);
       me.dialogView.html(html);
@@ -176,7 +211,7 @@ define(function (require, exports, moudle) {
       $.post('/user/readMsg',data,'json').done(function(){
         console.log('已经将内容为' + elem +'的消息置为已读');
       });
-    },
+    }
 
 
 
