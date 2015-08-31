@@ -36,7 +36,7 @@ define(function (require, exports, moudle) {
             ['<% comments.forEach(function(val){%>',
                 '<article class="comment">',
                 '<div class="left-content">',
-                '<div class="user-head-icon user-head-<%=val.avator||1%>"></div>',
+                '<div class="user-head-icon user-head-<%=val.avator||1%>" data-id="<%=val.userid%>"></div>',
                 '</div>',
                 '<div class="right-content">',
                 '<a href="" class="link user-name"><%=val.nickname%></a>',
