@@ -518,6 +518,9 @@ module.exports = Controller("Home/BaseController", function(){
         if(!data || !data.toid){
           return self.error("请选择正确的会话对象！")
         }
+        if(!data.title){
+          data.title = data.content.slice(0,10);
+        }
         Service.sendMsg({
           fromid : value.id,
           toid : data.toid,
@@ -525,7 +528,7 @@ module.exports = Controller("Home/BaseController", function(){
           content : data.content
         }).then(function(content){
           if(content){
-            if(content > 0){
+            if(content == 0){
               return self.success(content);
             }else{
               return self.error("请稍后再试，服务异常！")
