@@ -549,6 +549,7 @@ module.exports = Controller("Home/BaseController", function(){
           return self.error("请选择正确的会话对象！")
         }
         Service.readMsg({
+          userid : value.id,
           messageid : data.messageid
         }).then(function(content){
           if(content){
