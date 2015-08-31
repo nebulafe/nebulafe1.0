@@ -556,7 +556,7 @@ module.exports = Controller("Home/BaseController", function(){
           messageid : data.messageid
         }).then(function(content){
           if(content){
-            if(content > 0){
+            if(content == 0){
               return self.success(content);
             }else{
               return self.error("请稍后再试，服务异常！")
