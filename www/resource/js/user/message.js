@@ -133,7 +133,7 @@ define(function (require, exports, moudle) {
       };
 
       $.ajax({
-        url: 'user/sendMsg',
+        url: '/user/sendMsg',
         type: 'POST',
         data: {
           toid : me.get('recentViewDialog'),
