@@ -527,12 +527,8 @@ module.exports = Controller("Home/BaseController", function(){
           title : data.title,
           content : data.content
         }).then(function(content){
-          if(content != undefined){
-            if(content == 0){
-              return self.success(content);
-            }else{
-              return self.error("请稍后再试，服务异常！")
-            }
+          if(content === 0){
+            return self.success(content);
           }else{
             return self.error("请稍后再试，服务异常！")
           }
@@ -555,12 +551,8 @@ module.exports = Controller("Home/BaseController", function(){
           userid : value.id,
           messageid : data.messageid
         }).then(function(content){
-          if(content != undefined){
-            if(content == 0){
-              return self.success(content);
-            }else{
-              return self.error("请稍后再试，服务异常！")
-            }
+          if(content === 0){
+            return self.success(content);
           }else{
             return self.error("请稍后再试，服务异常！")
           }
