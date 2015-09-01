@@ -570,7 +570,7 @@ module.exports = Controller("Home/BaseController", function(){
         var data = self.post();
         Service.getNewCountById({
           userid : value.id,
-          time : data.lasttime
+          timestamp : data.lasttime
         }).then(function(content){
           if(content){
             return self.success(content);
