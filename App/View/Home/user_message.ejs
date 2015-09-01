@@ -20,7 +20,6 @@
         <div class="middle-users" id="middle_users_view">
 
             <% msgs.forEach(function(m){ %>
-            <%console.log(msgs)%>
             <section class="user-abs read-<%= m.isread %>" data-from-id="<%- m.otherid %>">
                 <div class="left-content">
                     <div class="user-head-icon user-head-<%=m.otheravator || 1 %>"></div>
@@ -36,7 +35,7 @@
         </div>
         <div class="right-detail">
             <div class="scroll-view" id="msg_detail_view">
-                
+
             </div>
 
             <section class="m-editor">
