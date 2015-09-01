@@ -108,7 +108,6 @@ $black: #000;
             text-decoration: none;
           }
           &::after{
-            content: attr(data-msg);
             display: block;
             position: absolute;
             top: 10px;
@@ -125,6 +124,19 @@ $black: #000;
             background-color: $color_guardsman_red_approx;
             color: #fff;
           }
+          &.unread{
+            &::after{
+              content: attr(data-msg);
+
+            }
+          }
+          &:not(.unread){
+            &::after{
+              content: none;
+              display: none;
+            }
+          }
+
         }
       }
 

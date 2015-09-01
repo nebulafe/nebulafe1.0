@@ -104,6 +104,7 @@ define(function (require, exports, moudle) {
       if(dialogUserId){
         me.getDialogMessages()(function (res) {
           if (res.errno == 0) {
+            window.location.hash = dialogUserId;
             res.data = res.data.reverse();
             me.renderRightMessage(res);
             me.bindCheckReadMessage();
@@ -161,7 +162,7 @@ define(function (require, exports, moudle) {
             'fromnickname': nickname,
             'update_time': update_time,
             'action' : 'send',
-            'title' : '发送消息',
+            'title' : '',
             'isread' : true
           }
         ]
@@ -178,7 +179,8 @@ define(function (require, exports, moudle) {
         dataType: 'json'
       }).done(function(res){
         if(res.errno == 0){
-          me.renderRightMessage(renderData);
+          //me.renderRightMessage(renderData);
+          me.dialogView.append(me.get('rightRender')(renderData));
         }else{
           ALERT('发送失败',res.msg);
         }
@@ -198,7 +200,7 @@ define(function (require, exports, moudle) {
     checkUnread: function(top, scrollHeight) {
       var me = this;
       $('.message.msg-receive.isread-0', me.dialogView).each(function () {
-        if ((top < this.offsetTop) && (this.offsetTop < top + scrollHeight - 200)) {
+        if ((top <= this.offsetTop) && (this.offsetTop < top + scrollHeight - 100)) {
           me.setMsgRead(this);
         }
       });
@@ -209,9 +211,10 @@ define(function (require, exports, moudle) {
       var data = {messageid: elem.getAttribute('data-msg-id')};
       $(elem).removeClass('isread-0');
       $.post('/user/readMsg',data,'json').done(function(){
-        console.log('已经将内容为' + elem +'的消息置为已读');
+        console.log('已经将内容为' + JSON.stringify(elem) +'的消息置为已读');
       });
     }
+
 
 
 

@@ -2,7 +2,7 @@ define(function(require, exports, moudle) {
   // body...
     //alert global function
     (function (scope) {
-        scope.ALERT = function (title, content,callback) {
+        scope.ALERT = function (title, content,callback,isCallBackAuto) {
             var d = new Date().getTime();
             var select = '#g-alert-' + d;
             var str = [ '<div class="g-alert init" id="g-alert-', d, '">',
@@ -16,7 +16,9 @@ define(function(require, exports, moudle) {
                     $(select).unbind("click");
                     $(select).remove();
                     clearTimeout(t);
-                    callback&&callback();
+                    if(isCallBackAuto){
+                        callback&&callback();
+                    }
                 }, 800);
             };
 
@@ -32,8 +34,34 @@ define(function(require, exports, moudle) {
                 clearTimeout(s);
             }, 2000);
             $(select).on("click", function () {
+                if(!isCallBackAuto){
+                    callback&&callback();
+                }
                 hide();
             });
         }
     })(window);
+
+    var getNew = function(){
+        $.post('/user/getNew',{
+            lasttime : 1
+        },'json').done(function(res){
+            if(res.errno == 0){
+                if(res.data > 0){
+                    $('#header_message').addClass('unread').attr('data-msg',res.data);
+                      ALERT('消息提示','您有'+res.data+'条消息,点击查看',function(){
+                          window.location.href="/user/message";
+                      },false);
+                }else{
+                    $('#header_message').removeClass('unread');
+                }
+
+            }
+        });
+    };
+
+    (function(){
+        getNew();
+        var s = setInterval(getNew,90*1000);
+    })();
 })
