@@ -568,9 +568,6 @@ module.exports = Controller("Home/BaseController", function(){
           return self.redirect("/");
         }
         var data = self.post();
-        if(!data || !data.toid){
-          return self.error("请选择正确的会话对象！")
-        }
         Service.getNewCountById({
           userid : value.id,
           time : data.lasttime
