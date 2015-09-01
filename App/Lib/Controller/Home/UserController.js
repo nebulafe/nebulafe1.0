@@ -476,19 +476,16 @@ module.exports = Controller("Home/BaseController", function(){
         Service.getUserById({id:value.id}).then(function(content){
           Service.getUserListsById({userid : value.id}).then(function (mcontent) {
             var mmcon  =  [];
-            //console.log(mcontent);
             for(var i = 0, len = mcontent.length; i < len ; i++){
               if(mcontent[i].action == 'receive' && mcontent[i].isread == 0){
-                console.log(mcontent[i])
                 mmcon.push(mcontent[i])
               }
             }
-            //console.log(mmcon)
             self.assign({
               title : "查看消息",
               section : 'user',
               link:'see',
-              msgs : mcontent,
+              msgs : mmcon,
               userInfo : content[0]
             })
             return self.display()
