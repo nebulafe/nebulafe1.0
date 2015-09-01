@@ -474,15 +474,23 @@ module.exports = Controller("Home/BaseController", function(){
         }
         var date = new Date();
         Service.getUserById({id:value.id}).then(function(content){
-          var msgs = Service.getUserListsById({userid : value.id});
-          self.assign({
-            title : "查看消息",
-            section : 'user',
-            link:'see',
-            msgs : msgs,
-            userInfo : content[0]
-          })
-          return self.display()
+          Service.getUserListsById({userid : value.id}).then(function (mcontent) {
+            var mmcon  =  [];
+            for(var i = 0, len = mcontent.length; i < len ; i++){
+              if(mcontent[i].action == 'receive' && mcontent[i].isread == 0){
+                mmcon.push(mcontent[i])
+              }
+            }
+            self.assign({
+              title : "查看消息",
+              section : 'user',
+              link:'see',
+              msgs : mmcon,
+              userInfo : content[0]
+            })
+            return self.display()
+          });
+
         }).catch(function(err){})
       }
     },
