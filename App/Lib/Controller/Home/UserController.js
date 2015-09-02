@@ -472,15 +472,47 @@ module.exports = Controller("Home/BaseController", function(){
         if(!value || !value.id){
           return self.redirect("/");
         }
-        var date = new Date();
+        var toid = self.get('to');
+        var toUser = null;
         Service.getUserById({id:value.id}).then(function(content){
           Service.getUserListsById({userid : value.id}).then(function (mcontent) {
             var mmcon  =  [];
             for(var i = 0, len = mcontent.length; i < len ; i++){
-              if(mcontent[i].action == 'receive' && mcontent[i].isread == 0){
-                mmcon.push(mcontent[i])
+              if(toid && mcontent[i].otherid == toid){
+                toUser = mcontent[i]
+              }else{
+                if(mcontent[i].action == 'receive' && mcontent[i].isread == 0){
+                  mmcon.push(mcontent[i])
+                }
               }
             }
+
+            if(toid){
+              if(toUser){
+                mmcon.unshift(toUser);
+              }else{
+                return Service.getUserById({id : toid}).then(function(ucontent){
+                  if(!ucontent || ucontent.length == 0){
+                    return self.redirect("/");
+                  }
+                  mmcon.unshift({
+                    otherid : ucontent[0].id,
+                    avator : ucontent[0].avator,
+                    nickname : ucontent[0].nickname
+                  });
+                  self.assign({
+                    title : "查看消息",
+                    section : 'user',
+                    link:'see',
+                    msgs : mmcon,
+                    userInfo : content[0]
+                  })
+                  return self.display()
+                })
+
+              }
+            }
+
             self.assign({
               title : "查看消息",
               section : 'user',
