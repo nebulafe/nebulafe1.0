@@ -86,7 +86,7 @@ app.directive('leftnav', function () {
         restrict: 'E',
         transclude: true,
         scope: {},
-        templateUrl: 'templates/admin/left.html'
+        templateUrl: 'templates/admin/left.ejs'
     };
 });
 
@@ -96,7 +96,7 @@ app.directive('login', function () {
         restrict: 'E',
         transclude: true,
         scope: {},
-        templateUrl: 'templates/admin/user/login.html',
+        templateUrl: 'templates/admin/user/login.ejs',
         controller: function ($scope, $http) {
             $scope.userInfo = {
                 email: "123",
@@ -137,7 +137,7 @@ app.directive('register', function () {
         restrict: 'E',
         transclude: true,
         scope: {},
-        templateUrl: 'templates/admin/user/register.html',
+        templateUrl: 'templates/admin/user/register.ejs',
         controller: function ($scope, $http, $compile) {
             $scope.userInfo = {
                 email: "233",
@@ -184,7 +184,7 @@ app.directive('courseEdit', function () {
         restrict: 'E',
         transclude: true,
         scope: {},
-        templateUrl: 'templates/admin/course/edit.html',
+        templateUrl: 'templates/admin/course/edit.ejs',
         link: function ($scope, $element) {
             $scope.toUpload = [];
             //$element.find("select").each(function(){
@@ -262,7 +262,7 @@ app.directive('uploader', function () {
             isSync: "@isSync",
             formName: "@name"
         },
-        templateUrl: 'templates/admin/uploader.html',
+        templateUrl: 'templates/admin/uploader.ejs',
         link: function ($scope, $element) {
             console.log($element.find('input[type="file"]').eq(0));
             $element.find('input[type="file"]').eq(0).on('change', function () {
@@ -381,7 +381,7 @@ app.directive('teacherInfo', function factory() {
     var directiveDefinitionObject = {
         restrict: 'AE',
         transclude: true,
-        templateUrl: 'templates/admin/teacher/info.html',
+        templateUrl: 'templates/admin/teacher/info.ejs',
         scope: {
             course_id: "@course_id"
         },
@@ -450,7 +450,7 @@ app.directive('teacherEdit', function () {
             index: "@index",
             course: "@course_id"
         },
-        templateUrl: 'templates/admin/teacher/edit.html',
+        templateUrl: 'templates/admin/teacher/edit.ejs',
         link: function ($scope) {
             if ($scope.mode == 'edit') {
 
@@ -516,7 +516,7 @@ app.directive('partnerEdit', function factory() {
     var directiveDefinitionObject = {
         restrict: 'AE',
         transclude: true,
-        templateUrl: 'templates/admin/partner/edit.html',
+        templateUrl: 'templates/admin/partner/edit.ejs',
         scope: {
             mode: "@mode",
             partner_id: "@_id"

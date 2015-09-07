@@ -5,8 +5,8 @@
 </head>
 <body>
 <%- include ../header.ejs %>
-<% if (user) { %>
-  <h4>当前登录用户：<%= user.name %></h4>
+<% if (userInfo) { %>
+  <h4>当前登录用户：<%= userInfo.username %></h4>
 <% } %>
 
 <%- include ../footer.ejs %>
