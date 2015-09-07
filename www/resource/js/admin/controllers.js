@@ -264,7 +264,6 @@ app.directive('uploader', function () {
         },
         templateUrl: 'templates/admin/uploader.ejs',
         link: function ($scope, $element) {
-            console.log($element.find('input[type="file"]').eq(0));
             $element.find('input[type="file"]').eq(0).on('change', function () {
                 $scope.getFileInfo();
             });
