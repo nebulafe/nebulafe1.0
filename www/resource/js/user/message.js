@@ -4,39 +4,39 @@
 define(function (require, exports, moudle) {
   var helper = {};
   var template_right =
-      '<%_.each(data,function(msg){%>'+
-'<section class="message msg-<%-msg.action%> isread-<%-msg.isread%>" data-msg-id="<%-msg.messageid%>">'+
+    '<%_.each(data,function(msg){%>' +
+    '<section class="message msg-<%-msg.action%> isread-<%-msg.isread%>" data-msg-id="<%-msg.messageid%>">' +
 
-'<time class="time"><%-new Date(msg.update_time).toLocaleDateString()%>'+
-'<%-new Date(msg.update_time).toLocaleTimeString()%></time>'+
-'<div class="user-content" data-nickname="<%- msg.fromnickname %>">'+
-'<div class="user-head-icon'+
-' user-head-<%- msg.fromavator %>"></div>'+
-'</div>'+
+    '<time class="time"><%-new Date(msg.update_time).toLocaleDateString()%>' +
+    '<%-new Date(msg.update_time).toLocaleTimeString()%></time>' +
+    '<div class="user-content" data-nickname="<%- msg.fromnickname %>">' +
+    '<div class="user-head-icon' +
+    ' user-head-<%- msg.fromavator %>"></div>' +
+    '</div>' +
 
-'<div class="msg-content">'+
-'<div class="txt latest-message-abs">'+
-'<%="<h4>"+msg.title+"</h4>"%>'+
-'<article>'+
-'<%-msg.content %>'+
-'</article>'+
-'</div>'+
-'</div>'+
-'</section> ' + '<%})%>';
+    '<div class="msg-content">' +
+    '<div class="txt latest-message-abs">' +
+    '<%="<h4>"+msg.title+"</h4>"%>' +
+    '<article>' +
+    '<%-msg.content %>' +
+    '</article>' +
+    '</div>' +
+    '</div>' +
+    '</section> ' + '<%})%>';
 
-  var template_left = '<% _.each(msgs,function(m){ %>'+
-    '<section class="user-abs read-<%= m.isread %>" data-from-id="<%- m.fromid %>">'+
-'<div class="left-content">'+
-'<div class="user-head-icon user-head-<%= m.fromavator %>"></div>'+
-'</div>'+
+  var template_left = '<% _.each(msgs,function(m){ %>' +
+    '<section class="user-abs read-<%= m.isread %>" data-from-id="<%- m.fromid %>">' +
+    '<div class="left-content">' +
+    '<div class="user-head-icon user-head-<%= m.fromavator %>"></div>' +
+    '</div>' +
 
-'<div class="right-content">'+
-'<a class="txt user-name"><%= m.fromnickname %></a>'+
-'<div class="txt latest-message-abs"><%= m.title %></div>'+
-'</div>'+
-'</section>'+
+    '<div class="right-content">' +
+    '<a class="txt user-name"><%= m.fromnickname %></a>' +
+    '<div class="txt latest-message-abs"><%= m.title %></div>' +
+    '</div>' +
+    '</section>' +
 
-'<% }); %>';
+    '<% }); %>';
 
 
   var messagePage = function () {
@@ -83,7 +83,7 @@ define(function (require, exports, moudle) {
       } else {
         var diaLogUserId = parseInt(window.location.hash.substring(1));
         me.set('recentViewDialog', diaLogUserId);
-      }
+        }
       return me;
     },
     getDialogMessages: function () {
@@ -101,9 +101,15 @@ define(function (require, exports, moudle) {
     openDialog: function () {
       var me = this;
       var dialogUserId = me.get('recentViewDialog');
-      if(dialogUserId){
+
+      if (dialogUserId) {
+
+
         me.getDialogMessages()(function (res) {
           if (res.errno == 0) {
+            $('.user-abs.active').removeClass('active');
+            $('.user-abs[data-from-id="'+dialogUserId+'"]').eq(0).addClass('active');
+
             window.location.hash = dialogUserId;
             res.data = res.data.reverse();
             me.renderRightMessage(res);
@@ -125,6 +131,10 @@ define(function (require, exports, moudle) {
         if (target.hasClass('user-abs')) {
           if (me.get('recentViewDialog') != target.attr('data-from-id')) {
             me.set('recentViewDialog', target.attr('data-from-id'));
+            //添加active
+
+
+            //打开对话框
             me.openDialog();
           }
         } else if (target.hasClass('left-content') || target.hasClass('right-content')) {
@@ -133,14 +143,14 @@ define(function (require, exports, moudle) {
           target.parent().parent().trigger('click');
         }
       });
-      me.dialogLeft.on('mouseover',function(){
-          var target = $(e.target);
-        if(target.hasClass('message')&& target.hasClass("unread")){
+      me.dialogView.on('mouseover', function (e) {
+        var target = $(e.target);
+        if (target.hasClass('message') && target.hasClass("unread")) {
           me.setMsgRead(target.get(0));
         }
       });
 
-      me.sendBtn.click(function(){
+      me.sendBtn.click(function () {
         me.sendMessage();
       });
       return me;
@@ -164,13 +174,13 @@ define(function (require, exports, moudle) {
       var renderData = {
         data: [
           {
-            'content' : content,
-            'fromavator' : avator,
+            'content': content,
+            'fromavator': avator,
             'fromnickname': nickname,
             'update_time': update_time,
-            'action' : 'send',
-            'title' : '',
-            'isread' : true
+            'action': 'send',
+            'title': '',
+            'isread': true
           }
         ]
       };
@@ -179,20 +189,20 @@ define(function (require, exports, moudle) {
         url: '/user/sendMsg',
         type: 'POST',
         data: {
-          toid : me.get('recentViewDialog'),
+          toid: me.get('recentViewDialog'),
           title: '',
           content: content
         },
         dataType: 'json'
-      }).done(function(res){
-        if(res.errno == 0){
+      }).done(function (res) {
+        if (res.errno == 0) {
           //me.renderRightMessage(renderData);
           me.msgEditor.val('');
           me.dialogView.append(me.get('rightRender')(renderData));
-          ALERT('提示','发送成功');
+          ALERT('提示', '发送成功');
 
-        }else{
-          ALERT('发送失败',res.msg);
+        } else {
+          ALERT('发送失败', res.msg);
         }
 
       });
@@ -207,7 +217,7 @@ define(function (require, exports, moudle) {
         me.checkUnread(top, scrollHeight);
       });
     },
-    checkUnread: function(top, scrollHeight) {
+    checkUnread: function (top, scrollHeight) {
       var me = this;
       $('.message.msg-receive.isread-0', me.dialogView).each(function () {
         if ((top <= this.offsetTop) && (this.offsetTop < top + scrollHeight - 100)) {
@@ -221,19 +231,16 @@ define(function (require, exports, moudle) {
       console.log(elem.scrollTop);
       var data = {messageid: elem.getAttribute('data-msg-id')};
       $(elem).removeClass('isread-0');
-      $.post('/user/readMsg',data,'json').done(function(res){
-        if(res.errno == 0){
-          if($('.message.msg-receive.isread-0', me.dialogView).length == 0){
+      $.post('/user/readMsg', data, 'json').done(function (res) {
+        if (res.errno == 0) {
+          if ($('.message.msg-receive.isread-0', me.dialogView).length == 0) {
             var id = me.get('recentViewDialog');
-            $('.user-abs.read-0[data-from-id="'+id+'"]').removeClass('read-0');
+            $('.user-abs.read-0[data-from-id="' + id + '"]').removeClass('read-0');
 
           }
         }
       });
     }
-
-
-
 
   };
 
