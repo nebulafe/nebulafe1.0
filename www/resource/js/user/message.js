@@ -108,6 +108,7 @@ define(function (require, exports, moudle) {
             res.data = res.data.reverse();
             me.renderRightMessage(res);
             me.bindCheckReadMessage();
+            $('.m-editor.hide').removeClass('hide');
           }
         })
       }
@@ -130,6 +131,12 @@ define(function (require, exports, moudle) {
           target.parent().trigger('click');
         } else if (target.hasClass('user-head') || target.hasClass('txt')) {
           target.parent().parent().trigger('click');
+        }
+      });
+      me.dialogLeft.on('mouseover',function(){
+          var target = $(e.target);
+        if(target.hasClass('message')&& target.hasClass("unread")){
+          me.setMsgRead(target.get(0));
         }
       });
 
@@ -180,7 +187,10 @@ define(function (require, exports, moudle) {
       }).done(function(res){
         if(res.errno == 0){
           //me.renderRightMessage(renderData);
+          me.msgEditor.val('');
           me.dialogView.append(me.get('rightRender')(renderData));
+          ALERT('提示','发送成功');
+
         }else{
           ALERT('发送失败',res.msg);
         }
@@ -207,11 +217,18 @@ define(function (require, exports, moudle) {
 
     },
     setMsgRead: function (elem) {
+      var me = this;
       console.log(elem.scrollTop);
       var data = {messageid: elem.getAttribute('data-msg-id')};
       $(elem).removeClass('isread-0');
-      $.post('/user/readMsg',data,'json').done(function(){
-        console.log('已经将内容为' + JSON.stringify(elem) +'的消息置为已读');
+      $.post('/user/readMsg',data,'json').done(function(res){
+        if(res.errno == 0){
+          if($('.message.msg-receive.isread-0', me.dialogView).length == 0){
+            var id = me.get('recentViewDialog');
+            $('.user-abs.read-0[data-from-id="'+id+'"]').removeClass('read-0');
+
+          }
+        }
       });
     }
 

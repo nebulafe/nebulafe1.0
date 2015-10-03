@@ -907,7 +907,6 @@ p.form-des {
           #header .user-right .link-item a.message:hover {
             text-decoration: none; }
           #header .user-right .link-item a.message::after {
-            content: attr(data-msg);
             display: block;
             position: absolute;
             top: 10px;
@@ -923,6 +922,11 @@ p.form-des {
             text-align: center;
             background-color: #cc0000;
             color: #fff; }
+          #header .user-right .link-item a.message.unread::after {
+            content: attr(data-msg); }
+          #header .user-right .link-item a.message:not(.unread)::after {
+            content: none;
+            display: none; }
 
 .g-page-way {
   height: 60px;
