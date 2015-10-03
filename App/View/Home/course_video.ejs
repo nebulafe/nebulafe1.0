@@ -55,7 +55,7 @@
                     <% comments_list.forEach(function(val){%>
                     <article class="comment">
                         <div class="left-content">
-                            <div class="user-head-icon user-head-<%=val.avator||1%>" data-id="<%=val.userid%>"></div>
+                            <a href="/user/message/?to=<%= val.userid%>#<%= val.userid%>" class="user-head-icon user-head-<%=val.avator||1%>" data-id="<%=val.userid%>"></a>
                         </div>
 
                         <div class="right-content">
