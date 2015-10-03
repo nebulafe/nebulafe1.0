@@ -481,9 +481,7 @@ module.exports = Controller("Home/BaseController", function(){
               if(toid && mcontent[i].otherid == toid){
                 toUser = mcontent[i]
               }else{
-                if(mcontent[i].action == 'receive' && mcontent[i].isread == 0){
-                  mmcon.push(mcontent[i])
-                }
+                mmcon.push(mcontent[i])
               }
             }
 
