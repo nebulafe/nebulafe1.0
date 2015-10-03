@@ -115,6 +115,7 @@ define(function (require, exports, moudle) {
             me.renderRightMessage(res);
             me.bindCheckReadMessage();
             $('.m-editor.hide').removeClass('hide');
+            me.dialogView.get(0).scrollTop = 10000000;
           }
         })
       }
