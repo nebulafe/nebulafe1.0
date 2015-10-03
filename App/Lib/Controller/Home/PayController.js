@@ -7,6 +7,9 @@ module.exports = Controller("Home/BaseController", function(){
   return {
     indexAction: function(){
       var self = this;
+      if(!self.userInfo || !self.userInfo.id){
+        return self.redirect("/");
+      }
       this.assign({
         section : 'pay',
         title : "购买产品",
@@ -18,6 +21,9 @@ module.exports = Controller("Home/BaseController", function(){
 
     errAction: function(){
       var self = this;
+      if(!self.userInfo || !self.userInfo.id){
+        return self.redirect("/");
+      }
       this.assign({
         section : 'pay',
         title : "支付出错",
@@ -29,6 +35,9 @@ module.exports = Controller("Home/BaseController", function(){
 
     successAction : function(){
       var self = this;
+      if(!self.userInfo || !self.userInfo.id){
+        return self.redirect("/");
+      }
       this.assign({
         section : 'pay',
         title : "支付成功",
@@ -38,18 +47,24 @@ module.exports = Controller("Home/BaseController", function(){
       this.display();
     },
 
-    payAction : function(){
+    infoAction : function(){
       var self = this;
       if(self.isPost()){
         if(!self.userInfo){
           return self.error("请登录后进行购买！")
         }else{
-          Service.pay({
-            WIDout_trade_no: 1000001,
+          self.assign({
+            section : 'pay',
+            title : "提交订单",
+            userInfo:self.userInfo,
+            navLinks : navLinks,
+            WIDout_trade_no: 1000000011,
             WIDsubject: "星云会员购买",
-            WIDtotal_fee: 149,
-            WIDbody: "为了提供更多的优质的资源，欢迎您使用星云会员服务！"
+            WIDtotal_fee: 0.02,
+            WIDbody: "为了提供更多的优质的资源，欢迎您使用星云会员服务！",
+            WIDshow_url : "http://www.nebulafe.com/pay/success/"
           })
+          return self.display();
         }
       }
     }

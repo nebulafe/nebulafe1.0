@@ -559,6 +559,9 @@ module.exports = Controller("Home/BaseController", function(){
         if(!data.title){
           data.title = data.content.slice(0,10);
         }
+        if(data.toid == value.id){
+          return self.error("自己不能给自己发送消息！")
+        }
         Service.sendMsg({
           fromid : value.id,
           toid : data.toid,
