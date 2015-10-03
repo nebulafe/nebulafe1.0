@@ -610,7 +610,7 @@ module.exports = Controller("Home/BaseController", function(){
           userid : value.id,
           timestamp : data.lasttime
         }).then(function(content){
-          if(content){
+          if(typeof content === 'number'){
             return self.success(content);
           }else{
             return self.error("请稍后再试，服务异常！")
