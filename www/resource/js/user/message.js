@@ -146,7 +146,7 @@ define(function (require, exports, moudle) {
       });
       me.dialogView.on('mouseover', function (e) {
         var target = $(e.target);
-        if (target.hasClass('message') && target.hasClass("unread")) {
+        if (target.hasClass('message') && target.hasClass("isread-0")) {
           me.setMsgRead(target.get(0));
         }
       });
