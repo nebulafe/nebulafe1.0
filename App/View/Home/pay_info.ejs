@@ -4,7 +4,6 @@
   <%- include ../meta.ejs %>
 </head>
 <body>
-  <%- include ../header.ejs %>
   <div class="container n-pay">
     <form action="http://www.nebulafe.org:8080/onlineLearningService-1.0.0-SNAPSHOT/alipay/request/alipayapi.jsp" method="POST" target="_self" id="nebulafe_buy">
       <div id="body" style="display:none;">
@@ -41,7 +40,6 @@
       </div>
     </form>
   </div>
-  <%- include ../footer.ejs %>
   <script>document.getElementById('nebulafe_buy').submit()</script>
 </body>
 </html>
