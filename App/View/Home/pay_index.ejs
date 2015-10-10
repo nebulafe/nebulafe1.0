@@ -230,8 +230,9 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <button style="float: left; " class="btn btn-warning" id="pay_btn">支付</button>
             <form style="float: left; margin-left:5px " action="/pay/info" method="POST" target="_blank">
+                <input type="hidden" value="0" name="isalipay">
+                <input type="hidden" value="" name="bankname">
                 <input class="btn btn-warning" checked type="submit" value="提交">
             </form>
         </div>

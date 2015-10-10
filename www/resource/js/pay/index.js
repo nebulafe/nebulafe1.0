@@ -12,12 +12,12 @@ define(function(require, exports, moudle) {
         }else{
             $('#banks').hide();
         }
-        alert(method);
+        $('input[name="isalipay"]').val(method - 1);
     });
 
     $('#banks input').get(0).checked = true;
     $('#banks').on('change',function(e){
         var bank =  $('#banks input:checked').attr("id");
-        alert(bank);
+        $('input[name="bankname"]').val(bank);
     });
 })

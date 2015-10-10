@@ -184,8 +184,12 @@ var Service = Class(function(){
     },
 
     /* Pay API*/
-    pay : function(data){
-      return getRequst('alipay/request' , data)
+    createOrder : function(data){
+      return getRequst('order/create' , data)
+    },
+
+    payOrder : function(data){
+      return getRequst('order/pay' , data)
     },
 
     /* Msg API*/
