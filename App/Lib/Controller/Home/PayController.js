@@ -60,7 +60,7 @@ module.exports = Controller("Home/BaseController", function(){
             name : '金融英语',
             desc : '购买金融英语课程',
             detail :JSON.stringify([{
-              'course_id' : 1,
+              'course_id' : Math.ceil(Math.random()*100000),
               'num' : 1
             }])
           }).then(function(content){
@@ -68,6 +68,7 @@ module.exports = Controller("Home/BaseController", function(){
               Service.payOrder({
                 order_unique_id : content.data,
                 comment : "",
+                showurl : 'http://www.nebufafe.com/',
                 isalipay : data.isalipay,
                 bankname : data.bankname
               }).then(function(ocontent){
@@ -90,8 +91,17 @@ module.exports = Controller("Home/BaseController", function(){
 
     notifyAction : function(){
       var self = this;
-      console.log(self.get())
-      console.log(self.post())
+      var data = self.post();
+      if(data.trade_status == 'TRADE_FINISHED'){
+        self.assign({
+          result : "成功"
+        })
+      }else{
+        self.assign({
+          result : "失败"
+        })
+      }
+      return self.display();
     }
   };
 })

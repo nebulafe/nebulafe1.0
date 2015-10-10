@@ -192,6 +192,10 @@ var Service = Class(function(){
       return getRequst('order/pay' , data)
     },
 
+    cbOrder : function(data){
+      return getRequst('order/pay' , data)
+    },
+
     /* Msg API*/
     getMsgsById : function(data){
       return getRequst('message/get' , extend({
