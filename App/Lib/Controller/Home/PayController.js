@@ -11,14 +11,24 @@ module.exports = Controller("Home/BaseController", function(){
       if(!self.userInfo || !self.userInfo.id){
         return self.redirect("/");
       }
-      console.log('buy');
-      this.assign({
-        section : 'pay',
-        title : "购买产品",
-        userInfo:self.userInfo,
-        navLinks : navLinks
+      var course_id = self.get('id');
+      if(!course_id){
+        return self.error("请选择要购买的课程！")
+      }
+      Service.getCourseById({id : course_id}).then(function(data){
+        var course = data[0];
+        var mydate = new Date();
+        mydate.setFullYear(mydate.getFullYear() + 1);
+        self.assign({
+          section : 'pay',
+          title : "购买产品",
+          userInfo:self.userInfo,
+          navLinks : navLinks,
+          valid_date : getDate(mydate),
+          course : course
+        })
+        self.display();
       })
-      this.display();
     },
 
     errAction: function(){
@@ -59,18 +69,18 @@ module.exports = Controller("Home/BaseController", function(){
           console.log('paying')
           Service.createOrder({
             user_id : self.userInfo.id,
-            name : '金融英语',
-            desc : '购买金融英语课程',
+            name : data.name,
+            desc : '购买课程：' + data.name,
             detail :JSON.stringify([{
-              'course_id' : Math.ceil(Math.random()*100000),
+              'course_id' : data.courseid,
               'num' : 1
             }])
           }).then(function(content){
             if(content && content.errno === 0){
               Service.payOrder({
                 order_unique_id : content.data,
-                comment : "",
-                showurl : 'http://www.nebufafe.com/',
+                comment : data.comment,
+                showurl : data.showurl,
                 isalipay : data.isalipay,
                 bankname : data.bankname
               }).then(function(ocontent){
@@ -97,12 +107,12 @@ module.exports = Controller("Home/BaseController", function(){
       console.log('notify');
       Service.cbOrder(data).then(function(content){
         if(content && content.errno === 0){
-          return self.echo("success")
+          self.end("success")
         }else{
-          return self.echo('fail')
+          self.end('fail')
         }
       }).catch(function(err){
-        return self.echo('fail')
+        return self.end('fail')
       })
     },
 

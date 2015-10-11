@@ -171,6 +171,10 @@
 
     </div>
     <div id="video_container"></div>
+    <input type="hidden" id="c_id" name='cid' value="<%=course.id%>">
+    <input type="hidden" id="c_needpay" name='needpay' value="<%=course.needpay%>">
+    <input type="hidden" id="c_haspay" name='haspay' value="<%=course.haspay%>">
+    <input type="hidden" id="c_payvalid" name='payvalid' value="<%=course.payvalid%>">
 </div>
 <%- include ../footer.ejs %>
 <script>seajs.use('js/course/view.js')</script>

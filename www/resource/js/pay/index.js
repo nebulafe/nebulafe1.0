@@ -26,4 +26,11 @@ define(function (require, exports, moudle) {
     $('input[name="bankname"]').val(bank);
 
   });
+
+  $('input[name="showurl"]').val(location.protocol + '//' + location.host + $('input[name="showurl"]').val());
+
+  $('#n_comment').on('change',function(e){
+    var me = this;
+    $('input[name="comment"]').val($(me).val())
+  })
 })

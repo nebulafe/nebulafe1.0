@@ -13,9 +13,9 @@
         <div class="col col-right"><%= userInfo.username %></div>
     </div>
     <div class="row">
-        <div class="col col-left">有效期至</div>
+        <div class="col col-left">课程名称</div>
         <div class="col col-right">
-            <span><%= userInfo.viptime %></span>
+            <span><%= course.name %></span>
         </div>
     </div>
     <div class="row pay-method-wrapper">
@@ -225,20 +225,30 @@
 
     </div>
     <div class="row">
-        <div class="col col-left">开通时长</div>
+        <div class="col col-left">有效期至</div>
         <div class="col col-right">
-            <span class="price"><b>年费 149 </b> （原价 <strike>190</strike>）</span>
-            <span class="price"><b>半年 80</b> （原价 <strike>1000</strike>）</span></div>
+            <span><%=valid_date%></span>
+        </div>
     </div>
     <div class="row">
         <div class="col col-left">应付金额</div>
-        <div class="col col-right"><span class="price"><b>149 元</b> （节省 <strike>41元</strike>）</span></div>
+        <div class="col col-right"><span class="price"><b><%=course.price%></b> （节省 <strike>241元</strike>）</span></div>
+    </div>
+    <div class="row">
+        <div class="col col-left">备注</div>
+        <div class="col col-right">
+            <input id="n_comment"  type="text" placeholder="如需发票，可注明发票抬头邮寄地址等信息！" style="border:none;width:600px;outline:none;color:#333;">
+        </div>
     </div>
     <div class="row">
         <div class="col col-left">
             <form style="float: left; margin-left:5px " action="/pay/info" method="POST" target="_blank">
                 <input type="hidden" value="0" name="isalipay">
                 <input type="hidden" value="" name="bankname">
+                <input type="hidden" value="/course/video/<%=course.id%>" name="showurl">
+                <input type="hidden" value="<%=course.id%>" name="courseid">
+                <input type="hidden" value="<%=course.name%>" name="name">
+                <input type="hidden" value="" name="comment">
                 <input class="btn btn-warning" checked type="submit" value="前往支付">
             </form>
         </div>

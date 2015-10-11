@@ -2,15 +2,27 @@ define(function (require, exports, moudle) {
     alifenxi.track("course_view_view");
     var login = require('../index.js');
     var focus_btn = $("#focus-btn");
+    var needpay = $('#c_needpay').val();
+    var haspay = $('#c_haspay').val();
+    var course_id = $('#c_id').val();
     $(function () {
         var is_login = $('#signin_user').length == 0 ? false : true;
         if (is_login) {
-            $('#start_learn').attr({
-                href: $('#start_learn').attr('data-href')
-            })
-            $('#learn_mater').attr({
-                href: $('#learn_mater').attr('data-href')
-            })
+            if(needpay == 1 && haspay == "0"){
+                $('#start_learn').attr({
+                    href: '/pay?id=' + course_id
+                })
+                $('#learn_mater').attr({
+                    href: '/pay?id=' + course_id
+                })
+            }else{
+                $('#start_learn').attr({
+                    href: $('#start_learn').attr('data-href')
+                })
+                $('#learn_mater').attr({
+                    href: $('#learn_mater').attr('data-href')
+                })
+            }
         } else {
             $('#start_learn').on('click', function (e) {
                 login.signin();
