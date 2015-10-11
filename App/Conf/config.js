@@ -13,6 +13,9 @@ module.exports = {
   app_group_list: ['Home', 'Admin'], //分组列表
   show_exec_time: true,
   tpl_file_suffix: ".ejs",
+  log_console: true, // 是否记录日志，开启后会重写 console.error 等系列方法
+  log_console_path: LOG_PATH + '/console', // 日志文件存放路径
+  log_console_type: ['error','log'], // 默认只接管 console.error 日志
   url_resource_reg: /^(upload\/|resource\/|static\/|favicon\.ico|robot\.txt)/ ,//判断是否是静态资源的正则
   post_max_file_size: 1024 * 1024 * 1024, //上传文件大小限制，默认1G
   post_max_fields: 100, //最大表单数，默认为100

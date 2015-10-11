@@ -4,44 +4,9 @@
   <%- include ../meta.ejs %>
 </head>
 <body>
-  <%- include ../header.ejs %>
   <div class="container n-pay">
-    <form action="http://www.nebulafe.org:8080/onlineLearningService-1.0.0-SNAPSHOT/alipay/request/alipayapi.jsp" method="POST" target="_self" id="nebulafe_buy">
-      <div id="body" style="display:none;">
-        <dl class="content">
-          <dt>商户订单号：</dt>
-          <dd>
-            <span class="null-star">*</span> <input size="30" name="WIDout_trade_no" value="<%=WIDout_trade_no%>">
-          </dd>
-          <dt>订单名称：</dt>
-          <dd>
-            <span class="null-star">*</span> <input size="30" name="WIDsubject" value="<%=WIDsubject%>">
-          </dd>
-          <dt>付款金额：</dt>
-          <dd>
-            <span class="null-star">*</span> <input size="30" name="WIDtotal_fee" value="<%=WIDtotal_fee%>">
-          </dd>
-          <dt>订单描述 ：</dt>
-          <dd>
-            <span class="null-star">*</span> <input size="30" name="WIDbody" value="<%=WIDbody%>">
-            <span></span>
-          </dd>
-          <dt>商品展示地址：</dt>
-          <dd>
-            <span class="null-star">*</span> <input size="30" name="WIDshow_url" value="<%=WIDshow_url%>">
-          </dd>
-          <dt></dt>
-          <dd>
-            <span class="new-btn-login-sp">
-              <button class="new-btn-login" type="submit" style="text-align: center;">确 认</button>
-            </span>
-          </dd>
-        </dl>
-        <input type="submit" value="提交">
-      </div>
-    </form>
+    <%- aliform%>
   </div>
-  <%- include ../footer.ejs %>
-  <script>document.getElementById('nebulafe_buy').submit()</script>
+  <script>document.getElementById('alipaysubmit').submit()</script>
 </body>
 </html>

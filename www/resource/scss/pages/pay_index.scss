@@ -1,4 +1,4 @@
-
+@import "../common";
 .pay-method-wrapper{
 
   .pay-method{
@@ -284,4 +284,33 @@ li {
 
 #js_appstyle_vip_v2_css_module_forms_select_bank {
   height: 42px;
+}
+
+.n-pay{
+  margin: auto;
+  .row{
+    font-size: 14px;
+    overflow: hidden;
+    margin: auto;
+    width: 800px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    padding-top: 20px;
+    margin-top: -1px;
+
+    .col{
+      float: left;
+    }
+    .col-left{
+      width: 150px;
+    }
+    .price{
+      b{
+        color: $color_brick_red_approx;
+      }
+      strike{
+
+      }
+    }
+  }
 }
