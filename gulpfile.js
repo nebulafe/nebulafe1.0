@@ -4,7 +4,7 @@ var gulp = require('gulp'),
 	sass = require('gulp-sass'),
 	livereload = require('gulp-livereload'),
     del = require('del'),
-    rename = require("gulp-rename-plus"),
+    //rename = require("gulp-rename-plus"),
 	notify = require('gulp-notify');
 
 gulp.task('img',function() {
@@ -30,14 +30,16 @@ gulp.task('clean', function(cb) {
 
 gulp.task('watch', function() {
 	livereload.listen();
-	gulp.watch('./www/resource/scss/pages/**/*.scss', ['css']);
+	gulp.watch('./www/resource/scss/**/*.scss', ['css']);
 });
 
-gulp.task('change_file_name',function(){
-    return gulp.src('./App/View/**/*.html')
-        .pipe(rename({suffix : 'ejs'}))
-        .pipe(gulp.dest("./output"));
-})
+
+//gulp.task('change_file_name',function(){
+//    return gulp.src('./App/View/**/*.html')
+//        .pipe(rename({suffix : 'ejs'}))
+//        .pipe(gulp.dest("./output"));
+//});
+
 gulp.task('default',['clean'], function() {
   return gulp.start('img','css')
 });
