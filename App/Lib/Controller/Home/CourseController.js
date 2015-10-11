@@ -96,11 +96,14 @@ module.exports = Controller("Home/BaseController", function(){
       if(self.isGet()){
         var course_id = self.get('id');
         var video_id = self.get('v_id') - 0;
+        var user_id = user_info.id;
 
         if(!course_id){
           return self.redirect("/course");
         }
-        var course = Service.getCourseById({id : course_id});
+        Service.getCourseById({id : course_id ,'_user_id' : user_id}).then(function(data){
+          var course = data[0];
+        })
         var resources = Service.getResourcesByCourseId({course : course_id});
         var comments = Service.getComment({courseid : course_id ,_returnType : 'all'});
         Service.getResourcesByCourseId({course : course_id}).then(function(resources){

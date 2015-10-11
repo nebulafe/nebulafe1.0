@@ -111,15 +111,10 @@ module.exports = Controller("Home/BaseController", function(){
       var data = self.get();
       console.log('return');
       if(data['trade_status'] == 'TRADE_FINISHED' || data['trade_status'] == 'TRADE_SUCCESS'){
-        self.assign({
-          result : "付款成功！"
-        })
+        return self.redirect('/pay/success');
       }else{
-        self.assign({
-          result : "付款失败！"
-        })
+        return self.redirect('/pay/err');
       }
-      return self.display()
     }
   };
 })
