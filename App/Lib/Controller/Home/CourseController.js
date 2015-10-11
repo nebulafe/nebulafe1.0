@@ -104,8 +104,8 @@ module.exports = Controller("Home/BaseController", function(){
         }
         Service.getCourseById({id : course_id ,'_user_id' : user_id}).then(function(data){
           var course = data[0];
-          if(data.needpay == 1){
-            if(data.haspay == 1 && data.payvalid > Math.ceil(new Date().getTime()/1000)){
+          if(course.needpay == 1){
+            if(course.haspay == 1 && course.payvalid > Math.ceil(new Date().getTime()/1000)){
               canplay = true
             }else{
               canplay = false
@@ -139,7 +139,7 @@ module.exports = Controller("Home/BaseController", function(){
               });
             })
           }else{
-            return self.redirect(self..referer())
+            return self.redirect(self.referer())
           }
         })
       }
