@@ -6,7 +6,7 @@ global.RESOURCE_PATH = __dirname;
 //网站根目录
 global.ROOT_PATH = __dirname;
 //LOG目录
-global.LOG_PATH = __dirname + '/App/Runtime/Log'
+global.LOG_PATH = path.dirname(__dirname) + '/App/Runtime/Log';
 //开启调试模式，线上环境需要关闭调试功能
 global.APP_DEBUG = false;
 //加载thinkjs启动服务
