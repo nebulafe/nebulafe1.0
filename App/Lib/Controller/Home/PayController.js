@@ -104,6 +104,21 @@ module.exports = Controller("Home/BaseController", function(){
       }).catch(function(err){
         return self.echo('fail')
       })
+    },
+
+    returnAction : function(){
+      var self = this;
+      var data = self.get();
+      if(data['trade_status'] == 'TRADE_FINISHED' || data['trade_status'] == 'TRADE_SUCCESS'){
+        self.assign({
+          result : "付款成功！"
+        })
+      }else{
+        self.assign({
+          result : "付款失败！"
+        })
+      }
+      return self.display()
     }
   };
 })
