@@ -11,6 +11,7 @@ module.exports = Controller("Home/BaseController", function(){
       if(!self.userInfo || !self.userInfo.id){
         return self.redirect("/");
       }
+      console.log('buy');
       this.assign({
         section : 'pay',
         title : "购买产品",
@@ -55,6 +56,7 @@ module.exports = Controller("Home/BaseController", function(){
           return self.error("请登录后进行购买！")
         }else{
           var data = self.post();
+          console.log('paying')
           Service.createOrder({
             user_id : self.userInfo.id,
             name : '金融英语',
@@ -92,16 +94,16 @@ module.exports = Controller("Home/BaseController", function(){
     notifyAction : function(){
       var self = this;
       var data = self.post();
-      if(data.trade_status == 'TRADE_FINISHED'){
-        self.assign({
-          result : "成功"
-        })
-      }else{
-        self.assign({
-          result : "失败"
-        })
-      }
-      return self.display();
+      console.log('notify');
+      Service.cbOrder(data).then(function(content){
+        if(content && content.errno === 0){
+          return self.echo("success")
+        }else{
+          return self.echo('fail')
+        }
+      }).catch(function(err){
+        return self.echo('fail')
+      })
     }
   };
 })

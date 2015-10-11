@@ -193,7 +193,7 @@ var Service = Class(function(){
     },
 
     cbOrder : function(data){
-      return getRequst('order/pay' , data)
+      return getRequst('order/servercallback' , data)
     },
 
     /* Msg API*/
