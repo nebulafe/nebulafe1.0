@@ -109,6 +109,7 @@ module.exports = Controller("Home/BaseController", function(){
     returnAction : function(){
       var self = this;
       var data = self.get();
+      console.log('return');
       if(data['trade_status'] == 'TRADE_FINISHED' || data['trade_status'] == 'TRADE_SUCCESS'){
         self.assign({
           result : "付款成功！"
