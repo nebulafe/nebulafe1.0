@@ -90,6 +90,7 @@ module.exports = Controller("Home/BaseController", function(){
     videoAction : function(){
       var self = this;
       var user_info = self.userInfo;
+      var canplay = false;
       if(!user_info){
         return self.redirect("/");
       }
@@ -103,30 +104,43 @@ module.exports = Controller("Home/BaseController", function(){
         }
         Service.getCourseById({id : course_id ,'_user_id' : user_id}).then(function(data){
           var course = data[0];
-        })
-        var resources = Service.getResourcesByCourseId({course : course_id});
-        var comments = Service.getComment({courseid : course_id ,_returnType : 'all'});
-        Service.getResourcesByCourseId({course : course_id}).then(function(resources){
-          if(!isNumber(video_id) || video_id <= 0){
-            video_id = resources[0].id;
+          if(data.needpay == 1){
+            if(data.haspay == 1 && data.payvalid > Math.ceil(new Date().getTime()/1000)){
+              canplay = true
+            }else{
+              canplay = false
+            }
+          }else{
+            canplay = true;
           }
-          var c_course = Service.getResourceById({id : video_id});
-          self.assign({
-            title : "课程视频",
-            course : course,
-            navLinks : navLinks,
-            userInfo : self.userInfo,
-            resources : resources,
-            cur_resource : c_course,
-            section : 'course',
-            comments : comments
-          })
-          self.display();
-          Service.setStudyProgress({
-            userid : user_info.id,
-            courseid : course_id,
-            resourceid : video_id
-          });
+          if(canplay){
+            var resources = Service.getResourcesByCourseId({course : course_id});
+            var comments = Service.getComment({courseid : course_id ,_returnType : 'all'});
+            Service.getResourcesByCourseId({course : course_id}).then(function(resources){
+              if(!isNumber(video_id) || video_id <= 0){
+                video_id = resources[0].id;
+              }
+              var c_course = Service.getResourceById({id : video_id});
+              self.assign({
+                title : "课程视频",
+                course : course,
+                navLinks : navLinks,
+                userInfo : self.userInfo,
+                resources : resources,
+                cur_resource : c_course,
+                section : 'course',
+                comments : comments
+              })
+              self.display();
+              Service.setStudyProgress({
+                userid : user_info.id,
+                courseid : course_id,
+                resourceid : video_id
+              });
+            })
+          }else{
+            return self.redirect(self..referer())
+          }
         })
       }
     },
