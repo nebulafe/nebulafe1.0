@@ -107,11 +107,14 @@ module.exports = Controller("Home/BaseController", function(){
       console.log('notify');
       Service.cbOrder(data).then(function(content){
         if(content && content.errno === 0){
+          console.log('notify_success');
           self.end("success")
         }else{
+          console.log('notify_fail');
           self.end('fail')
         }
       }).catch(function(err){
+        console.log('notify_fail');
         return self.end('fail')
       })
     },
