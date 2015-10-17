@@ -620,6 +620,30 @@ module.exports = Controller("Home/BaseController", function(){
           }
         })
       }
+    },
+
+    myorderAction : function(){
+      var self = this;
+      if(self.isGet()){
+        var value = self.userInfo;
+        if(!value || !value.id){
+          return self.redirect("/")
+        }
+        console.log(value.id)
+        Service.getOrderList({}).then(function(content){
+          self.assign({
+            title : "我的订单",
+            section : 'user',
+            link:'see',
+            userInfo : value,
+            orders : content
+          })
+          self.display()
+          //return self.success(content)
+        }).catch(function(err){
+          return self.error("请稍后再试，服务异常！" || err.msg);
+        })
+      }
     }
 
 

@@ -196,6 +196,15 @@ var Service = Class(function(){
       return getRequst('order/servercallback' , data)
     },
 
+    getOrderList: function(data){
+      return getRequst('order/list' ,extend({
+        _returnType : 'detail',
+        _page : 1,
+        _limit : 10,
+        _desc : true
+      },data))
+    },
+
     /* Msg API*/
     getMsgsById : function(data){
       return getRequst('message/get' , extend({
