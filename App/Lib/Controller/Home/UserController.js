@@ -631,6 +631,7 @@ module.exports = Controller("Home/BaseController", function(){
         }
         console.log(value.id)
         Service.getOrderList({userid : value.id}).then(function(content){
+          console.log(content)
           self.assign({
             title : "我的订单",
             section : 'user',

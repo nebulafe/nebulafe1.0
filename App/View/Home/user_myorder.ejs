@@ -10,7 +10,7 @@
 <div class="container">
     <%- include user_center_left.ejs %>
     <div class="right-container">
-        <div class="myorder">
+        <div class="myorder" id="my_order">
             <table class="table table-striped">
                 <thead>
                     <tr><td>序号</td><td>课程名称</td><td>有效期</td><td>费用</td><td>支付状态</td></tr>
@@ -20,7 +20,12 @@
                         for(var i = 0, l = orders.length; i < l; i++){
                         var m= orders[i];
                     %>
-                        <tr data-id="<%=m.order_id%>" data-order="<%=m.order_unique_id%>"><td><%= i+1 %></td><td><%=m.order_name%></td><td><%=m.pay_valid_from || m.order_create_datetime%></td><td><%=m.order_price%></td><td><% if(m.has_pay=="1"){%>完成<% } else { %>继续支付<%}%></td></tr>
+                        <tr data-id="<%=m.order_id%>" data-order="<%=m.order_unique_id%>"><td><%= i+1 %></td><td><%=m.order_name%></td><td><%=m.pay_valid_from || m.order_create_datetime%></td><td><%=m.order_price%></td><td><% if(m.has_pay=="1"){%>完成<% } else { %>
+                            <form action="/pay/info" method="POST" target="_blank">
+                                <input type="hidden" name="order_id" value="<%=m.order_id%>">
+                                <input type="submit" class="btn btn-primary btn-sm" value="继续支付">
+                            </form>
+                            <%}%></td></tr>
                     <%}%>
                 </tbody>
             </table>

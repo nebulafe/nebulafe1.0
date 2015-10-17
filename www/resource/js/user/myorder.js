@@ -1,1 +1,3 @@
-//alert(1)
+define(function (require, exports, module) {
+
+})

@@ -55,6 +55,12 @@ module.exports = Controller("Home/BaseController", function(){
       if(!self.userInfo || !self.userInfo.id){
         return self.redirect("/");
       }
+      Service.getOrderStatusByUserId({
+        user_id : self.userInfo.id,
+        course_id : '2'
+      }).then(function(content){
+        console.log(content)
+      })
       this.assign({
         section : 'pay',
         title : "支付成功",
@@ -71,13 +77,13 @@ module.exports = Controller("Home/BaseController", function(){
           return self.error("请登录后进行购买！")
         }else{
           var data = self.post();
-          if(data.order){
+          if(data.order_id){
             console.log('repay');
             Service.getOrderDetail({
-              order_id :data.order
+              order_id :data.order_id
             }).then(function(content){
               if(content){
-                Service.payOrder(content[0]).then(function(ocontent){
+                Service.payOrder(extend({bankname:"",showurl:content.show_url || " "},content)).then(function(ocontent){
                   self.assign(extend({
                     section : 'pay',
                     title : "购买课程",
