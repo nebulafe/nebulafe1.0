@@ -196,6 +196,10 @@ var Service = Class(function(){
       return getRequst('order/servercallback' , data)
     },
 
+    getOrderDetail : function(data){
+      return getRequst('order/detail' ,data)
+    },
+
     getOrderList: function(data){
       return getRequst('order/list' ,extend({
         _returnType : 'detail',
