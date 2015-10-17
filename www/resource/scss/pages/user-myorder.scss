@@ -1,4 +1,5 @@
 @import "user-setting";
+
 .container{
   .right-container{
     padding: 30px;
@@ -62,5 +63,21 @@
       }
     }
   }
+}
+
+
+.myorder{
+    tbody{
+        tr{
+            td{
+                vertical-align: middle;
+            }
+        }
+    }
+    .btn-sm{
+        width:60px;
+        height: 20px;
+        line-height: 20px !important;
+    }
 }
 

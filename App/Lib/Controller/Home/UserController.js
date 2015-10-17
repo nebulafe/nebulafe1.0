@@ -630,7 +630,8 @@ module.exports = Controller("Home/BaseController", function(){
           return self.redirect("/")
         }
         console.log(value.id)
-        Service.getOrderList({}).then(function(content){
+        Service.getOrderList({userid : value.id}).then(function(content){
+          console.log(content)
           self.assign({
             title : "我的订单",
             section : 'user',

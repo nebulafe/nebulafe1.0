@@ -15,6 +15,11 @@ module.exports = Controller("Home/BaseController", function(){
       if(!course_id){
         return self.error("请选择要购买的课程！")
       }
+      Service.getOrderDetail({
+              order_id :11
+            }).then(function(tdata){
+              console.log(tdata)
+            })
       Service.getCourseById({id : course_id}).then(function(data){
         var course = data[0];
         var mydate = new Date();
@@ -50,6 +55,12 @@ module.exports = Controller("Home/BaseController", function(){
       if(!self.userInfo || !self.userInfo.id){
         return self.redirect("/");
       }
+      Service.getOrderStatusByUserId({
+        user_id : self.userInfo.id,
+        course_id : '2'
+      }).then(function(content){
+        console.log(content)
+      })
       this.assign({
         section : 'pay',
         title : "支付成功",
@@ -66,37 +77,59 @@ module.exports = Controller("Home/BaseController", function(){
           return self.error("请登录后进行购买！")
         }else{
           var data = self.post();
-          console.log('paying')
-          Service.createOrder({
-            user_id : self.userInfo.id,
-            name : data.name,
-            desc : '购买课程：' + data.name,
-            detail :JSON.stringify([{
-              'course_id' : data.courseid,
-              'num' : 1
-            }])
-          }).then(function(content){
-            if(content && content.errno === 0){
-              Service.payOrder({
-                order_unique_id : content.data,
-                comment : data.comment,
-                showurl : data.showurl,
-                isalipay : data.isalipay,
-                bankname : data.bankname
-              }).then(function(ocontent){
-                self.assign(extend({
-                  section : 'pay',
-                  title : "购买课程",
-                  aliform : ocontent.request
-                },ocontent))
-                return self.display();
-              })
-            }else{
-              throw new Error('抛出错误')
-            }
-          }).catch(function(err){
-            return self.error(err);
-          })
+          if(data.order_id){
+            console.log('repay');
+            Service.getOrderDetail({
+              order_id :data.order_id
+            }).then(function(content){
+              if(content){
+                Service.payOrder(extend({bankname:"",showurl:content.show_url || " "},content)).then(function(ocontent){
+                  self.assign(extend({
+                    section : 'pay',
+                    title : "购买课程",
+                    aliform : ocontent.request
+                  },ocontent))
+                  return self.display();
+                })
+              }else{
+                throw new Error('抛出错误')
+              }
+            }).catch(function(err){
+              return self.error(err.msg || "系统异常，请稍后再试！")
+            })
+          }else{
+            console.log('paying')
+            Service.createOrder({
+              user_id : self.userInfo.id,
+              name : data.name,
+              desc : '购买课程：' + data.name,
+              detail :JSON.stringify([{
+                'course_id' : data.courseid,
+                'num' : 1
+              }])
+            }).then(function(content){
+              if(content && content.errno === 0){
+                Service.payOrder({
+                  order_unique_id : content.data,
+                  comment : data.comment,
+                  showurl : data.showurl,
+                  isalipay : data.isalipay,
+                  bankname : data.bankname
+                }).then(function(ocontent){
+                  self.assign(extend({
+                    section : 'pay',
+                    title : "购买课程",
+                    aliform : ocontent.request
+                  },ocontent))
+                  return self.display();
+                })
+              }else{
+                throw new Error('抛出错误')
+              }
+            }).catch(function(err){
+              return self.error(err);
+            })
+          }
         }
       }
     },
@@ -122,7 +155,6 @@ module.exports = Controller("Home/BaseController", function(){
     returnAction : function(){
       var self = this;
       var data = self.get();
-      console.log(JSON.stringify(data));
       console.log('return');
       if(data['trade_status'] == 'TRADE_FINISHED' || data['trade_status'] == 'TRADE_SUCCESS'){
         return self.redirect('/pay/success');

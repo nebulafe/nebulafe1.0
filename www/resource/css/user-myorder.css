@@ -1985,4 +1985,11 @@ body {
           .container .right-container .my-wrap .order-table tr.status-0:hover {
             background-color: #fff4f0; }
 
+.myorder tbody tr td {
+  vertical-align: middle; }
+.myorder .btn-sm {
+  width: 60px;
+  height: 20px;
+  line-height: 20px !important; }
+
 /*# sourceMappingURL=user-myorder.css.map */
