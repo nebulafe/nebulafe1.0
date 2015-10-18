@@ -1,9 +1,9 @@
 <ul class="left">
-    <li class="left-item <% if (link == 'myorder') {%> active <%}%>">
-        <a class="link" href="/user/myorder">我的订单</a>
-    </li>
     <li class="left-item <% if (link == 'mycourse') {%> active <%}%>">
         <a class="link" href="/user/mycourse/<%=userInfo.id%>">我的课程</a>
+    </li>
+    <li class="left-item <% if (link == 'myorder') {%> active <%}%>">
+        <a class="link" href="/user/myorder">我的订单</a>
     </li>
     <li class="left-item <% if (link == 'see') {%> active <%}%>">
         <a class="link" href="/user/see/<%=userInfo.id%>">个人资料</a>
