@@ -49,6 +49,8 @@
                         <td>
                             <% if(item.has_pay === 1){ %>
                             <span>支付成功</span>
+                            <% }else if(item.has_pay === 3){ %>
+                            <span class="order-del">订单已取消</span>
                             <% }else{ %>
                             <form action="/pay/info" method="POST" target="_blank">
                                 <input type="hidden" name="order_id" value="<%= item.order_id %>">
