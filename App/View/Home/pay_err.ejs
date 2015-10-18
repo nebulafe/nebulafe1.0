@@ -2,19 +2,11 @@
 <html>
 <head>
   <%- include ../meta.ejs %>
-  <link rel="stylesheet" href="/resource/css/pay_error.css"/>
 </head>
 <body>
   <%- include ../header.ejs %>
-  <div class="container n-about n-error">
-    <div class="error-wrapper">
-      <div class="col">
-        <i class="error-icon"></i>
-      </div>
-      <div class="col">
-        <h2>支付失败！</h2>
-      </div>
-    </div>
+  <div class="container ">
+    <div class="alert alert-danger" role="alert">对不起，您暂未付款成功，请重新购买!</div>
   </div>
   <%- include ../footer.ejs %>
 </body>

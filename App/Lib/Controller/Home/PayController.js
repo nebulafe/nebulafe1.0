@@ -179,6 +179,54 @@ module.exports = Controller("Home/BaseController", function(){
       }else{
         return self.redirect('/pay/err');
       }
+    },
+
+    checkAction : function(){
+      var self = this;
+      if(self.isPost()){
+        var userInfo = self.userInfo;
+        if(!userInfo || !userInfo.id){
+          return self.error("请登录后再查询！")
+        }
+        var data = self.post();
+        if(data.order_id){
+          Service.getOrderDetail({
+            order_id : data.order_id
+          }).then(function(content){
+            if(content.has_pay == 1 && getPayValidDate(content.pay_valid_from) < new Date().getTime()){
+              return self.success({
+                haspay : 1,
+                showurl : content.show_url
+              })
+            }else{
+              return self.success({
+                haspay : 0,
+                showurl : '/pay/err'
+              })
+            }
+          })
+        }else{
+          if(data.courseid){
+            Service.getOrderStatusByUserId({
+              user_id : userInfo.id,
+              course_id : data.courseid
+            }).then(function(content){
+            if(content.has_pay == 1 && getPayValidDate(content.pay_valid_from) < new Date().getTime()){
+              return self.success({
+                haspay : 1,
+                showurl : content.show_url
+              })
+            }else{
+              return self.success({
+                haspay : 0,
+                showurl : '/pay/err'
+              })
+            }
+          })
+          }
+        }
+      }
     }
+
   };
 })
