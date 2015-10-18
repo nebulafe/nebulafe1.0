@@ -28,7 +28,7 @@
                     </thead>
                     <tbody>
                     <% orders.forEach(function(item, index){ %>
-                    <tr class="status-<%- item.has_pay %>" data-id="<%- item.order_id %>">
+                    <tr class="status-<%- item.has_pay %>" data-id="<%- item.order_id %>" id="order_<%- item.order_id %>">
                         <td>
                             <span><%- index %></span>
                         </td>
@@ -53,7 +53,7 @@
                             <form action="/pay/info" method="POST" target="_blank">
                                 <input type="hidden" name="order_id" value="<%= item.order_id %>">
                                 <input type="submit" data-id="<%= item.order_id %>" class="btn btn-primary btn-sm repay" value="继续支付">
-                                <input type="button" data-id="<%= item.order_id %>" class="btn btn-default btn-sm" value="取消">
+                                <input type="button" data-id="<%= item.order_id %>" class="btn btn-default btn-sm delpay" value="取消">
                             </form>
                             <% } %>
                         </td>

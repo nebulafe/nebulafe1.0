@@ -15,11 +15,6 @@ module.exports = Controller("Home/BaseController", function(){
       if(!course_id){
         return self.error("请选择要购买的课程！")
       }
-      Service.getOrderDetail({
-              order_id :11
-            }).then(function(tdata){
-              console.log(tdata)
-            })
       Service.getCourseById({id : course_id}).then(function(data){
         var course = data[0];
         var mydate = new Date();
@@ -55,17 +50,6 @@ module.exports = Controller("Home/BaseController", function(){
       if(!self.userInfo || !self.userInfo.id){
         return self.redirect("/");
       }
-      Service.getOrderStatusByUserId({
-        user_id : self.userInfo.id,
-        course_id : '1'
-      }).then(function(content){
-        console.log(content)
-      })
-      Service.getOrderDetail({
-        order_id : 10
-      }).then(function(content){
-        console.log(content)
-      })
       this.assign({
         section : 'pay',
         title : "支付成功",
@@ -231,12 +215,21 @@ module.exports = Controller("Home/BaseController", function(){
     delAction : function(){
       var self = this;
       if(self.isPost()){
+        var userInfo = self.userInfo;
         if(!userInfo || !userInfo.id){
           return self.error("请登录后再操作！")
         }
         var data = self.post();
         if(data.order_id){
-
+          Service.delOrder({
+            order_id : data.order_id
+          }).then(function(content){
+            if(content){
+              return self.success(content)
+            }else{
+              return self.error("系统出错，请稍后再试")
+            }
+          })
         }else{
           return self.error("请选择订单！")
         }

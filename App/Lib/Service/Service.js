@@ -213,6 +213,10 @@ var Service = Class(function(){
       },data))
     },
 
+    delOrder: function(data){
+      return getRequst('order/cancel', data);
+    },
+
     /* Msg API*/
     getMsgsById : function(data){
       return getRequst('message/get' , extend({
