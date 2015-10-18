@@ -71,29 +71,29 @@ module.exports = Controller("Home/BaseController", function(){
         Service.getOrderDetail({
           order_unique_id : data
         }).then(function(content){
-          console.log(data)
+          console.log(content)
           if(content.has_pay == 1 && getPayValidDate(content.pay_valid_from) > new Date().getTime()){
-            this.assign({
+            self.assign({
               section : 'pay',
               title : "支付成功",
               userInfo:self.userInfo,
               navLinks : navLinks,
               showurl : content.show_url
             })
-            this.display();
+            self.display();
           }else{
             return self.redirect("/pay/err")
           }
         })
       }else{
-        this.assign({
+        self.assign({
           section : 'pay',
           title : "支付成功",
           userInfo:self.userInfo,
           navLinks : navLinks,
           showurl : ""
         })
-        this.display();
+        self.display();
       }
 
     },
