@@ -66,13 +66,34 @@ module.exports = Controller("Home/BaseController", function(){
       if(!self.userInfo || !self.userInfo.id){
         return self.redirect("/");
       }
-      this.assign({
-        section : 'pay',
-        title : "支付成功",
-        userInfo:self.userInfo,
-        navLinks : navLinks
-      })
-      this.display();
+      var data = self.get();
+      if(data['id']){
+        Service.getOrderDetail({
+          order_unique_id : data['id']
+        }).then(function(content){
+          if(content.has_pay == 1 && getPayValidDate(content.pay_valid_from) > new Date().getTime()){
+            this.assign({
+              section : 'pay',
+              title : "支付成功",
+              userInfo:self.userInfo,
+              navLinks : navLinks,
+              showurl : content.show_url
+            })
+            this.display();
+          }else{
+            return self.redirect("/pay/err")
+          }
+        })
+      }else{
+        this.assign({
+          section : 'pay',
+          title : "支付成功",
+          userInfo:self.userInfo,
+          navLinks : navLinks
+        })
+        this.display();
+      }
+
     },
 
     infoAction : function(){
@@ -160,7 +181,7 @@ module.exports = Controller("Home/BaseController", function(){
       var data = self.get();
       console.log('return');
       if(data['trade_status'] == 'TRADE_FINISHED' || data['trade_status'] == 'TRADE_SUCCESS'){
-        return self.redirect('/pay/success');
+        return self.redirect('/pay/success?id='+ data['out_trade_no']);
       }else{
         return self.redirect('/pay/err');
       }
