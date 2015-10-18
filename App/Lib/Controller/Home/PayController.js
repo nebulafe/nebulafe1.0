@@ -113,7 +113,7 @@ module.exports = Controller("Home/BaseController", function(){
             }).then(function(gcontent){
               if(gcontent.has_pay !== 1 || getPayValidDate(gcontent.pay_valid_from) < new Date().getTime()){
                 Service.payOrder({
-                  order_unique_id : data.orderid,
+                  order_unique_id : data.order_unique_id,
                   comment : data.comment,
                   showurl : data.showurl,
                   isalipay : data.isalipay,
