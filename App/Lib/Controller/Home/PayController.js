@@ -19,15 +19,31 @@ module.exports = Controller("Home/BaseController", function(){
         var course = data[0];
         var mydate = new Date();
         mydate.setFullYear(mydate.getFullYear() + 1);
-        self.assign({
-          section : 'pay',
-          title : "购买产品",
-          userInfo:self.userInfo,
-          navLinks : navLinks,
-          valid_date : getDate(mydate),
-          course : course
+        Service.createOrder({
+          user_id : self.userInfo.id,
+          name : course.name,
+          desc : '购买课程：' + course.name,
+          detail :JSON.stringify([{
+            'course_id' : course_id,
+            'num' : 1
+          }])
+        }).then(function(content){
+          if(content && content.errno === 0){
+            self.assign({
+              section : 'pay',
+              title : "购买产品",
+              userInfo:self.userInfo,
+              navLinks : navLinks,
+              valid_date : getDate(mydate),
+              course : course,
+              orderid : content.data
+            })
+            self.display();
+          }else{
+
+          }
         })
-        self.display();
+
       })
     },
 
@@ -90,40 +106,25 @@ module.exports = Controller("Home/BaseController", function(){
             }).catch(function(err){
               return self.error(err.msg || "系统异常，请稍后再试！")
             })
-          }else{
+          }else if(data.order_unique_id){
             console.log('paying')
-            Service.getOrderStatusByUserId({
-              user_id : self.userInfo.id,
-              course_id : data.courseid
+            Service.getOrderDetail({
+              order_unique_id : data.order_unique_id
             }).then(function(gcontent){
               if(gcontent.has_pay !== 1 || getPayValidDate(gcontent.pay_valid_from) < new Date().getTime()){
-                Service.createOrder({
-                  user_id : self.userInfo.id,
-                  name : data.name,
-                  desc : '购买课程：' + data.name,
-                  detail :JSON.stringify([{
-                    'course_id' : data.courseid,
-                    'num' : 1
-                  }])
-                }).then(function(content){
-                  if(content && content.errno === 0){
-                    Service.payOrder({
-                      order_unique_id : content.data,
-                      comment : data.comment,
-                      showurl : data.showurl,
-                      isalipay : data.isalipay,
-                      bankname : data.bankname
-                    }).then(function(ocontent){
-                      self.assign(extend({
-                        section : 'pay',
-                        title : "购买课程",
-                        aliform : ocontent.request
-                      },ocontent))
-                      return self.display();
-                    })
-                  }else{
-                    throw new Error('抛出错误')
-                  }
+                Service.payOrder({
+                  order_unique_id : data.orderid,
+                  comment : data.comment,
+                  showurl : data.showurl,
+                  isalipay : data.isalipay,
+                  bankname : data.bankname
+                }).then(function(ocontent){
+                  self.assign(extend({
+                    section : 'pay',
+                    title : "购买课程",
+                    aliform : ocontent.request
+                  },ocontent))
+                  return self.display();
                 })
               }else{
                 throw new Error('您已经购买该课程，无需重复购买！')
@@ -173,10 +174,8 @@ module.exports = Controller("Home/BaseController", function(){
           return self.error("请登录后再查询！")
         }
         var data = self.post();
-        if(data.order_id){
-          Service.getOrderDetail({
-            order_id : data.order_id
-          }).then(function(content){
+        if(data.order_id || data.order_unique_id){
+          Service.getOrderDetail(data).then(function(content){
             if(content.has_pay == 1 && getPayValidDate(content.pay_valid_from) < new Date().getTime()){
               return self.success({
                 haspay : 1,
@@ -189,25 +188,6 @@ module.exports = Controller("Home/BaseController", function(){
               })
             }
           })
-        }else{
-          if(data.courseid){
-            Service.getOrderStatusByUserId({
-              user_id : userInfo.id,
-              course_id : data.courseid
-            }).then(function(content){
-            if(content.has_pay == 1 && getPayValidDate(content.pay_valid_from) < new Date().getTime()){
-              return self.success({
-                haspay : 1,
-                showurl : content.show_url
-              })
-            }else{
-              return self.success({
-                haspay : 0,
-                showurl : '/pay/err'
-              })
-            }
-          })
-          }
         }
       }
     },

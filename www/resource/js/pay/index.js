@@ -35,7 +35,7 @@ define(function (require, exports, moudle) {
   });
 
   function checkOrder(id){
-    $.post('/pay/check', {courseid : id}, 'json').done(function (res) {
+    $.post('/pay/check', {order_unique_id : id}, 'json').done(function (res) {
       if (res.errno == 0) {
         $('#pay_modal').modal('hide')
         ALERT(res.data.haspay == 1 ? "支付成功！" : "支付失败！");
@@ -55,12 +55,12 @@ define(function (require, exports, moudle) {
   $(document.body).on('click',function(e){
     var _target = $(e.target);
     if($(_target).hasClass('pay-order')){
-      $('#pay_modal').attr('data-courseid',$(_target).data('courseid')).modal('show')
+      $('#pay_modal').attr('data-orderid',$(_target).data('orderid')).modal('show')
     }
     if($(_target).hasClass('pay-success')){
-      checkOrder($('#pay_modal').data('courseid'))
+      checkOrder($('#pay_modal').data('orderid'))
     }else if($(_target).hasClass('pay-error')){
-      checkOrder($('#pay_modal').data('courseid'))
+      checkOrder($('#pay_modal').data('orderid'))
     }
   })
 })
