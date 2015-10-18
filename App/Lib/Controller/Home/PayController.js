@@ -89,7 +89,8 @@ module.exports = Controller("Home/BaseController", function(){
           section : 'pay',
           title : "支付成功",
           userInfo:self.userInfo,
-          navLinks : navLinks
+          navLinks : navLinks,
+          showurl : ""
         })
         this.display();
       }
