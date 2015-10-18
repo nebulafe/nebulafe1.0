@@ -28,7 +28,7 @@
                     </thead>
                     <tbody>
                     <% orders.forEach(function(item, index){ %>
-                    <tr class="status-<%- item.has_pay %>" data-id="<%- item.order_id %>" id="order_<%- item.order_id %>">
+                    <tr class="status-<%- item.has_pay %>" data-id="<%- item.order_id %>" id="order_<%- item.order_id %>" data-uniqueid="<%=item.order_unique_id%>">
                         <td>
                             <span><%- index %></span>
                         </td>

@@ -66,11 +66,12 @@ module.exports = Controller("Home/BaseController", function(){
       if(!self.userInfo || !self.userInfo.id){
         return self.redirect("/");
       }
-      var data = self.get();
-      if(data['id']){
+      var data = self.get('orderid');
+      if(data){
         Service.getOrderDetail({
-          order_unique_id : data['id']
+          order_unique_id : data
         }).then(function(content){
+          console.log(data)
           if(content.has_pay == 1 && getPayValidDate(content.pay_valid_from) > new Date().getTime()){
             this.assign({
               section : 'pay',
@@ -182,7 +183,7 @@ module.exports = Controller("Home/BaseController", function(){
       var data = self.get();
       console.log('return');
       if(data['trade_status'] == 'TRADE_FINISHED' || data['trade_status'] == 'TRADE_SUCCESS'){
-        return self.redirect('/pay/success?id='+ data['out_trade_no']);
+        return self.redirect('/pay/success?oderid='+ data['out_trade_no']);
       }else{
         return self.redirect('/pay/err');
       }
