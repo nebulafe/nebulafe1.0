@@ -32,5 +32,29 @@ define(function (require, exports, moudle) {
   $('#n_comment').on('change',function(e){
     var me = this;
     $('input[name="comment"]').val($(me).val())
+  });
+
+  function checkOrder(id){
+    $.post('/pay/check', {courseid : id}, 'json').done(function (res) {
+      if (res.errno == 0) {
+        ALERT(res.data.haspay == 1 ? "支付成功！" : "支付失败！");
+        location.href = res.data.showurl;
+      }
+    }).error(function (res) {
+      ALERT("验证失败，请重新验证");
+      location.reload()
+    });
+  }
+
+  $(document.body).on('click',function(e){
+    var _target = $(e.target);
+    if($(_target).hasClass('repay')){
+      $('#pay_modal').attr('data-courseid',$(_target).data('courseid')).modal('show')
+    }
+    if($(_target).hasClass('pay-success')){
+      checkOrder($('#pay_modal').data('courseid'))
+    }else if($(_target).hasClass('pay-error')){
+      checkOrder($('#pay_modal').data('courseid'))
+    }
   })
 })

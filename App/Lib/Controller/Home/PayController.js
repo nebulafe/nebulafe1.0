@@ -196,7 +196,7 @@ module.exports = Controller("Home/BaseController", function(){
             if(content.has_pay == 1 && getPayValidDate(content.pay_valid_from) < new Date().getTime()){
               return self.success({
                 haspay : 1,
-                showurl : content.show_url
+                showurl : content.show_url || '/pay/success'
               })
             }else{
               return self.success({

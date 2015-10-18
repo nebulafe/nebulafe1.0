@@ -91,13 +91,16 @@
   opacity: 0.75;
   filter: alpha(opacity=75);
 }
+.modal{
+  overflow-y: hidden;
+}
 .modal-backdrop {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1040;
+  z-index: 1039;
   background-color: #000;
 }
 .fade {

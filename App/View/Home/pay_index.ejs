@@ -249,12 +249,13 @@
                 <input type="hidden" value="<%=course.id%>" name="courseid">
                 <input type="hidden" value="<%=course.name%>" name="name">
                 <input type="hidden" value="" name="comment">
-                <input class="btn btn-warning" type="submit" value="前往支付">
+                <input class="btn btn-warning" type="submit" data-courseid="<%=course.id%>" value="前往支付">
             </form>
         </div>
     </div>
 </div>
 <%- include ../footer.ejs %>
 <script>seajs.use('js/pay/index')</script>
+<%- include ./pay_modal.ejs %>
 </body>
 </html>
