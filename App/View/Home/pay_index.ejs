@@ -244,13 +244,13 @@
         <div class="col col-left">
             <form style="float: left; margin-left:5px " action="/pay/info" method="POST" target="_blank">
                 <input type="hidden" value="0" name="isalipay">
-                <input type="hidden" value="<%=orderid%>" name="order_unique_id">
+                <input type="hidden" value="<%=order_unique_id%>" name="order_unique_id">
                 <input type="hidden" value="" name="bankname">
                 <input type="hidden" value="/course/video/<%=course.id%>" name="showurl">
                 <input type="hidden" value="<%=course.id%>" name="courseid">
                 <input type="hidden" value="<%=course.name%>" name="name">
                 <input type="hidden" value="" name="comment">
-                <input class="btn btn-warning pay-order" type="submit" data-orderid="<%=orderid%>" value="前往支付">
+                <input class="btn btn-warning pay-order" type="submit" data-orderid="<%=order_unique_id%>" value="前往支付">
             </form>
         </div>
     </div>

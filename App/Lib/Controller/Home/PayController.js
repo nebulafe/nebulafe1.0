@@ -36,7 +36,7 @@ module.exports = Controller("Home/BaseController", function(){
               navLinks : navLinks,
               valid_date : getDate(mydate),
               course : course,
-              orderid : content.data
+              order_unique_id : content.data
             })
             self.display();
           }else{
@@ -176,7 +176,7 @@ module.exports = Controller("Home/BaseController", function(){
         var data = self.post();
         if(data.order_id || data.order_unique_id){
           Service.getOrderDetail(data).then(function(content){
-            if(content.has_pay == 1 && getPayValidDate(content.pay_valid_from) < new Date().getTime()){
+            if(content.has_pay == 1 && getPayValidDate(content.pay_valid_from) > new Date().getTime()){
               return self.success({
                 haspay : 1,
                 showurl : content.show_url || '/pay/success'
