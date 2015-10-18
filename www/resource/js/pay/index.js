@@ -54,7 +54,7 @@ define(function (require, exports, moudle) {
 
   $(document.body).on('click',function(e){
     var _target = $(e.target);
-    if($(_target).hasClass('repay')){
+    if($(_target).hasClass('pay-order')){
       $('#pay_modal').attr('data-courseid',$(_target).data('courseid')).modal('show')
     }
     if($(_target).hasClass('pay-success')){
