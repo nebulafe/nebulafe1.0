@@ -57,7 +57,7 @@ module.exports = Controller("Home/BaseController", function(){
       }
       Service.getOrderStatusByUserId({
         user_id : self.userInfo.id,
-        course_id : '2'
+        course_id : '1'
       }).then(function(content){
         console.log(content)
       })
