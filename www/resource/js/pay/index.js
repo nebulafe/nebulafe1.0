@@ -37,12 +37,18 @@ define(function (require, exports, moudle) {
   function checkOrder(id){
     $.post('/pay/check', {courseid : id}, 'json').done(function (res) {
       if (res.errno == 0) {
+        $('#pay_modal').modal('hide')
         ALERT(res.data.haspay == 1 ? "支付成功！" : "支付失败！");
-        location.href = res.data.showurl;
+        setTimeout(function(){
+            location.href = res.data.showurl;
+        },2000)
       }
     }).error(function (res) {
+      $('#pay_modal').modal('hide')
       ALERT("验证失败，请重新验证");
-      location.reload()
+      setTimeout(function(){
+          location.reload()
+      },2000)
     });
   }
 

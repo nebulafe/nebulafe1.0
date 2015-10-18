@@ -226,7 +226,23 @@ module.exports = Controller("Home/BaseController", function(){
           }
         }
       }
+    },
+
+    delAction : function(){
+      var self = this;
+      if(self.isPost()){
+        if(!userInfo || !userInfo.id){
+          return self.error("请登录后再操作！")
+        }
+        var data = self.post();
+        if(data.order_id){
+
+        }else{
+          return self.error("请选择订单！")
+        }
+      }
     }
+
 
   };
 })
