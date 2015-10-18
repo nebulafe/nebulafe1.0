@@ -104,3 +104,9 @@ global.navLinks =  [
   { label: '课程',    key: 'course',    href: '/course' },
   { label: '合作机构',    key: 'partner',   href: '/partner' }
 ];
+
+global.getPayValidDate = function (arg) {
+  var tdata = new Date(arg);
+  tdata.setFullYear(tdata.getFullYear() + 1);
+  return tdata.getTime()
+}

@@ -61,6 +61,11 @@ module.exports = Controller("Home/BaseController", function(){
       }).then(function(content){
         console.log(content)
       })
+      Service.getOrderDetail({
+        order_id : 10
+      }).then(function(content){
+        console.log(content)
+      })
       this.assign({
         section : 'pay',
         title : "支付成功",
@@ -83,14 +88,18 @@ module.exports = Controller("Home/BaseController", function(){
               order_id :data.order_id
             }).then(function(content){
               if(content){
-                Service.payOrder(extend({bankname:"",showurl:content.show_url || " "},content)).then(function(ocontent){
-                  self.assign(extend({
-                    section : 'pay',
-                    title : "购买课程",
-                    aliform : ocontent.request
-                  },ocontent))
-                  return self.display();
-                })
+                if(content.has_pay !== 1 || getPayValidDate(gcontent.pay_valid_from) < new Date().getTime()){
+                  Service.payOrder(extend({bankname:"",showurl:content.show_url || " "},content)).then(function(ocontent){
+                    self.assign(extend({
+                      section : 'pay',
+                      title : "购买课程",
+                      aliform : ocontent.request
+                    },ocontent))
+                    return self.display();
+                  })
+                }else{
+                  throw new Error('您已经购买该课程，无需重复购买！')
+                }
               }else{
                 throw new Error('抛出错误')
               }
@@ -99,32 +108,41 @@ module.exports = Controller("Home/BaseController", function(){
             })
           }else{
             console.log('paying')
-            Service.createOrder({
+            Service.getOrderStatusByUserId({
               user_id : self.userInfo.id,
-              name : data.name,
-              desc : '购买课程：' + data.name,
-              detail :JSON.stringify([{
-                'course_id' : data.courseid,
-                'num' : 1
-              }])
-            }).then(function(content){
-              if(content && content.errno === 0){
-                Service.payOrder({
-                  order_unique_id : content.data,
-                  comment : data.comment,
-                  showurl : data.showurl,
-                  isalipay : data.isalipay,
-                  bankname : data.bankname
-                }).then(function(ocontent){
-                  self.assign(extend({
-                    section : 'pay',
-                    title : "购买课程",
-                    aliform : ocontent.request
-                  },ocontent))
-                  return self.display();
+              course_id : data.courseid
+            }).then(function(gcontent){
+              if(gcontent.has_pay !== 1 || getPayValidDate(gcontent.pay_valid_from) < new Date().getTime()){
+                Service.createOrder({
+                  user_id : self.userInfo.id,
+                  name : data.name,
+                  desc : '购买课程：' + data.name,
+                  detail :JSON.stringify([{
+                    'course_id' : data.courseid,
+                    'num' : 1
+                  }])
+                }).then(function(content){
+                  if(content && content.errno === 0){
+                    Service.payOrder({
+                      order_unique_id : content.data,
+                      comment : data.comment,
+                      showurl : data.showurl,
+                      isalipay : data.isalipay,
+                      bankname : data.bankname
+                    }).then(function(ocontent){
+                      self.assign(extend({
+                        section : 'pay',
+                        title : "购买课程",
+                        aliform : ocontent.request
+                      },ocontent))
+                      return self.display();
+                    })
+                  }else{
+                    throw new Error('抛出错误')
+                  }
                 })
               }else{
-                throw new Error('抛出错误')
+                throw new Error('您已经购买该课程，无需重复购买！')
               }
             }).catch(function(err){
               return self.error(err);
