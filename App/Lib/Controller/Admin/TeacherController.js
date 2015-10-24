@@ -17,6 +17,7 @@ module.exports = Controller("Admin/BaseController", function() {
         if(self.isGet()){
           var courses = Service.getAllCourses();
           self.assign({
+            header_index:4,
             title : "管理后台-教师管理",
             courses : courses
           })

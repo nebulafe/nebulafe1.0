@@ -66,6 +66,7 @@ module.exports = Controller("Admin/BaseController", function() {
       if(self.userInfo && self.userInfo.isAdmin == 1){
         if(self.isGet()){
           self.assign({
+            header_index:1,
             title : "管理后台-课程管理",
             userInfo : self.userInfo
           })

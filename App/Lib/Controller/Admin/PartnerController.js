@@ -20,6 +20,7 @@ module.exports = Controller("Admin/BaseController", function() {
           // }
 
           self.assign({
+            header_index:3,
             title : "管理后台-机构管理"
           })
           self.display()

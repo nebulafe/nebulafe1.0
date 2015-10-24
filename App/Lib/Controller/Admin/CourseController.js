@@ -17,6 +17,7 @@ module.exports = Controller("Admin/BaseController", function() {
         if(self.isGet()){
           var partners = Service.getAllPartners();
           self.assign({
+            header_index:1,
             title : "管理后台-课程管理",
             partners : partners
           })
