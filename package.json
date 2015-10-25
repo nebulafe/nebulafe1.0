@@ -23,6 +23,7 @@
     "del": "^1.1.1",
     "dplus": "0.0.3",
     "gulp": "^3.8.11",
+    "gulp-babel": "^5.3.0",
     "gulp-imagemin": "^2.2.1",
     "gulp-livereload": "^3.8.0",
     "gulp-notify": "^2.2.0",

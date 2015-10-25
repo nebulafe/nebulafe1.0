@@ -27,7 +27,7 @@ caption, th, td {
 }
 
 /* line 24, ../../../scss/admin/utils/extends.scss */
-input[role="input"], textarea[role="input"], div[role="input"], select[role="input"] {
+input[data-role="input"], textarea[data-role="input"], div[data-role="input"], select[data-role="input"] {
   border: 1px solid #aaa;
   border-radius: 3px;
   outline: none;
@@ -523,22 +523,22 @@ input:-ms-input-placeholder {
 }
 
 /* line 41, ../../../scss/admin/utils/form.scss */
-input[role="input"]:focus {
+input[data-role="input"]:focus {
   border-color: #359ce7;
 }
 
 /* line 48, ../../../scss/admin/utils/form.scss */
-textarea[role="input"]:focus {
+textarea[data-role="input"]:focus {
   border-color: #359ce7;
 }
 
 /* line 55, ../../../scss/admin/utils/form.scss */
-div[role="input"]:focus {
+div[data-role="input"]:focus {
   border-color: #359ce7;
 }
 
 /* line 62, ../../../scss/admin/utils/form.scss */
-select[role="input"]:focus {
+select[data-role="input"]:focus {
   border-color: #359ce7;
 }
 
@@ -552,80 +552,34 @@ div[contenteditable="true"] {
   background-color: #ffffff;
 }
 
-/* line 76, ../../../scss/admin/utils/form.scss */
-.input {
-  border: 1px solid #838f93;
-  padding: 0 10px;
-  height: 34px;
-  line-height: 34px;
-  border-radius: 20px;
-  transition: all 0.2s ease-out 0s;
-  -webkit-transition: all 0.2s ease-out 0s;
-  font-family: Microsoft YaHei, 微软雅黑, Helvetica Neue, arial, \5b8b\4f53;
-}
-/* line 87, ../../../scss/admin/utils/form.scss */
-.input:hover {
-  border: 1px solid #359ce7;
-}
-/* line 90, ../../../scss/admin/utils/form.scss */
-.input:focus {
-  border: 1px solid #359ce7;
-}
-/* line 93, ../../../scss/admin/utils/form.scss */
-.input.inputSearch {
-  text-indent: 5px;
-}
-
-/* line 98, ../../../scss/admin/utils/form.scss */
+/* line 78, ../../../scss/admin/utils/form.scss */
 .select {
   font-family: Microsoft YaHei, 微软雅黑, Helvetica Neue, arial, \5b8b\4f53;
 }
 
-/* line 102, ../../../scss/admin/utils/form.scss */
-.input2 {
-  border: 1px solid #838f93;
-  padding: 0 10px;
-  height: 34px;
-  line-height: 34px;
-  border-radius: 2px;
-  transition: all 0.2s ease-out 0s;
-  -webkit-transition: all 0.2s ease-out 0s;
-  color: #323b3d;
-  font-size: 14px;
-  font-family: Microsoft YaHei, 微软雅黑, Helvetica Neue, arial, \5b8b\4f53;
-}
-/* line 115, ../../../scss/admin/utils/form.scss */
-.input2:hover {
-  border: 1px solid #359ce7;
-}
-/* line 118, ../../../scss/admin/utils/form.scss */
-.input2:focus {
-  border: 1px solid #359ce7;
-}
-
-/* line 124, ../../../scss/admin/utils/form.scss */
+/* line 83, ../../../scss/admin/utils/form.scss */
 select.input2 {
   width: 268px;
 }
-/* line 127, ../../../scss/admin/utils/form.scss */
+/* line 86, ../../../scss/admin/utils/form.scss */
 select.input-tiny {
   width: 125px;
 }
-/* line 130, ../../../scss/admin/utils/form.scss */
+/* line 89, ../../../scss/admin/utils/form.scss */
 select.input-short {
   width: 188px;
 }
-/* line 133, ../../../scss/admin/utils/form.scss */
+/* line 92, ../../../scss/admin/utils/form.scss */
 select.input-mid {
   width: 268px;
 }
-/* line 136, ../../../scss/admin/utils/form.scss */
+/* line 95, ../../../scss/admin/utils/form.scss */
 select.input-long {
   width: 466px;
 }
 
-/* line 141, ../../../scss/admin/utils/form.scss */
-.input3 {
+/* line 100, ../../../scss/admin/utils/form.scss */
+.input {
   border: 1px solid #bdbdbd;
   padding: 0 10px;
   height: 34px;
@@ -638,80 +592,58 @@ select.input-long {
   font-size: 14px;
   font-family: Microsoft YaHei, 微软雅黑, Helvetica Neue, arial, \5b8b\4f53;
 }
-/* line 155, ../../../scss/admin/utils/form.scss */
-.input3:hover {
+/* line 114, ../../../scss/admin/utils/form.scss */
+.input:hover {
   border: 1px solid #27ccaa;
 }
-/* line 158, ../../../scss/admin/utils/form.scss */
-.input3:focus {
-  border: 1px solid #27ccaa;
-}
-
-/* line 164, ../../../scss/admin/utils/form.scss */
-.input3[role="input"]:hover {
-  border: 1px solid #27ccaa;
-}
-/* line 167, ../../../scss/admin/utils/form.scss */
-.input3[role="input"]:focus {
+/* line 117, ../../../scss/admin/utils/form.scss */
+.input:focus {
   border: 1px solid #27ccaa;
 }
 
-/* line 172, ../../../scss/admin/utils/form.scss */
-.input4 {
-  border: 1px solid #bdbdbd;
-  padding: 0 10px;
-  height: 34px;
-  line-height: 34px;
-  border-radius: 2px;
-  transition: all 0.2s ease-out 0s;
-  -webkit-transition: all 0.2s ease-out 0s;
-  color: #323b3d;
-  font-size: 14px;
-  font-family: Microsoft YaHei, 微软雅黑, Helvetica Neue, arial, \5b8b\4f53;
+/* line 123, ../../../scss/admin/utils/form.scss */
+.input[data-role="input"]:hover {
+  border: 1px solid #27ccaa;
 }
-/* line 185, ../../../scss/admin/utils/form.scss */
-.input4:hover {
-  border: 1px solid #359ce7;
-}
-/* line 188, ../../../scss/admin/utils/form.scss */
-.input4:focus {
-  border: 1px solid #359ce7;
+/* line 126, ../../../scss/admin/utils/form.scss */
+.input[data-role="input"]:focus {
+  border: 1px solid #27ccaa;
 }
 
-/* line 193, ../../../scss/admin/utils/form.scss */
+/* line 131, ../../../scss/admin/utils/form.scss */
 .input-tiny {
   width: 105px;
 }
 
-/* line 197, ../../../scss/admin/utils/form.scss */
+/* line 135, ../../../scss/admin/utils/form.scss */
 .input-short {
   width: 168px;
 }
 
-/* line 201, ../../../scss/admin/utils/form.scss */
+/* line 139, ../../../scss/admin/utils/form.scss */
 .input-mid {
   width: 248px;
 }
 
-/* line 205, ../../../scss/admin/utils/form.scss */
+/* line 143, ../../../scss/admin/utils/form.scss */
 .input-long {
   width: 446px;
 }
 
-/* line 209, ../../../scss/admin/utils/form.scss */
+/* line 147, ../../../scss/admin/utils/form.scss */
 .inputError {
   border-color: #f25c5e !important;
 }
-/* line 211, ../../../scss/admin/utils/form.scss */
+/* line 149, ../../../scss/admin/utils/form.scss */
 .inputError:hover {
   border-color: #f25c5e !important;
 }
-/* line 214, ../../../scss/admin/utils/form.scss */
+/* line 152, ../../../scss/admin/utils/form.scss */
 .inputError:focus {
   border-color: #f25c5e !important;
 }
 
-/* line 219, ../../../scss/admin/utils/form.scss */
+/* line 157, ../../../scss/admin/utils/form.scss */
 .required::before {
   content: "*";
   font-size: 18px;
@@ -722,34 +654,34 @@ select.input-long {
   margin-right: 5px;
 }
 
-/* line 229, ../../../scss/admin/utils/form.scss */
+/* line 167, ../../../scss/admin/utils/form.scss */
 .search-block {
   font-size: 0;
 }
-/* line 232, ../../../scss/admin/utils/form.scss */
+/* line 170, ../../../scss/admin/utils/form.scss */
 .search-block input.input3.search {
   vertical-align: middle;
   border: 1px solid #eef1f7;
   background-color: #eef1f7;
   color: #323b3d;
 }
-/* line 237, ../../../scss/admin/utils/form.scss */
+/* line 175, ../../../scss/admin/utils/form.scss */
 .search-block input.input3.search:focus {
   background-color: #ffffff;
   border-color: #19bd9b;
 }
-/* line 242, ../../../scss/admin/utils/form.scss */
+/* line 180, ../../../scss/admin/utils/form.scss */
 .search-block input.input3.search:hover + i {
   color: #19bd9b;
 }
-/* line 247, ../../../scss/admin/utils/form.scss */
+/* line 185, ../../../scss/admin/utils/form.scss */
 .search-block i {
   display: inline-block;
   vertical-align: middle;
   margin-left: -20px;
   color: #909a9c;
 }
-/* line 252, ../../../scss/admin/utils/form.scss */
+/* line 190, ../../../scss/admin/utils/form.scss */
 .search-block i::before {
   content: "";
   color: inherit;
@@ -757,12 +689,12 @@ select.input-long {
   z-index: 2;
 }
 
-/* line 263, ../../../scss/admin/utils/form.scss */
+/* line 201, ../../../scss/admin/utils/form.scss */
 .col .search-block input.search.search.search.search + i {
   margin-left: -40px;
 }
 
-/* line 268, ../../../scss/admin/utils/form.scss */
+/* line 206, ../../../scss/admin/utils/form.scss */
 .calendar {
   border: none;
   border-radius: 3px;
@@ -774,12 +706,12 @@ select.input-long {
   font-size: 14px;
   color: #616e72;
 }
-/* line 279, ../../../scss/admin/utils/form.scss */
+/* line 217, ../../../scss/admin/utils/form.scss */
 .calendar.single-day {
   width: 130px;
 }
 
-/* line 283, ../../../scss/admin/utils/form.scss */
+/* line 221, ../../../scss/admin/utils/form.scss */
 input.calendar.calendar.calendar.calendar.calendar {
   border: none;
 }

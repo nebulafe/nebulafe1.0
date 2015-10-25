@@ -10,6 +10,7 @@ module.exports = [
   [/^manage\/partner\/?$/, "admin/partner/index"],
   [/^manage\/resource\/?$/, "admin/resource/index"],
   [/^manage\/teacher\/?$/, "admin/teacher/index"],
+  [/^manage\/message\/?$/, "admin/message/index"],
   ["user/see/:id", "user/see"],
   ["user/avator/:id", "user/avator"],
   ["user/verifyemail/:id", "user/verifyemail"],

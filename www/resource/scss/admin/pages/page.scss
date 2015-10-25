@@ -15,6 +15,45 @@ body > .container {
   width: 900px;
   //background-color: #f5f5f5;
 }
+
+%card{
+  min-width: 800px;
+  box-sizing: border-box;
+  border: 1px solid $color-border-select;
+  background-color: $white;
+  &:hover{
+    border-color: $color-border-card-hover;
+  }
+
+}
+.card{
+  @extend %card;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+h1{
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.message-box{
+  margin: auto;
+  &>.row{
+    text-align: left;
+    width: 600px;
+    margin: auto;
+  }
+  .btn-wrapper{
+    text-align: center;
+    .radiusBtn{
+      margin: auto;
+    }
+  }
+
+
+}
+
 @import "../utils/header";
 @import "../utils/leftNav";
 @import "../utils/imgUploader";

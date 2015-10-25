@@ -14,6 +14,49 @@ body > .container {
   width: 900px;
 }
 
+/* line 19, ../../../scss/admin/pages/page.scss */
+.card {
+  min-width: 800px;
+  box-sizing: border-box;
+  border: 1px solid #d4d9df;
+  background-color: #ffffff;
+}
+/* line 24, ../../../scss/admin/pages/page.scss */
+.card:hover {
+  border-color: #92a0ae;
+}
+
+/* line 29, ../../../scss/admin/pages/page.scss */
+.card {
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+/* line 35, ../../../scss/admin/pages/page.scss */
+h1 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* line 40, ../../../scss/admin/pages/page.scss */
+.message-box {
+  margin: auto;
+}
+/* line 42, ../../../scss/admin/pages/page.scss */
+.message-box > .row {
+  text-align: left;
+  width: 600px;
+  margin: auto;
+}
+/* line 47, ../../../scss/admin/pages/page.scss */
+.message-box .btn-wrapper {
+  text-align: center;
+}
+/* line 49, ../../../scss/admin/pages/page.scss */
+.message-box .btn-wrapper .radiusBtn {
+  margin: auto;
+}
+
 /* line 3, ../../../scss/admin/utils/header.scss */
 .nebulafe-header {
   width: 100%;
