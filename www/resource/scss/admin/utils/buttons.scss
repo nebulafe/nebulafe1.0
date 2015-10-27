@@ -117,6 +117,7 @@
   cursor: pointer;
   display: inline-block;
   vertical-align: middle;
+  border-style: solid !important;
   margin-left: 5px;
   //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
   border-radius: 25px;

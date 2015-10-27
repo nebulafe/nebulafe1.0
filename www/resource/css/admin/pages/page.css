@@ -25,36 +25,58 @@ body > .container {
 .card:hover {
   border-color: #92a0ae;
 }
+/* line 27, ../../../scss/admin/pages/page.scss */
+.t-left.card {
+  text-align: left;
+}
+/* line 30, ../../../scss/admin/pages/page.scss */
+.t-center.card {
+  text-align: center;
+}
 
-/* line 29, ../../../scss/admin/pages/page.scss */
+/* line 35, ../../../scss/admin/pages/page.scss */
 .card {
   padding: 15px;
   margin-bottom: 15px;
 }
 
-/* line 35, ../../../scss/admin/pages/page.scss */
+/* line 41, ../../../scss/admin/pages/page.scss */
 h1 {
   font-size: 18px;
   margin-bottom: 10px;
 }
 
-/* line 40, ../../../scss/admin/pages/page.scss */
-.message-box {
+/* line 46, ../../../scss/admin/pages/page.scss */
+.message-box,
+.teacher-box,
+.resource-box {
   margin: auto;
 }
-/* line 42, ../../../scss/admin/pages/page.scss */
-.message-box > .row {
+/* line 50, ../../../scss/admin/pages/page.scss */
+.message-box > .row,
+.teacher-box > .row,
+.resource-box > .row {
   text-align: left;
-  width: 600px;
+  width: 700px;
   margin: auto;
 }
-/* line 47, ../../../scss/admin/pages/page.scss */
-.message-box .btn-wrapper {
+/* line 55, ../../../scss/admin/pages/page.scss */
+.message-box .btn-wrapper,
+.teacher-box .btn-wrapper,
+.resource-box .btn-wrapper {
   text-align: center;
 }
-/* line 49, ../../../scss/admin/pages/page.scss */
-.message-box .btn-wrapper .radiusBtn {
+/* line 57, ../../../scss/admin/pages/page.scss */
+.message-box .btn-wrapper .radiusBtn,
+.teacher-box .btn-wrapper .radiusBtn,
+.resource-box .btn-wrapper .radiusBtn {
   margin: auto;
+}
+
+/* line 64, ../../../scss/admin/pages/page.scss */
+.teacher-box .col-left,
+.resource-box .col-left {
+  width: 120px;
 }
 
 /* line 3, ../../../scss/admin/utils/header.scss */

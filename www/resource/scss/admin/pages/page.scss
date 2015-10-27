@@ -24,6 +24,12 @@ body > .container {
   &:hover{
     border-color: $color-border-card-hover;
   }
+  &.t-left{
+    text-align: left;
+  }
+  &.t-center{
+    text-align: center;
+  }
 
 }
 .card{
@@ -37,11 +43,13 @@ h1{
   margin-bottom: 10px;
 }
 
-.message-box{
+.message-box,
+.teacher-box,
+.resource-box{
   margin: auto;
   &>.row{
     text-align: left;
-    width: 600px;
+    width: 700px;
     margin: auto;
   }
   .btn-wrapper{
@@ -50,9 +58,14 @@ h1{
       margin: auto;
     }
   }
-
-
 }
+.teacher-box,
+.resource-box{
+  .col-left{
+    width: 120px;
+  }
+}
+
 
 @import "../utils/header";
 @import "../utils/leftNav";

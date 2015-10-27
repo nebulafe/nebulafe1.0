@@ -79,23 +79,23 @@ div[contenteditable="true"] {
   font-family: $font_1, $font_2, $font_3, $font_4, $font_5;
 }
 
-select {
-  &.input2 {
-    width: 268px;
-  }
-  &.input-tiny {
-    width: 125px;
-  }
-  &.input-short {
-    width: 188px;
-  }
-  &.input-mid {
-    width: 268px;
-  }
-  &.input-long {
-    width: 466px;
-  }
-}
+//select {
+//  &.input2 {
+//    width: 268px;
+//  }
+//  &.input-tiny {
+//    width: 125px;
+//  }
+//  &.input-short {
+//    width: 188px;
+//  }
+//  &.input-mid {
+//    width: 268px;
+//  }
+//  &.input-long {
+//    width: 466px;
+//  }
+//}
 
 .input {
   border: 1px solid $color_silver;

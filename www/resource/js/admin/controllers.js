@@ -344,7 +344,7 @@ app.directive('uploader', function () {
 
                     };
                     reader.readAsDataURL($scope.uploadFile[index]);
-                };
+                }
 
                 $scope.uploadFile = $element.find('input').get(0).files;
 
