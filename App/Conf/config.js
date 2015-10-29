@@ -10,7 +10,7 @@ module.exports = {
   db_user: 'nodejs', // 用户名
   db_pwd: '', // 密码
   db_prefix: 'think_', // 数据库表前缀
-  app_group_list: ['Home', 'Admin'], //分组列表
+  app_group_list: ['Home', 'admin'], //分组列表
   default_action: 'index',
   show_exec_time: true,
   tpl_file_suffix: ".ejs",
