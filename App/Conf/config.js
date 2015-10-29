@@ -11,6 +11,7 @@ module.exports = {
   db_pwd: '', // 密码
   db_prefix: 'think_', // 数据库表前缀
   app_group_list: ['Home', 'Admin'], //分组列表
+  default_action: 'index',
   show_exec_time: true,
   tpl_file_suffix: ".ejs",
   log_console: true, // 是否记录日志，开启后会重写 console.error 等系列方法

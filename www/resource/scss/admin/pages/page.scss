@@ -45,7 +45,9 @@ h1{
 
 .message-box,
 .teacher-box,
-.resource-box{
+.resource-box,
+.add-course-box,
+.partner-box{
   margin: auto;
   &>.row{
     text-align: left;
@@ -60,12 +62,20 @@ h1{
   }
 }
 .teacher-box,
-.resource-box{
+.resource-box,
+.add-course-box,
+.partner-box{
   .col-left{
     width: 120px;
   }
+
 }
 
+textarea.input{
+  resize: vertical;
+  height: 80px;
+  line-height: 1.7;
+}
 
 @import "../utils/header";
 @import "../utils/leftNav";

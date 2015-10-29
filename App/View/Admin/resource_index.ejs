@@ -5,7 +5,9 @@
 <div class="container">
     <div class="card">
         <div class="resource-box" ng-controller="add_resource">
-
+            <div class="row">
+                <h1>添加课程资源</h1>
+            </div>
             <form class="row" id="resource_form">
                 <div class="row ">
                     <label class="col col-left" for="">
@@ -47,7 +49,7 @@
                     </label>
 
                     <div class="col">
-                        <img ng-src="{{teacher.img}}" alt="暂时没有预览图"/>
+                        <img  id="poster_overview" alt="暂时没有预览图"/>
                     </div>
                     <div class="col">
                         <label for="file_poster" class="radiusBtn square style_2 auto short-height">上传文件</label>
@@ -64,6 +66,10 @@
                         <input type="file" name="webmv" id="file_webmv" class="hide"/>
                     </div>
 
+                    <div class="col video-overview" id="webmv_overview">
+
+                    </div>
+
                 </div>
                 <div class="row ">
                     <label class="col  col-left" for="">
@@ -73,6 +79,10 @@
                     <div class="col">
                         <label for="file_ogv" class="radiusBtn square style_2 auto short-height">上传文件</label>
                         <input type="file" name="ogv" id="file_ogv" class="hide"/>
+                    </div>
+
+                    <div class="col video-overview" id="ogv_overview">
+
                     </div>
 
                 </div>
@@ -86,6 +96,10 @@
                         <input type="file" name="m4v" id="file_m4v" class="hide"/>
                     </div>
 
+                    <div class="col video-overview" id="m4v_overview">
+
+                    </div>
+
                 </div>
 
                 <div class="row ">
@@ -94,7 +108,8 @@
                     </label>
 
                     <div class="col col-right">
-                        <textarea  class="input input-mid" style="resize: vertical; min-height: 80px; line-height: 1.7;" name="description" placeholder="资源的介绍"></textarea>
+                        <textarea class="input input-mid" style="resize: vertical; min-height: 80px; line-height: 1.7;"
+                                  name="description" placeholder="资源的介绍"></textarea>
                     </div>
                 </div>
 
@@ -110,20 +125,77 @@
 </div>
 </body>
 <script>
-    (function(){
+    (function () {
         var filesArr = {};
-        $('#resource_form').on('change',function(ev){
-           var tar = $(ev.target);
-            if(ev.target.tagName.toLowerCase() === 'input' && tar.attr('type') == 'file'){
-                var name = tar.attr('name');
-                filesArr[name] = ev.target.files[0];
-                console.log(filesArr);
-                //todo 显示缩略图
-            }
-        });
-        $('#submit_btn').on('click',function(ev){
 
-        });
+        function bind() {
+            $('#resource_form').on('change', function (ev) {
+                var tar = $(ev.target);
+                if (ev.target.tagName.toLowerCase() === 'input' && tar.attr('type') == 'file') {
+                    var name = tar.attr('name');
+                    filesArr[name] = ev.target.files[0];
+
+                    //检查内容
+                    //如果为图片
+                    if (filesArr[name].type.indexOf('image') !== -1) {
+                        loadImage(filesArr[name],name);
+                    }
+                    if (filesArr[name].type.indexOf('video') !== -1) {
+                        if(filesArr[name].type.indexOf(name)== -1){
+                            alert('您所选取的视频格式不为'+name+'请重新选取');
+                        }else{
+                            loadVideo(filesArr[name],name);
+                        }
+
+                    }
+                    console.log(filesArr);
+                }
+            });
+            $('#submit_btn').on('click', function (ev) {
+                function getFormData(){
+                    var f = new FormData(document.getElementById('resource_form'));
+                    return f;
+                }
+                $.ajax({
+                    url: '/manage/resource',
+                    type: "POST",
+                    data: getFormData(),
+                    processData: false,  // 告诉jQuery不要去处理发送的数据
+                    contentType: false   // 告诉jQuery不要去设置Content-Type请求头
+                }).success(function (response) {
+                    alert('提交成功');
+                    console.log(response);
+                });
+            });
+        }
+
+        bind();
+
+        function loadUpdatedFile(fileObj, cb) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var file = reader.result;
+                cb && cb.call(null, file);
+                console.log(reader.result);
+            };
+            reader.readAsDataURL(fileObj);
+        }
+
+        function loadImage(fileObj,name) {
+            loadUpdatedFile(fileObj,function(file){
+                var img = $('#'+name+'_overview');
+                img.get(0).src = file;
+                img.css({width: '120px'});
+
+            });
+        }
+
+        function loadVideo(fileObj,name) {
+            var str = '<span class="txt">'+fileObj.name+'</span>';
+            $('#'+name+'_overview').append(str);
+        }
+
+
     })();
 </script>
 <%- include ./utils/templates.ejs %>

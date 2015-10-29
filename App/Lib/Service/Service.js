@@ -251,7 +251,21 @@ var Service = Class(function(){
 
     getNewCountById : function(data){
       return getRequst('message/getusernewmessagecount' , data);
-    }
+    },
+    addNotice : function(data){
+      return getRequst('notice/create' , data);
+    },
+    getNoticeList : function(data){
+      return getRequst('notice/retrieve' , data);
+    },
+    updateNotice : function(data){
+      return getRequst('notice/update' , data);
+    },
+    deleteNotice : function(data){
+      return getRequst('notice/delete' , data);
+    },
+
+
 
   }
 })

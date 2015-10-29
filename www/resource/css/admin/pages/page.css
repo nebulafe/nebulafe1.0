@@ -49,34 +49,51 @@ h1 {
 /* line 46, ../../../scss/admin/pages/page.scss */
 .message-box,
 .teacher-box,
-.resource-box {
+.resource-box,
+.add-course-box,
+.partner-box {
   margin: auto;
 }
-/* line 50, ../../../scss/admin/pages/page.scss */
+/* line 52, ../../../scss/admin/pages/page.scss */
 .message-box > .row,
 .teacher-box > .row,
-.resource-box > .row {
+.resource-box > .row,
+.add-course-box > .row,
+.partner-box > .row {
   text-align: left;
   width: 700px;
   margin: auto;
 }
-/* line 55, ../../../scss/admin/pages/page.scss */
+/* line 57, ../../../scss/admin/pages/page.scss */
 .message-box .btn-wrapper,
 .teacher-box .btn-wrapper,
-.resource-box .btn-wrapper {
+.resource-box .btn-wrapper,
+.add-course-box .btn-wrapper,
+.partner-box .btn-wrapper {
   text-align: center;
 }
-/* line 57, ../../../scss/admin/pages/page.scss */
+/* line 59, ../../../scss/admin/pages/page.scss */
 .message-box .btn-wrapper .radiusBtn,
 .teacher-box .btn-wrapper .radiusBtn,
-.resource-box .btn-wrapper .radiusBtn {
+.resource-box .btn-wrapper .radiusBtn,
+.add-course-box .btn-wrapper .radiusBtn,
+.partner-box .btn-wrapper .radiusBtn {
   margin: auto;
 }
 
-/* line 64, ../../../scss/admin/pages/page.scss */
+/* line 68, ../../../scss/admin/pages/page.scss */
 .teacher-box .col-left,
-.resource-box .col-left {
+.resource-box .col-left,
+.add-course-box .col-left,
+.partner-box .col-left {
   width: 120px;
+}
+
+/* line 74, ../../../scss/admin/pages/page.scss */
+textarea.input {
+  resize: vertical;
+  height: 80px;
+  line-height: 1.7;
 }
 
 /* line 3, ../../../scss/admin/utils/header.scss */

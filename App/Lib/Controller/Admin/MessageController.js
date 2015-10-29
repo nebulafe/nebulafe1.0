@@ -2,7 +2,7 @@
  * controller
  * @return
  */
-module.exports = Controller("Admin/BaseController", function() {
+module.exports = Controller("Admin/BaseController", function () {
   "use strict";
 
 
@@ -11,31 +11,80 @@ module.exports = Controller("Admin/BaseController", function() {
 
 
   return {
-    indexAction: function(){
+    indexAction: function () {
       var self = this;
-      if(self.userInfo && self.userInfo.isAdmin == 1){
-        if(self.isGet()){
+      if (self.userInfo && self.userInfo.isAdmin == 1) {
+        if (self.isGet()) {
           var courses = Service.getAllCourses();
           self.assign({
-            header_index:5,
-            title : "管理后台-发布消息",
-            courses : courses
-          })
+            header_index: 5,
+            title: "管理后台-发布消息",
+            courses: courses
+          });
           self.display()
-        }else if(self.isPost()){
-          var data = self.post();
-          var img = self.file('img');
-          oss.put(img , {bucket:'n-teacher', key : 'cft/'}).then(function(res){
-            if(res){
-              Service.addTeacher(extend(data,{img : img.originalFilename })).then(function(content){
-                self.success(content)
-              })
-            }
-          }).catch(function(err){
-            self.error(err)
-          })
+
         }
       }
+    },
+    addActioin: function () {
+      var self = this;
+
+      if (self.isPost()) {
+        var data = self.post();
+        Service
+          .addNotice(data)
+          .then(function (content) {
+            self.success(content)
+          })
+          .catch(function (err) {
+            self.error(err)
+          })
+      }
+    },
+    listActioin: function () {
+      var self = this;
+
+      if (self.isGet()) {
+        Service
+          .getNoticeList()
+          .then(function (content) {
+            self.success(content)
+          })
+          .catch(function (err) {
+            self.error(err)
+          })
+      }
+    },
+    updateAction: function () {
+      var self = this;
+
+      if (self.isPost()) {
+        var data = self.post();
+        Service
+          .updateNotice(data)
+          .then(function (content) {
+            self.success(content)
+          })
+          .catch(function (err) {
+            self.error(err)
+          })
+      }
+    },
+    deleteAction: function () {
+      var self = this;
+
+      if (self.isPost()) {
+        var data = self.post();
+        Service
+          .deleteNotice(data)
+          .then(function (content) {
+            self.success(content)
+          })
+          .catch(function (err) {
+            self.error(err)
+          })
+      }
     }
-  };
+  }
+
 });
