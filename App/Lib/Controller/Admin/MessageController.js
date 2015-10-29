@@ -26,7 +26,7 @@ module.exports = Controller("Admin/BaseController", function () {
         }
       }
     },
-    addActioin: function () {
+    addAction: function () {
       var self = this;
 
       if (self.isPost()) {
@@ -41,7 +41,7 @@ module.exports = Controller("Admin/BaseController", function () {
           })
       }
     },
-    listActioin: function () {
+    listAction: function () {
       var self = this;
 
       if (self.isGet()) {
