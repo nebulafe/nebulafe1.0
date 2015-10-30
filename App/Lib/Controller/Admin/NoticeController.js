@@ -15,13 +15,20 @@ module.exports = Controller("Admin/BaseController", function () {
       var self = this;
       if (self.userInfo && self.userInfo.isAdmin == 1) {
         if (self.isGet()) {
-          var courses = Service.getAllCourses();
-          self.assign({
-            header_index: 5,
-            title: "管理后台-发布消息",
-            courses: courses
-          });
-          self.display()
+
+          self
+            .session("userInfo")
+            .then(
+            function (userInfo) {
+              self.assign({
+                header_index: 5,
+                title: "管理后台-通知管理",
+                user_id: userInfo.id,
+              });
+              self.display();
+            }
+          )
+
 
         }
       }
@@ -31,8 +38,14 @@ module.exports = Controller("Admin/BaseController", function () {
 
       if (self.isPost()) {
         var data = self.post();
+
         Service
-          .addNotice(data)
+          .addNotice({
+            user_id: self.userInfo.id,
+            title: self.post('title'),
+            content: self.post('content'),
+            days: parseInt(self.post('days'))
+          })
           .then(function (content) {
             self.success(content)
           })
@@ -46,7 +59,7 @@ module.exports = Controller("Admin/BaseController", function () {
 
       if (self.isGet()) {
         Service
-          .getNoticeList()
+          .getNoticeList(self.get())
           .then(function (content) {
             self.success(content)
           })
@@ -60,6 +73,7 @@ module.exports = Controller("Admin/BaseController", function () {
 
       if (self.isPost()) {
         var data = self.post();
+        data.user_id = self.userInfo.id;
         Service
           .updateNotice(data)
           .then(function (content) {
@@ -75,6 +89,7 @@ module.exports = Controller("Admin/BaseController", function () {
 
       if (self.isPost()) {
         var data = self.post();
+        data.user_id = self.userInfo.id;
         Service
           .deleteNotice(data)
           .then(function (content) {

@@ -285,3 +285,58 @@ teacher-edit .teacher-edit {
   transform: translateY(-50%);
   background-color: #4E5D6C;
 }
+
+/* line 2, ../../../scss/admin/utils/newTable.scss */
+table {
+  width: 100%;
+  box-sizing: border-box;
+}
+/* line 5, ../../../scss/admin/utils/newTable.scss */
+table tr {
+  border-collapse: collapse;
+}
+/* line 7, ../../../scss/admin/utils/newTable.scss */
+table tr:hover {
+  background-color: #f6f8f9;
+}
+/* line 10, ../../../scss/admin/utils/newTable.scss */
+table tr td,
+table tr th {
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #d4d9df;
+  border-collapse: collapse;
+  text-align: center;
+  line-height: 1.5;
+}
+/* line 18, ../../../scss/admin/utils/newTable.scss */
+table tr td.c,
+table tr th.c {
+  text-align: left;
+}
+/* line 21, ../../../scss/admin/utils/newTable.scss */
+table tr td.r,
+table tr th.r {
+  text-align: right;
+}
+/* line 25, ../../../scss/admin/utils/newTable.scss */
+table tr th {
+  font-weight: bold;
+}
+
+/* line 1, ../../../scss/admin/utils/modal.scss */
+button.modal-bg {
+  display: table;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  text-align: center;
+}
+/* line 10, ../../../scss/admin/utils/modal.scss */
+button.modal-bg > *:first-child {
+  position: relative;
+  height: auto;
+}

@@ -51,27 +51,27 @@
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var Selector = __webpack_require__(2);
-
+	var AS = __webpack_require__(3);
 	var SendMessageController = React.createClass({ displayName: "SendMessageController",
 	  getInitialState: function getInitialState() {
 	    return {
 	      title: this.props.title || null,
 	      content: this.props.content || null,
-	      createTime: this.props.createTime || null,
-	      isPushNow: this.props.isPushNow == undefined ? true : this.props.isPushNow,
-	      status: false
+	      days: this.props.days || null,
+	      isUpdate: this.props.isUpdate == undefined ? false : this.props.isUpdate,
+	      status: this.props.status == undefined ? false : this.props.status
 	    };
 	  },
 	  render: function render() {
-	    return React.createElement("div", { className: 'row message-box card' }, React.createElement("h1", null, "发布消息"), React.createElement("div", { className: 'row' }, React.createElement("div", { className: 'col col-left' }, React.createElement("span", { className: "txt" }, "消息标题")), React.createElement("div", { className: 'col col-right' }, React.createElement("input", { className: 'input input-long', "data-role": "input", value: this.state.title, onChange: this.changeTitle, placeholder: "请输入消息标题" }))), React.createElement("div", { className: 'row' }, React.createElement("div", { className: 'col col-left' }, React.createElement("span", { className: "txt" }, "消息内容")), React.createElement("div", { className: 'col col-right' }, React.createElement("textarea", { className: 'input input-long',
+	    return React.createElement("button", { className: "modal-bg", style: { 'display': this.state.status ? 'none' : 'block' } }, React.createElement("div", { className: 'row message-box card', style: { 'width': '800px' } }, React.createElement("div", { className: 'row' }, React.createElement("h1", null, this.state.isUpdate ? '修改公告' : '新建公告')), React.createElement("div", { className: 'row' }, React.createElement("div", { className: 'col col-left' }, React.createElement("span", { className: "txt" }, "公告标题")), React.createElement("div", { className: 'col col-right' }, React.createElement("input", { className: 'input input-long', "data-role": "input", value: this.state.title, onChange: this.changeTitle, placeholder: "请输入消息标题" }))), React.createElement("div", { className: 'row' }, React.createElement("div", { className: 'col col-left' }, React.createElement("span", { className: "txt" }, "公告内容")), React.createElement("div", { className: 'col col-right' }, React.createElement("textarea", { className: 'input input-long',
 	      style: { height: '200px', resize: 'vertical' },
 	      "data-role": "input",
 	      value: this.state.content,
 	      onChange: this.changeContent,
-	      placeholder: "请输入消息内容,输入链接请使用这种格式 <a href=\"链接地址\">链接名称</a> ,如: <a href=\"http://www.google.com.hk/\">谷歌</a>" }))), this.renderIfPushNow(), React.createElement("div", { className: "row " + (this.state.isPushNow ? 'hide' : '') }, React.createElement("div", { className: 'col col-left' }, React.createElement("span", { className: 'txt' }, "发布时间")), React.createElement("div", { className: "col col-right" }, React.createElement("input", { type: "date", className: 'input input-short', "data-role": "input", value: this.state.pushDate, onChange: this.changePushDate, placeholder: "请输入推送日期" })), React.createElement("div", { className: "col col-right" }, React.createElement("input", { type: "time", className: 'input input-short', "data-role": "input", value: this.state.pushTime, onChange: this.changePushTime, placeholder: "请输入推送时间" }))), React.createElement("div", { className: 'row btn-wrapper' }, React.createElement("div", { className: 'col col-right' }, React.createElement("span", { className: "radiusBtn square style_1 auto", onClick: this.pushMessage }, "发布消息"))));
+	      placeholder: "请输入消息内容,输入链接请使用这种格式 <a href=\"链接地址\">链接名称</a> ,如: <a href=\"http://www.google.com.hk/\">谷歌</a>" }))), React.createElement("div", { className: 'row ' + (this.state.isPushNow ? 'hide' : '') }, React.createElement("div", { className: 'col col-left' }, React.createElement("span", { className: 'txt' }, "有效天数(发布算起)")), React.createElement("div", { className: 'col col-right' }, React.createElement("input", { type: "text", className: 'input input-tiny', "data-role": "input", value: this.state.days, onChange: this.changeDays, placeholder: "公告有效天数" }))), React.createElement("div", { className: 'row' }, React.createElement("div", { className: 'col col-left' }), React.createElement("div", { className: 'col col-right' }, React.createElement("span", { className: "radiusBtn square style_1 auto", onClick: this.pushMessage }, this.state.isUpdate ? '保存修改' : '发布公告'), React.createElement("span", { className: "radiusBtn square style_1 auto", onClick: this.pushMessage, onClick: this.cancelEdit }, "取消编辑")))));
 	  },
 	  changeTitle: function changeTitle(ev) {
 	    this.state.title = ev.target.value;
@@ -81,102 +81,162 @@
 	    this.state.content = ev.target.value;
 	    this.setState(this.state);
 	  },
-	  changePushTime: function changePushTime(ev) {
-	    var pushTime = ev.target.value;
-	    if (this.checkDate(this.state.pushDate, pushTime)) {
-	      this.state.pushTime = pushTime;
-	      this.setState(this.state);
-	    } else {
-	      return false;
-	    }
-	  },
-	  changePushDate: function changePushDate(ev) {
-	    var pushDate = ev.target.value;
-	    if (this.checkDate(pushDate, this.state.pushTime)) {
-	      this.state.pushDate = pushDate;
-	      this.setState(this.state);
-	    } else {
-	      return false;
-	    }
-	  },
-	  renderIfPushNow: function renderIfPushNow() {
-	    var content = this.state.isPushNow ? '设置为指定时间推送' : '设置为发布后立即推送';
-	    var nowStatus = this.state.isPushNow ? '发布后立即推送' : '指定时间推送';
-	    return React.createElement("div", { className: 'row' }, React.createElement("div", { className: 'col col-right' }, React.createElement("span", { className: "txt" }, "时间设置")), React.createElement("div", { className: 'col col-right' }, React.createElement("span", { className: "radiusBtn square auto style_2", onClick: this.setIsPushNow }, content)), React.createElement("div", { className: 'col col-right' }, React.createElement("span", { className: "txt g-secondary-txt" }, "注:选定状态为 : ", nowStatus)));
-	  },
-	  setIsPushNow: function setIsPushNow() {
-	    this.state.isPushNow = !this.state.isPushNow;
+	  changeDays: function changeDays(ev) {
+	    this.state.days = ev.target.value;
 	    this.setState(this.state);
 	  },
+
 	  pushMessage: function pushMessage(ev) {
-	    if (this.state.status == false) {
 
-	      console.log('消息json如下');
-	      var message = {
-	        title: this.state.title,
-	        content: this.state.content
-	      };
-	      var flag = true;
-	      if (!this.state.title) {
-	        alert('标题不能为空');
-	        flag = false;
-	      }
-	      if (!this.state.content) {
-	        alert('内容不能为空');
-	        flag = false;
-	      }
-	      if (!this.state.isPushNow) {
-	        if (!this.checkDate(this.state.pushDate, this.state.pushTime)) {
-	          flag = false;
-	        } else {
-	          this.setPushDateTime();
-	        }
-	      } else {
-	        this.state.pushDateTime = Date.now();
-	      }
+	    console.log('消息json如下');
+	    var message = {
+	      title: this.state.title,
+	      content: this.state.content
+	    };
+	    var flag = true;
+	    if (!this.state.title) {
+	      alert('标题不能为空');
+	      flag = false;
+	    }
+	    if (!this.state.content) {
+	      alert('内容不能为空');
+	      flag = false;
+	    }
+	    if (this.state.days - 0 <= 0) {
+	      alert('持续时间至少为一天!');
+	      flag = false;
+	    }
 
-	      if (flag) {
-	        this.publishMessage();
-	      } else {
-	        return false;
-	      }
+	    if (flag) {
+	      this.publishMessage();
 	    } else {
-	      if (Date.now() >= this.state.pushDateTime) {
-	        alert('当前时间已经落后于推送时间,修改无法生效!');
-	        return false;
-	      } else {
-	        this.publishMessage();
-	      }
-	    }
-	  },
-	  setPushDateTime: function setPushDateTime(isPushStateBanned) {
-	    this.state.pushDateTime = new Date(this.state.pushDate + ' ' + this.state.pushTime);
-	    if (!isPushStateBanned == true) {
-	      this.setState(this.state);
-	    }
-	  },
-	  checkDate: function checkDate(dateStr, timeStr) {
-	    var d = new Date(dateStr + ' ' + timeStr);
-	    if (d <= Date.now()) {
-	      alert('推送时间不得早于当前时间');
 	      return false;
-	    } else {
-	      return true;
 	    }
 	  },
-	  parseAnchor: function parseAnchor(str) {},
 	  publishMessage: function publishMessage() {
+	    var _this = this;
+
 	    if (confirm('确认要发布消息吗')) {
 	      console.log(this.state);
-	      // console.log(this.parseAnchor(this.state.content));
+	      if (!this.state.isUpdate) {
+	        AS.notice.add(this.state).done(function () {
+	          _this.state.status = true;
+	          alert('发布成功!');
+	          _this.props.onSave && _this.props.onSave();
+	          _this.setState(_this.state);
+	        });
+	      } else {
+	        var data = {
+	          notice_id: this.props.notice_id,
+	          title: this.state.title,
+	          content: this.state.content,
+	          days: this.state.days
+	        };
+	        AS.notice.update(data).done(function () {
+	          _this.state.status = true;
+	          alert('修改成功!');
+	          _this.props.onSave && _this.props.onSave();
+	          _this.setState(_this.state);
+	        });
+	      }
+	    }
+	  },
+	  cancelEdit: function cancelEdit() {
+	    if (confirm('确认要放弃编辑吗?')) {
 	      this.state.status = true;
 	      this.setState(this.state);
 	    }
 	  }
 	});
 
-	var container = document.getElementsByClassName('container')[0];
-	React.render(React.createElement(SendMessageController, null), container);
+	var MessageListController = React.createClass({ displayName: "MessageListController",
+	  getInitialState: function getInitialState() {
+	    this.state = {
+	      list: null,
+	      days: this.props.days == undefined ? 30 : this.props.days
+	    };
+	    this.getList();
+	    return this.state;
+	  },
+	  getList: function getList() {
+	    var me = this;
+	    AS.notice.list({ days: this.state.days }).done(function (list) {
+	      if (list && list.length > 0) {
+	        me.state.list = list.concat();
+	        me.setState(me.state);
+	      }
+	    });
+	  },
+	  render: function render() {
+	    return React.createElement("div", { className: "card" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col" }, React.createElement("h1", { className: "txt" }, "查询公告")), React.createElement("div", { className: "col" }, React.createElement("span", { className: "radiusBtn style_1 square short-height auto", onClick: this.createNotice }, "创建公告"))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "col col-left" }, React.createElement("span", { className: "txt" }, "请输入默认查询区间(距今的天数)")), React.createElement("div", { className: "col col-right" }, React.createElement("input", { className: "input input-tiny", value: this.state.days, onChange: this.setDays, placeholder: '请输入天数,默认' + this.props.days + '天' }), React.createElement("span", { className: "txt" }, "  天")), React.createElement("div", { className: "col col-right" }, React.createElement("span", { className: "radiusBtn style_2 short-height square auto", onClick: this.triggerRetrieve }, "查询"))), React.createElement("div", { className: "row" }, this.renderTable()));
+	  },
+	  renderTable: function renderTable() {
+
+	    if (this.state.list) {
+	      return React.createElement("table", null, React.createElement("thead", null, React.createElement("tr", null, React.createElement("th", { width: "20%" }, "标题"), React.createElement("th", { width: "20%" }, "内容"), React.createElement("th", { width: "20%" }, "创建时间"), React.createElement("th", { width: "20%" }, "过期时间"), React.createElement("th", { width: "20%" }, "操作"))), React.createElement("tbody", null, this.renderListItems()));
+	    } else {
+	      return React.createElement("span", { className: "txt" }, "暂时没有查询结果!");
+	    }
+	  },
+	  renderListItems: function renderListItems() {
+	    var _this2 = this;
+
+	    return _.map(this.state.list, function (val, i) {
+	      var expireDate = new Date(val.expire_date).toLocaleString();
+	      var createDate = new Date(val.create_date).toLocaleString();
+	      return React.createElement("tr", { key: val.notice_id }, React.createElement("td", null, React.createElement("h3", null, val.title)), React.createElement("td", null, React.createElement("section", null, val.content)), React.createElement("td", null, createDate), React.createElement("td", null, expireDate), React.createElement("td", null, React.createElement("span", { className: "radiusBtn style_2 auto square short-height", onClick: _this2.triggerUpdate, "data-notice-id": val.notice_id, "data-index": i }, "修改"), React.createElement("span", { className: "radiusBtn style_8 auto square short-height", onClick: _this2.triggerDelete, "data-notice-id": val.notice_id, "data-index": i }, "删除")));
+	    });
+	  },
+	  setDays: function setDays(ev) {
+	    this.state.days = ev.target.value;
+	    this.setState(this.state);
+	  },
+	  triggerUpdate: function triggerUpdate(ev) {
+	    var notice_id = parseInt(ev.target.getAttribute('data-notice-id')),
+	        index = parseInt(ev.target.getAttribute('data-index'));
+	    var key = 'qwer_' + Date.now();
+	    var container = document.getElementById('m_c');
+
+	    var id = notice_id == undefined ? null : notice_id;
+	    var data = this.state.list[index];
+	    var days = Math.ceil((new Date(data.expire_date) - new Date(data.create_date)) / 86400000);
+	    React.render(React.createElement(SendMessageController, {
+	      key: key,
+	      status: false,
+	      notice_id: notice_id,
+	      title: data.title,
+	      content: data.content,
+	      days: days,
+	      isUpdate: true,
+	      onSave: this.triggerRetrieve }), container);
+	  },
+	  triggerDelete: function triggerDelete(ev) {
+	    var _this3 = this;
+
+	    var notice_id = parseInt(ev.target.getAttribute('data-notice-id')),
+	        index = parseInt(ev.target.getAttribute('data-index'));
+	    if (confirm('确认要删除此条公告吗?')) {
+	      AS.notice['delete']({
+	        notice_id: notice_id
+	      }).done(function () {
+	        alert('删除成功!');
+	        _this3.state.list.splice(index, 1);
+	        _this3.setState(_this3.state);
+	      });
+	    }
+	  },
+	  triggerRetrieve: function triggerRetrieve() {
+	    this.getList();
+	  },
+	  createNotice: function createNotice(notice_id) {
+	    var key = 'qwer_' + Date.now();
+	    var container = document.getElementById('m_c');
+	    React.render(React.createElement(SendMessageController, { key: key, status: false, onSave: this.triggerRetrieve }), container);
+	  }
+	});
+
+	var container_1 = document.getElementsByClassName('container')[0];
+	React.render(React.createElement(MessageListController, { days: 0 }), container_1);
 
 /***/ },
 /* 2 */
@@ -297,6 +357,145 @@
 	});
 
 	module.exports = Selector;
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var Service = function Service() {
+	  this.root = '/manage/';
+	};
+
+	Service.prototype = {
+	  user_id: function user_id() {
+	    return window.user_id;
+	  },
+	  notice: {
+	    list: function list(data) {
+	      var cb = null,
+	          error_cb = null;
+
+	      function c() {
+	        $.ajax({
+	          url: '/manage/notice/list',
+	          type: "GET",
+	          data: data,
+	          dataType: 'json'
+	        }).success(function (req) {
+	          if (req.errno == 0) {
+	            cb && cb.call(null, req.data);
+	          } else {
+	            error_cb && error_cb.call(null, req.errmsg);
+	          }
+	        });
+	      }
+
+	      return {
+	        done: function done(fun) {
+	          cb = fun;
+	          c();
+	        },
+	        error: function error(fun) {
+	          error_cb = fun;
+	        }
+	      };
+	    },
+	    add: function add(data) {
+	      var cb = null,
+	          error_cb = null;
+
+	      function c() {
+	        $.ajax({
+	          url: '/manage/notice/add',
+	          type: "POST",
+	          data: data,
+	          dataType: 'json'
+	        }).success(function (req) {
+	          if (req.errno == 0) {
+	            cb && cb.call(null, req.data);
+	          } else {
+	            error_cb && error_cb.call(null, req.errmsg);
+	          }
+	        });
+	      }
+
+	      return {
+	        done: function done(fun) {
+	          cb = fun;
+	          c();
+	        },
+	        error: function error(fun) {
+	          error_cb = fun;
+	        }
+	      };
+	    },
+	    update: function update(data) {
+	      var cb = null,
+	          error_cb = null;
+
+	      function c() {
+	        $.ajax({
+	          url: '/manage/notice/update',
+	          type: "POST",
+	          data: data,
+	          dataType: 'json'
+	        }).success(function (req) {
+	          if (req.errno == 0) {
+	            cb && cb.call(null, req.data);
+	          } else {
+	            error_cb && error_cb.call(null, req.errmsg);
+	          }
+	        });
+	      }
+
+	      return {
+	        done: function done(fun) {
+	          cb = fun;
+	          c();
+	        },
+	        error: function error(fun) {
+	          error_cb = fun;
+	        }
+	      };
+	    },
+	    'delete': function _delete(data) {
+	      var cb = null,
+	          error_cb = null;
+
+	      function c() {
+	        $.ajax({
+	          url: '/manage/notice/delete',
+	          type: "POST",
+	          data: data,
+	          dataType: 'json'
+	        }).success(function (req) {
+	          if (req.errno == 0) {
+	            cb && cb.call(null, req.data);
+	          } else {
+	            error_cb && error_cb.call(null, req.errmsg);
+	          }
+	        });
+	      }
+
+	      return {
+	        done: function done(fun) {
+	          cb = fun;
+	          c();
+	        },
+	        error: function error(fun) {
+	          error_cb = fun;
+	        }
+	      };
+	    }
+
+	  }
+	};
+
+	var entity = new Service();
+	var me = entity;
+	module.exports = entity;
 
 /***/ }
 /******/ ]);

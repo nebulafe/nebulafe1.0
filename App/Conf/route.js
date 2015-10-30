@@ -5,15 +5,19 @@
 module.exports = [
   [/^login\/?$/, "admin/index/login"],
   [/^logout\/?$/, "admin/index/logout"],
-  [/^admin$/, "admin/course/index"],
-  //[/^admin\/course\/?$/, "admin/course/index"],
-  //[/^admin\/partner\/?$/, "admin/partner/index"],
-  //[/^manage\/resource\/?$/, "admin/resource/index"],
-  //[/^manage\/teacher\/?$/, "admin/teacher/index"],
-  //[/manage\/message/, "admin/message/index"],
-  //['manage/message/list', "admin/message/list"],
-  //[/^manage\/message\/?$/, "admin/message/index"],
-  //[/^manage\/message\/?$/, "admin/message/index"],
+  [/^manage$/, "admin/course/index"],
+  [/^manage\/course\/?$/, "admin/course/index"],
+  [/^manage\/partner\/?$/, "admin/partner/index"],
+  [/^manage\/resource\/?$/, "admin/resource/index"],
+  [/^manage\/teacher\/?$/, "admin/teacher/index"],
+  [/^manage\/notice$/, "admin/notice/index"],
+
+  //消息公告的增删改查
+  ['manage/notice/list', "admin/notice/list"],
+  ['manage/notice/add', "admin/notice/add"],
+  ['manage/notice/update', "admin/notice/update"],
+  ['manage/notice/delete', "admin/notice/delete"],
+
   ["user/see/:id", "user/see"],
   ["user/avator/:id", "user/avator"],
   ["user/verifyemail/:id", "user/verifyemail"],

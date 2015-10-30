@@ -30,8 +30,8 @@ body > .container {
   &.t-center{
     text-align: center;
   }
-
 }
+
 .card{
   @extend %card;
   padding: 15px;
@@ -81,8 +81,7 @@ textarea.input{
 @import "../utils/leftNav";
 @import "../utils/imgUploader";
 @import "../utils/teacher";
-
-
-
+@import "../utils/newTable";
+@import "../utils/modal";
 
 

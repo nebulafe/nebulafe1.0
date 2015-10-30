@@ -10,7 +10,8 @@ var _distPath ='./www/resource/js/component/dist'
 module.exports = {
   entry: {
     Selector:[_devPath+'/Selector/index.jsx'],
-    Admin__SendMessage: [_devPath+'/Admin/send_Message.jsx']
+    Admin__SendMessage: [_devPath+'/Admin/send_Message.jsx'],
+    Admin__Service: [_devPath+'/Admin/service.jsx']
   },
   output: {
     path: _distPath,
