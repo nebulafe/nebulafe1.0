@@ -643,6 +643,18 @@ module.exports = Controller("Home/BaseController", function(){
           return self.error("请稍后再试，服务异常！" || err.msg);
         })
       }
+    },
+
+    noticeAction : function(){
+      var self = this;
+      var data = {
+          time : Math.floor(new Date().getTime()/1000),
+          title :"提醒",
+          content : '星云用户之间可以互相发消息，互相学习，<a href="/user/message">欢迎体验</a>'
+        };
+      if(self.isGet()){
+        return self.success();
+      }
     }
 
 

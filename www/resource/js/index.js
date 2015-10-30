@@ -345,6 +345,40 @@ define(function(require, exports, moudle) {
       }
     }()
   };
+  function canShowNotice(){
+    var nkey = "noticetime";
+    var ltime = localStorage[nkey];
+    if(ltime){
+      if(Math.floor(new Date().getTime()/1000) - ltime >= 5*24*60*60){
+        localStorage[nkey] = "";
+        return true;
+      }else{
+        return false;
+      }
+    }else{
+      return true
+    }
+  }
+  function getMsg(){
+    var sign_user = $('#user_head_icon');
+    if(sign_user[0] && canShowNotice()){
+      $.get('/user/notice', {}, 'json').done(function(res){
+        if(res.errno == 0  && res.data){
+          if(res.data.title){
+            sign_user.attr('title', res.data.title)
+          }
+          if(res.data.content){
+            sign_user.attr('data-content', res.data.content);
+            sign_user.attr('data-placement', 'bottom');
+            sign_user.popover({html : true});
+            sign_user.popover('show').on('hidden.bs.popover', function () {
+              localStorage['noticetime'] = res.data.time || Math.floor(new Date().getTime()/1000);
+            });
+          }
+        }
+      })
+    }
+  }
   $(function(){
     $(document).on("click","[data-fromto]",function(e){
       e.preventDefault();
@@ -360,6 +394,7 @@ define(function(require, exports, moudle) {
       alifenxi.track("signin_show");
       m.signup();
     })
+    getMsg();
   });
 
   moudle.exports = m;

@@ -252,6 +252,8 @@ var Service = Class(function(){
     getNewCountById : function(data){
       return getRequst('message/getusernewmessagecount' , data);
     },
+
+    /* Notice API*/
     addNotice : function(data){
       return getRequst('notice/create' , data);
     },
@@ -263,7 +265,7 @@ var Service = Class(function(){
     },
     deleteNotice : function(data){
       return getRequst('notice/delete' , data);
-    },
+    }
 
 
 
