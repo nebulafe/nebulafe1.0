@@ -1901,4 +1901,12 @@ input::-moz-focus-inner {
   -ms-transform: scale(1);
   transform: scale(1);
 }
+#header .user-right .link-item .popover-content a{
+    display: inline;
+    color: #2C7DD1;
+    line-height: 1.5;
+    vertical-align: middle;
+}
+#header .user-right .link-item .popover-content a:hover,#header .user-right .link-item .popover-content a:active{
+  color: #2C7DD1;
 }
