@@ -13,23 +13,14 @@ module.exports = Controller("Admin/BaseController", function () {
   return {
     indexAction: function () {
       var self = this;
-      if (self.userInfo && self.userInfo.isAdmin == 1) {
+      if (self.userInfo && self.userInfo.id && self.userInfo.isAdmin == 1) {
         if (self.isGet()) {
-
-          self
-            .session("userInfo")
-            .then(
-            function (userInfo) {
-              self.assign({
-                header_index: 5,
-                title: "管理后台-通知管理",
-                user_id: userInfo.id,
-              });
-              self.display();
-            }
-          )
-
-
+          self.assign({
+            header_index: 5,
+            title: "管理后台-通知管理",
+            user_id: self.userInfo.id,
+          });
+          self.display();
         }
       }
     },
@@ -39,8 +30,7 @@ module.exports = Controller("Admin/BaseController", function () {
       if (self.isPost()) {
         var data = self.post();
 
-        Service
-          .addNotice({
+        Service.addNotice({
             user_id: self.userInfo.id,
             title: self.post('title'),
             content: self.post('content'),
@@ -58,8 +48,7 @@ module.exports = Controller("Admin/BaseController", function () {
       var self = this;
 
       if (self.isGet()) {
-        Service
-          .getNoticeList(self.get())
+        Service.getNoticeList(self.get())
           .then(function (content) {
             self.success(content)
           })
@@ -74,8 +63,7 @@ module.exports = Controller("Admin/BaseController", function () {
       if (self.isPost()) {
         var data = self.post();
         data.user_id = self.userInfo.id;
-        Service
-          .updateNotice(data)
+        Service.updateNotice(data)
           .then(function (content) {
             self.success(content)
           })
@@ -90,8 +78,7 @@ module.exports = Controller("Admin/BaseController", function () {
       if (self.isPost()) {
         var data = self.post();
         data.user_id = self.userInfo.id;
-        Service
-          .deleteNotice(data)
+        Service.deleteNotice(data)
           .then(function (content) {
             self.success(content)
           })
