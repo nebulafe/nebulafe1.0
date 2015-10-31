@@ -6,7 +6,7 @@
   "dependencies": {
     "gulp-rename": "^1.2.2",
     "gulp-rename-plus": "0.0.2",
-    "thinkjs": "*"
+    "thinkjs": "1.2.10"
   },
   "keywords": [],
   "repository": {
